@@ -78,12 +78,15 @@ export function drawAtlas(
       }).join("")}
     </div><aside class="rescue-preview" aria-label="Selected rescue">${selected ? `<canvas id="scene-preview" aria-hidden="true"></canvas><div class="eyebrow">SCENE ${String(scenes.indexOf(selected) + 1).padStart(2, "0")} · ${selected.targets.length} LITTLE TASKS</div><h2>${escapeHtml(selected.name)}</h2><p>${escapeHtml(selected.pitch.split(". ")[0])}${selected.pitch.includes(". ") ? "." : ""}</p><small>${save.stars[selected.id] ? `${"★".repeat(save.stars[selected.id])} · Best ${Math.round(save.best[selected.id] ?? 0)}s` : "No lives. No rush. Just help."}</small><button class="primary" data-launch="${selected.id}">${save.stars[selected.id] ? "Replay rescue" : "Start this rescue"} ↗</button>` : `<div class="preview-closed">✉</div><h2>More good deeds are coming.</h2><p>This world's twenty rescues are designed, but not playable yet. No medals needed to enter when it opens.</p><button class="quiet" data-action="atlas">Explore open worlds</button>`}</aside></div>
     <p class="map-legend">✓ Rescued · Numbers: available · Dashed: coming later. Follow the story trail, or pick any available rescue.</p>`;
-  if (selected)
+  if (selected) {
+    const preview = new World(selected);
+    preview.difficulty = save.difficulty ?? "easy";
     new Renderer(root.querySelector<HTMLCanvasElement>("#scene-preview")!).draw(
-      new World(selected),
+      preview,
       0,
       true,
     );
+  }
   if (!save.mapList) {
     const canvas = root.querySelector<HTMLCanvasElement>(".map-art")!;
     const art = new Renderer(canvas);

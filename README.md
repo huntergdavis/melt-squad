@@ -15,6 +15,12 @@ that the end of the world is actually a picnic. Redirect a tomato-soup river,
 tune an ice-prism constellation, and give four ominous ponies useful errands.
 No lives, no grinding, no account.
 
+Choose your shift: **Easy** shows recipe hints; **Normal** leaves you to find
+the right mix; **Impossible Challenge** hides colored work zones until correctly
+mixed water discovers them. Change modes from the mode button or Pause. Your
+choice is saved; switching keeps your work, while restarting clears discoveries.
+Fresh Challenge calls start with water off. Medals and best times are shared.
+
 ## Your equipment
 
 | Action          | Keyboard     | Standard gamepad         |

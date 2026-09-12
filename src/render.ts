@@ -1111,6 +1111,7 @@ export class Renderer {
     }
     for (const t of world.level.targets)
       if (t.motion) {
+        if (!world.targetVisible(t)) continue;
         if (world.level.theme === "mycelium" && t.motion.rx === 0) {
           const railX = t.x + t.w + 50;
           const cy = t.y + t.h / 2;
@@ -1207,6 +1208,7 @@ export class Renderer {
     };
     for (const p of world.level.props) if (!p.foreground) drawSceneProp(p);
     for (const [index, t] of world.targets.entries()) {
+      if (!world.targetVisible(t)) continue;
       const available = world.available(t);
       const prism = world.level.optics?.prisms?.find((p) => p.target === t.id);
       const splitter = world.level.optics?.splitters?.find(
@@ -1520,13 +1522,17 @@ export class Renderer {
       c.fillText("MELT SQUAD  /  RESCUE CAM", 28, 31);
       c.letterSpacing = "0px";
       const active = world.targets.find((t) => t.flash > 0 && t.feedback);
-      if (active) {
+      if (active && world.targetVisible(active)) {
+        const feedback =
+          world.difficulty !== "easy" && active.feedbackIsRecipe
+            ? "Try a different mix or approach."
+            : active.feedback;
         c.font = "bold 14px system-ui";
         c.textAlign = "center";
-        const width = c.measureText(active.feedback).width + 35;
+        const width = c.measureText(feedback).width + 35;
         this.round(W / 2 - width / 2, 48, width, 32, 16, "#fff6e8ed");
         c.fillStyle = "#8e5342";
-        c.fillText(active.feedback, W / 2, 69);
+        c.fillText(feedback, W / 2, 69);
       }
     }
     for (const s of world.sparks) {

@@ -1,3 +1,4 @@
+import { normalizeDifficulty, type Difficulty } from "./difficulty";
 export interface Save {
   version: 1;
   stars: Record<string, number>;
@@ -8,8 +9,15 @@ export interface Save {
   stationary?: boolean;
   untimed?: boolean;
   mapList?: boolean;
+  difficulty?: Difficulty;
 }
-const fresh = (): Save => ({ version: 1, stars: {}, best: {}, muted: false });
+const fresh = (): Save => ({
+  version: 1,
+  stars: {},
+  best: {},
+  muted: false,
+  difficulty: "easy",
+});
 export const SAVE_KEY = "melt-squad-v1";
 export function loadSave(storage?: Pick<Storage, "getItem">): Save {
   try {
@@ -18,6 +26,7 @@ export function loadSave(storage?: Pick<Storage, "getItem">): Save {
     if (!raw || raw.version !== 1) return fresh();
     const save = fresh();
     save.muted = raw.muted === true;
+    save.difficulty = normalizeDifficulty(raw.difficulty);
     if (typeof raw.stationary === "boolean") save.stationary = raw.stationary;
     if (typeof raw.untimed === "boolean") save.untimed = raw.untimed;
     save.mapList = raw.mapList === true;

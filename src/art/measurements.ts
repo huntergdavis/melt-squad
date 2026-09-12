@@ -6,6 +6,7 @@ import { activePrismVertices } from "../mechanics/optics";
 export function drawMeasurements(r: Renderer, world: World) {
   const c = r.ctx;
   for (const target of world.targets) {
+    if (!world.targetVisible(target)) continue;
     if (!target.phase) continue;
     const cards = target.phase.steps.flatMap((step, i) => [
       ...(step.requires ?? []).map((id) => {
@@ -225,6 +226,8 @@ export function drawMeasurements(r: Renderer, world: World) {
     }
     const lamp = optics.source;
     for (const splitter of optics.splitters ?? []) {
+      const target = world.targets.find((t) => t.id === splitter.target);
+      if (target && !world.targetVisible(target)) continue;
       const built = world.targets.find((t) => t.id === splitter.target)?.done;
       const dx = (Math.cos(splitter.angle) * splitter.length) / 2;
       const dy = (Math.sin(splitter.angle) * splitter.length) / 2;
@@ -262,6 +265,7 @@ export function drawMeasurements(r: Renderer, world: World) {
     }
     for (const prism of optics.prisms ?? []) {
       const target = world.targets.find((t) => t.id === prism.target);
+      if (target && !world.targetVisible(target)) continue;
       const active = activePrismVertices(prism, target);
       c.beginPath();
       prism.vertices.forEach(([x, y], i) =>
@@ -326,6 +330,8 @@ export function drawMeasurements(r: Renderer, world: World) {
     r.line([lamp.x - 28, lamp.y + 21, lamp.x - 28, lamp.y + 40], "#82968c", 6);
     r.round(lamp.x - 44, lamp.y + 36, 34, 9, 4, "#82968c");
     for (const mirror of optics.mirrors) {
+      const target = world.targets.find((t) => t.id === mirror.target);
+      if (target && !world.targetVisible(target)) continue;
       const built = world.targets.find((t) => t.id === mirror.target)?.done;
       const dx = (Math.cos(mirror.angle) * mirror.length) / 2;
       const dy = (Math.sin(mirror.angle) * mirror.length) / 2;

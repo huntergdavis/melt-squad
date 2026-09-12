@@ -4,9 +4,9 @@
 
 Current implementation: **360 scenes / 18 worlds**. See the [release ledger](RELEASES.md).
 
-Next requested feature, before Worlds 19–20:
+Difficulty feature, before Worlds 19–20:
 
-- [ ] Saved difficulty: **Easy** (current recipe hints, default), **Normal**
+- [x] Saved difficulty: **Easy** (current recipe hints, default), **Normal**
       (no temperature/pressure recipe hints), and **Impossible Challenge**
       (also hide target boxes until correctly mixed water discovers them).
       Keep the nozzle controls readable and allow changing modes without losing work.

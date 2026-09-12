@@ -9,6 +9,11 @@ import { loadSave, recordWin, writeSave } from "./save";
 import { clamp, H, W } from "./types";
 import { campaign, inPack, mapNeighbor, nextRescue, packOf } from "./campaign";
 import { drawAtlas, escapeHtml, sceneIndex } from "./atlas";
+import {
+  difficultyLabels,
+  normalizeDifficulty,
+  type Difficulty,
+} from "./difficulty";
 
 const $ = <T extends HTMLElement = HTMLElement>(selector: string) =>
   document.querySelector<T>(selector)!;
@@ -47,6 +52,7 @@ $("#app").innerHTML = `
       <button class="nav-item" data-action="help"><span>⌘</span> Field manual</button>
       <button class="nav-item" data-action="mute"><span>♫</span> <span class="sound-label">Sound on</span></button>
       <button class="nav-item" data-action="credits"><span>♡</span> Credits & licenses</button>
+      <button class="nav-item" data-action="difficulty"><span>⚙</span> Difficulty</button>
     </nav>
     <div class="squad-note"><div class="mini-drop">♨</div><p>A little heat.<br>A lot of heart.</p><span>No bad guys.<br>Just very cold problems.</span></div>
     <div class="station-footer"><span id="pad-status">Keyboard ready</span><span>CLIENT-SIDE · NO SIGN-IN</span></div>
@@ -63,6 +69,7 @@ $("#app").innerHTML = `
     </section>
     <section id="play" hidden aria-label="Rescue mission">
       <div class="mission-heading"><div><div class="eyebrow" id="mission-number"></div><h1 id="mission-title"></h1><p id="mission-pitch"></p></div><div class="mission-actions"><button class="quiet" data-action="hub">← World map</button><button class="quiet" data-action="restart" aria-label="Restart mission">↻ <span>Restart</span></button><button class="quiet" data-action="pause">Ⅱ <span>Pause</span></button></div></div>
+      <div class="difficulty-bar"><button class="quiet" data-action="difficulty">Mode: <span class="difficulty-label">Easy</span> ▾</button><span id="difficulty-summary"></span></div>
       <div class="game-frame"><canvas id="game" tabindex="0" aria-label="Move the nozzle with WASD or drag. Arrow up/down controls temperature; left/right controls pressure."></canvas><div class="stage-bottom"><span id="stage-state">● WATER ON</span><span id="elapsed">00:00</span><button data-action="help">Controls / help ?</button></div></div>
       <div class="instrument-bar">
         <div class="instrument"><div class="instrument-title"><label for="temperature">TEMPERATURE</label><output id="temp-value">65°</output></div><input id="temperature" class="temperature" type="range" min="-40" max="100" step="1" value="65" aria-label="Water temperature"><div class="scale"><span>−40° · FREEZE</span><span>100° · MELT</span></div></div>
@@ -91,6 +98,28 @@ function persist() {
   $("#save-warning").hidden = writeSave(save);
 }
 function updateGlobal() {
+  world.difficulty = normalizeDifficulty(save.difficulty);
+  heroWorld.difficulty = world.difficulty;
+  document
+    .querySelectorAll(".difficulty-label")
+    .forEach((el) => (el.textContent = difficultyLabels[world.difficulty]));
+  document
+    .querySelectorAll('[data-action="difficulty"]')
+    .forEach((el) =>
+      el.setAttribute(
+        "aria-label",
+        "Difficulty: " + difficultyLabels[world.difficulty],
+      ),
+    );
+  $("#difficulty-summary").textContent =
+    world.difficulty === "easy"
+      ? "Recipe hints on"
+      : world.difficulty === "normal"
+        ? "Find your own mix"
+        : "Correct water reveals hidden work zones";
+  document
+    .querySelectorAll<HTMLElement>('[data-action="hint"]')
+    .forEach((el) => (el.hidden = world.difficulty !== "easy"));
   const count = levels.filter((l) => save.stars[l.id]).length;
   $("#total-progress").textContent =
     count + " / " + levels.length + " calls answered";
@@ -173,9 +202,43 @@ function openModal(kind: string, html: string) {
   dialog.querySelector<HTMLButtonElement>("button")?.focus();
 }
 function showHelp() {
+  const recipes =
+    world.difficulty === "easy"
+      ? '<div class="manual-verbs"><span>❄ Below −10° builds ice</span><span>♨ Above 10° melts ice</span><span>↗ 70% pressure spins wheels</span></div><p>Warming tasks show their safe temperature and pressure range.</p>'
+      : "<p>Experiment with the mix: cold builds, heat melts, gentle warmth comforts, and pressure turns machinery. Recipe hints are off in this mode.</p>";
   openModal(
     "help",
-    '<div class="eyebrow">THE FIELD MANUAL</div><h2>A hose. Two sticks.<br>Endless good intentions.</h2><p>Move above a target and let the water do its thing. The nozzle points down; tilt it when a tricky angle calls for it.</p><div class="manual-grid"><div><h3>Keyboard</h3><p>WASD — move nozzle<br>↑ / ↓ — hotter / colder<br>← / → — less / more pressure<br>Q / E — tilt nozzle<br>Space — toggle water<br>R — restart · Esc — pause</p></div><div><h3>Gamepad</h3><p>Left stick — move nozzle<br>Right stick ↕ — temperature<br>Right stick ↔ — pressure<br>LB / RB — tilt nozzle<br>A / Cross — water / confirm<br>X / Square — restart<br>B / Circle or Start — pause<br>D-pad — navigate menus</p></div></div><p><b>Mouse / touch:</b> drag anywhere in the scene to move the nozzle. Use the temperature and pressure sliders below it.</p><div class="manual-verbs"><span>❄ Below −10° builds ice</span><span>♨ Above 10° melts ice</span><span>↗ 70% pressure spins wheels</span></div><p>Warming tasks show their safe temperature and pressure range. Completed structures stay stable unless a marked build/open recipe explicitly asks you to remelt them. There are no lives to lose; restart or replay any call. Earn a rescue star by finishing, a second within 1.8× the par time, and a third within par with fewer than 60 wrong-setting droplet hits.</p><button class="primary" data-action="close">Got it. Let’s help someone.</button>',
+    '<div class="eyebrow">THE FIELD MANUAL</div><h2>A hose. Two sticks.<br>Endless good intentions.</h2><p>Move above a target and let the water do its thing. The nozzle points down; tilt it when a tricky angle calls for it.</p><div class="manual-grid"><div><h3>Keyboard</h3><p>WASD — move nozzle<br>↑ / ↓ — hotter / colder<br>← / → — less / more pressure<br>Q / E — tilt nozzle<br>Space — toggle water<br>R — restart · Esc — pause</p></div><div><h3>Gamepad</h3><p>Left stick — move nozzle<br>Right stick ↕ — temperature<br>Right stick ↔ — pressure<br>LB / RB — tilt nozzle<br>A / Cross — water / confirm<br>X / Square — restart<br>B / Circle or Start — pause<br>D-pad — navigate menus</p></div></div><p><b>Mouse / touch:</b> drag anywhere in the scene to move the nozzle. Use the temperature and pressure sliders below it.</p>' +
+      recipes +
+      '<p>Completed structures stay stable unless a marked build/open recipe explicitly asks you to remelt them. There are no lives to lose; restart or replay any call. Earn a rescue star by finishing, a second within 1.8× the par time, and a third within par with fewer than 60 wrong-setting droplet hits.</p><button class="primary" data-action="close">Got it. Let’s help someone.</button>',
+  );
+}
+function showDifficulty() {
+  const descriptions: Record<Difficulty, string> = {
+    easy: "The original experience: work zones and exact temperature/pressure hints.",
+    normal:
+      "Work zones stay visible. Discover the right mix without recipe hints.",
+    impossible:
+      "No recipe hints. Colored work zones and their guides appear only after correctly mixed water reaches an available spot. Fresh calls start with water off.",
+  };
+  openModal(
+    "difficulty",
+    '<div class="eyebrow">YOUR SHIFT, YOUR WAY</div><h2>How much help?</h2><p>Same rescues. Same physics. A different amount of guidance.</p><div class="difficulty-choices">' +
+      (Object.keys(difficultyLabels) as Difficulty[])
+        .map(
+          (value) =>
+            '<button class="quiet difficulty-choice" data-action="difficulty-' +
+            value +
+            '" aria-pressed="' +
+            (world.difficulty === value) +
+            '"><strong>' +
+            difficultyLabels[value] +
+            "</strong><span>" +
+            descriptions[value] +
+            "</span></button>",
+        )
+        .join("") +
+      '</div><p class="difficulty-note">Your choice is saved on this browser. Switching modes keeps this rescue’s progress and discoveries. Restart clears discoveries. Medals and best times remain shared across modes.</p><button class="primary" data-action="close">Back to it ↗</button>',
   );
 }
 function start(index: number, restart = false) {
@@ -185,6 +248,14 @@ function start(index: number, restart = false) {
   levelIndex = clamp(index, 0, levels.length - 1);
   if (!resume) {
     world = new World(levels[levelIndex]);
+    if (save.difficulty === "impossible")
+      Object.assign(world.nozzle, {
+        x: 480,
+        y: 100,
+        temp: 20,
+        pressure: 45,
+        on: false,
+      });
     recorded = false;
     lastGoals = 0;
   }
@@ -280,7 +351,9 @@ function pause() {
       (world.targets.some((t) => t.pulse)
         ? '<button class="quiet" data-action="pulse-assist">Untimed assist</button>'
         : "") +
-      "</div>",
+      '<button class="quiet" data-action="difficulty">Difficulty: ' +
+      difficultyLabels[world.difficulty] +
+      "</button></div>",
   );
   updateAssist();
 }
@@ -354,6 +427,7 @@ function updateHUD() {
       available = world.available(t);
     row.classList.toggle("complete", t.done);
     row.classList.toggle("locked", !available);
+    row.dataset.discovered = String(world.discovered.has(t.id));
     row.querySelector("strong")!.textContent = t.name;
     row.querySelector(".objective-number")!.textContent = t.done
       ? "✓"
@@ -388,7 +462,11 @@ function updateHUD() {
                 ? "GO · "
                 : "REST · "
             : "") +
-          requirements(t, world.untimed);
+          (world.difficulty === "easy"
+            ? requirements(t, world.untimed)
+            : world.targetVisible(t)
+              ? "Find the right temperature and pressure."
+              : "Explore with the hose to discover this work zone.");
     row.querySelector<HTMLElement>("i")!.style.width =
       Math.round((t.reversibleIce ? t.progress : targetProgress(t)) * 100) +
       "%";
@@ -414,6 +492,24 @@ function action(name: string) {
     persist();
     drawBoard();
     $("[data-action=map-list]").focus();
+  } else if (name === "difficulty") {
+    if (mode === "play") updateHUD();
+    showDifficulty();
+  } else if (name.startsWith("difficulty-")) {
+    save.difficulty = normalizeDifficulty(name.slice("difficulty-".length));
+    for (const target of world.targets) {
+      target.feedback = "";
+      target.flash = 0;
+    }
+    $("#hint").hidden = true;
+    $("#hint").textContent = "";
+    persist();
+    updateGlobal();
+    closeModal();
+    if (mode === "play") updateHUD();
+    else drawBoard();
+    $("#announcement").textContent =
+      difficultyLabels[world.difficulty] + " mode selected.";
   } else if (name === "motion-assist") {
     save.stationary = !save.stationary;
     world.stationary = !!save.stationary;
@@ -436,6 +532,7 @@ function action(name: string) {
   else if (name === "help") showHelp();
   else if (name === "close") closeModal();
   else if (name === "hint") {
+    if (world.difficulty !== "easy") return;
     $("#hint").textContent = world.level.hint;
     $("#hint").hidden = !$("#hint").hidden;
   } else if (name === "spray" && mode === "play" && !dialog.open) {

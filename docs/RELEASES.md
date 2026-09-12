@@ -32,6 +32,10 @@ a live-browser check before the next world is started.
 
 ## Campaign foundation
 
+Patch **0.18.1** adds saved Easy, Normal, and Impossible Challenge guidance modes.
+Correct arriving water discovers hidden work zones. Physics and shared medals
+are unchanged; the two remaining campaign worlds are still pending.
+
 - Implemented: twenty-destination atlas, twenty-node story paths, scene list,
   previews, freely accessible released scenes, Continue, replay, browser Back,
   ID-preserving saves, visible unbuilt states, local-license credits screen.

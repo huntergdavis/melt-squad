@@ -5,6 +5,7 @@ import {
   type BalanceState,
 } from "./mechanics/balance";
 import { traceOptics } from "./mechanics/optics";
+import type { Difficulty } from "./difficulty";
 import { availableRoutes, branchOpen } from "./mechanics/flow";
 import {
   createBuoyancy,
@@ -20,6 +21,7 @@ export interface LiveTarget extends Target {
   cols: number;
   rows: number;
   feedback: string;
+  feedbackIsRecipe?: boolean;
   flash: number;
   completedAt: number;
   phaseStep: number;
@@ -82,6 +84,16 @@ export class World {
   stationary = false;
   untimed = false;
   signals = new Set<string>();
+  difficulty: Difficulty = "easy";
+  /** Per-attempt discoveries come from valid arriving water, in every mode. */
+  readonly discovered = new Set<string>();
+  targetVisible(t: Target) {
+    return (
+      this.difficulty !== "impossible" ||
+      this.discovered.has(t.id) ||
+      this.completed
+    );
+  }
   private phaseSignals = new Set<string>();
   balance?: BalanceState;
   buoyancy?: BuoyancyState;
@@ -341,6 +353,7 @@ export class World {
   }
   impact(t: LiveTarget, drop: Drop, x: number, y: number) {
     if (t.done || !this.available(t)) return;
+    t.feedbackIsRecipe = false;
     if (!this.pulseOpen(t)) {
       t.flash = 0.3;
       t.feedback = this.untimed
@@ -364,6 +377,7 @@ export class World {
         return;
       }
       const direction = heat <= -10 ? 1 : -1;
+      this.discovered.add(t.id);
       const strength = clamp(Math.abs(heat) / 25, 0.4, 1.8);
       t.progress = clamp(
         t.progress + (direction * 0.004 * strength) / (t.effort ?? 1),
@@ -390,12 +404,14 @@ export class World {
     this.hits++;
     t.flash = 0.3;
     if (!valid) {
+      t.feedbackIsRecipe = true;
       t.feedback = requirements(t, this.untimed);
       this.mistakes++;
       if (t.verb === "warm" || (t.verb === "freeze" && heat > 0))
         t.progress = Math.max(0, t.progress - 0.002);
       return;
     }
+    this.discovered.add(t.id);
     t.feedback = "";
     if (t.verb === "melt") {
       const col = clamp(Math.floor((x - t.x) / CELL), 0, t.cols - 1);
