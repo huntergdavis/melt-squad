@@ -41,6 +41,13 @@ describe("Authored calls", () => {
       }
       for (const signal of l.needsSignals ?? [])
         expect(signals).toContain(signal);
+      for (const prop of l.props) {
+        if (prop.foreground) expect(prop.revealOnly).toBe(true);
+        if (prop.signal !== undefined) {
+          expect(signals).toContain(prop.signal);
+          expect(prop.target).toBeUndefined();
+        }
+      }
       if (l.buoyancy) {
         const plan = l.buoyancy;
         const ice = l.targets.find((t) => t.id === plan.iceTarget)!;

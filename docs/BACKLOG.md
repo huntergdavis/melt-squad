@@ -2,7 +2,7 @@
 
 ## Campaign expansion — one complete world per release
 
-Current implementation: **220 scenes / 11 worlds**. See the [release ledger](RELEASES.md).
+Current implementation: **240 scenes / 12 worlds**. See the [release ledger](RELEASES.md).
 
 - [x] Design 19 new themed levels of 20 scenes each: 380 new scenes, 400 total
       including the existing collection.
@@ -34,6 +34,8 @@ Current implementation: **220 scenes / 11 worlds**. See the [release ledger](REL
 - [x] In-game credits with local Kenney and font license acknowledgements.
 - [x] Pack 11: twenty Ever After wedding scenes, an eight-armed planner and
       mixed-climate families, real two-branch optics, and rings preserving both proofs.
+- [x] Pack 12: twenty Somnolent Seamworks scenes, a dream-repair cast, two reflected
+      moon-eyes, earned quilt-panel acknowledgements, and a comforting forest's debut.
 
 Start with the [campaign plan](CAMPAIGN_BACKLOG.md) and
 [complete 380-scene catalog](campaign/SCENE_CATALOG.md). Those source designs

@@ -149,6 +149,10 @@ every original call yet has a bespoke ending animation.
   completed pastel rainbow is celebratory paint along those same real paths.
   This extension reuses the optics from recalled session `01a06835-15f`;
   see [Edmund Optics on beam splitters](https://www.edmundoptics.com/knowledge-center/application-notes/optics/what-are-beamsplitters/).
+  `12.14` instead uses two ordinary finite reflectors with `housing: "prism"`:
+  the triangular ice housing displays a silvered diagonal, not another refracting
+  medium. Source → first reflection → second reflection crosses two real eyelid
+  detectors; the second remains blocked until its local frost is erased.
 - Target `needsSignals` gates work on physical signal IDs, in addition to
   `requires`. Leave space for visible physical feedback, and a generous final
   warming target to celebrate success. See `05.14` and `05.16`.
@@ -170,6 +174,20 @@ every original call yet has a bespoke ending animation.
   Its engraver unlocks from `band:leaf`, not the final band completion; remelting
   waits for the engraver. Both earned draft signals survive the recast, while
   restart clears them. The memory-book reveal celebrates both drafts.
+  `12.18` uses the same sequence without a separate engraver: first support,
+  opening the second panel, and the final repaired seam each earn a signal.
+  Optional `Prop.signal` drives that prop's happy state and `revealOnly` visibility
+  from an actual world signal. Do not combine it with `Prop.target`; without a
+  signal, existing target-completion/whole-scene behavior remains unchanged.
+  This is presentation only: it cannot complete targets or generate signals.
+  Live optical signals can disappear; earned phase signals persist until restart.
+  Positional `reveal` still runs only at whole-scene completion. This reuses
+  the shipped mirror/phase implementation recalled from session `01a06835-15f`.
+  Optional `Prop.foreground` draws earned art after completed work surfaces,
+  before physical indicators and the hose. It never renders before that prop
+  is ready; author it with `revealOnly: true`. Use sparingly for a finished
+  illustration that must cover its old progress fill, such as `12.09`'s painted
+  sunset cup. Keep neighboring unfinished targets and physical indicators clear.
 - `src/campaign.ts` controls world metadata and Continue; `src/atlas.ts` handles
   accessible maps. Unbuilt `NN.SS` slots stay unbuilt even if later slots exist.
 - `public/release.json` identifies the release that must be checked on the live

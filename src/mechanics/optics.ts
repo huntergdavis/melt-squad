@@ -4,6 +4,8 @@ export interface OpticsPlan {
   source: { x: number; y: number; dx: number; dy: number };
   mirrors: {
     target: string;
+    /** Triangular display around the reflecting diagonal; no added refraction. */
+    housing?: "prism";
     x: number;
     y: number;
     /** Tangent angle in radians, in the board's downward-positive coordinates. */

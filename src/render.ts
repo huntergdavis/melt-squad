@@ -1,5 +1,5 @@
 import { CELL, temperatureColor, type World } from "./engine";
-import { H, W, clamp, type PropKind, type Theme } from "./types";
+import { H, W, clamp, type PropKind, type Theme, type Prop } from "./types";
 import { drawPostal } from "./art/postal";
 import { drawCircus } from "./art/circus";
 import { drawMeasurements } from "./art/measurements";
@@ -11,6 +11,8 @@ import { drawLibrary } from "./art/library";
 import { drawSports } from "./art/sports";
 import { drawBuoyancy } from "./art/buoyancy";
 import { drawWedding } from "./art/wedding";
+import { drawSeamworks } from "./art/seamworks";
+import { propIsReady } from "./art/state";
 const motionSafe = (time: number, reduced: boolean) => (reduced ? 0 : time);
 
 const palettes: Record<Theme, [string, string, string]> = {
@@ -29,6 +31,7 @@ const palettes: Record<Theme, [string, string, string]> = {
   library: ["#46465f", "#b4a5b2", "#817486"],
   sports: ["#c3dfe0", "#f1e7c9", "#bba88b"],
   wedding: ["#ddd9e6", "#f5e9d4", "#b9b29c"],
+  seamworks: ["#3c435f", "#aaa6c3", "#62677f"],
 };
 export class Renderer {
   ctx: CanvasRenderingContext2D;
@@ -127,7 +130,8 @@ export class Renderer {
       drawEmberborough(this, kind, happy, t, tint) ||
       drawLibrary(this, kind, happy, t, tint) ||
       drawSports(this, kind, happy, t, tint) ||
-      drawWedding(this, kind, happy, t, tint)
+      drawWedding(this, kind, happy, t, tint) ||
+      drawSeamworks(this, kind, happy, t, tint)
     ) {
       c.restore();
       return;
@@ -431,6 +435,29 @@ export class Renderer {
     } else if (world.level.theme === "garden") {
       for (let i = 0; i < 7; i++)
         this.circle(i * 165, 487, 100 + (i % 3) * 20, "#9fae83");
+    } else if (world.level.theme === "seamworks") {
+      // Quiet set dressing, not dotted work zones or water-routing thread.
+      c.beginPath();
+      c.moveTo(815, 136);
+      c.bezierCurveTo(723, 167, 746, 253, 823, 254);
+      c.bezierCurveTo(782, 226, 778, 172, 815, 136);
+      c.fillStyle = "#fff0c9";
+      c.fill();
+      this.line([92, 150, 480, 184, 868, 150], "#dfc9a4", 3);
+      for (let i = 0; i < 6; i++) {
+        const x = 170 + i * 123;
+        this.line([x, 166, x, 196 + (i % 2) * 20], "#e3d3ba", 2);
+        this.round(
+          x - 16,
+          193 + (i % 2) * 20,
+          32,
+          36,
+          7,
+          i % 2 ? "#acb9b9" : "#c6afce",
+        );
+      }
+      this.round(100, 470, 760, 17, 7, "#ccb6a4");
+      for (const x of [145, 815]) this.round(x, 479, 14, 31, 5, "#8b8292");
     } else if (world.level.theme === "wedding") {
       for (const [i, x] of [90, 410, 730].entries()) {
         this.round(
@@ -796,6 +823,27 @@ export class Renderer {
         100,
       );
     }
+    if (world.level.theme === "seamworks") {
+      this.round(
+        235,
+        63,
+        490,
+        world.level.optics ? 40 : 58,
+        17,
+        "#eee7d9",
+        "#afa0b9",
+      );
+      c.fillStyle = "#55546b";
+      c.textAlign = "center";
+      c.font = "600 23px Outfit, sans-serif";
+      c.fillText(
+        world.completed
+          ? "GOODNIGHT, SQUAD. YOU HELPED."
+          : "THE SOMNOLENT SEAMWORKS",
+        480,
+        world.level.optics ? 90 : 100,
+      );
+    }
     if (world.level.theme === "wedding") {
       this.round(
         245,
@@ -938,10 +986,10 @@ export class Renderer {
       this.circle(mobile.x, mobile.y, 17, "#edcea3");
       this.circle(mobile.x, mobile.y, 7, "#a3bd9f");
     }
-    for (const p of world.level.props) {
+    const drawSceneProp = (p: Prop) => {
       const target = world.targets.find((t) => t.id === p.target);
-      const done = target?.done ?? world.completed;
-      if (p.revealOnly && !done) continue;
+      const done = propIsReady(p, world);
+      if ((p.revealOnly || p.foreground) && !done) return;
       const since = target?.done
         ? world.elapsed - target.completedAt + world.celebration
         : 0;
@@ -974,12 +1022,16 @@ export class Renderer {
         motion,
         p.tint,
       );
-    }
+    };
+    for (const p of world.level.props) if (!p.foreground) drawSceneProp(p);
     for (const [index, t] of world.targets.entries()) {
       const available = world.available(t);
       const prism = world.level.optics?.prisms?.find((p) => p.target === t.id);
       const splitter = world.level.optics?.splitters?.find(
         (p) => p.target === t.id,
+      );
+      const reflectingPrism = world.level.optics?.mirrors.find(
+        (mirror) => mirror.target === t.id && mirror.housing === "prism",
       );
       if (
         t.done &&
@@ -987,7 +1039,7 @@ export class Renderer {
         world.level.buoyancy?.iceTarget === t.id
       )
         continue;
-      if (t.done && (prism || splitter)) continue;
+      if (t.done && (prism || splitter || reflectingPrism)) continue;
       if (t.done && t.verb !== "freeze" && t.verb !== "fill") continue;
       c.save();
       if (!available) c.globalAlpha = 0.3;
@@ -1022,7 +1074,12 @@ export class Renderer {
         c.roundRect(t.x, t.y, t.w, t.h, 9);
         c.stroke();
         c.setLineDash([]);
-        if (!prism && !splitter && (t.verb === "freeze" || t.verb === "fill")) {
+        if (
+          !prism &&
+          !splitter &&
+          !reflectingPrism &&
+          (t.verb === "freeze" || t.verb === "fill")
+        ) {
           const isFloatBasin = world.level.buoyancy?.fillTarget === t.id;
           const h = Math.max(0, (t.h - (isFloatBasin ? 0 : 4)) * t.progress);
           if (h > 0)
@@ -1045,6 +1102,13 @@ export class Renderer {
                 "#e0faff88",
                 2,
               );
+            if (world.level.theme === "seamworks") {
+              const x = t.x + t.w / 2;
+              for (let y = t.y + t.h - h + 12; y < t.y + t.h - 8; y += 18) {
+                this.line([x - 5, y - 3, x + 5, y + 3], "#eee4ce", 2);
+                this.line([x - 5, y + 3, x + 5, y - 3], "#b3a2c8", 2);
+              }
+            }
           }
         }
         if (t.verb === "spin") {
@@ -1140,6 +1204,7 @@ export class Renderer {
         }
       }
     }
+    for (const p of world.level.props) if (p.foreground) drawSceneProp(p);
     drawMeasurements(this, world);
     drawBuoyancy(this, world, motion);
     if (!thumbnail) {
@@ -1175,9 +1240,14 @@ export class Renderer {
       c.textAlign = "left";
       c.font = "bold 11px system-ui";
       c.letterSpacing = "2px";
-      c.fillStyle = ["cosmos", "laundry", "reef", "circus", "library"].includes(
-        world.level.theme,
-      )
+      c.fillStyle = [
+        "cosmos",
+        "laundry",
+        "reef",
+        "circus",
+        "library",
+        "seamworks",
+      ].includes(world.level.theme)
         ? "#e5efdf"
         : "#416965";
       c.fillText("MELT SQUAD  /  RESCUE CAM", 28, 31);

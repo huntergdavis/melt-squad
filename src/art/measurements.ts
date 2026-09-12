@@ -223,6 +223,22 @@ export function drawMeasurements(r: Renderer, world: World) {
       const built = world.targets.find((t) => t.id === mirror.target)?.done;
       const dx = (Math.cos(mirror.angle) * mirror.length) / 2;
       const dy = (Math.sin(mirror.angle) * mirror.length) / 2;
+      if (mirror.housing === "prism") {
+        // A silvered diagonal in an ice-prism housing. The ray still follows
+        // the actual finite reflector; these outer edges are display only.
+        c.beginPath();
+        c.moveTo(mirror.x - dx, mirror.y - dy);
+        c.lineTo(mirror.x - dx, mirror.y + dy);
+        c.lineTo(mirror.x + dx, mirror.y + dy);
+        c.closePath();
+        c.fillStyle = built ? "#b9edf499" : "#b9edf433";
+        c.fill();
+        c.strokeStyle = "#8ab7c6";
+        c.lineWidth = built ? 3 : 2;
+        c.setLineDash(built ? [] : [5, 6]);
+        c.stroke();
+        c.setLineDash([]);
+      }
       c.setLineDash(built ? [] : [4, 6]);
       r.line(
         [mirror.x - dx, mirror.y - dy, mirror.x + dx, mirror.y + dy],
@@ -265,7 +281,7 @@ export function drawMeasurements(r: Renderer, world: World) {
           3,
         );
       else r.circle(detector.x, detector.y, 6, "#7c9790");
-      c.fillStyle = "#345651";
+      c.fillStyle = world.level.theme === "seamworks" ? "#fff0d9" : "#345651";
       c.font = "bold 12px system-ui";
       c.textAlign = "center";
       c.fillText(

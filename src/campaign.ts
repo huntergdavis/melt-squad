@@ -13,6 +13,7 @@ export const mapLandmarks: Record<string, [PropKind, PropKind, PropKind]> = {
   "09": ["openbook", "endy", "paperwolf"],
   "10": ["gus", "irisharpy", "pastalaurel"],
   "11": ["rill", "moss", "weddingbell"],
+  "12": ["dozycourier", "bramble", "dreambook"],
 };
 
 const themes: [string, string, PropKind, string][] = [
@@ -85,7 +86,7 @@ const themes: [string, string, PropKind, string][] = [
   [
     "The Somnolent Seamworks",
     "A nightmare tries a softer line of work.",
-    "moth",
+    "stitchtailor",
     "#d1c5e5",
   ],
   [

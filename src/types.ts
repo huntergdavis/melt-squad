@@ -19,7 +19,8 @@ export type Theme =
   | "emberborough"
   | "library"
   | "sports"
-  | "wedding";
+  | "wedding"
+  | "seamworks";
 export type PropKind =
   | "cup"
   | "wizard"
@@ -195,7 +196,35 @@ export type PropKind =
   | "clipboardflower"
   | "weddingchair"
   | "weddingguestbook"
-  | "bowtieinvite";
+  | "bowtieinvite"
+  | "stitchtailor"
+  | "dozycourier"
+  | "bramble"
+  | "yawnsign"
+  | "sparepillow"
+  | "goodnightbrooch"
+  | "listeningfunnel"
+  | "dreampostcards"
+  | "dreamquilt"
+  | "snoretrumpet"
+  | "raincup"
+  | "auditioncard"
+  | "pocketteapot"
+  | "endingfragments"
+  | "tomatoplanets"
+  | "slipperlamp"
+  | "dreammask"
+  | "sleepmask"
+  | "worrynote"
+  | "helpfulstamps"
+  | "dreambook"
+  | "reconsiderquilt"
+  | "dreamsatchel"
+  | "seamworkspanorama"
+  | "stitchstars"
+  | "dozyquilt"
+  | "bramblemoss"
+  | "sunsetcup";
 export interface PhaseStep {
   verb: "freeze" | "melt";
   name: string;
@@ -243,10 +272,14 @@ export interface Prop {
   y: number;
   scale?: number;
   target?: string;
+  /** If present, an earned/live signal controls this prop's happy/revealOnly state. */
+  signal?: string;
   tint?: string;
   follow?: string;
   reveal?: { x: number; y: number; kind?: PropKind; scale?: number };
   revealOnly?: boolean;
+  /** Earned art drawn over completed work surfaces, never before its ready state. */
+  foreground?: boolean;
 }
 export interface Level {
   id: string;

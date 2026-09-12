@@ -4,8 +4,8 @@ One complete twenty-scene world per release. No placeholder scenes count as
 playable. Every release must pass local tests, the GitHub Pages pipeline, and
 a live-browser check before the next world is started.
 
-**Implemented in this tree: 11/20 worlds · 220/400 scenes.**
-**Remaining campaign: 9 worlds · 180 scenes.**
+**Implemented in this tree: 12/20 worlds · 240/400 scenes.**
+**Remaining campaign: 8 worlds · 160 scenes.**
 
 | World | Name | Implemented | Release |
 | --- | --- | ---: | --- |
@@ -20,8 +20,8 @@ a live-browser check before the next world is started.
 | 09 | The Runaway Ending Library | 20/20 | [pack-09](https://github.com/huntergdavis/melt-squad/releases/tag/pack-09) |
 | 10 | Mount Oops Sports Club | 20/20 | [pack-10](https://github.com/huntergdavis/melt-squad/releases/tag/pack-10) |
 | 11 | Ever After, Everywhere | 20/20 | [pack-11](https://github.com/huntergdavis/melt-squad/releases/tag/pack-11) |
-| 12 | The Somnolent Seamworks | 0/20 | Next |
-| 13 | The Forecast Conservatory | 0/20 | Planned |
+| 12 | The Somnolent Seamworks | 20/20 | [pack-12](https://github.com/huntergdavis/melt-squad/releases/tag/pack-12) |
+| 13 | The Forecast Conservatory | 0/20 | Next |
 | 14 | The Mycelium Local | 0/20 | Planned |
 | 15 | The Institute of Almost Possible | 0/20 | Planned |
 | 16 | Last Exit Before Breakfast | 0/20 | Planned |
@@ -57,6 +57,9 @@ a live-browser check before the next world is started.
   buoyant ice pontoon with fixed load, displaced-water force, and dock settling.
 - Implemented with World 11: bounded 50:50 coated-interface ray splitting,
   two genuinely refracted recipient beams, and staged ring proofs with memory.
+- Implemented with World 12: signal-driven story props for earned intermediate
+  repairs, earned foreground illustrations, and triangular housings for the
+  existing finite geometric reflectors.
 - Still requires real-device feedback: physical gamepad comfort and mobile
   touch ergonomics. Automated controller and phone-layout checks are not a claim
   that physical hardware was tested.
