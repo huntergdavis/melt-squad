@@ -91,6 +91,8 @@ every original call yet has a bespoke ending animation.
 - Prop `follow` attaches artwork to a live target. `reveal` defines the final
   pose/kind after the scene completes; `revealOnly` is for earned visual arrivals.
   `stamp` supplies the completion postcard's tiny joke.
+  A FILL target's optional `fillColor` changes its completed basin to a story
+  color (for example ink purple). Incoming water and thermal rules are unchanged.
 - `balance`: collection targets supply capped masses from actual progress;
   a load without a `target` supplies a fixed mass. Optional per-load `arm`
   ratios (0.1–10, default 1) affect real torque and inertia; plan `arm` is the
@@ -122,6 +124,10 @@ every original call yet has a bespoke ending animation.
   The build/fill/open recipe strip, objective text, and monotonic overall progress
   show the sequence. Restart clears all phase history. See `06.14`.
   This is staged reversal, not yet freely adjustable coupled thermal bodies.
+  `09.15` uses the same mechanism for freeze → melt → freeze: its ink basin
+  starts enabled beneath the page, while the final recast waits for that basin.
+  Local eroded holes admit real droplets before the whole page clears.
+  Keep the recipe strip clear of both the page and the basin below it.
 - `src/campaign.ts` controls world metadata and Continue; `src/atlas.ts` handles
   accessible maps. Unbuilt `NN.SS` slots stay unbuilt even if later slots exist.
 - `public/release.json` identifies the release that must be checked on the live

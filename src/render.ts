@@ -7,6 +7,7 @@ import { drawBorough } from "./art/borough";
 import { drawPudding } from "./art/pudding";
 import { drawPreschool } from "./art/preschool";
 import { drawEmberborough } from "./art/emberborough";
+import { drawLibrary } from "./art/library";
 const motionSafe = (time: number, reduced: boolean) => (reduced ? 0 : time);
 
 const palettes: Record<Theme, [string, string, string]> = {
@@ -22,6 +23,7 @@ const palettes: Record<Theme, [string, string, string]> = {
   pudding: ["#f0d695", "#f5e7bf", "#c49877"],
   preschool: ["#d7dfbc", "#f1ead0", "#a8bd9e"],
   emberborough: ["#ead7c1", "#f5e5cb", "#a4b1a3"],
+  library: ["#46465f", "#b4a5b2", "#817486"],
 };
 export class Renderer {
   ctx: CanvasRenderingContext2D;
@@ -117,7 +119,8 @@ export class Renderer {
       drawBorough(this, kind, happy, t, tint) ||
       drawPudding(this, kind, t, happy) ||
       drawPreschool(this, kind, happy, t, tint) ||
-      drawEmberborough(this, kind, happy, t, tint)
+      drawEmberborough(this, kind, happy, t, tint) ||
+      drawLibrary(this, kind, happy, t, tint)
     ) {
       c.restore();
       return;
@@ -421,6 +424,32 @@ export class Renderer {
     } else if (world.level.theme === "garden") {
       for (let i = 0; i < 7; i++)
         this.circle(i * 165, 487, 100 + (i % 3) * 20, "#9fae83");
+    } else if (world.level.theme === "library") {
+      this.circle(480, 225, 215, "#e6c890");
+      for (const x of [90, 735]) {
+        this.round(x, 150, 135, 330, 14, "#4b3f58", "#b49686");
+        for (let row = 0; row < 3; row++) {
+          for (let book = 0; book < 6; book++) {
+            const height = 39 + ((row + book) % 3) * 9;
+            this.round(
+              x + 9 + book * 20,
+              229 + row * 107 - height,
+              15,
+              height,
+              3,
+              ["#d5bb91", "#a3c3b0", "#b59dc2"][(book + row) % 3],
+            );
+          }
+          this.round(x + 3, 229 + row * 107, 129, 9, 3, "#d3b38c");
+        }
+      }
+      this.line(
+        [300, 150, 300, 208, 480, 230, 660, 208, 660, 150],
+        "#e6c994",
+        3,
+      );
+      for (const x of [330, 390, 450, 510, 570, 630])
+        this.round(x - 6, 210, 12, 26, 4, "#eee0b7");
     } else if (world.level.theme === "emberborough") {
       this.round(78, 58, 804, 429, 30, "#d7c4a6", "#ae937b");
       for (const x of [115, 750]) {
@@ -678,6 +707,19 @@ export class Renderer {
         world.level.optics ? 90 : 100,
       );
     }
+    if (world.level.theme === "library") {
+      this.round(215, 63, 530, 58, 17, "#49455fee", "#c7ae8f");
+      c.fillStyle = "#fff0ca";
+      c.textAlign = "center";
+      c.font = "600 23px Outfit, sans-serif";
+      c.fillText(
+        world.completed
+          ? "THERE IS ROOM FOR ANOTHER CHAPTER."
+          : "THE RUNAWAY ENDING LIBRARY",
+        480,
+        100,
+      );
+    }
     this.round(82, 487, 796, 23, 12, "#ffffff55");
     this.round(64, 506, 832, 70, 25, ground);
     this.round(64, 501, 832, 17, 8, "#edf2df");
@@ -870,7 +912,11 @@ export class Renderer {
               t.w - 4,
               h,
               4,
-              t.verb === "freeze" ? "#9ad4e4dd" : "#5dbece99",
+              t.verb === "freeze"
+                ? "#9ad4e4dd"
+                : t.done && t.fillColor
+                  ? t.fillColor
+                  : "#5dbece99",
             );
           if (t.verb === "freeze" && t.progress > 0.2) {
             for (let i = 1; i < t.w / 30; i++)
@@ -1005,7 +1051,7 @@ export class Renderer {
       c.textAlign = "left";
       c.font = "bold 11px system-ui";
       c.letterSpacing = "2px";
-      c.fillStyle = ["cosmos", "laundry", "reef", "circus"].includes(
+      c.fillStyle = ["cosmos", "laundry", "reef", "circus", "library"].includes(
         world.level.theme,
       )
         ? "#e5efdf"

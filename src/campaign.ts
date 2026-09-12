@@ -10,6 +10,7 @@ export const mapLandmarks: Record<string, [PropKind, PropKind, PropKind]> = {
   "06": ["whisk", "biscuitcaptain", "jellybean"],
   "07": ["cubby", "ankylosaur", "diplodocus"],
   "08": ["servicewindow", "flintclerk", "catdragon"],
+  "09": ["openbook", "endy", "paperwolf"],
 };
 
 const themes: [string, string, PropKind, string][] = [
@@ -64,7 +65,7 @@ const themes: [string, string, PropKind, string][] = [
   [
     "The Runaway Ending Library",
     "Happily ever after is looking for a new job.",
-    "receipt",
+    "pagelibrarian",
     "#c6c5e3",
   ],
   [

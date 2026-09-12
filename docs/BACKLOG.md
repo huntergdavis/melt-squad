@@ -2,7 +2,7 @@
 
 ## Campaign expansion — one complete world per release
 
-Current implementation: **160 scenes / 8 worlds**. See the [release ledger](RELEASES.md).
+Current implementation: **180 scenes / 9 worlds**. See the [release ledger](RELEASES.md).
 
 - [x] Design 19 new themed levels of 20 scenes each: 380 new scenes, 400 total
       including the existing collection.
@@ -27,6 +27,8 @@ Current implementation: **160 scenes / 8 worlds**. See the [release ledger](RELE
       seesaw physics, a thaw-started hammock mobile, and a long-neck family photo.
 - [x] Pack 08: twenty Emberborough scenes, a varied dragon community, plug-closed
       drainage and source overflow, two-prism refraction, and a welcoming town hall.
+- [x] Pack 09: twenty Runaway Ending Library scenes, a paper-and-punctuation cast,
+      actual second-draft recasting, moving book carts, and an inclusive picnic book.
 - [x] In-game credits with local Kenney and font license acknowledgements.
 
 Start with the [campaign plan](CAMPAIGN_BACKLOG.md) and

@@ -15,7 +15,8 @@ export type Theme =
   | "borough"
   | "pudding"
   | "preschool"
-  | "emberborough";
+  | "emberborough"
+  | "library";
 export type PropKind =
   | "cup"
   | "wizard"
@@ -125,7 +126,26 @@ export type PropKind =
   | "dragonrug"
   | "wingdoor"
   | "councilclap"
-  | "ribbonpanorama";
+  | "ribbonpanorama"
+  | "pagelibrarian"
+  | "endy"
+  | "comma"
+  | "questionmark"
+  | "exclamation"
+  | "paperwolf"
+  | "paperknight"
+  | "papermoon"
+  | "paperdragon"
+  | "openbook"
+  | "bookcart"
+  | "booklamp"
+  | "bookmark"
+  | "librarychair"
+  | "bookspine"
+  | "paperboat"
+  | "communalbook"
+  | "bookplate"
+  | "guestbook";
 export interface PhaseStep {
   verb: "freeze" | "melt";
   name: string;
@@ -149,6 +169,8 @@ export interface Target {
   pressure?: [number, number];
   effort?: number;
   flowOnly?: boolean;
+  /** Optional finished FILL color; a story reveal, not a different fluid. */
+  fillColor?: string;
   motion?: {
     rx: number;
     ry: number;

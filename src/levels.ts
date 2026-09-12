@@ -6,6 +6,7 @@ import { boroughLevels } from "./packs/05";
 import { puddingLevels } from "./packs/06";
 import { preschoolLevels } from "./packs/07";
 import { townHallLevels } from "./packs/08";
+import { libraryLevels } from "./packs/09";
 
 const target = (
   id: string,
@@ -461,4 +462,5 @@ export const levels: Level[] = [
   ...puddingLevels,
   ...preschoolLevels,
   ...townHallLevels,
+  ...libraryLevels,
 ];
