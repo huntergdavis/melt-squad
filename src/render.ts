@@ -12,6 +12,7 @@ import { drawSports } from "./art/sports";
 import { drawBuoyancy } from "./art/buoyancy";
 import { drawWedding } from "./art/wedding";
 import { drawSeamworks } from "./art/seamworks";
+import { drawConservatory } from "./art/conservatory";
 import { propIsReady } from "./art/state";
 const motionSafe = (time: number, reduced: boolean) => (reduced ? 0 : time);
 
@@ -32,6 +33,7 @@ const palettes: Record<Theme, [string, string, string]> = {
   sports: ["#c3dfe0", "#f1e7c9", "#bba88b"],
   wedding: ["#ddd9e6", "#f5e9d4", "#b9b29c"],
   seamworks: ["#3c435f", "#aaa6c3", "#62677f"],
+  conservatory: ["#c8dfd4", "#eff0cf", "#9aaa8c"],
 };
 export class Renderer {
   ctx: CanvasRenderingContext2D;
@@ -131,7 +133,8 @@ export class Renderer {
       drawLibrary(this, kind, happy, t, tint) ||
       drawSports(this, kind, happy, t, tint) ||
       drawWedding(this, kind, happy, t, tint) ||
-      drawSeamworks(this, kind, happy, t, tint)
+      drawSeamworks(this, kind, happy, t, tint) ||
+      drawConservatory(this, kind, happy, t, tint)
     ) {
       c.restore();
       return;
@@ -435,6 +438,14 @@ export class Renderer {
     } else if (world.level.theme === "garden") {
       for (let i = 0; i < 7; i++)
         this.circle(i * 165, 487, 100 + (i % 3) * 20, "#9fae83");
+    } else if (world.level.theme === "conservatory") {
+      for (const x of [85, 395, 705]) {
+        this.round(x, 155, 170, 323, 80, "#f7f3d9", "#729b8d");
+        this.line([x + 85, 158, x + 85, 475], "#729b8d", 4);
+        this.line([x + 4, 308, x + 166, 308], "#729b8d", 4);
+      }
+      this.line([60, 161, 480, 35, 900, 161], "#729b8d", 7);
+      this.round(105, 469, 750, 17, 6, "#c3af89");
     } else if (world.level.theme === "seamworks") {
       // Quiet set dressing, not dotted work zones or water-routing thread.
       c.beginPath();
@@ -823,6 +834,19 @@ export class Renderer {
         100,
       );
     }
+    if (world.level.theme === "conservatory") {
+      this.round(235, 63, 490, 58, 17, "#fff1d8", "#9faf8c");
+      c.fillStyle = "#466f5e";
+      c.textAlign = "center";
+      c.font = "600 23px Outfit, sans-serif";
+      c.fillText(
+        world.completed
+          ? "GOOD WEATHER FOR BEING YOU."
+          : "THE FORECAST CONSERVATORY",
+        480,
+        100,
+      );
+    }
     if (world.level.theme === "seamworks") {
       this.round(
         235,
@@ -959,6 +983,17 @@ export class Renderer {
     }
     for (const t of world.level.targets)
       if (t.motion) {
+        if (world.level.theme === "conservatory" && t.motion.ry === 0) {
+          const cy = t.y + t.h * 0.75 - 152;
+          const left = t.x + t.w / 2 - t.motion.rx;
+          const right = t.x + t.w / 2 + t.motion.rx;
+          this.line([left - 61, cy, right + 61, cy], "#738e76", 8);
+          for (const cx of [left, right]) {
+            this.line([cx, cy - 10, cx, cy + 10], "#536b55", 4);
+            this.circle(cx, cy, 4, "#f7edbb");
+          }
+          continue;
+        }
         c.beginPath();
         c.ellipse(
           t.x + t.w / 2,

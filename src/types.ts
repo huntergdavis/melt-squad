@@ -20,7 +20,8 @@ export type Theme =
   | "library"
   | "sports"
   | "wedding"
-  | "seamworks";
+  | "seamworks"
+  | "conservatory";
 export type PropKind =
   | "cup"
   | "wizard"
@@ -224,7 +225,36 @@ export type PropKind =
   | "stitchstars"
   | "dozyquilt"
   | "bramblemoss"
-  | "sunsetcup";
+  | "sunsetcup"
+  | "nimbusgardener"
+  | "breebarometer"
+  | "sleetseedling"
+  | "forecastsign"
+  | "forecastpots"
+  | "snowpeas"
+  | "sunseed"
+  | "fogmushroom"
+  | "breezeletters"
+  | "airrosette"
+  | "nurserycloud"
+  | "lopsidedcloud"
+  | "mixedlabel"
+  | "nimbusrainhat"
+  | "steamflower"
+  | "cavegarden"
+  | "moonflower"
+  | "highstreetweather"
+  | "rainforestpot"
+  | "tinyforestpot"
+  | "sleetumbrella"
+  | "raincurtain"
+  | "thundergourd"
+  | "floweraudience"
+  | "weatherlabels"
+  | "seasoncases"
+  | "hangingplanter"
+  | "sleetbloom"
+  | "conservatorypanorama";
 export interface PhaseStep {
   verb: "freeze" | "melt";
   name: string;

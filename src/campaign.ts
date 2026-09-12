@@ -14,6 +14,7 @@ export const mapLandmarks: Record<string, [PropKind, PropKind, PropKind]> = {
   "10": ["gus", "irisharpy", "pastalaurel"],
   "11": ["rill", "moss", "weddingbell"],
   "12": ["dozycourier", "bramble", "dreambook"],
+  "13": ["breebarometer", "sleetseedling", "snowpeas"],
 };
 
 const themes: [string, string, PropKind, string][] = [
@@ -92,7 +93,7 @@ const themes: [string, string, PropKind, string][] = [
   [
     "The Forecast Conservatory",
     "Grow a little weather for a friend.",
-    "sun",
+    "nimbusgardener",
     "#d4dfac",
   ],
   [

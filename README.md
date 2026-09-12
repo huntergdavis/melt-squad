@@ -5,14 +5,14 @@
 A hose-powered puzzle game about helping a wonderfully weird world warm up.
 Thaw an upside-down space wizard, build a penguin an ice bridge, give the moon
 a bath, help an octopus plan a wedding, and teach a nightmare to become a cozy forest.
-**240 hand-authored rescue calls. Twelve playful worlds. One very helpful hose.**
+**260 hand-authored rescue calls. Thirteen playful worlds. One very helpful hose.**
 
 [Play in your browser](https://hunterdavis.com/melt-squad/)
 
 Explore the rescue atlas, follow a world's story trail, or pick any available
-scene. New in **The Somnolent Seamworks**: a moth tailor and a delivery pillow
-mend dreams beneath a sleeping moon. Repair a shy goodnight, grow tomato planets,
-and help Bramble try a softer line of work. There is a spare chair for you.
+scene. New in **The Forecast Conservatory**: grow pocket weather with a cloud
+gardener, a barometer beetle, and Sleet, a seedling who refuses to pick a season.
+Irrigate tiny clouds, chase a hanging planter, and put a rain hat on your gardener.
 No lives, no grinding, no account.
 
 ## Your equipment
@@ -32,7 +32,7 @@ Mouse and touch: drag the nozzle in the scene and adjust the two sliders.
 
 Hot water erodes ice. Cold water builds marked structures. Gentle warmth
 rescues delicate things. Pressure spins machines. Mix the five verbs across
-240 individually authored puzzles, with no lives to lose and every released call available
+260 individually authored puzzles, with no lives to lose and every released call available
 from the start. Medals, best times, and sound preference stay in your browser.
 
 These are arcade thermal puzzles, not a full fluid-dynamics simulation.
@@ -80,6 +80,6 @@ The Vite base path is `/melt-squad/`.
 - [Design thesis](docs/DESIGN_THESIS.md)
 - [Level authoring and architecture](docs/LEVEL_AUTHORING.md)
 - [Next slices](docs/BACKLOG.md)
-- [Campaign release ledger](docs/RELEASES.md) — twelve worlds implemented; eight to go
+- [Campaign release ledger](docs/RELEASES.md) — thirteen worlds implemented; seven to go
 - [400-scene campaign plan](docs/CAMPAIGN_BACKLOG.md) — the full design backlog
 - [Art credits and licenses](CREDITS.md)
