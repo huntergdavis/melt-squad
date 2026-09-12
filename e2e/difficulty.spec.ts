@@ -73,18 +73,20 @@ test("Impossible Challenge discovers a zone only with correct arriving water and
   await choose(page, "impossible");
   await page.goto("./#play/cup");
   const target = page.locator("#objective-tea");
-  await expect(page.locator("#stage-state")).toHaveText("○ WATER OFF");
+  await expect(page.locator("#stage-state")).toHaveText("● NEUTRAL STREAM");
+  await expect(page.locator("#temperature")).toHaveValue("0");
+  await expect(page.locator(".instrument-bar button")).toHaveCount(0);
+  await page.clock.runFor(1200);
   await expect(target).toHaveAttribute("data-discovered", "false");
   const hiddenIce = await icePixel(page);
   await set(page, "#temperature", -40);
   await set(page, "#pressure", 85);
   await aim(page, 480, 278);
-  await page.keyboard.press("Space");
   await page.clock.runFor(600);
   await expect(target).toHaveAttribute("data-discovered", "false");
   await set(page, "#temperature", 40);
   await page.clock.runFor(350);
-  await page.keyboard.press("Space");
+  await set(page, "#temperature", 0);
   await expect(target).toHaveAttribute("data-discovered", "true");
   expect(await icePixel(page)).not.toEqual(hiddenIce);
   await expect(target).not.toHaveClass(/complete/);
@@ -95,7 +97,7 @@ test("Impossible Challenge discovers a zone only with correct arriving water and
   await expect(target.locator("i")).toHaveAttribute("style", progress!);
   await page.locator('[data-action="restart"]').click();
   await expect(target).toHaveAttribute("data-discovered", "false");
-  await expect(page.locator("#stage-state")).toHaveText("○ WATER OFF");
+  await expect(page.locator("#stage-state")).toHaveText("● NEUTRAL STREAM");
   const overflow = await page.evaluate(
     () => document.documentElement.scrollWidth > innerWidth + 1,
   );
@@ -159,7 +161,7 @@ test("a standard controller opens difficulty from Pause and starts a fresh Chall
   );
   await expect(page.locator("dialog")).not.toBeVisible();
   await tap(2);
-  await expect(page.locator("#stage-state")).toHaveText("○ WATER OFF");
+  await expect(page.locator("#stage-state")).toHaveText("● NEUTRAL STREAM");
   await expect(page.locator("#objective-tea")).toHaveAttribute(
     "data-discovered",
     "false",

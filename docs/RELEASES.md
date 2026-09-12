@@ -4,8 +4,8 @@ One complete twenty-scene world per release. No placeholder scenes count as
 playable. Every release must pass local tests, the GitHub Pages pipeline, and
 a live-browser check before the next world is started.
 
-**Implemented in this tree: 18/20 worlds · 360/400 scenes.**
-**Remaining campaign: 2 worlds · 40 scenes.**
+**Implemented in this tree: 19/20 worlds · 380/400 scenes.**
+**Remaining campaign: 1 world · 20 scenes.**
 
 | World | Name | Implemented | Release |
 | --- | --- | ---: | --- |
@@ -27,14 +27,14 @@ a live-browser check before the next world is started.
 | 16 | Last Exit Before Breakfast | 20/20 | [pack-16](https://github.com/huntergdavis/melt-squad/releases/tag/pack-16) |
 | 17 | Toybox After Bedtime | 20/20 | [pack-17](https://github.com/huntergdavis/melt-squad/releases/tag/pack-17) |
 | 18 | Apocalypse, Rescheduled | 20/20 | [pack-18](https://github.com/huntergdavis/melt-squad/releases/tag/pack-18) |
-| 19 | The Hotel Between Tuesdays | 0/20 | Next |
-| 20 | The Great Thaw Festival | 0/20 | Planned |
+| 19 | The Hotel Between Tuesdays | 20/20 | [pack-19](https://github.com/huntergdavis/melt-squad/releases/tag/pack-19) |
+| 20 | The Great Thaw Festival | 0/20 | Next |
 
 ## Campaign foundation
 
 Patch **0.18.1** adds saved Easy, Normal, and Impossible Challenge guidance modes.
 Correct arriving water discovers hidden work zones. Physics and shared medals
-are unchanged; the two remaining campaign worlds are still pending.
+are unchanged; this setting also applies to the new hotel scenes.
 
 - Implemented: twenty-destination atlas, twenty-node story paths, scene list,
   previews, freely accessible released scenes, Continue, replay, browser Back,
@@ -76,6 +76,8 @@ are unchanged; the two remaining campaign worlds are still pending.
   plus adjustable ballast on moving cups, and a three-arm biscuit planetarium.
 - Implemented with World 18: soup channels gated by actual frozen/remelted ice,
   sequential tea chimes, and continuously adjustable real prism geometry.
+- Implemented with World 19: one rigid moving aquarium cabin, three gated
+  room-service tributaries, and an actual ice-hole welcome-bowl puzzle.
 - Still requires real-device feedback: physical gamepad comfort and mobile
   touch ergonomics. Automated controller and phone-layout checks are not a claim
   that physical hardware was tested.

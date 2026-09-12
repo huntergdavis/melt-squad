@@ -5,21 +5,23 @@
 A hose-powered puzzle game about helping a wonderfully weird world warm up.
 Thaw an upside-down space wizard, build a penguin an ice bridge, give the moon
 a bath, help an octopus plan a wedding, and teach a nightmare to become a cozy forest.
-**360 hand-authored rescue calls. Eighteen playful worlds. One very helpful hose.**
+**380 hand-authored rescue calls. Nineteen playful worlds. One very helpful hose.**
 
 [Play in your browser](https://hunterdavis.com/melt-squad/)
 
 Explore the rescue atlas, follow a world's story trail, or pick any available
-scene. New in **Apocalypse, Rescheduled**: help an anxious paperwork moth discover
-that the end of the world is actually a picnic. Redirect a tomato-soup river,
-tune an ice-prism constellation, and give four ominous ponies useful errands.
+scene. New in **The Hotel Between Tuesdays**: help a snail porter discover
+that kindness matters more than speed. Service a moving aquarium lift, deliver
+tea through a wall of channels, and welcome a guest with an empty name tag.
 No lives, no grinding, no account.
 
 Choose your shift: **Easy** shows recipe hints; **Normal** leaves you to find
 the right mix; **Impossible Challenge** hides colored work zones until correctly
 mixed water discovers them. Change modes from the mode button or Pause. Your
 choice is saved; switching keeps your work, while restarting clears discoveries.
-Fresh Challenge calls start with water off. Medals and best times are shared.
+Water starts automatically. Fresh Challenge calls use a neutral starting mix.
+The on-screen controls are simply the nozzle and two sliders; optional keyboard
+and controller shortcuts remain available. Medals and best times are shared.
 
 ## Your equipment
 
@@ -38,7 +40,7 @@ Mouse and touch: drag the nozzle in the scene and adjust the two sliders.
 
 Hot water erodes ice. Cold water builds marked structures. Gentle warmth
 rescues delicate things. Pressure spins machines. Mix the five verbs across
-360 individually authored puzzles, with no lives to lose and every released call available
+380 individually authored puzzles, with no lives to lose and every released call available
 from the start. Medals, best times, and sound preference stay in your browser.
 
 These are arcade thermal puzzles, not a full fluid-dynamics simulation.
@@ -87,6 +89,6 @@ The Vite base path is `/melt-squad/`.
 - [Design thesis](docs/DESIGN_THESIS.md)
 - [Level authoring and architecture](docs/LEVEL_AUTHORING.md)
 - [Next slices](docs/BACKLOG.md)
-- [Campaign release ledger](docs/RELEASES.md) — eighteen worlds implemented; two to go
+- [Campaign release ledger](docs/RELEASES.md) — nineteen worlds implemented; one to go
 - [400-scene campaign plan](docs/CAMPAIGN_BACKLOG.md) — the full design backlog
 - [Art credits and licenses](CREDITS.md)

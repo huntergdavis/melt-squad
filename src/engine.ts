@@ -353,6 +353,9 @@ export class World {
   }
   impact(t: LiveTarget, drop: Drop, x: number, y: number) {
     if (t.done || !this.available(t)) return;
+    // Challenge starts spraying without a separate button. Its neutral mix is
+    // idle: reading the scene must not discover goals or spend the medal budget.
+    if (this.difficulty === "impossible" && drop.temp === 0) return;
     t.feedbackIsRecipe = false;
     if (!this.pulseOpen(t)) {
       t.flash = 0.3;

@@ -20,6 +20,7 @@ export const mapLandmarks: Record<string, [PropKind, PropKind, PropKind]> = {
   "16": ["mallowhost", "ziphauler", "comettruck"],
   "17": ["captainbutton", "glimstar", "junduck"],
   "18": ["annmoth", "breakfastpony", "pocketgiant"],
+  "19": ["yesterdayporter", "betweenreceptionist", "hotelbell"],
 };
 
 const themes: [string, string, PropKind, string][] = [
@@ -134,7 +135,7 @@ const themes: [string, string, PropKind, string][] = [
   [
     "The Hotel Between Tuesdays",
     "Hospitality outside normal business time.",
-    "moon",
+    "betweenreceptionist",
     "#cccbe2",
   ],
   [

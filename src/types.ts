@@ -26,7 +26,8 @@ export type Theme =
   | "institute"
   | "diner"
   | "toybox"
-  | "apocalypse";
+  | "apocalypse"
+  | "hotel";
 export type PropKind =
   | "cup"
   | "wizard"
@@ -411,7 +412,40 @@ export type PropKind =
   | "omeninvitation"
   | "datesign"
   | "souppennant"
-  | "skullpennant";
+  | "skullpennant"
+  | "betweenreceptionist"
+  | "yesterdayporter"
+  | "hotelbell"
+  | "hotelentrance"
+  | "mondaywindow"
+  | "cloudpillow"
+  | "silentbell"
+  | "rainluggage"
+  | "umbrellabasin"
+  | "midnightbreakfast"
+  | "holidaystairs"
+  | "reliablepostcard"
+  | "conservatorycase"
+  | "sleepyplanet"
+  | "honeymoonnook"
+  | "preschoolseminar"
+  | "linenparcel"
+  | "linenfort"
+  | "balconytrain"
+  | "aquariumcabin"
+  | "slipperlounge"
+  | "tuesdayguest"
+  | "hotelcup"
+  | "hotelvase"
+  | "hotelbowl"
+  | "tributaryguests"
+  | "guestcoat"
+  | "guesthearttag"
+  | "nightdesk"
+  | "returningkeys"
+  | "hotelrouteboard"
+  | "hotelpanorama"
+  | "alwayscard";
 export interface PhaseStep {
   verb: "freeze" | "melt";
   name: string;

@@ -18,6 +18,7 @@ import { drawInstitute } from "./art/institute";
 import { drawDiner } from "./art/diner";
 import { drawToybox } from "./art/toybox";
 import { drawApocalypse } from "./art/apocalypse";
+import { drawHotel } from "./art/hotel";
 import { propIsReady } from "./art/state";
 const motionSafe = (time: number, reduced: boolean) => (reduced ? 0 : time);
 
@@ -44,6 +45,7 @@ const palettes: Record<Theme, [string, string, string]> = {
   diner: ["#35435f", "#c8b9bd", "#809a9d"],
   toybox: ["#414361", "#c2b6cb", "#aa939b"],
   apocalypse: ["#61566e", "#e5c6b5", "#afa58d"],
+  hotel: ["#56516b", "#e3d5c3", "#a89c92"],
 };
 export class Renderer {
   ctx: CanvasRenderingContext2D;
@@ -150,7 +152,8 @@ export class Renderer {
       drawInstitute(this, kind, happy, t, tint, progress) ||
       drawDiner(this, kind, happy, t, tint, progress) ||
       drawToybox(this, kind, happy, t, tint, progress) ||
-      drawApocalypse(this, kind, happy, t, tint, progress)
+      drawApocalypse(this, kind, happy, t, tint, progress) ||
+      drawHotel(this, kind, happy, t, tint, progress)
     ) {
       c.restore();
       return;
@@ -454,6 +457,14 @@ export class Renderer {
     } else if (world.level.theme === "garden") {
       for (let i = 0; i < 7; i++)
         this.circle(i * 165, 487, 100 + (i % 3) * 20, "#9fae83");
+    } else if (world.level.theme === "hotel") {
+      for (const x of [100, 780]) {
+        this.round(x, 145, 80, 312, 32, "#ede3d1", "#af9265");
+        this.line([x + 40, 150, x + 40, 450], "#b49d78", 3);
+      }
+      this.line([75, 475, 885, 475], "#d8bd8e", 6);
+      for (let x = 80; x < 890; x += 60)
+        this.round(x, 488, 42, 14, 4, "#baa4a1");
     } else if (world.level.theme === "toybox") {
       this.round(90, 155, 160, 270, 12, "#fff0ce", "#876f7e");
       this.line([170, 155, 170, 425], "#94758a", 8);
@@ -915,6 +926,19 @@ export class Renderer {
         world.completed
           ? "THERE IS ROOM FOR ANOTHER CHAPTER."
           : "THE RUNAWAY ENDING LIBRARY",
+        480,
+        100,
+      );
+    }
+    if (world.level.theme === "hotel") {
+      this.round(210, 63, 540, 58, 15, "#fff0d2", "#b39a72");
+      this.circle(227, 92, 3, "#9f825c");
+      this.circle(733, 92, 3, "#9f825c");
+      c.fillStyle = "#585268";
+      c.textAlign = "center";
+      c.font = "600 23px Outfit, sans-serif";
+      c.fillText(
+        world.completed ? "ALWAYS WELCOME." : "THE HOTEL BETWEEN TUESDAYS",
         480,
         100,
       );

@@ -564,7 +564,7 @@ main {
 }
 .instrument-bar {
   display: grid;
-  grid-template-columns: 1fr 1fr auto;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 35px;
   padding: 19px 5px 17px;
   border-bottom: 1px solid #dfe5d6;
@@ -631,11 +631,6 @@ input[type="range"]::-moz-range-thumb {
   background: #335d55;
   border-radius: 50%;
   box-shadow: 0 1px 5px #1a3e4933;
-}
-.hose-controls {
-  display: flex;
-  align-items: center;
-  gap: 8px;
 }
 .objectives-heading {
   display: flex;
@@ -937,15 +932,6 @@ dialog p b {
   .instrument-bar {
     gap: 18px;
   }
-  .hose-controls {
-    flex-direction: column;
-    justify-content: center;
-    gap: 6px;
-  }
-  .hose-controls button {
-    padding: 7px 10px;
-    font-size: 9px;
-  }
   .topbar {
     font-size: 7px;
     letter-spacing: 1px;
@@ -1199,15 +1185,6 @@ dialog p b {
   .instrument-bar {
     grid-template-columns: 1fr 1fr;
     gap: 16px;
-  }
-  .hose-controls {
-    grid-column: 1/-1;
-    flex-direction: row;
-    justify-content: space-between;
-  }
-  .hose-controls button {
-    flex: 1;
-    min-height: 34px;
   }
   .mission-heading h1 {
     font-size: 25px;

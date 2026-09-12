@@ -74,7 +74,6 @@ $("#app").innerHTML = `
       <div class="instrument-bar">
         <div class="instrument"><div class="instrument-title"><label for="temperature">TEMPERATURE</label><output id="temp-value">65°</output></div><input id="temperature" class="temperature" type="range" min="-40" max="100" step="1" value="65" aria-label="Water temperature"><div class="scale"><span>−40° · FREEZE</span><span>100° · MELT</span></div></div>
         <div class="instrument"><div class="instrument-title"><label for="pressure">PRESSURE</label><output id="pressure-value">45%</output></div><input id="pressure" class="pressure" type="range" min="10" max="100" step="1" value="45" aria-label="Water pressure"><div class="scale"><span>GENTLE POUR</span><span>POWER JET</span></div></div>
-        <div class="hose-controls"><button class="quiet" data-action="spray" id="spray-button">Ⅱ Water off</button><button class="quiet" data-action="straighten" title="Reset nozzle angle">↓ Aim down</button></div>
       </div>
       <div class="objectives-heading"><h2>The little things to do</h2><button data-action="hint" class="text-button">Need a hint?</button></div><div id="objectives" class="objectives"></div>
       <p id="hint" class="hint" hidden></p>
@@ -219,7 +218,7 @@ function showDifficulty() {
     normal:
       "Work zones stay visible. Discover the right mix without recipe hints.",
     impossible:
-      "No recipe hints. Colored work zones and their guides appear only after correctly mixed water reaches an available spot. Fresh calls start with water off.",
+      "No recipe hints. Colored work zones and their guides appear only after correctly mixed water reaches an available spot. Fresh calls spray a neutral mix; adjust temperature and pressure to discover what works.",
   };
   openModal(
     "difficulty",
@@ -252,9 +251,9 @@ function start(index: number, restart = false) {
       Object.assign(world.nozzle, {
         x: 480,
         y: 100,
-        temp: 20,
+        temp: 0,
         pressure: 45,
-        on: false,
+        on: true,
       });
     recorded = false;
     lastGoals = 0;
@@ -414,13 +413,14 @@ function updateHUD() {
   $("#stage-state").textContent = world.completionPending
     ? (world.level.completionHint ?? "Let the scene settle.")
     : n.on
-      ? n.temp < 0
-        ? "● FREEZE STREAM"
-        : n.temp < 55
-          ? "● WARM STREAM"
-          : "● HOT STREAM"
+      ? n.temp === 0
+        ? "● NEUTRAL STREAM"
+        : n.temp < 0
+          ? "● FREEZE STREAM"
+          : n.temp < 55
+            ? "● WARM STREAM"
+            : "● HOT STREAM"
       : "○ WATER OFF";
-  $("#spray-button").textContent = n.on ? "Ⅱ Water off" : "▶ Water on";
   $("#elapsed").textContent = formatTime(world.elapsed);
   for (const t of world.targets) {
     const row = $("#objective-" + t.id),
@@ -538,8 +538,7 @@ function action(name: string) {
   } else if (name === "spray" && mode === "play" && !dialog.open) {
     world.nozzle.on = !world.nozzle.on;
     updateHUD();
-  } else if (name === "straighten") world.nozzle.angle = 0;
-  else if (name === "mute") {
+  } else if (name === "mute") {
     save.muted = !save.muted;
     sound.muted = save.muted;
     persist();

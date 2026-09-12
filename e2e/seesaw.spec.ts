@@ -6,7 +6,7 @@ test("the preschool seesaw waits for real balance and respects pause", async ({
   await page.setViewportSize({ width: 640, height: 750 });
   await page.clock.install();
   await page.goto("./#play/07.15");
-  await page.locator("#spray-button").click();
+  await page.keyboard.press("Space");
   await page.clock.runFor(2000);
   const set = async (selector: string, value: number) =>
     page.locator(selector).evaluate((element: HTMLInputElement, value) => {
@@ -20,7 +20,7 @@ test("the preschool seesaw waits for real balance and respects pause", async ({
     box.x + (670 / 960) * box.width,
     box.y + (393 / 580) * box.height,
   );
-  await page.locator("#spray-button").click();
+  await page.keyboard.press("Space");
   await page.clock.runFor(2200);
   await expect(page.locator("#objective-iceSeat")).toHaveClass(/complete/);
   await expect(page.locator("dialog")).not.toBeVisible();

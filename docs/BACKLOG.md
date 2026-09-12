@@ -2,7 +2,7 @@
 
 ## Campaign expansion — one complete world per release
 
-Current implementation: **360 scenes / 18 worlds**. See the [release ledger](RELEASES.md).
+Current implementation: **380 scenes / 19 worlds**. See the [release ledger](RELEASES.md).
 
 Difficulty feature, before Worlds 19–20:
 
@@ -10,6 +10,8 @@ Difficulty feature, before Worlds 19–20:
       (no temperature/pressure recipe hints), and **Impossible Challenge**
       (also hide target boxes until correctly mixed water discovers them).
       Keep the nozzle controls readable and allow changing modes without losing work.
+- [x] Remove the Water off and Aim down screen buttons; give the two sliders
+      the full instrument row. Challenge starts spraying a neutral mix automatically.
 
 - [x] Design 19 new themed levels of 20 scenes each: 380 new scenes, 400 total
       including the existing collection.
@@ -57,6 +59,9 @@ Difficulty feature, before Worlds 19–20:
 
 - [x] Pack 18: twenty reassuring apocalypse scenes, real remeltable soup gates,
       three adjustable ice prisms, tea chimes, and an anxious moth joining the picnic.
+- [x] Pack 19: twenty impossible-hotel scenes, a coherent moving aquarium cabin,
+      actual room-service channels, and a snail porter who remembers every guest.
+- [ ] Pack 20: The Great Thaw Festival — the final twenty-scene shared celebration.
 
 Start with the [campaign plan](CAMPAIGN_BACKLOG.md) and
 [complete 380-scene catalog](campaign/SCENE_CATALOG.md). Those source designs

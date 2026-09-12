@@ -72,12 +72,42 @@ const mixtures: {
   good: [number, number];
   bad: [number, number];
 }[] = [
-  { verb: "melt", good: [40, 85], bad: [0, 85] },
+  { verb: "melt", good: [40, 85], bad: [5, 85] },
   { verb: "freeze", good: [-20, 85], bad: [20, 85] },
-  { verb: "fill", good: [20, 85], bad: [0, 85] },
+  { verb: "fill", good: [20, 85], bad: [-1, 85] },
   { verb: "spin", good: [20, 85], bad: [20, 69] },
   { verb: "warm", good: [35, 25], bad: [60, 25] },
 ];
+
+it("keeps automatic Challenge neutral spray idle without forgiving deliberate wrong mixtures", () => {
+  const wrong: [Verb, number, number][] = [
+    ["melt", 5, 85],
+    ["freeze", 20, 85],
+    ["fill", -1, 85],
+    ["spin", 20, 69],
+    ["warm", 60, 25],
+  ];
+  for (const [verb, heat, pressure] of wrong) {
+    const world = new World(fixture([task("work", verb)]));
+    world.difficulty = "impossible";
+    const target = world.targets[0];
+    aim(world, target, 0, 45);
+    advance(world, 180);
+    expect(world.mistakes, verb).toBe(0);
+    expect(world.hits, verb).toBe(0);
+    expect(target.progress, verb).toBe(0);
+    expect(
+      target.cells.every((cell) => cell === 1),
+      verb,
+    ).toBe(true);
+    expect(world.discovered.size, verb).toBe(0);
+    aim(world, target, heat, pressure);
+    advance(world, 120);
+    expect(world.mistakes, verb).toBeGreaterThan(0);
+    expect(target.progress, verb).toBe(0);
+    expect(world.discovered.size, verb).toBe(0);
+  }
+});
 
 it("classifies only wrong-setting recipes, not successful qualitative feedback", () => {
   const world = new World(
