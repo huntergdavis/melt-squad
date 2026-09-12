@@ -2,7 +2,7 @@
 
 ## Campaign expansion — one complete world per release
 
-Current implementation: **260 scenes / 13 worlds**. See the [release ledger](RELEASES.md).
+Current implementation: **280 scenes / 14 worlds**. See the [release ledger](RELEASES.md).
 
 - [x] Design 19 new themed levels of 20 scenes each: 380 new scenes, 400 total
       including the existing collection.
@@ -39,6 +39,8 @@ Current implementation: **260 scenes / 13 worlds**. See the [release ledger](REL
 
 - [x] Pack 13: twenty Forecast Conservatory scenes, pocket-weather friendships,
       actual cloud irrigation, a moving planter, and room for a mixed-weather seedling.
+- [x] Pack 14: twenty Mycelium Local scenes, an unhurried mushroom railway,
+      an ascending freight cup, a settling book counterweight, and a stop for everyone.
 
 Start with the [campaign plan](CAMPAIGN_BACKLOG.md) and
 [complete 380-scene catalog](campaign/SCENE_CATALOG.md). Those source designs

@@ -54,8 +54,32 @@ export function drawMeasurements(r: Renderer, world: World) {
   const scale = world.level.balance,
     state = world.balance;
   if (scale && state) {
+    const mycelium = world.level.theme === "mycelium";
+    if (mycelium) {
+      const inlet = world.targets.find(
+        (target) => target.id === scale.right.target,
+      );
+      if (inlet) {
+        c.save();
+        r.line(
+          [inlet.x - 12, inlet.y, inlet.x + inlet.w + 12, inlet.y],
+          "#648975",
+          3,
+        );
+        c.fillStyle = "#345651";
+        c.font = "bold 11px system-ui";
+        c.textAlign = "center";
+        c.fillText("CAPACITY · 5 kg", inlet.x + inlet.w / 2, inlet.y - 10);
+        c.restore();
+      }
+    }
     c.save();
     c.translate(scale.x, scale.y);
+    if (mycelium) {
+      r.round(-240, 40, 480, 12, 6, "#a2c29a66");
+      r.line([-240, 46, -215, 46], "#648975", 2);
+      r.line([215, 46, 240, 46], "#648975", 2);
+    }
     r.round(-8, -4, 16, 104, 6, "#7d8e80");
     r.round(-48, 94, 96, 14, 6, "#b99263", "#766e5e");
     const dx = Math.cos(state.angle) * scale.arm;
@@ -81,7 +105,7 @@ export function drawMeasurements(r: Renderer, world: World) {
       const capacity = side < 0 ? scale.left.mass : scale.right.mass;
       r.line([x, y, x - 28, y + 49, x + 28, y + 49, x, y], "#82968c", 2);
       const height = Math.min(25, (25 * mass) / capacity);
-      if (height > 0)
+      if (height > 0 && !(mycelium && side < 0))
         r.round(
           x - 23,
           y + 48 - height,
@@ -93,6 +117,8 @@ export function drawMeasurements(r: Renderer, world: World) {
       r.round(x - 33, y + 46, 66, 10, 4, "#d3b077", "#8e785e");
       if (world.level.theme === "preschool" && side < 0)
         r.prop("ankylosaur", x, y + 42, 0.43, state.level, world.elapsed);
+      if (mycelium && side < 0)
+        r.prop("modestcrate", x, y + 46, 0.5, world.completed, world.elapsed);
       c.fillStyle = "#345651";
       c.font = "bold 12px system-ui";
       c.textAlign = "center";

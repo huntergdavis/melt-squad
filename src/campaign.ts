@@ -15,6 +15,7 @@ export const mapLandmarks: Record<string, [PropKind, PropKind, PropKind]> = {
   "11": ["rill", "moss", "weddingbell"],
   "12": ["dozycourier", "bramble", "dreambook"],
   "13": ["breebarometer", "sleetseedling", "snowpeas"],
+  "14": ["sprigporter", "ednalibrarian", "myceliumcarriage"],
 };
 
 const themes: [string, string, PropKind, string][] = [
@@ -99,7 +100,7 @@ const themes: [string, string, PropKind, string][] = [
   [
     "The Mycelium Local",
     "All aboard. Even if you brought your entire garden.",
-    "flower",
+    "gillsconductor",
     "#c7d2b5",
   ],
   [

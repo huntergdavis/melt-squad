@@ -95,6 +95,8 @@ every original call yet has a bespoke ending animation.
 - Prop `follow` attaches artwork to a live target. `reveal` defines the final
   pose/kind after the scene completes; `revealOnly` is for earned visual arrivals.
   `stamp` supplies the completion postcard's tiny joke.
+  Mycelium's boiler gauge receives actual normalized target progress; its needle
+  must not be driven by elapsed time or a decorative happiness animation.
   A FILL target's optional `fillColor` changes its completed basin to a story
   color (for example ink purple). Incoming water and thermal rules are unchanged.
 - `balance`: collection targets supply capped masses from actual progress;

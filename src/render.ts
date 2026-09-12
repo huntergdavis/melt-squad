@@ -1,4 +1,4 @@
-import { CELL, temperatureColor, type World } from "./engine";
+import { CELL, temperatureColor, targetProgress, type World } from "./engine";
 import { H, W, clamp, type PropKind, type Theme, type Prop } from "./types";
 import { drawPostal } from "./art/postal";
 import { drawCircus } from "./art/circus";
@@ -13,6 +13,7 @@ import { drawBuoyancy } from "./art/buoyancy";
 import { drawWedding } from "./art/wedding";
 import { drawSeamworks } from "./art/seamworks";
 import { drawConservatory } from "./art/conservatory";
+import { drawMycelium } from "./art/mycelium";
 import { propIsReady } from "./art/state";
 const motionSafe = (time: number, reduced: boolean) => (reduced ? 0 : time);
 
@@ -34,6 +35,7 @@ const palettes: Record<Theme, [string, string, string]> = {
   wedding: ["#ddd9e6", "#f5e9d4", "#b9b29c"],
   seamworks: ["#3c435f", "#aaa6c3", "#62677f"],
   conservatory: ["#c8dfd4", "#eff0cf", "#9aaa8c"],
+  mycelium: ["#adcec1", "#ecdfbc", "#8eaa91"],
 };
 export class Renderer {
   ctx: CanvasRenderingContext2D;
@@ -118,6 +120,7 @@ export class Renderer {
     happy = false,
     t = 0,
     tint?: string,
+    progress = Number(happy),
   ) {
     const c = this.ctx;
     c.save();
@@ -134,7 +137,8 @@ export class Renderer {
       drawSports(this, kind, happy, t, tint) ||
       drawWedding(this, kind, happy, t, tint) ||
       drawSeamworks(this, kind, happy, t, tint) ||
-      drawConservatory(this, kind, happy, t, tint)
+      drawConservatory(this, kind, happy, t, tint) ||
+      drawMycelium(this, kind, happy, t, tint, progress)
     ) {
       c.restore();
       return;
@@ -438,6 +442,32 @@ export class Renderer {
     } else if (world.level.theme === "garden") {
       for (let i = 0; i < 7; i++)
         this.circle(i * 165, 487, 100 + (i % 3) * 20, "#9fae83");
+    } else if (world.level.theme === "mycelium") {
+      for (const [x, y, color] of [
+        [150, 170, "#b68d78"],
+        [817, 192, "#a9a281"],
+      ] as const) {
+        this.round(x - 24, y + 74, 48, 238, 18, "#eee4c2", "#8d9477");
+        c.beginPath();
+        c.moveTo(x - 112, y + 86);
+        c.quadraticCurveTo(x - 94, y - 58, x + 8, y - 14);
+        c.quadraticCurveTo(x + 100, y - 12, x + 112, y + 86);
+        c.closePath();
+        c.fillStyle = color;
+        c.fill();
+        for (const offset of [-72, -36, 0, 36, 72])
+          this.line(
+            [x + offset, y + 80, x + offset * 0.35, y + 102],
+            "#746f62",
+            3,
+          );
+        this.circle(x - 28, y + 25, 13, "#f8edcd");
+        this.circle(x + 48, y + 49, 9, "#f8edcd");
+      }
+      for (let x = 90; x <= 870; x += 35)
+        this.line([x - 7, 469, x + 7, 489], "#9c876c", 5);
+      this.line([70, 473, 890, 473], "#667e72", 4);
+      this.line([70, 485, 890, 485], "#667e72", 4);
     } else if (world.level.theme === "conservatory") {
       for (const x of [85, 395, 705]) {
         this.round(x, 155, 170, 323, 80, "#f7f3d9", "#729b8d");
@@ -834,6 +864,19 @@ export class Renderer {
         100,
       );
     }
+    if (world.level.theme === "mycelium") {
+      this.round(235, 63, 490, 58, 17, "#fff0d3", "#aa9477");
+      this.circle(252, 92, 3, "#9c876c");
+      this.circle(708, 92, 3, "#9c876c");
+      c.fillStyle = "#3e665e";
+      c.textAlign = "center";
+      c.font = "600 24px Outfit, sans-serif";
+      c.fillText(
+        world.completed ? "WE HAVE TIME." : "THE MYCELIUM LOCAL",
+        480,
+        100,
+      );
+    }
     if (world.level.theme === "conservatory") {
       this.round(235, 63, 490, 58, 17, "#fff1d8", "#9faf8c");
       c.fillStyle = "#466f5e";
@@ -983,6 +1026,24 @@ export class Renderer {
     }
     for (const t of world.level.targets)
       if (t.motion) {
+        if (world.level.theme === "mycelium" && t.motion.rx === 0) {
+          const railX = t.x + t.w + 50;
+          const cy = t.y + t.h / 2;
+          this.line(
+            [railX, cy - t.motion.ry - 12, railX, cy + t.motion.ry + 12],
+            "#7f927c",
+            8,
+          );
+          for (const y of [cy - t.motion.ry, cy + t.motion.ry]) {
+            this.line([railX - 12, y, railX + 12, y], "#586e59", 4);
+            this.circle(railX, y, 4, "#fff0bb");
+          }
+          const live = world.targets.find((target) => target.id === t.id)!;
+          const carrierY = live.y + live.h / 2;
+          this.line([live.x + live.w, carrierY, railX, carrierY], "#9a815e", 4);
+          this.round(railX - 7, carrierY - 10, 14, 20, 4, "#d4bb83", "#586e59");
+          continue;
+        }
         if (world.level.theme === "conservatory" && t.motion.ry === 0) {
           const cy = t.y + t.h * 0.75 - 152;
           const left = t.x + t.w / 2 - t.motion.rx;
@@ -1056,6 +1117,7 @@ export class Renderer {
         done,
         motion,
         p.tint,
+        target ? targetProgress(target) : Number(done),
       );
     };
     for (const p of world.level.props) if (!p.foreground) drawSceneProp(p);

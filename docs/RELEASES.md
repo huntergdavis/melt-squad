@@ -4,8 +4,8 @@ One complete twenty-scene world per release. No placeholder scenes count as
 playable. Every release must pass local tests, the GitHub Pages pipeline, and
 a live-browser check before the next world is started.
 
-**Implemented in this tree: 13/20 worlds · 260/400 scenes.**
-**Remaining campaign: 7 worlds · 140 scenes.**
+**Implemented in this tree: 14/20 worlds · 280/400 scenes.**
+**Remaining campaign: 6 worlds · 120 scenes.**
 
 | World | Name | Implemented | Release |
 | --- | --- | ---: | --- |
@@ -22,8 +22,8 @@ a live-browser check before the next world is started.
 | 11 | Ever After, Everywhere | 20/20 | [pack-11](https://github.com/huntergdavis/melt-squad/releases/tag/pack-11) |
 | 12 | The Somnolent Seamworks | 20/20 | [pack-12](https://github.com/huntergdavis/melt-squad/releases/tag/pack-12) |
 | 13 | The Forecast Conservatory | 20/20 | [pack-13](https://github.com/huntergdavis/melt-squad/releases/tag/pack-13) |
-| 14 | The Mycelium Local | 0/20 | Next |
-| 15 | The Institute of Almost Possible | 0/20 | Planned |
+| 14 | The Mycelium Local | 20/20 | [pack-14](https://github.com/huntergdavis/melt-squad/releases/tag/pack-14) |
+| 15 | The Institute of Almost Possible | 0/20 | Next |
 | 16 | Last Exit Before Breakfast | 0/20 | Planned |
 | 17 | Toybox After Bedtime | 0/20 | Planned |
 | 18 | Apocalypse, Rescheduled | 0/20 | Planned |
@@ -62,6 +62,8 @@ a live-browser check before the next world is started.
   existing finite geometric reflectors.
 - Implemented with World 13: mixed-climate gardening, independently opened
   cloud-irrigation branches, and a retained-progress planter on a marked rail.
+- Implemented with World 14: turbine-started vertical freight travel, a gauge
+  driven by actual warming progress, and books riding a genuinely settling scale.
 - Still requires real-device feedback: physical gamepad comfort and mobile
   touch ergonomics. Automated controller and phone-layout checks are not a claim
   that physical hardware was tested.
