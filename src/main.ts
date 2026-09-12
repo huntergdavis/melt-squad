@@ -338,13 +338,15 @@ function updateHUD() {
   $("#pressure-value").textContent = Math.round(n.pressure) + "%";
   $<HTMLInputElement>("#temperature").value = String(Math.round(n.temp));
   $<HTMLInputElement>("#pressure").value = String(Math.round(n.pressure));
-  $("#stage-state").textContent = n.on
-    ? n.temp < 0
-      ? "● FREEZE STREAM"
-      : n.temp < 55
-        ? "● WARM STREAM"
-        : "● HOT STREAM"
-    : "○ WATER OFF";
+  $("#stage-state").textContent = world.completionPending
+    ? (world.level.completionHint ?? "Let the scene settle.")
+    : n.on
+      ? n.temp < 0
+        ? "● FREEZE STREAM"
+        : n.temp < 55
+          ? "● WARM STREAM"
+          : "● HOT STREAM"
+      : "○ WATER OFF";
   $("#spray-button").textContent = n.on ? "Ⅱ Water off" : "▶ Water on";
   $("#elapsed").textContent = formatTime(world.elapsed);
   for (const t of world.targets) {
@@ -582,7 +584,7 @@ function frame(now: number) {
         0,
       );
       if (done > lastGoals) {
-        sound.play(world.completed ? "win" : "goal");
+        if (!world.completed) sound.play("goal");
         lastGoals = done;
         const total = world.targets.reduce(
           (n, t) => n + (t.phase?.steps.length ?? 1),
@@ -592,6 +594,7 @@ function frame(now: number) {
           done + " of " + total + " steps complete.";
       }
       if (world.completed && !recorded) {
+        sound.play("win");
         recorded = true;
         recordWin(save, world.level.id, world.stars, world.elapsed);
         persist();

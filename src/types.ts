@@ -12,7 +12,8 @@ export type Theme =
   | "reef"
   | "circus"
   | "borough"
-  | "pudding";
+  | "pudding"
+  | "preschool";
 export type PropKind =
   | "cup"
   | "wizard"
@@ -86,7 +87,25 @@ export type PropKind =
   | "pancake"
   | "recipe"
   | "wafer"
-  | "spoon";
+  | "spoon"
+  | "principal"
+  | "principalsocks"
+  | "ankylosaur"
+  | "diplodocus"
+  | "diplodocusframe"
+  | "pterosaur"
+  | "nest"
+  | "leafbowl"
+  | "fossilblock"
+  | "badge"
+  | "crayon"
+  | "cubby"
+  | "mobile"
+  | "storybook"
+  | "classfern"
+  | "toothflower"
+  | "bat"
+  | "papercrown";
 export interface PhaseStep {
   verb: "freeze" | "melt";
   name: string;
@@ -110,7 +129,13 @@ export interface Target {
   pressure?: [number, number];
   effort?: number;
   flowOnly?: boolean;
-  motion?: { rx: number; ry: number; period: number; phase?: number };
+  motion?: {
+    rx: number;
+    ry: number;
+    period: number;
+    phase?: number;
+    after?: string[];
+  };
   /** Seconds per beat, seconds accepting water, and a seconds offset. */
   pulse?: { period: number; open: number; phase?: number };
 }
@@ -143,6 +168,10 @@ export interface Level {
   stamp?: string;
   balance?: BalancePlan;
   optics?: OpticsPlan;
+  /** Physical readings required in addition to completed targets. */
+  needsSignals?: string[];
+  completionHint?: string;
+  mobile?: { x: number; y: number; targets: string[] };
   channels?: {
     inlet: { x: number; y: number; w: number; h: number };
     junction: [number, number];

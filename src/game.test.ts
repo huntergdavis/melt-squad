@@ -31,10 +31,17 @@ describe("Authored calls", () => {
       ].filter(Boolean);
       if (l.balance) {
         for (const load of [l.balance.left, l.balance.right]) {
-          expect(ids).toContain(load.target);
+          if (load.target) expect(ids).toContain(load.target);
           expect(load.mass).toBeGreaterThan(0);
+          expect(load.arm ?? 1).toBeGreaterThan(0);
+          expect(load.arm ?? 1).toBeGreaterThanOrEqual(0.1);
+          expect(load.arm ?? 1).toBeLessThanOrEqual(10);
         }
       }
+      for (const signal of l.needsSignals ?? [])
+        expect(signals).toContain(signal);
+      for (const id of l.mobile?.targets ?? [])
+        expect(l.targets.find((t) => t.id === id)?.motion).toBeDefined();
       for (const mirror of l.optics?.mirrors ?? []) {
         expect(l.targets.find((t) => t.id === mirror.target)?.verb).toBe(
           "freeze",
@@ -56,6 +63,10 @@ describe("Authored calls", () => {
         }
       }
       for (const t of l.targets) {
+        for (const id of t.motion?.after ?? []) {
+          expect(ids).toContain(id);
+          expect(id).not.toBe(t.id);
+        }
         if (t.phase) {
           expect(t.phase.steps.length).toBeGreaterThanOrEqual(2);
           expect(t.phase.steps[0].verb).toBe(t.verb);
@@ -147,6 +158,11 @@ describe("Authored calls", () => {
           t.done || t.phaseStep > phaseStep,
           t.id + " stopped at " + t.progress,
         ).toBe(true);
+      }
+      if (l.needsSignals?.length && !world.completed) {
+        world.nozzle.on = false;
+        for (let frame = 0; frame < 1200 && !world.completed; frame++)
+          world.update(1 / 60, idle);
       }
       expect(world.completed).toBe(true);
       expect(world.progress).toBe(1);

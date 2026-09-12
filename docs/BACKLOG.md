@@ -2,7 +2,7 @@
 
 ## Campaign expansion — one complete world per release
 
-Current implementation: **120 scenes / 6 worlds**. See the [release ledger](RELEASES.md).
+Current implementation: **140 scenes / 7 worlds**. See the [release ledger](RELEASES.md).
 
 - [x] Design 19 new themed levels of 20 scenes each: 380 new scenes, 400 total
       including the existing collection.
@@ -23,6 +23,8 @@ Current implementation: **120 scenes / 6 worlds**. See the [release ledger](RELE
       mass balance, geometric mirror reflections, and sunlight detectors.
 - [x] Pack 06: twenty Pudding Republic scenes, a dessert ensemble, reversible
       build/fill/open molds, connected syrup overflow, and a shared breakfast.
+- [x] Pack 07: twenty Fossilbean Preschool scenes, a dinosaur class, unequal-arm
+      seesaw physics, a thaw-started hammock mobile, and a long-neck family photo.
 - [x] In-game credits with local Kenney and font license acknowledgements.
 
 Start with the [campaign plan](CAMPAIGN_BACKLOG.md) and

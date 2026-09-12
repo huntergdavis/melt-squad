@@ -4,15 +4,15 @@
 
 A hose-powered puzzle game about helping a wonderfully weird world warm up.
 Thaw an upside-down space wizard, build a penguin an ice bridge, give the moon
-a bath, give a brass giraffe her curtain call, and help a pudding rewrite the breakfast menu.
-**120 hand-authored rescue calls. Six playful worlds. One very helpful hose.**
+a bath, give a brass giraffe her curtain call, and help a dinosaur find her tiny socks.
+**140 hand-authored rescue calls. Seven playful worlds. One very helpful hose.**
 
 [Play in your browser](https://hunterdavis.com/melt-squad/)
 
 Explore the rescue atlas, follow a world's story trail, or pick any available
-scene. New in **The Great Pudding Republic**: President Wobble, Captain Crumb,
-and Sprinkle make room for every course. Open an ice mold, route pancake syrup,
-and find three seats for an éclair with three opinions about napkins.
+scene. New in **Fossilbean Preschool**: Principal Fern, Pebble, and Dapple make
+room for every size of friend. Balance a seesaw, warm a carousel of dinosaur
+hammocks, and squeeze an extremely long neck into the class photograph.
 No lives, no grinding, no account.
 
 ## Your equipment
@@ -32,7 +32,7 @@ Mouse and touch: drag the nozzle in the scene and adjust the two sliders.
 
 Hot water erodes ice. Cold water builds marked structures. Gentle warmth
 rescues delicate things. Pressure spins machines. Mix the five verbs across
-120 individually authored puzzles, with no lives to lose and every released call available
+140 individually authored puzzles, with no lives to lose and every released call available
 from the start. Medals, best times, and sound preference stay in your browser.
 
 These are arcade thermal puzzles, not a full fluid-dynamics simulation.
@@ -77,6 +77,6 @@ The Vite base path is `/melt-squad/`.
 - [Design thesis](docs/DESIGN_THESIS.md)
 - [Level authoring and architecture](docs/LEVEL_AUTHORING.md)
 - [Next slices](docs/BACKLOG.md)
-- [Campaign release ledger](docs/RELEASES.md) — six worlds implemented; fourteen to go
+- [Campaign release ledger](docs/RELEASES.md) — seven worlds implemented; thirteen to go
 - [400-scene campaign plan](docs/CAMPAIGN_BACKLOG.md) — the full design backlog
 - [Art credits and licenses](CREDITS.md)

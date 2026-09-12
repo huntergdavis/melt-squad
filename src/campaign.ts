@@ -8,6 +8,7 @@ export const mapLandmarks: Record<string, [PropKind, PropKind, PropKind]> = {
   "04": ["circuswheel", "giraffe", "beetle"],
   "05": ["townsign", "hedgehog", "pencil"],
   "06": ["whisk", "biscuitcaptain", "jellybean"],
+  "07": ["cubby", "ankylosaur", "diplodocus"],
 };
 
 const themes: [string, string, PropKind, string][] = [
@@ -50,7 +51,7 @@ const themes: [string, string, PropKind, string][] = [
   [
     "Fossilbean Preschool",
     "Tiny dinosaurs. Enormous feelings.",
-    "dragon",
+    "principal",
     "#c4dbad",
   ],
   [

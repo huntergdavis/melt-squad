@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { createBalance, stepBalance } from "./balance";
+import { createBalance, stepBalance, type BalancePlan } from "./balance";
 import { World, type Drop } from "../engine";
 import { levels } from "../levels";
 import type { Level } from "../types";
@@ -47,6 +47,125 @@ describe("A physical municipal balance", () => {
     expect(Number.isFinite(state.angle)).toBe(true);
     expect(state.leftMass).toBe(0);
     expect(state.rightMass).toBe(0);
+  });
+});
+
+describe("Unequal-arm playground balance", () => {
+  it("defaults omitted arms independently to the original unit-arm API", () => {
+    const oldCall = createBalance();
+    const explicit = createBalance();
+    const partial = createBalance();
+    for (let i = 0; i < 120; i++) {
+      stepBalance(oldCall, 2, 4, 1 / 60);
+      stepBalance(explicit, 2, 4, 1 / 60, { leftArm: 1, rightArm: 1 });
+      stepBalance(partial, 2, 4, 1 / 60, { rightArm: 1 });
+    }
+    expect(explicit).toEqual(oldCall);
+    expect(partial).toEqual(oldCall);
+  });
+
+  it("tips toward greater torque even when that side has less mass", () => {
+    const right = createBalance();
+    const left = createBalance();
+    stepBalance(right, 2, 1, 1 / 60, { leftArm: 1, rightArm: 3 });
+    stepBalance(left, 1, 2, 1 / 60, { leftArm: 3, rightArm: 1 });
+    expect(right.angle).toBeGreaterThan(0);
+    expect(right.velocity).toBeGreaterThan(0);
+    expect(left.angle).toBeCloseTo(-right.angle);
+    expect(left.velocity).toBeCloseTo(-right.velocity);
+  });
+
+  it("uses squared arm lengths in rotational inertia", () => {
+    const state = createBalance();
+    const dt = 1 / 60;
+    stepBalance(state, 2, 1, dt, { leftArm: 1, rightArm: 3 });
+    // At rest and level, only the load torque contributes to the first step.
+    const inertia = 2 * 0.6 ** 2 + 2 * 1 ** 2 + 1 * 3 ** 2;
+    const expectedVelocity = ((1 * 3 - 2 * 1) * 9.81 / inertia) * dt;
+    expect(state.velocity).toBeCloseTo(expectedVelocity, 12);
+    expect(state.angle).toBeCloseTo(expectedVelocity * dt, 12);
+  });
+
+  it("settles three units at arm one against one unit at arm three", () => {
+    const plan: BalancePlan = {
+      id: "seesaw", x: 480, y: 300, arm: 80,
+      left: { mass: 3, arm: 1 },
+      right: { target: "seat", mass: 1, arm: 3 },
+    };
+    expect(plan.left.target).toBeUndefined();
+    const arms = { leftArm: plan.left.arm, rightArm: plan.right.arm };
+    const state = createBalance();
+    for (let i = 0; i < 180; i++) stepBalance(state, 3, 0, 1 / 60, arms);
+    expect(state.angle).toBeLessThan(-0.2);
+    stepBalance(state, 3, 1, 1 / 60, arms);
+    expect(state.level).toBe(false);
+    for (let i = 0; i < 800; i++) stepBalance(state, 3, 1, 1 / 60, arms);
+    expect(state.level).toBe(true);
+    expect(Math.abs(state.angle)).toBeLessThan(0.018);
+    expect(state.leftMass).toBe(3);
+    expect(state.rightMass).toBe(1);
+    stepBalance(state, 3, 0.9, 1 / 60, arms);
+    expect(state.level).toBe(false);
+    expect(state.settled).toBe(0);
+  });
+
+  it("does not certify equal masses at unequal distances", () => {
+    const state = createBalance();
+    for (let i = 0; i < 800; i++)
+      stepBalance(state, 1, 1, 1 / 60, { leftArm: 1, rightArm: 3 });
+    expect(state.angle).toBeGreaterThan(0.2);
+    expect(state.level).toBe(false);
+    expect(state.settled).toBe(0);
+  });
+
+  it("still requires a real rest hold and nonempty loads with unequal arms", () => {
+    const paused = createBalance();
+    const empty = createBalance();
+    const arms = { leftArm: 1, rightArm: 3 };
+    for (let i = 0; i < 100; i++) {
+      stepBalance(paused, 3, 1, 0, arms);
+      stepBalance(empty, 0, 0, 1 / 60, arms);
+    }
+    expect(paused.settled).toBe(0);
+    expect(paused.level).toBe(false);
+    expect(empty.level).toBe(false);
+    for (let i = 0; i < 20; i++) stepBalance(paused, 3, 1, 1 / 60, arms);
+    expect(paused.level).toBe(false);
+    for (let i = 0; i < 20; i++) stepBalance(paused, 3, 1, 1 / 60, arms);
+    expect(paused.level).toBe(true);
+  });
+
+  it("clamps positive extreme ratios and rejects invalid arms without certification", () => {
+    const extreme = createBalance();
+    const bounded = createBalance();
+    for (let i = 0; i < 120; i++) {
+      stepBalance(extreme, 3, 1, 1 / 60, { leftArm: Number.MIN_VALUE, rightArm: Number.MAX_VALUE });
+      stepBalance(bounded, 3, 1, 1 / 60, { leftArm: 0.1, rightArm: 10 });
+    }
+    expect(extreme).toEqual(bounded);
+    for (const value of [NaN, Infinity, -Infinity, 0, -3]) {
+      const state = createBalance();
+      for (let i = 0; i < 100; i++)
+        stepBalance(state, 1, 1, 1 / 60, { leftArm: value, rightArm: value });
+      expect(Number.isFinite(state.angle) && Number.isFinite(state.velocity)).toBe(true);
+      expect(Math.abs(state.angle)).toBeLessThanOrEqual(0.35);
+      expect(state.level).toBe(false);
+    }
+  });
+
+  it("keeps extreme finite loads and corrupted state bounded", () => {
+    const state = createBalance();
+    Object.assign(state, { angle: NaN, velocity: Infinity, settled: Infinity });
+    for (let i = 0; i < 500; i++)
+      stepBalance(state, 0, Number.MAX_VALUE, 1, { leftArm: 0.1, rightArm: 10 });
+    expect(Number.isFinite(state.angle) && Number.isFinite(state.velocity)).toBe(true);
+    expect(Math.abs(state.angle)).toBeLessThanOrEqual(0.35);
+    expect(state.rightMass).toBe(1e6);
+    expect(state.level).toBe(false);
+    stepBalance(state, NaN, -1, Infinity, { leftArm: NaN, rightArm: -1 });
+    expect(state.leftMass).toBe(0);
+    expect(state.rightMass).toBe(0);
+    expect(state.settled).toBe(0);
   });
 });
 

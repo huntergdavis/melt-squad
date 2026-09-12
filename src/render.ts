@@ -5,6 +5,7 @@ import { drawCircus } from "./art/circus";
 import { drawMeasurements } from "./art/measurements";
 import { drawBorough } from "./art/borough";
 import { drawPudding } from "./art/pudding";
+import { drawPreschool } from "./art/preschool";
 const motionSafe = (time: number, reduced: boolean) => (reduced ? 0 : time);
 
 const palettes: Record<Theme, [string, string, string]> = {
@@ -18,6 +19,7 @@ const palettes: Record<Theme, [string, string, string]> = {
   circus: ["#594d64", "#d2a994", "#826777"],
   borough: ["#d5c3a8", "#ecdfc6", "#90a28d"],
   pudding: ["#f0d695", "#f5e7bf", "#c49877"],
+  preschool: ["#d7dfbc", "#f1ead0", "#a8bd9e"],
 };
 export class Renderer {
   ctx: CanvasRenderingContext2D;
@@ -111,7 +113,8 @@ export class Renderer {
       drawPostal(this, kind, happy, t, tint) ||
       drawCircus(this, kind, happy, t, tint) ||
       drawBorough(this, kind, happy, t, tint) ||
-      drawPudding(this, kind, t, happy)
+      drawPudding(this, kind, t, happy) ||
+      drawPreschool(this, kind, happy, t, tint)
     ) {
       c.restore();
       return;
@@ -415,6 +418,36 @@ export class Renderer {
     } else if (world.level.theme === "garden") {
       for (let i = 0; i < 7; i++)
         this.circle(i * 165, 487, 100 + (i % 3) * 20, "#9fae83");
+    } else if (world.level.theme === "preschool") {
+      this.round(84, 60, 792, 430, 16, "#c5d3aa", "#91a487");
+      for (const x of [118, 740]) {
+        for (let row = 0; row < 3; row++) {
+          this.round(x, 140 + row * 107, 104, 98, 10, "#d4b992", "#9d9778");
+          this.round(
+            x + 9,
+            150 + row * 107,
+            86,
+            73,
+            7,
+            row % 2 ? "#c3b5cb" : "#b1c4bb",
+          );
+          this.circle(x + 52, 171 + row * 107, 8, "#efdfb1");
+        }
+      }
+      this.line(
+        [265, 360, 386, 170, 456, 252, 526, 155, 690, 360],
+        "#a7b59a",
+        22,
+      );
+      this.line([373, 190, 388, 174, 401, 190], "#eadaba", 10);
+      for (let i = 0; i < 7; i++) {
+        const x = 270 + i * 67;
+        this.line(
+          [x, 137, x + 14, 157, x + 29, 137],
+          i % 2 ? "#c295ac" : "#89b4a1",
+          8,
+        );
+      }
     } else if (world.level.theme === "pudding") {
       this.round(84, 60, 792, 430, 16, "#d5ad76", "#ae865d");
       for (const y of [168, 315, 460]) {
@@ -596,6 +629,19 @@ export class Renderer {
         100,
       );
     }
+    if (world.level.theme === "preschool") {
+      this.round(245, 63, 470, 58, 17, "#f8ecd2", "#92a48b");
+      c.fillStyle = "#476655";
+      c.textAlign = "center";
+      c.font = "600 24px Outfit, sans-serif";
+      c.fillText(
+        world.completed
+          ? "EVERYBODY FITS IN THE PICTURE."
+          : "FOSSILBEAN PRESCHOOL",
+        480,
+        100,
+      );
+    }
     this.round(82, 487, 796, 23, 12, "#ffffff55");
     this.round(64, 506, 832, 70, 25, ground);
     this.round(64, 501, 832, 17, 8, "#edf2df");
@@ -657,6 +703,19 @@ export class Renderer {
         c.lineWidth = 8;
         c.stroke();
       }
+    if (world.level.mobile) {
+      const mobile = world.level.mobile;
+      for (const id of mobile.targets) {
+        const t = world.targets.find((target) => target.id === id)!;
+        this.line(
+          [mobile.x, mobile.y, t.x + t.w / 2, t.y + t.h / 2],
+          "#ad957c",
+          5,
+        );
+      }
+      this.circle(mobile.x, mobile.y, 17, "#edcea3");
+      this.circle(mobile.x, mobile.y, 7, "#a3bd9f");
+    }
     for (const p of world.level.props) {
       const target = world.targets.find((t) => t.id === p.target);
       const done = target?.done ?? world.completed;

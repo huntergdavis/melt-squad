@@ -18,6 +18,7 @@ export interface LiveTarget extends Target {
   flash: number;
   completedAt: number;
   phaseStep: number;
+  motionStartedAt: number;
 }
 export function targetProgress(t: LiveTarget): number {
   return t.done ? 1 : (t.phaseStep + t.progress) / (t.phase?.steps.length ?? 1);
@@ -124,6 +125,7 @@ export class World {
         flash: 0,
         completedAt: -1,
         phaseStep: 0,
+        motionStartedAt: t.motion?.after?.length ? -1 : 0,
       };
     });
   }
@@ -138,6 +140,20 @@ export class World {
         (id) => !this.targets.find((other) => other.id === id)?.done,
       )
     );
+  }
+  get completionPending() {
+    return !this.completed && this.targets.every((t) => t.done);
+  }
+  private finishIfReady() {
+    if (this.completed) return true;
+    if (
+      !this.targets.every((t) => t.done) ||
+      this.level.needsSignals?.some((id) => !this.signals.has(id))
+    )
+      return false;
+    this.completed = true;
+    this.burst(W / 2, H / 3, "#ff9870", 55);
+    return true;
   }
   waitingFor(t: Target): string {
     const tasks = (t.requires ?? [])
@@ -168,10 +184,14 @@ export class World {
     const plan = this.level.balance;
     if (plan && this.balance) {
       const mass = (load: typeof plan.left) => {
+        if (!load.target) return load.mass;
         const target = this.targets.find((t) => t.id === load.target);
         return load.mass * (target?.done ? 1 : (target?.progress ?? 0));
       };
-      stepBalance(this.balance, mass(plan.left), mass(plan.right), dt);
+      stepBalance(this.balance, mass(plan.left), mass(plan.right), dt, {
+        leftArm: plan.left.arm,
+        rightArm: plan.right.arm,
+      });
       if (this.balance.level) this.signals.add(plan.id);
     }
     if (this.level.optics) {
@@ -311,10 +331,7 @@ export class World {
       t.done = true;
       t.completedAt = this.elapsed;
       this.burst(t.x + t.w / 2, t.y + t.h / 2, "#ffd580", 30);
-      if (this.targets.every((item) => item.done)) {
-        this.completed = true;
-        this.burst(W / 2, H / 3, "#ff9870", 55);
-      }
+      this.finishIfReady();
     }
   }
   update(dt: number, input: Controls) {
@@ -335,15 +352,24 @@ export class World {
     for (const [i, t] of this.targets.entries()) {
       const base = this.level.targets[i];
       if (!base.motion) continue;
+      if (
+        t.motionStartedAt < 0 &&
+        base.motion.after?.every(
+          (id) => this.targets.find((target) => target.id === id)?.done,
+        )
+      )
+        t.motionStartedAt = this.elapsed;
+      const age = t.motionStartedAt < 0 ? 0 : this.elapsed - t.motionStartedAt;
       const angle = this.stationary
         ? 0
-        : (this.elapsed * Math.PI * 2) / base.motion.period;
+        : (age * Math.PI * 2) / base.motion.period;
       const phase = base.motion.phase ?? 0;
       t.x = base.x + Math.cos(angle + phase) * base.motion.rx;
       t.y = base.y + Math.sin(angle + phase) * base.motion.ry;
     }
     this.updateRunoff(dt);
     this.updateMechanics(dt);
+    if (this.finishIfReady()) return;
     const n = this.nozzle;
     const magnitude = Math.max(1, Math.hypot(input.x, input.y));
     n.x = clamp(n.x + (input.x / magnitude) * 270 * dt, 55, W - 55);

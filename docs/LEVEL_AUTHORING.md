@@ -1,6 +1,6 @@
 # Authoring a rescue call
 
-Calls live in src/levels.ts. The 20 shipped entries also serve as examples.
+Calls are registered in src/levels.ts. The original 20 entries serve as examples.
 World packs' authored layouts live in `src/packs/NN.ts`; append new packs after
 legacy content, keep their `NN.SS` IDs, and set `pack` to their world ID.
 Add one Level with a stable id, title, short pitch, hint, ending, par time,
@@ -11,6 +11,12 @@ the release marker and tests track the total playable count.
 Pack JSON imports must include `with { type: "json" }`, as in `src/packs/03.ts`.
 Vite and the Node-based browser-test runner both load these modules. Check
 `npx playwright test --list` before starting a release build to catch import errors early.
+
+For a finished-art check, start `npm run dev -- --port 4178`, then run
+`node scripts/inspect-scenes.mjs 07.05 07.16 07.20` with the desired scene IDs.
+This optional local tool solves via emitted water and real physical signals,
+then captures the completed canvas under ignored `scratch/`. Inspect it for
+faces hidden by completed constructions, readable poses, and faithful payoffs.
 
 World coordinates are 960 × 580. Target tops must be reachable by the nozzle
 (currently y >= 120); leave space above each for a downward stream.
@@ -66,6 +72,9 @@ every original call yet has a bespoke ending animation.
   Actual hitboxes move. Keep the full swept bounds reachable and provide clear
   labels. The saved stationary assist parks targets on the same path; it does
   not skip the temperature/pressure objective.
+  Optional `after` IDs hold the initial pose until every start target finishes;
+  the motion clock then starts without a positional jump. A `mobile` plan draws
+  arms from its pivot to the actual listed target centers.
 - Target `pulse`: beat `period`, `open` window, and optional `phase` offset,
   all in seconds. Only actual droplets arriving during the open window count.
   Closed windows preserve progress and never count as mistakes. Use generous
@@ -76,10 +85,12 @@ every original call yet has a bespoke ending animation.
 - Prop `follow` attaches artwork to a live target. `reveal` defines the final
   pose/kind after the scene completes; `revealOnly` is for earned visual arrivals.
   `stamp` supplies the completion postcard's tiny joke.
-- `balance`: fixed left/right collection targets supply capped masses from
-  actual progress. Equal-arm torque and damping move the visible scale; its
-  `id` becomes a signal only after matched, nonempty loads settle level.
-  This first slice is not buoyancy or movable target geometry.
+- `balance`: collection targets supply capped masses from actual progress;
+  a load without a `target` supplies a fixed mass. Optional per-load `arm`
+  ratios (0.1–10, default 1) affect real torque and inertia; plan `arm` is the
+  drawing scale in pixels. Massless arms with a hanging pivot ballast settle
+  under damping. The `id` signals only after opposing torque matches and the
+  beam rests level with nonempty loads. This is not buoyancy.
 - `optics`: a source direction, fixed mirrors tied to completed freeze targets,
   and circular detectors. Mirror angles are tangent angles in radians. Real
   rays reflect geometrically and stop on remaining melt-target ice cells;
@@ -87,6 +98,8 @@ every original call yet has a bespoke ending animation.
 - Target `needsSignals` gates work on physical signal IDs, in addition to
   `requires`. Leave space for visible physical feedback, and a generous final
   warming target to celebrate success. See `05.14` and `05.16`.
+  Level-level `needsSignals` can instead gate the whole win, as in `07.15`.
+  A short `completionHint` explains physical settling after hose work finishes.
 - Target `phase.steps` declares a finite sequence of freeze/melt operations in
   one footprint. Each step has a verb, name, optional prerequisites, and an
   optional earned signal. A completed step records its signal and changes the

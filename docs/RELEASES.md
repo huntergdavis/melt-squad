@@ -4,8 +4,8 @@ One complete twenty-scene world per release. No placeholder scenes count as
 playable. Every release must pass local tests, the GitHub Pages pipeline, and
 a live-browser check before the next world is started.
 
-**Implemented in this tree: 6/20 worlds · 120/400 scenes.**
-**Remaining campaign: 14 worlds · 280 scenes.**
+**Implemented in this tree: 7/20 worlds · 140/400 scenes.**
+**Remaining campaign: 13 worlds · 260 scenes.**
 
 | World | Name | Implemented | Release |
 | --- | --- | ---: | --- |
@@ -15,8 +15,8 @@ a live-browser check before the next world is started.
 | 04 | The Mostly Clockwork Circus | 20/20 | [pack-04](https://github.com/huntergdavis/melt-squad/releases/tag/pack-04) |
 | 05 | Borough of Very Small Affairs | 20/20 | [pack-05](https://github.com/huntergdavis/melt-squad/releases/tag/pack-05) |
 | 06 | The Great Pudding Republic | 20/20 | [pack-06](https://github.com/huntergdavis/melt-squad/releases/tag/pack-06) |
-| 07 | Fossilbean Preschool | 0/20 | Next |
-| 08 | Emberborough Town Hall | 0/20 | Planned |
+| 07 | Fossilbean Preschool | 20/20 | [pack-07](https://github.com/huntergdavis/melt-squad/releases/tag/pack-07) |
+| 08 | Emberborough Town Hall | 0/20 | Next |
 | 09 | The Runaway Ending Library | 0/20 | Planned |
 | 10 | Mount Oops Sports Club | 0/20 | Planned |
 | 11 | Ever After, Everywhere | 0/20 | Planned |
@@ -47,6 +47,8 @@ a live-browser check before the next world is started.
   FLOW's full-basin overflow spillways. Freely adjustable coupled thermal bodies
   remain an extension. Build each extension when its first world needs it;
   do not silently substitute a basic target for its puzzle.
+- Implemented with World 07: unequal-arm seesaws with fixed character loads,
+  physical settling before victory, and thaw-started rotating nursery mobiles.
 - Still requires real-device feedback: physical gamepad comfort and mobile
   touch ergonomics. Automated controller and phone-layout checks are not a claim
   that physical hardware was tested.

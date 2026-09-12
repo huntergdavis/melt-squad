@@ -60,11 +60,23 @@ export function drawMeasurements(r: Renderer, world: World) {
     r.round(-48, 94, 96, 14, 6, "#b99263", "#766e5e");
     const dx = Math.cos(state.angle) * scale.arm;
     const dy = Math.sin(state.angle) * scale.arm;
-    r.line([-dx, -dy, dx, dy], "#9f835e", 9);
-    r.line([-dx, -dy - 3, dx, dy - 3], "#e7d3a3", 3);
+    const leftArm = scale.left.arm ?? 1,
+      rightArm = scale.right.arm ?? 1;
+    const unequal = leftArm !== rightArm;
+    r.line(
+      [-dx * leftArm, -dy * leftArm, dx * rightArm, dy * rightArm],
+      "#9f835e",
+      9,
+    );
+    r.line(
+      [-dx * leftArm, -dy * leftArm - 3, dx * rightArm, dy * rightArm - 3],
+      "#e7d3a3",
+      3,
+    );
     for (const side of [-1, 1]) {
-      const x = dx * side,
-        y = dy * side;
+      const arm = side < 0 ? leftArm : rightArm;
+      const x = dx * side * arm,
+        y = dy * side * arm;
       const mass = side < 0 ? state.leftMass : state.rightMass;
       const capacity = side < 0 ? scale.left.mass : scale.right.mass;
       r.line([x, y, x - 28, y + 49, x + 28, y + 49, x, y], "#82968c", 2);
@@ -79,10 +91,18 @@ export function drawMeasurements(r: Renderer, world: World) {
           side < 0 ? "#74b7c0" : "#a1d9e0",
         );
       r.round(x - 33, y + 46, 66, 10, 4, "#d3b077", "#8e785e");
+      if (world.level.theme === "preschool" && side < 0)
+        r.prop("ankylosaur", x, y + 42, 0.43, state.level, world.elapsed);
       c.fillStyle = "#345651";
       c.font = "bold 12px system-ui";
       c.textAlign = "center";
-      c.fillText(mass.toFixed(1) + " kg", x, y + 76);
+      c.fillText(
+        mass.toFixed(1) +
+          " kg" +
+          (unequal ? " · " + arm + (arm === 1 ? " arm" : " arms") : ""),
+        x,
+        y + 76,
+      );
     }
     r.circle(0, 0, 13, "#9f835e");
     r.circle(0, 0, 10, "#eed3a0");
@@ -104,9 +124,12 @@ export function drawMeasurements(r: Renderer, world: World) {
         ? "LEVEL · FAIRLY SHARED"
         : state.leftMass + state.rightMass < 0.05
           ? "ADD THE WEIGHTS"
-          : Math.abs(state.leftMass - state.rightMass) < 0.02
+          : Math.abs(state.leftMass * leftArm - state.rightMass * rightArm) <
+              0.02
             ? "SETTLING…"
-            : "MATCH THE LOADS",
+            : unequal
+              ? "MAKE IT LEVEL"
+              : "MATCH THE LOADS",
       0,
       -39,
     );
