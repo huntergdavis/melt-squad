@@ -2,7 +2,7 @@
 
 ## Campaign expansion — one complete world per release
 
-Current implementation: **300 scenes / 15 worlds**. See the [release ledger](RELEASES.md).
+Current implementation: **320 scenes / 16 worlds**. See the [release ledger](RELEASES.md).
 
 - [x] Design 19 new themed levels of 20 scenes each: 380 new scenes, 400 total
       including the existing collection.
@@ -43,6 +43,8 @@ Current implementation: **300 scenes / 15 worlds**. See the [release ledger](REL
       an ascending freight cup, a settling book counterweight, and a stop for everyone.
 - [x] Pack 15: twenty Institute scenes, improbable exhibits and careful questions,
       true light apertures, a prebuilt buoyant footnote, and room for the next idea.
+- [x] Pack 16: twenty cosmic diner scenes, a pancake's modest lunar ambitions,
+      sequential syrup overflow, accessible breakfast beats, and a place for the cook.
 
 Start with the [campaign plan](CAMPAIGN_BACKLOG.md) and
 [complete 380-scene catalog](campaign/SCENE_CATALOG.md). Those source designs

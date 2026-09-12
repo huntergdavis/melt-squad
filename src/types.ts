@@ -23,7 +23,8 @@ export type Theme =
   | "seamworks"
   | "conservatory"
   | "mycelium"
-  | "institute";
+  | "institute"
+  | "diner";
 export type PropKind =
   | "cup"
   | "wizard"
@@ -314,7 +315,37 @@ export type PropKind =
   | "footnotesymbol"
   | "footnoteexplanation"
   | "uncertaincase"
-  | "institutepanorama";
+  | "institutepanorama"
+  | "misocook"
+  | "mallowhost"
+  | "ziphauler"
+  | "dineropen"
+  | "comettruck"
+  | "mugservice"
+  | "restingtravelers"
+  | "dinerjukebox"
+  | "mallowtriangle"
+  | "travelerbreakfasts"
+  | "breakfastchart"
+  | "dishpat"
+  | "scarfmoonpie"
+  | "cavesalt"
+  | "cavespoons"
+  | "thankyoupebble"
+  | "herbawning"
+  | "regularstable"
+  | "truckdiagnostic"
+  | "counterconversation"
+  | "pancakeroute"
+  | "tastingtray"
+  | "smallestorder"
+  | "sittingtogether"
+  | "windowqueue"
+  | "breakfastbeat"
+  | "mallowlamp"
+  | "dinerguestbook"
+  | "dinerpanorama"
+  | "dinermug";
 export interface PhaseStep {
   verb: "freeze" | "melt";
   name: string;

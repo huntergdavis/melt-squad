@@ -4,8 +4,8 @@ One complete twenty-scene world per release. No placeholder scenes count as
 playable. Every release must pass local tests, the GitHub Pages pipeline, and
 a live-browser check before the next world is started.
 
-**Implemented in this tree: 15/20 worlds · 300/400 scenes.**
-**Remaining campaign: 5 worlds · 100 scenes.**
+**Implemented in this tree: 16/20 worlds · 320/400 scenes.**
+**Remaining campaign: 4 worlds · 80 scenes.**
 
 | World | Name | Implemented | Release |
 | --- | --- | ---: | --- |
@@ -24,8 +24,8 @@ a live-browser check before the next world is started.
 | 13 | The Forecast Conservatory | 20/20 | [pack-13](https://github.com/huntergdavis/melt-squad/releases/tag/pack-13) |
 | 14 | The Mycelium Local | 20/20 | [pack-14](https://github.com/huntergdavis/melt-squad/releases/tag/pack-14) |
 | 15 | The Institute of Almost Possible | 20/20 | [pack-15](https://github.com/huntergdavis/melt-squad/releases/tag/pack-15) |
-| 16 | Last Exit Before Breakfast | 0/20 | Next |
-| 17 | Toybox After Bedtime | 0/20 | Planned |
+| 16 | Last Exit Before Breakfast | 20/20 | [pack-16](https://github.com/huntergdavis/melt-squad/releases/tag/pack-16) |
+| 17 | Toybox After Bedtime | 0/20 | Next |
 | 18 | Apocalypse, Rescheduled | 0/20 | Planned |
 | 19 | The Hotel Between Tuesdays | 0/20 | Planned |
 | 20 | The Great Thaw Festival | 0/20 | Planned |
@@ -66,6 +66,8 @@ a live-browser check before the next world is started.
   driven by actual warming progress, and books riding a genuinely settling scale.
 - Implemented with World 15: actual light through two ice apertures, explicitly
   prebuilt floating exhibits, and measured buoyancy height bands with real settling.
+- Implemented with World 16: a three-pancake sequential overflow route, three
+  breakfast rhythm lanes with ordered untimed play, and a gentle shared-table finale.
 - Still requires real-device feedback: physical gamepad comfort and mobile
   touch ergonomics. Automated controller and phone-layout checks are not a claim
   that physical hardware was tested.

@@ -15,6 +15,7 @@ import { drawSeamworks } from "./art/seamworks";
 import { drawConservatory } from "./art/conservatory";
 import { drawMycelium } from "./art/mycelium";
 import { drawInstitute } from "./art/institute";
+import { drawDiner } from "./art/diner";
 import { propIsReady } from "./art/state";
 const motionSafe = (time: number, reduced: boolean) => (reduced ? 0 : time);
 
@@ -38,6 +39,7 @@ const palettes: Record<Theme, [string, string, string]> = {
   conservatory: ["#c8dfd4", "#eff0cf", "#9aaa8c"],
   mycelium: ["#adcec1", "#ecdfbc", "#8eaa91"],
   institute: ["#d7dde3", "#f2e4c6", "#96aaa3"],
+  diner: ["#35435f", "#c8b9bd", "#809a9d"],
 };
 export class Renderer {
   ctx: CanvasRenderingContext2D;
@@ -141,7 +143,8 @@ export class Renderer {
       drawSeamworks(this, kind, happy, t, tint) ||
       drawConservatory(this, kind, happy, t, tint) ||
       drawMycelium(this, kind, happy, t, tint, progress) ||
-      drawInstitute(this, kind, happy, t, tint, progress)
+      drawInstitute(this, kind, happy, t, tint, progress) ||
+      drawDiner(this, kind, happy, t, tint, progress)
     ) {
       c.restore();
       return;
@@ -445,6 +448,24 @@ export class Renderer {
     } else if (world.level.theme === "garden") {
       for (let i = 0; i < 7; i++)
         this.circle(i * 165, 487, 100 + (i % 3) * 20, "#9fae83");
+    } else if (world.level.theme === "diner") {
+      for (const x of [115, 610]) {
+        this.round(x, 169, 235, 239, 45, "#1b2946", "#d6e3df");
+        this.line([x + 12, 318, x + 223, 318], "#c4d8d5", 5);
+        for (const [dx, dy] of [
+          [40, 48],
+          [91, 102],
+          [173, 60],
+          [202, 124],
+        ]) {
+          this.line([x + dx - 4, 169 + dy, x + dx + 4, 169 + dy], "#fff1bf", 2);
+          this.line([x + dx, 165 + dy, x + dx, 173 + dy], "#fff1bf", 2);
+        }
+      }
+      this.line([80, 463, 880, 463], "#eef2e3", 10);
+      this.line([80, 473, 880, 473], "#58677a", 5);
+      for (let x = 96; x < 890; x += 48)
+        this.round(x, 482, 24, 12, 2, "#ebdbca");
     } else if (world.level.theme === "institute") {
       for (const x of [112, 410, 708]) {
         this.round(x, 178, 140, 228, 9, "#f9edcc", "#829b97");
@@ -881,6 +902,21 @@ export class Renderer {
         100,
       );
     }
+    if (world.level.theme === "diner") {
+      this.round(205, 63, 550, 58, 25, "#f7e5c8", "#bfd5d3");
+      this.line([225, 87, 244, 87], "#ca8e80", 4);
+      this.line([716, 87, 735, 87], "#ca8e80", 4);
+      c.fillStyle = "#48556a";
+      c.textAlign = "center";
+      c.font = "600 23px Outfit, sans-serif";
+      c.fillText(
+        world.completed
+          ? "THERE'S A PLACE FOR YOU."
+          : "LAST EXIT BEFORE BREAKFAST",
+        480,
+        100,
+      );
+    }
     if (world.level.theme === "institute") {
       this.round(215, 63, 530, 58, 9, "#fff3d8", "#aa9679");
       this.circle(233, 92, 3, "#b89e74");
@@ -987,18 +1023,12 @@ export class Renderer {
     }
     if (world.level.channels) {
       const channels = world.level.channels;
+      const syrup =
+        world.level.theme === "pudding" || world.level.theme === "diner";
       for (let i = 0; i < channels.branches.length; i++) {
         const points = world.channelPath(i).flat();
-        this.line(
-          points,
-          world.level.theme === "pudding" ? "#997048" : "#353c5d",
-          21,
-        );
-        this.line(
-          points,
-          world.level.theme === "pudding" ? "#dfb471" : "#aaa9c7",
-          12,
-        );
+        this.line(points, syrup ? "#997048" : "#353c5d", 21);
+        this.line(points, syrup ? "#dfb471" : "#aaa9c7", 12);
       }
       const inlet = channels.inlet;
       const source = world.targets.find(
@@ -1025,11 +1055,7 @@ export class Renderer {
       c.textAlign = "center";
       c.font = "bold 14px system-ui";
       c.fillText(
-        source
-          ? "FILL → OVERFLOW"
-          : world.level.theme === "pudding"
-            ? "SYRUP INLET ↓"
-            : "INLET ↓",
+        source ? "FILL → OVERFLOW" : syrup ? "SYRUP INLET ↓" : "INLET ↓",
         source ? source.x + source.w / 2 : inlet.x + inlet.w / 2,
         source ? source.y - 15 : inlet.y + 25,
       );
@@ -1046,12 +1072,7 @@ export class Renderer {
       }
       for (const drop of world.runoff) {
         const at = world.runoffPosition(drop);
-        this.circle(
-          at.x,
-          at.y,
-          3,
-          world.level.theme === "pudding" ? "#f6c665" : "#8ce2f4",
-        );
+        this.circle(at.x, at.y, 3, syrup ? "#f6c665" : "#8ce2f4");
       }
     }
     for (const t of world.level.targets)
@@ -1167,7 +1188,13 @@ export class Renderer {
       )
         continue;
       if (t.done && (prism || splitter || reflectingPrism)) continue;
-      if (t.done && t.verb !== "freeze" && t.verb !== "fill") continue;
+      if (
+        t.done &&
+        t.verb !== "freeze" &&
+        t.verb !== "fill" &&
+        !(world.level.theme === "diner" && t.pulse)
+      )
+        continue;
       c.save();
       if (!available) c.globalAlpha = 0.3;
       if (t.verb === "melt") {
@@ -1218,9 +1245,11 @@ export class Renderer {
               4,
               t.verb === "freeze"
                 ? "#9ad4e4dd"
-                : t.done && t.fillColor
-                  ? t.fillColor
-                  : "#5dbece99",
+                : world.level.theme === "diner" && world.level.channels
+                  ? "#e8b05eaa"
+                  : t.done && t.fillColor
+                    ? t.fillColor
+                    : "#5dbece99",
             );
           if (t.verb === "freeze" && t.progress > 0.2) {
             for (let i = 1; i < t.w / 30; i++)
@@ -1256,6 +1285,42 @@ export class Renderer {
         }
       }
       c.restore();
+      if (world.level.theme === "diner" && t.pulse) {
+        const open = available && world.pulseOpen(t);
+        const lit = t.done || open;
+        c.save();
+        c.translate(t.x + t.w / 2, t.y - 85);
+        this.round(
+          -27,
+          -27,
+          54,
+          54,
+          12,
+          lit ? "#e5f1d0" : "#657187",
+          "#c9d7d4",
+        );
+        const food = lit ? "#e5b778" : "#a8a497";
+        const trim = lit ? "#7c654d" : "#626975";
+        if (t.pulse.untimedOrder === 1) {
+          this.round(-15, -10, 30, 28, 4, food, trim);
+          this.round(-19, -18, 38, 17, 8, food, trim);
+          this.round(-7, -6, 14, 13, 3, lit ? "#ffe39b" : "#b8af96");
+        } else if (t.pulse.untimedOrder === 2) {
+          this.round(9, -9, 13, 20, 7, food, trim);
+          this.round(-17, -15, 29, 32, 5, lit ? "#fff0d1" : "#b8b7b0", trim);
+          this.line([-13, -9, 7, -9], trim, 3);
+          this.line([-19, 20, 16, 20], food, 3);
+        } else {
+          for (const y of [10, 1, -8])
+            this.round(-19, y, 38, 10, 5, food, trim);
+          this.round(-6, -14, 13, 8, 2, lit ? "#ffe39b" : "#b8af96");
+        }
+        if (t.done) {
+          this.circle(22, 22, 9, "#397a76");
+          this.line([18, 22, 21, 25, 27, 19], "#fff4d9", 2);
+        }
+        c.restore();
+      }
       if (!thumbnail && !t.done) {
         if (t.pulse) {
           const open = available && world.pulseOpen(t);
