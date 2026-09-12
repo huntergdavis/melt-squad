@@ -109,7 +109,8 @@ every original call yet has a bespoke ending animation.
   Optional `fixedMass` adds a permanent character load to a target's capacity.
   In `17.14`, Button is 1 kg plus up to 1 kg ice; the admiral is 0.25 kg plus
   up to 1 kg ice. Both full cups therefore remain unequal.
-- Target `reversibleIce: true` is an explicit FREEZE balance cup, not a normal
+- Target `reversibleIce: true` is an explicit FREEZE balance cup or adjustable
+  prism control, not a normal
   construction or a `phase.steps` checklist. The target must be a declared
   balance load, and the level must require that balance's signal. Cold at or
   below −10° grows actual normalized ice volume; heat at or above 10° trims it,
@@ -122,6 +123,17 @@ every original call yet has a bespoke ending animation.
   Capacity bars are not completion bars. Switch water off to let in-flight
   droplets finish and the beam settle. The local capture/solvability helper
   uses the ordinary nozzle to grow and trim; it never writes a winning state.
+  For adjustable optics, an explicit prism `height: { mark }` scales the convex
+  body's vertices vertically from its fixed base using actual ice progress.
+  The 0–1 notch is a visible guide, never a completion condition. The level must
+  require every optical detector. All must receive actual traced light; winning
+  preserves the partial wedges. Do not combine these controls with phase steps.
+  Ordinary completed prisms retain their original geometry and behavior.
+- FLOW branches may declare `iceGates: [{ target, state: "formed" | "open" }]`.
+  These check actual solid volume, not historical completion: a just-frozen plug
+  remains solid when its next phase becomes MELT. Invalid/non-ice states close
+  the route. In-flight parcels recheck it before delivery. For the soup puzzle,
+  both side plugs form a raised middle overflow; remelting unlocks the side paths.
 - `buoyancy`: the BALANCE family's floating-body exhibit. A completed
   `iceTarget` creates a rectangular pontoon; `fillTarget` supplies the basin's
   calibrated water height. Board geometry is pixels, `pixelsPerMeter` supplies

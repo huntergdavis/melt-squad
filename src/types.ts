@@ -25,7 +25,8 @@ export type Theme =
   | "mycelium"
   | "institute"
   | "diner"
-  | "toybox";
+  | "toybox"
+  | "apocalypse";
 export type PropKind =
   | "cup"
   | "wizard"
@@ -377,7 +378,40 @@ export type PropKind =
   | "toybag"
   | "departuretag"
   | "paradepennant"
-  | "buttonseated";
+  | "buttonseated"
+  | "annmoth"
+  | "breakfastpony"
+  | "spoonpony"
+  | "laundrypony"
+  | "trainpony"
+  | "pocketgiant"
+  | "schedulingnotice"
+  | "breakfastservice"
+  | "marshmallowmeteor"
+  | "krakenkettle"
+  | "walrusinvites"
+  | "soupcounter"
+  | "giantpicnic"
+  | "shoppingchoir"
+  | "dragoncalendar"
+  | "ponybed"
+  | "soupmap"
+  | "lasttrain"
+  | "smallprint"
+  | "doomclocktea"
+  | "warningpennant"
+  | "giantservice"
+  | "ponyerrands"
+  | "reassuringsky"
+  | "quietguests"
+  | "tomorrowparty"
+  | "omenmilk"
+  | "omenbowl"
+  | "footnotecard"
+  | "omeninvitation"
+  | "datesign"
+  | "souppennant"
+  | "skullpennant";
 export interface PhaseStep {
   verb: "freeze" | "melt";
   name: string;
@@ -387,7 +421,7 @@ export interface PhaseStep {
 }
 export interface Target {
   /** Actual ice volume: cold grows it, hot trims it, even when full. A named
-   * physical balance (not filling this cup) determines completion. */
+   * physical balance or adjustable-prism detectors determine completion. */
   reversibleIce?: boolean;
   id: string;
   name: string;

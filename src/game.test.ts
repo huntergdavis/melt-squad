@@ -5,6 +5,8 @@ import { deadzone, padControls } from "./input";
 import { loadSave, recordWin, writeSave } from "./save";
 import release from "../public/release.json" with { type: "json" };
 import { solveBallast } from "../scripts/solve-ballast";
+import { solvePrismHeights } from "../scripts/solve-prisms";
+import { solveSoupTributaries } from "../scripts/solve-soup";
 const idle = { x: 0, y: 0, heat: 0, pressure: 0, tilt: 0 };
 const drop = (temp: number, pressure = 45): Drop => ({
   x: 0,
@@ -149,10 +151,21 @@ describe("Authored calls", () => {
         if (t.reversibleIce) {
           expect(t.verb).toBe("freeze");
           expect(t.phase).toBeUndefined();
-          expect([l.balance?.left.target, l.balance?.right.target]).toContain(
-            t.id,
+          const prism = l.optics?.prisms?.find(
+            (p) => p.target === t.id && p.height,
           );
-          expect(l.needsSignals).toContain(l.balance?.id);
+          if (prism) {
+            expect(prism.height!.mark).toBeGreaterThan(0);
+            expect(prism.height!.mark).toBeLessThanOrEqual(1);
+            expect(l.optics!.detectors.length).toBeGreaterThan(0);
+            for (const d of l.optics!.detectors)
+              expect(l.needsSignals).toContain(d.id);
+          } else {
+            expect([l.balance?.left.target, l.balance?.right.target]).toContain(
+              t.id,
+            );
+            expect(l.needsSignals).toContain(l.balance?.id);
+          }
         }
         for (const id of t.motion?.after ?? []) {
           expect(ids).toContain(id);
@@ -199,7 +212,10 @@ describe("Authored calls", () => {
   for (const l of levels)
     it('solves "' + l.name + '" through actual water particles', () => {
       const world = new World(l);
-      if (world.targets.some((t) => t.reversibleIce)) solveBallast(world);
+      if (world.level.id === "18.11") solveSoupTributaries(world);
+      else if (world.level.optics?.prisms?.some((p) => p.height))
+        solvePrismHeights(world);
+      else if (world.targets.some((t) => t.reversibleIce)) solveBallast(world);
       const operations = world.targets.reduce(
         (n, t) => n + (t.phase?.steps.length ?? 1),
         0,

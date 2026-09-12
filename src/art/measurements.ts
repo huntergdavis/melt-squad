@@ -1,5 +1,6 @@
 import type { Renderer } from "../render";
 import type { World } from "../engine";
+import { activePrismVertices } from "../mechanics/optics";
 
 /** Physical indicators stay separate from decorative scene props. */
 export function drawMeasurements(r: Renderer, world: World) {
@@ -261,18 +262,64 @@ export function drawMeasurements(r: Renderer, world: World) {
     }
     for (const prism of optics.prisms ?? []) {
       const target = world.targets.find((t) => t.id === prism.target);
+      const active = activePrismVertices(prism, target);
       c.beginPath();
       prism.vertices.forEach(([x, y], i) =>
         i === 0 ? c.moveTo(x, y) : c.lineTo(x, y),
       );
       c.closePath();
-      c.fillStyle = target?.done ? "#b9edf499" : "#b9edf433";
+      c.fillStyle = target?.done && !prism.height ? "#b9edf499" : "#b9edf422";
       c.fill();
       c.strokeStyle = target?.done ? "#8ab7c6" : "#759eae";
       c.lineWidth = target?.done ? 4 : 2;
-      c.setLineDash(target?.done ? [] : [5, 6]);
+      c.setLineDash(target?.done && !prism.height ? [] : [5, 6]);
       c.stroke();
       c.setLineDash([]);
+      if (prism.height && target) {
+        if (active) {
+          c.beginPath();
+          active.forEach(([x, y], i) =>
+            i === 0 ? c.moveTo(x, y) : c.lineTo(x, y),
+          );
+          c.closePath();
+          c.fillStyle = "#b9edf4aa";
+          c.fill();
+          c.strokeStyle = "#497f96";
+          c.lineWidth = 3;
+          c.stroke();
+        }
+        const base = Math.max(...prism.vertices.map(([, y]) => y));
+        const top = Math.min(...prism.vertices.map(([, y]) => y));
+        const notch = base - (base - top) * prism.height.mark;
+        r.line(
+          [target.x - 7, notch, target.x + target.w + 7, notch],
+          "#fff1c7",
+          3,
+        );
+        r.round(
+          target.x - 8,
+          base + 8,
+          target.w + 16,
+          36,
+          7,
+          "#fff1d8",
+          "#8d766c",
+        );
+        c.fillStyle = "#4d485b";
+        c.font = "bold 11px system-ui";
+        c.textAlign = "center";
+        c.fillText(
+          Math.round(target.progress * 100) + "% HEIGHT",
+          target.x + target.w / 2,
+          base + 23,
+        );
+        c.font = "10px system-ui";
+        c.fillText(
+          prism.height.mark === 1 ? "FULL GUIDE" : "65% NOTCH",
+          target.x + target.w / 2,
+          base + 37,
+        );
+      }
     }
     r.round(lamp.x - 47, lamp.y - 21, 40, 42, 10, "#d0ac6b", "#8e785e");
     r.round(lamp.x - 10, lamp.y - 14, 12, 28, 4, "#fff1bb");
@@ -340,6 +387,10 @@ export function drawMeasurements(r: Renderer, world: World) {
           3,
         );
       else r.circle(detector.x, detector.y, 6, "#7c9790");
+      const dx = detector.label?.[0] ?? detector.x;
+      const dy = detector.label?.[1] ?? detector.y + detector.radius + 23;
+      if (world.level.theme === "apocalypse")
+        r.round(dx - 79, dy - 15, 158, 23, 6, "#fff1d8");
       c.fillStyle = world.level.theme === "seamworks" ? "#fff0d9" : "#345651";
       c.font = "bold 12px system-ui";
       c.textAlign = "center";
@@ -349,8 +400,8 @@ export function drawMeasurements(r: Renderer, world: World) {
           : lit
             ? "LIGHT RECEIVED"
             : "WAITING FOR LIGHT",
-        detector.label?.[0] ?? detector.x,
-        detector.label?.[1] ?? detector.y + detector.radius + 23,
+        dx,
+        dy,
       );
     }
     c.restore();

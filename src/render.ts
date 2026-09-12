@@ -17,6 +17,7 @@ import { drawMycelium } from "./art/mycelium";
 import { drawInstitute } from "./art/institute";
 import { drawDiner } from "./art/diner";
 import { drawToybox } from "./art/toybox";
+import { drawApocalypse } from "./art/apocalypse";
 import { propIsReady } from "./art/state";
 const motionSafe = (time: number, reduced: boolean) => (reduced ? 0 : time);
 
@@ -42,6 +43,7 @@ const palettes: Record<Theme, [string, string, string]> = {
   institute: ["#d7dde3", "#f2e4c6", "#96aaa3"],
   diner: ["#35435f", "#c8b9bd", "#809a9d"],
   toybox: ["#414361", "#c2b6cb", "#aa939b"],
+  apocalypse: ["#61566e", "#e5c6b5", "#afa58d"],
 };
 export class Renderer {
   ctx: CanvasRenderingContext2D;
@@ -147,7 +149,8 @@ export class Renderer {
       drawMycelium(this, kind, happy, t, tint, progress) ||
       drawInstitute(this, kind, happy, t, tint, progress) ||
       drawDiner(this, kind, happy, t, tint, progress) ||
-      drawToybox(this, kind, happy, t, tint, progress)
+      drawToybox(this, kind, happy, t, tint, progress) ||
+      drawApocalypse(this, kind, happy, t, tint, progress)
     ) {
       c.restore();
       return;
@@ -1050,10 +1053,11 @@ export class Renderer {
       const channels = world.level.channels;
       const syrup =
         world.level.theme === "pudding" || world.level.theme === "diner";
+      const soup = world.level.theme === "apocalypse";
       for (let i = 0; i < channels.branches.length; i++) {
         const points = world.channelPath(i).flat();
-        this.line(points, syrup ? "#997048" : "#353c5d", 21);
-        this.line(points, syrup ? "#dfb471" : "#aaa9c7", 12);
+        this.line(points, soup ? "#986657" : syrup ? "#997048" : "#353c5d", 21);
+        this.line(points, soup ? "#e5af84" : syrup ? "#dfb471" : "#aaa9c7", 12);
       }
       const inlet = channels.inlet;
       const source = world.targets.find(
@@ -1097,7 +1101,12 @@ export class Renderer {
       }
       for (const drop of world.runoff) {
         const at = world.runoffPosition(drop);
-        this.circle(at.x, at.y, 3, syrup ? "#f6c665" : "#8ce2f4");
+        this.circle(
+          at.x,
+          at.y,
+          3,
+          soup ? "#f07856" : syrup ? "#f6c665" : "#8ce2f4",
+        );
       }
     }
     for (const t of world.level.targets)
@@ -1217,7 +1226,7 @@ export class Renderer {
         t.done &&
         t.verb !== "freeze" &&
         t.verb !== "fill" &&
-        !(world.level.theme === "diner" && t.pulse)
+        !(["diner", "apocalypse"].includes(world.level.theme) && t.pulse)
       )
         continue;
       c.save();
@@ -1292,7 +1301,30 @@ export class Renderer {
             }
           }
         }
-        if (t.verb === "spin") {
+        if (
+          t.verb === "spin" &&
+          t.pulse &&
+          world.level.theme === "apocalypse"
+        ) {
+          const x = t.x + t.w / 2,
+            y = t.y + t.h / 2;
+          this.line([x, y - 35, x, y - 25], "#685765", 6);
+          c.beginPath();
+          c.moveTo(x - 27, y + 17);
+          c.quadraticCurveTo(x - 19, y + 5, x - 19, y - 7);
+          c.quadraticCurveTo(x - 19, y - 29, x, y - 29);
+          c.quadraticCurveTo(x + 19, y - 29, x + 19, y - 7);
+          c.quadraticCurveTo(x + 19, y + 5, x + 27, y + 17);
+          c.closePath();
+          c.fillStyle = t.done ? "#f7d78d" : "#d7b371";
+          c.fill();
+          c.strokeStyle = "#806b5d";
+          c.lineWidth = 3;
+          c.stroke();
+          this.line([x - 27, y + 17, x + 27, y + 17], "#fff1c3", 4);
+          this.circle(x, y + 23, 6, "#806b5d");
+          this.line([x - 12, y - 14, x - 12, y + 5], "#fff1c3", 3);
+        } else if (t.verb === "spin") {
           c.save();
           c.translate(t.x + t.w / 2, t.y + t.h / 2);
           c.rotate(t.progress * 40);
@@ -1310,6 +1342,22 @@ export class Renderer {
         }
       }
       c.restore();
+      if (world.level.theme === "apocalypse" && t.pulse) {
+        const open = available && world.pulseOpen(t);
+        const x = t.x + t.w / 2,
+          y = t.y + t.h / 2;
+        c.save();
+        c.beginPath();
+        c.arc(x, y, 47, 0, Math.PI * 2);
+        c.strokeStyle = t.done ? "#f9d483" : open ? "#fff0c0" : "#6d727c";
+        c.lineWidth =
+          open && !this.reducedMotion
+            ? 6 + 2 * Math.sin(world.pulsePosition(t) * Math.PI * 2)
+            : 6;
+        c.setLineDash(available || t.done ? [] : [6, 7]);
+        c.stroke();
+        c.restore();
+      }
       if (world.level.theme === "diner" && t.pulse) {
         const open = available && world.pulseOpen(t);
         const lit = t.done || open;

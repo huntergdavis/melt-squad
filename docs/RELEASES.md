@@ -4,8 +4,8 @@ One complete twenty-scene world per release. No placeholder scenes count as
 playable. Every release must pass local tests, the GitHub Pages pipeline, and
 a live-browser check before the next world is started.
 
-**Implemented in this tree: 17/20 worlds · 340/400 scenes.**
-**Remaining campaign: 3 worlds · 60 scenes.**
+**Implemented in this tree: 18/20 worlds · 360/400 scenes.**
+**Remaining campaign: 2 worlds · 40 scenes.**
 
 | World | Name | Implemented | Release |
 | --- | --- | ---: | --- |
@@ -26,8 +26,8 @@ a live-browser check before the next world is started.
 | 15 | The Institute of Almost Possible | 20/20 | [pack-15](https://github.com/huntergdavis/melt-squad/releases/tag/pack-15) |
 | 16 | Last Exit Before Breakfast | 20/20 | [pack-16](https://github.com/huntergdavis/melt-squad/releases/tag/pack-16) |
 | 17 | Toybox After Bedtime | 20/20 | [pack-17](https://github.com/huntergdavis/melt-squad/releases/tag/pack-17) |
-| 18 | Apocalypse, Rescheduled | 0/20 | Next |
-| 19 | The Hotel Between Tuesdays | 0/20 | Planned |
+| 18 | Apocalypse, Rescheduled | 20/20 | [pack-18](https://github.com/huntergdavis/melt-squad/releases/tag/pack-18) |
+| 19 | The Hotel Between Tuesdays | 0/20 | Next |
 | 20 | The Great Thaw Festival | 0/20 | Planned |
 
 ## Campaign foundation
@@ -70,6 +70,8 @@ a live-browser check before the next world is started.
   breakfast rhythm lanes with ordered untimed play, and a gentle shared-table finale.
 - Implemented with World 17: real reversible ice volume, fixed character mass
   plus adjustable ballast on moving cups, and a three-arm biscuit planetarium.
+- Implemented with World 18: soup channels gated by actual frozen/remelted ice,
+  sequential tea chimes, and continuously adjustable real prism geometry.
 - Still requires real-device feedback: physical gamepad comfort and mobile
   touch ergonomics. Automated controller and phone-layout checks are not a claim
   that physical hardware was tested.

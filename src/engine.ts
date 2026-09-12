@@ -57,8 +57,7 @@ export interface Spark {
 export const temperatureColor = (t: number) =>
   t < 0 ? "#71d8ff" : t < 55 ? "#ffc983" : "#ff785a";
 export function requirements(t: Target, untimed = false): string {
-  if (t.reversibleIce)
-    return "ICE · cold grows / hot trims · water off to settle";
+  if (t.reversibleIce) return "ICE · cold grows / hot trims";
   if (t.pulse && !untimed)
     return "ON BEAT · " + requirements({ ...t, pulse: undefined });
   if (t.verb === "melt") return "HOT · 10° or more";
@@ -177,19 +176,35 @@ export class World {
       (plan.left.target === t.id || plan.right.target === t.id)
     );
   }
+  private isPrismControl(t: Target) {
+    const optics = this.level.optics;
+    const prism = optics?.prisms?.find((p) => p.target === t.id && p.height);
+    return (
+      t.reversibleIce === true &&
+      t.verb === "freeze" &&
+      !t.phase &&
+      !!prism &&
+      Number.isFinite(prism.height!.mark) &&
+      prism.height!.mark > 0 &&
+      prism.height!.mark <= 1 &&
+      !!optics?.detectors.length &&
+      optics.detectors.every((d) => this.level.needsSignals?.includes(d.id))
+    );
+  }
   private finishIfReady() {
     if (this.completed) return true;
     if (
       !this.targets.every(
         (t) =>
           t.done ||
-          (this.isBalanceCup(t) && this.signals.has(this.level.balance!.id)),
+          (this.isBalanceCup(t) && this.signals.has(this.level.balance!.id)) ||
+          (this.isPrismControl(t) && t.progress > 0),
       ) ||
       this.level.needsSignals?.some((id) => !this.signals.has(id))
     )
       return false;
     for (const t of this.targets)
-      if (this.isBalanceCup(t)) {
+      if (this.isBalanceCup(t) || this.isPrismControl(t)) {
         t.done = true;
         t.completedAt = this.elapsed;
       }
@@ -341,7 +356,7 @@ export class World {
     const heat = drop.temp,
       pressure = drop.pressure;
     if (t.reversibleIce) {
-      if (!this.isBalanceCup(t)) return;
+      if (!this.isBalanceCup(t) && !this.isPrismControl(t)) return;
       this.hits++;
       t.flash = 0.3;
       if (heat > -10 && heat < 10) {
@@ -355,7 +370,7 @@ export class World {
         0,
         1,
       );
-      t.feedback = direction > 0 ? "Growing ballast" : "Trimming ballast";
+      t.feedback = direction > 0 ? "Growing ice" : "Trimming ice";
       if (this.random() < 0.16) this.burst(x, y, "#84e7ef", 2);
       return;
     }

@@ -4,6 +4,7 @@ import type { Level } from "../types";
 import {
   availableRoutes,
   branchOpen,
+  iceSolidFraction,
   type FlowBranch,
   type FlowTarget,
 } from "./flow";
@@ -70,6 +71,128 @@ it("continuous inflow reaches a long route without evicting travelling water", (
   }
   expect(maximum).toBe(350);
   expect(w.completed).toBe(true);
+});
+
+describe("Live phase ice valves", () => {
+  const valve = (state: "formed" | "open"): FlowBranch => ({
+    target: "bowl",
+    iceGates: [{ target: "plug", state }],
+  });
+  const ice = (verb: string, progress: number, done = false): FlowTarget => ({
+    id: "plug",
+    verb,
+    progress,
+    done,
+  });
+
+  it("preserves the full solid plug across freeze-to-melt without final completion", () => {
+    for (const target of [ice("freeze", 1), ice("melt", 0)]) {
+      expect(target.done).toBe(false);
+      expect(iceSolidFraction(target)).toBe(1);
+      expect(branchOpen(valve("formed"), [target])).toBe(true);
+      expect(branchOpen(valve("open"), [target])).toBe(false);
+    }
+    for (const target of [ice("freeze", 0), ice("melt", 1, true)]) {
+      expect(iceSolidFraction(target)).toBe(0);
+      expect(branchOpen(valve("open"), [target])).toBe(true);
+      expect(branchOpen(valve("formed"), [target])).toBe(false);
+    }
+  });
+
+  it("requires actual full/open volume, not a historical done flag or a partly eroded plug", () => {
+    for (const target of [ice("freeze", 0.4, true), ice("melt", 0.4, true)]) {
+      expect(branchOpen(valve("open"), [target])).toBe(false);
+      expect(branchOpen(valve("formed"), [target])).toBe(false);
+    }
+    expect(iceSolidFraction(ice("freeze", 0.4))).toBe(0.4);
+    expect(iceSolidFraction(ice("melt", 0.4))).toBe(0.6);
+  });
+
+  it("fails closed for missing, non-ice, nonfinite, out-of-range, or invalid valve data", () => {
+    const invalid: FlowTarget[] = [
+      { id: "plug", done: true },
+      ice("fill", 1, true),
+      ice("melt", NaN),
+      ice("freeze", Infinity),
+      ice("freeze", -0.1),
+      ice("melt", 1.1),
+    ];
+    for (const target of invalid) {
+      expect(iceSolidFraction(target)).toBeUndefined();
+      expect(branchOpen(valve("open"), [target])).toBe(false);
+      expect(branchOpen(valve("formed"), [target])).toBe(false);
+    }
+    expect(branchOpen(valve("open"), [])).toBe(false);
+    const malformed = {
+      target: "bowl",
+      iceGates: [{ target: "plug", state: "unknown" }],
+    };
+    expect(branchOpen(malformed as FlowBranch, [ice("freeze", 0)])).toBe(false);
+  });
+
+  it("reroutes only when both plugs really form and rechecks a formerly open parcel route after closure/reset", () => {
+    const routes: FlowBranch[] = [
+      {
+        target: "left",
+        overflowFrom: "source",
+        iceGates: [{ target: "plug", state: "open" }],
+      },
+      {
+        target: "right",
+        overflowFrom: "source",
+        iceGates: [{ target: "other", state: "open" }],
+      },
+      {
+        target: "middle",
+        overflowFrom: "source",
+        iceGates: [
+          { target: "plug", state: "formed" },
+          { target: "other", state: "formed" },
+        ],
+      },
+    ];
+    const targets: FlowTarget[] = [
+      { id: "source", done: true },
+      ice("freeze", 0),
+      { id: "other", verb: "freeze", progress: 0, done: false },
+    ];
+    expect(availableRoutes(routes, targets)).toEqual([0, 1]);
+    const travellingBranch = routes[0];
+    Object.assign(targets[1], { verb: "melt", progress: 0 });
+    expect(branchOpen(travellingBranch, targets)).toBe(false);
+    expect(availableRoutes(routes, targets)).toEqual([1]);
+    Object.assign(targets[2], { verb: "melt", progress: 0 });
+    expect(availableRoutes(routes, targets)).toEqual([2]);
+    Object.assign(targets[1], { progress: 0.3 });
+    expect(availableRoutes(routes, targets)).toEqual([]);
+    Object.assign(targets[1], { progress: 1, done: true });
+    expect(availableRoutes(routes, targets)).toEqual([0]);
+    Object.assign(targets[2], { progress: 1, done: true });
+    expect(availableRoutes(routes, targets)).toEqual([0, 1]);
+    targets[0].done = false;
+    expect(availableRoutes(routes, targets)).toEqual([]);
+  });
+
+  it("combines live valves with all existing gate, source, and decorative-plug requirements", () => {
+    const route = {
+      ...valve("open"),
+      gate: "gate",
+      overflowFrom: "source",
+      closedBy: "drainPlug",
+    };
+    const targets = [
+      ice("freeze", 0),
+      { id: "gate", done: true },
+      { id: "source", done: true },
+      { id: "drainPlug", done: false },
+    ];
+    expect(branchOpen(route, targets)).toBe(true);
+    targets[3].done = true;
+    expect(branchOpen(route, targets)).toBe(false);
+    targets[3].done = false;
+    targets[1].done = false;
+    expect(branchOpen(route, targets)).toBe(false);
+  });
 });
 
 describe("Overflow routing prerequisites", () => {

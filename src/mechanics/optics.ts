@@ -26,6 +26,8 @@ export interface OpticsPlan {
     target: string;
     vertices: Point[];
     refractiveIndex: number;
+    /** Grow vertically from a fixed base. The notch is a visual guide only. */
+    height?: { mark: number };
   }[];
   /** Ideal lossless 50:50 coated interfaces, enabled by completed targets.
    * The finite segment is the cube's coated diagonal, not its outer square.
@@ -50,6 +52,8 @@ export interface OpticsTarget {
   w: number;
   h: number;
   done: boolean;
+  progress?: number;
+  reversibleIce?: boolean;
   cells: readonly number[];
   cols: number;
   rows: number;
@@ -79,6 +83,28 @@ type Surface = Pick<Reflector, "x" | "y" | "length" | "tangent">;
 type Boundary = Surface & { outward: Point; refractiveIndex: number };
 type Prism = { vertices: Point[]; boundaries: Boundary[] };
 const finite = (...values: number[]) => values.every(Number.isFinite);
+export function activePrismVertices(
+  prism: NonNullable<OpticsPlan["prisms"]>[number],
+  target: OpticsTarget | undefined,
+): Point[] | undefined {
+  if (!prism.height) return target?.done ? prism.vertices : undefined;
+  const amount = target?.progress;
+  if (
+    !target?.reversibleIce ||
+    target.verb !== "freeze" ||
+    amount === undefined ||
+    !finite(amount, prism.height.mark) ||
+    amount <= 0 ||
+    amount > 1 ||
+    prism.height.mark <= 0 ||
+    prism.height.mark > 1 ||
+    prism.vertices.length < 3 ||
+    prism.vertices.some(([x, y]) => !finite(x, y))
+  )
+    return;
+  const base = Math.max(...prism.vertices.map(([, y]) => y));
+  return prism.vertices.map(([x, y]) => [x, base - (base - y) * amount]);
+}
 const cross = (a: Point, b: Point) => a[0] * b[1] - a[1] * b[0];
 
 function normalized(x: number, y: number): Point | undefined {
@@ -352,7 +378,13 @@ export function traceOptics(
     .filter((splitter): splitter is Reflector => !!splitter);
   const ice = iceCells(targets);
   const candidates = (plan.prisms ?? [])
-    .filter((prism) => completed.has(prism.target))
+    .flatMap((prism) => {
+      const vertices = activePrismVertices(
+        prism,
+        targets.find((t) => t.id === prism.target),
+      );
+      return vertices ? [{ ...prism, vertices }] : [];
+    })
     .map(prismGeometry)
     .filter((prism): prism is Prism => !!prism);
   // The supported medium boundary is air ↔ one prism. Reject touching/overlapping

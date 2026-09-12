@@ -15,6 +15,7 @@ import { myceliumLevels } from "./packs/14";
 import { instituteLevels } from "./packs/15";
 import { dinerLevels } from "./packs/16";
 import { toyboxLevels } from "./packs/17";
+import { apocalypseLevels } from "./packs/18";
 
 const target = (
   id: string,
@@ -479,4 +480,5 @@ export const levels: Level[] = [
   ...instituteLevels,
   ...dinerLevels,
   ...toyboxLevels,
+  ...apocalypseLevels,
 ];

@@ -2,7 +2,14 @@
 
 ## Campaign expansion — one complete world per release
 
-Current implementation: **340 scenes / 17 worlds**. See the [release ledger](RELEASES.md).
+Current implementation: **360 scenes / 18 worlds**. See the [release ledger](RELEASES.md).
+
+Next requested feature, before Worlds 19–20:
+
+- [ ] Saved difficulty: **Easy** (current recipe hints, default), **Normal**
+      (no temperature/pressure recipe hints), and **Impossible Challenge**
+      (also hide target boxes until correctly mixed water discovers them).
+      Keep the nozzle controls readable and allow changing modes without losing work.
 
 - [x] Design 19 new themed levels of 20 scenes each: 380 new scenes, 400 total
       including the existing collection.
@@ -47,6 +54,9 @@ Current implementation: **340 scenes / 17 worlds**. See the [release ledger](REL
       sequential syrup overflow, accessible breakfast beats, and a place for the cook.
 - [x] Pack 17: twenty bedtime toybox scenes, continuously adjustable ice ballast,
       three orbiting biscuit moons, and a tiny star leading a nightlight parade.
+
+- [x] Pack 18: twenty reassuring apocalypse scenes, real remeltable soup gates,
+      three adjustable ice prisms, tea chimes, and an anxious moth joining the picnic.
 
 Start with the [campaign plan](CAMPAIGN_BACKLOG.md) and
 [complete 380-scene catalog](campaign/SCENE_CATALOG.md). Those source designs

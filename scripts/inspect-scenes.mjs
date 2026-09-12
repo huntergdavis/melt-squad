@@ -19,7 +19,17 @@ try {
       const level = levels.find((level) => level.id === id);
       if (!level) throw new Error("Unknown scene: " + id);
       const world = new World(level);
-      if (world.targets.some((t) => t.reversibleIce)) {
+      if (world.level.id === "18.11") {
+        const { solveSoupTributaries } = await import(
+          "/melt-squad/scripts/solve-soup.ts"
+        );
+        solveSoupTributaries(world);
+      } else if (world.level.optics?.prisms?.some((p) => p.height)) {
+        const { solvePrismHeights } = await import(
+          "/melt-squad/scripts/solve-prisms.ts"
+        );
+        solvePrismHeights(world);
+      } else if (world.targets.some((t) => t.reversibleIce)) {
         const { solveBallast } = await import(
           "/melt-squad/scripts/solve-ballast.ts"
         );

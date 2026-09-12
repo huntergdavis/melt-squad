@@ -360,12 +360,19 @@ function updateHUD() {
       : String(world.targets.indexOf(t) + 1);
     row.querySelector("small")!.textContent = t.done
       ? t.reversibleIce
-        ? "Balanced · ballast stays just this size."
+        ? world.level.optics?.prisms?.some((p) => p.target === t.id && p.height)
+          ? "Light aligned · ice stays just this size."
+          : "Balanced · ballast stays just this size."
         : "A little good deed, done."
       : !available
         ? world.waitingFor(t)
         : (t.reversibleIce
-            ? Math.round(t.progress * 100) + "% ICE CAPACITY · "
+            ? Math.round(t.progress * 100) +
+              (world.level.optics?.prisms?.some(
+                (p) => p.target === t.id && p.height,
+              )
+                ? "% ICE HEIGHT · "
+                : "% ICE CAPACITY · ")
             : "") +
           (t.phase
             ? `STEP ${t.phaseStep + 1}/${t.phase.steps.length} · `
