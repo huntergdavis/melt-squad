@@ -2,7 +2,9 @@
 
 ## Campaign expansion — one complete world per release
 
-Current implementation: **380 scenes / 19 worlds**. See the [release ledger](RELEASES.md).
+Current implementation: **400 scenes / 20 worlds — campaign complete**.
+See the [release ledger](RELEASES.md). Optional follow-up work below is not part
+of the completed twenty-world commitment.
 
 Difficulty feature, before Worlds 19–20:
 
@@ -21,7 +23,8 @@ Difficulty feature, before Worlds 19–20:
       rescue atlas, themed scene paths, quick Continue, and accessible controls.
 - [x] Implement world-map navigation; preserve
       save IDs and clearly distinguish playable content from coming-later previews.
-- [ ] Build and playtest the new content one themed pack at a time.
+- [x] Build and validate the new content one themed pack at a time, with
+      actual-water solutions, visual reviews, and automated browser play.
 - [x] Pack 02: twenty Sock Exchange scenes, original cast, postcards, routed
       rinse water, moving care pads, and stationary assist.
 - [x] Pack 03: twenty Brine & Parcel scenes, an original reef cast, branching
@@ -61,7 +64,8 @@ Difficulty feature, before Worlds 19–20:
       three adjustable ice prisms, tea chimes, and an anxious moth joining the picnic.
 - [x] Pack 19: twenty impossible-hotel scenes, a coherent moving aquarium cabin,
       actual room-service channels, and a snail porter who remembers every guest.
-- [ ] Pack 20: The Great Thaw Festival — the final twenty-scene shared celebration.
+- [x] Pack 20: The Great Thaw Festival — twenty shared celebrations, all nineteen
+      previous delegations, independent service branches, and a seat for the volunteer.
 
 Start with the [campaign plan](CAMPAIGN_BACKLOG.md) and
 [complete 380-scene catalog](campaign/SCENE_CATALOG.md). Those source designs
@@ -97,7 +101,7 @@ are distinct from the implemented/released counts in the release ledger.
 ## P2 — expand the dispatch book
 
 - [x] Design content packs toward hundreds of calls; see the campaign backlog.
-- [ ] Implement those content packs after validating their representative slices.
+- [x] Implement all nineteen expansion packs after validating their representative slices.
 - [ ] More spatial puzzles: mirrors, pipes, pressure gates, balance, insulation.
 - [ ] Daily rescue, optional challenge medals, a postcard collection.
 - [ ] Level-author preview tools and content validation outside the test suite.

@@ -27,7 +27,8 @@ export type Theme =
   | "diner"
   | "toybox"
   | "apocalypse"
-  | "hotel";
+  | "hotel"
+  | "festival";
 export type PropKind =
   | "cup"
   | "wizard"
@@ -445,7 +446,33 @@ export type PropKind =
   | "returningkeys"
   | "hotelrouteboard"
   | "hotelpanorama"
-  | "alwayscard";
+  | "alwayscard"
+  | "festivalpigeon"
+  | "firstwelcome"
+  | "sockarch"
+  | "postaltriangle"
+  | "circusqueue"
+  | "delightpermit"
+  | "dessertcitizens"
+  | "tailroom"
+  | "flintcounter"
+  | "endingnest"
+  | "tryingpodium"
+  | "everypairdance"
+  | "quietdreamtent"
+  | "twoweatherpicnic"
+  | "extrastoptrain"
+  | "firstsketchexhibit"
+  | "crewbreakfast"
+  | "toyparade"
+  | "tomorrowflowers"
+  | "volunteerroom"
+  | "festivalpanorama"
+  | "festivalcup"
+  | "festivalbasin"
+  | "festivalvase"
+  | "festivalbanner"
+  | "festivalmedal";
 export interface PhaseStep {
   verb: "freeze" | "melt";
   name: string;

@@ -17,6 +17,7 @@ import { dinerLevels } from "./packs/16";
 import { toyboxLevels } from "./packs/17";
 import { apocalypseLevels } from "./packs/18";
 import { hotelLevels } from "./packs/19";
+import { festivalLevels } from "./packs/20";
 
 const target = (
   id: string,
@@ -483,4 +484,5 @@ export const levels: Level[] = [
   ...toyboxLevels,
   ...apocalypseLevels,
   ...hotelLevels,
+  ...festivalLevels,
 ];

@@ -4,8 +4,8 @@ One complete twenty-scene world per release. No placeholder scenes count as
 playable. Every release must pass local tests, the GitHub Pages pipeline, and
 a live-browser check before the next world is started.
 
-**Implemented in this tree: 19/20 worlds · 380/400 scenes.**
-**Remaining campaign: 1 world · 20 scenes.**
+**Implemented in this tree: 20/20 worlds · 400/400 scenes.**
+**Remaining campaign: 0 worlds · 0 scenes.**
 
 | World | Name | Implemented | Release |
 | --- | --- | ---: | --- |
@@ -28,7 +28,7 @@ a live-browser check before the next world is started.
 | 17 | Toybox After Bedtime | 20/20 | [pack-17](https://github.com/huntergdavis/melt-squad/releases/tag/pack-17) |
 | 18 | Apocalypse, Rescheduled | 20/20 | [pack-18](https://github.com/huntergdavis/melt-squad/releases/tag/pack-18) |
 | 19 | The Hotel Between Tuesdays | 20/20 | [pack-19](https://github.com/huntergdavis/melt-squad/releases/tag/pack-19) |
-| 20 | The Great Thaw Festival | 0/20 | Next |
+| 20 | The Great Thaw Festival | 20/20 | [pack-20](https://github.com/huntergdavis/melt-squad/releases/tag/pack-20) |
 
 ## Campaign foundation
 
@@ -78,6 +78,10 @@ are unchanged; this setting also applies to the new hotel scenes.
   sequential tea chimes, and continuously adjustable real prism geometry.
 - Implemented with World 19: one rigid moving aquarium cabin, three gated
   room-service tributaries, and an actual ice-hole welcome-bowl puzzle.
+- Implemented with World 20: nineteen crossover contributions, a volunteer
+  pigeon's own welcome, independent service branches, and a seven-task finale
+  whose panorama lights only after the local rescue is complete. All 400 calls
+  remain directly accessible; earlier medals never gate the celebration.
 - Still requires real-device feedback: physical gamepad comfort and mobile
   touch ergonomics. Automated controller and phone-layout checks are not a claim
   that physical hardware was tested.

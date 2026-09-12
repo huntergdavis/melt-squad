@@ -19,6 +19,7 @@ import { drawDiner } from "./art/diner";
 import { drawToybox } from "./art/toybox";
 import { drawApocalypse } from "./art/apocalypse";
 import { drawHotel } from "./art/hotel";
+import { drawFestival } from "./art/festival";
 import { propIsReady } from "./art/state";
 const motionSafe = (time: number, reduced: boolean) => (reduced ? 0 : time);
 
@@ -46,6 +47,7 @@ const palettes: Record<Theme, [string, string, string]> = {
   toybox: ["#414361", "#c2b6cb", "#aa939b"],
   apocalypse: ["#61566e", "#e5c6b5", "#afa58d"],
   hotel: ["#56516b", "#e3d5c3", "#a89c92"],
+  festival: ["#c6d9cb", "#f5e5bb", "#b6ba94"],
 };
 export class Renderer {
   ctx: CanvasRenderingContext2D;
@@ -153,7 +155,8 @@ export class Renderer {
       drawDiner(this, kind, happy, t, tint, progress) ||
       drawToybox(this, kind, happy, t, tint, progress) ||
       drawApocalypse(this, kind, happy, t, tint, progress) ||
-      drawHotel(this, kind, happy, t, tint, progress)
+      drawHotel(this, kind, happy, t, tint, progress) ||
+      drawFestival(this, kind, happy, t, tint, progress)
     ) {
       c.restore();
       return;
@@ -457,6 +460,15 @@ export class Renderer {
     } else if (world.level.theme === "garden") {
       for (let i = 0; i < 7; i++)
         this.circle(i * 165, 487, 100 + (i % 3) * 20, "#9fae83");
+    } else if (world.level.theme === "festival") {
+      for (const x of [85, 790]) {
+        this.round(x, 195, 85, 260, 24, "#e8ebd4", "#759582");
+        this.line([x + 42, 180, x + 42, 445], "#759582", 4);
+        this.circle(x + 42, 190, 23, "#f6d58b");
+      }
+      this.line([65, 475, 895, 475], "#ede2c1", 8);
+      for (let x = 85; x < 890; x += 62)
+        this.round(x, 487, 46, 12, 4, "#899f88");
     } else if (world.level.theme === "hotel") {
       for (const x of [100, 780]) {
         this.round(x, 145, 80, 312, 32, "#ede3d1", "#af9265");
@@ -930,6 +942,17 @@ export class Renderer {
         100,
       );
     }
+    if (world.level.theme === "festival") {
+      this.round(210, 63, 540, 58, 15, "#fff0d2", "#90a68a");
+      c.fillStyle = "#496557";
+      c.textAlign = "center";
+      c.font = "600 23px Outfit, sans-serif";
+      c.fillText(
+        world.completed ? "GLAD YOU CAME." : "THE GREAT THAW FESTIVAL",
+        480,
+        100,
+      );
+    }
     if (world.level.theme === "hotel") {
       this.round(210, 63, 540, 58, 15, "#fff0d2", "#b39a72");
       this.circle(227, 92, 3, "#9f825c");
@@ -1227,7 +1250,15 @@ export class Renderer {
         done,
         motion,
         p.tint,
-        target ? targetProgress(target) : Number(done),
+        p.kind === "festivalpanorama"
+          ? world.completed
+            ? this.reducedMotion
+              ? 1
+              : clamp(world.celebration / 1.2, 0, 1)
+            : 0
+          : target
+            ? targetProgress(target)
+            : Number(done),
       );
     };
     for (const p of world.level.props) if (!p.foreground) drawSceneProp(p);

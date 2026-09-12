@@ -27,7 +27,10 @@ export function drawAtlas(
 ) {
   const world = campaign.find((item) => item.id === worldId);
   if (!world) {
-    root.innerHTML = `<div class="board-heading"><div><div class="eyebrow">THE RESCUE ATLAS</div><h2>Small worlds. Big good deeds.</h2></div><span class="board-note">${campaign.filter((w) => inPack(w.id).length === 20).length} worlds open · more on the way</span></div>
+    const openWorlds = campaign.filter(
+      (w) => inPack(w.id).length === 20,
+    ).length;
+    root.innerHTML = `<div class="board-heading"><div><div class="eyebrow">THE RESCUE ATLAS</div><h2>Small worlds. Big good deeds.</h2></div><span class="board-note">${openWorlds} worlds open · ${openWorlds === campaign.length ? `${levels.length} rescue calls` : "more on the way"}</span></div>
       <div class="world-atlas" aria-label="Choose a world">${campaign
         .map((item) => {
           const progress = packProgress(item.id, save);
@@ -77,7 +80,7 @@ export function drawAtlas(
         return `<button class="scene-node ${stars ? "rescued" : ""} ${scene?.id === selected?.id ? "selected" : ""} ${!scene ? "unbuilt" : ""}" data-node="${i}" ${scene ? `data-scene="${scene.id}"` : 'aria-disabled="true"'} style="--x:${x}%;--y:${y}%" aria-label="Scene ${String(i + 1).padStart(2, "0")}: ${scene ? escapeHtml(scene.name) : "Coming later"}${stars ? `, completed, ${stars} stars` : scene ? ", available" : ""}" ${scene?.id === selected?.id ? 'aria-current="true"' : ""}><span class="node-circle">${stars ? "✓" : String(i + 1).padStart(2, "0")}</span><span class="node-caption">${scene ? escapeHtml(scene.name) : "Coming later"}</span><span class="node-medals" aria-hidden="true">${stars ? "★".repeat(stars) : scene?.id === next?.id ? "NEXT ↑" : ""}</span></button>`;
       }).join("")}
     </div><aside class="rescue-preview" aria-label="Selected rescue">${selected ? `<canvas id="scene-preview" aria-hidden="true"></canvas><div class="eyebrow">SCENE ${String(scenes.indexOf(selected) + 1).padStart(2, "0")} · ${selected.targets.length} LITTLE TASKS</div><h2>${escapeHtml(selected.name)}</h2><p>${escapeHtml(selected.pitch.split(". ")[0])}${selected.pitch.includes(". ") ? "." : ""}</p><small>${save.stars[selected.id] ? `${"★".repeat(save.stars[selected.id])} · Best ${Math.round(save.best[selected.id] ?? 0)}s` : "No lives. No rush. Just help."}</small><button class="primary" data-launch="${selected.id}">${save.stars[selected.id] ? "Replay rescue" : "Start this rescue"} ↗</button>` : `<div class="preview-closed">✉</div><h2>More good deeds are coming.</h2><p>This world's twenty rescues are designed, but not playable yet. No medals needed to enter when it opens.</p><button class="quiet" data-action="atlas">Explore open worlds</button>`}</aside></div>
-    <p class="map-legend">✓ Rescued · Numbers: available · Dashed: coming later. Follow the story trail, or pick any available rescue.</p>`;
+    <p class="map-legend">✓ Rescued · Numbers: available${scenes.length < 20 ? " · Dashed: coming later" : ""}. Follow the story trail, or pick any available rescue.</p>`;
   if (selected) {
     const preview = new World(selected);
     preview.difficulty = save.difficulty ?? "easy";

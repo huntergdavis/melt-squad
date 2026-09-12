@@ -21,6 +21,7 @@ export const mapLandmarks: Record<string, [PropKind, PropKind, PropKind]> = {
   "17": ["captainbutton", "glimstar", "junduck"],
   "18": ["annmoth", "breakfastpony", "pocketgiant"],
   "19": ["yesterdayporter", "betweenreceptionist", "hotelbell"],
+  "20": ["festivalbanner", "festivalmedal", "festivalpigeon"],
 };
 
 const themes: [string, string, PropKind, string][] = [
@@ -141,7 +142,7 @@ const themes: [string, string, PropKind, string][] = [
   [
     "The Great Thaw Festival",
     "Everybody brings something. Everybody belongs.",
-    "sock",
+    "festivalpigeon",
     "#eaddaf",
   ],
 ];

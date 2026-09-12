@@ -1,22 +1,24 @@
 # Melt Squad — the 400-scene campaign
 
-**Design backlog complete: 19 new themed levels × 20 scenes = 380 new scene concepts.**
+**Campaign implemented: 20 worlds × 20 scenes = 400 playable rescues.**
+The nineteen expansion packs add 380 scenes to the original twenty.
 
 The [full scene catalog](campaign/SCENE_CATALOG.md) contains every new scene:
 stable ID, visible setup, concrete puzzle sequence, visual/story payoff,
 theme crossovers, and explicit future-system dependencies. Each level also has
 its own premise, recurring cast, story arc, signature, and reusable art kit.
 
-The design milestone is complete. Implementation proceeds one complete world
-at a time: see the [release ledger](RELEASES.md) for current playable counts,
-release links, and remaining work. The source cards preserve the design baseline.
+Design and implementation are complete. Each expansion was built and validated
+one world at a time: see the [release ledger](RELEASES.md) for playable counts
+and releases. The source cards preserve the original design baseline; language
+about future systems below describes their authoring contract, not unfinished calls.
 
 ```text
-MELT SQUAD — 400-scene plan
+MELT SQUAD — 400-scene campaign
 |
-+-- Level 01: First Shift ........... 20 existing scenes
++-- Level 01: First Shift ........... 20 playable scenes
 |
-+-- Levels 02–20 ................... 380 designed scenes
++-- Levels 02–20 ................... 380 playable scenes
     |
     +-- 19 distinct themed levels
     +-- 20 scenes per level
@@ -91,23 +93,25 @@ existing setting influences: kitchen, cave, garden, cosmos, and town.
       must not lock released scenes behind stars or unfinished content.
 - [x] Show per-level progress and distinguish designed slots from playable
       scenes. Unbuilt scenes must not award completion or inflate playable counts.
-- [ ] Support each pack's reusable art kit and an authored before/after
+- [x] Support each pack's reusable art kit and an authored before/after
       presentation. Existing targets remain authoritative for success.
-- [ ] Start with a small complete Level 02 slice, validate its feel, then fill
+- [x] Start with a small complete Level 02 slice, validate its feel, then fill
       out the pack and repeat. Do not bulk-import 380 untested layouts.
 
 ### P1 — build the current-rules scenes, one coherent pack at a time
 
-- [ ] Use each scene card to author actual targets, coordinates, prerequisite
+- [x] Use each scene card to author actual targets, coordinates, prerequisite
       IDs, settings, feedback, hint, scoring values, and final illustration.
-- [ ] Reuse art within a pack, but preserve each scene's actual visual problem
+- [x] Reuse art within a pack, but preserve each scene's actual visual problem
       and before/after change; a new title is not a new puzzle.
-- [ ] Keep recurring cast names and behaviors consistent across crossovers.
-- [ ] Verify reachability, hole-through-to-basin behavior where specified,
+- [x] Keep recurring cast names and behaviors consistent across crossovers.
+- [x] Verify reachability, hole-through-to-basin behavior where specified,
       cold/hot changes, and clear target signage.
-- [ ] Playtest keyboard, controller, and touch on representative scenes.
-- [ ] Commit and release complete feature/content slices when implementation
-      resumes, with a bounded check appropriate to the changed systems.
+- [x] Exercise keyboard, simulated controller, and touch/browser layout on
+      representative scenes. Physical controller/phone feedback remains an
+      explicit follow-up in [BACKLOG.md](BACKLOG.md), not an automated-test claim.
+- [x] Commit and release complete content slices with bounded checks appropriate
+      to each changed system.
 
 “CURRENT RULES” in the catalog means the target mechanics already exist,
 **not** that art, layouts, animation, or playtesting are done.
@@ -127,6 +131,10 @@ The catalog gives exact affected scene IDs and counts. Build a small reusable
 system slice before its dependent scenes. Pending experimental scenes should
 not prevent access to the rest of their pack or the campaign finale; a pack
 with unfinished scenes must still report those scenes as unfinished.
+
+All six required system families now have implemented campaign examples and
+bounded mechanical tests; the release ledger records which world introduced
+each extension. No experimental scene remains a placeholder.
 
 ## Source, review, and maintenance
 
