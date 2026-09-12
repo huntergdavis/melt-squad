@@ -2,7 +2,7 @@
 
 ## Campaign expansion — one complete world per release
 
-Current implementation: **40 scenes / 2 worlds**. See the [release ledger](RELEASES.md).
+Current implementation: **60 scenes / 3 worlds**. See the [release ledger](RELEASES.md).
 
 - [x] Design 19 new themed levels of 20 scenes each: 380 new scenes, 400 total
       including the existing collection.
@@ -15,6 +15,8 @@ Current implementation: **40 scenes / 2 worlds**. See the [release ledger](RELEA
 - [ ] Build and playtest the new content one themed pack at a time.
 - [x] Pack 02: twenty Sock Exchange scenes, original cast, postcards, routed
       rinse water, moving care pads, and stationary assist.
+- [x] Pack 03: twenty Brine & Parcel scenes, an original reef cast, branching
+      postal water, an express snail, and an invitation-to-friendship story.
 - [x] In-game credits with local Kenney and font license acknowledgements.
 
 Start with the [campaign plan](CAMPAIGN_BACKLOG.md) and

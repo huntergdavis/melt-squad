@@ -3,6 +3,7 @@ import { levels } from "./levels";
 import { World, requirements, type Drop } from "./engine";
 import { deadzone, padControls } from "./input";
 import { loadSave, recordWin, writeSave } from "./save";
+import release from "../public/release.json" with { type: "json" };
 const idle = { x: 0, y: 0, heat: 0, pressure: 0, tilt: 0 };
 const drop = (temp: number, pressure = 45): Drop => ({
   x: 0,
@@ -16,7 +17,8 @@ const drop = (temp: number, pressure = 45): Drop => ({
 
 describe("Authored calls", () => {
   it("contains complete packs of unique, valid, independently playable levels", () => {
-    expect(levels).toHaveLength(40);
+    expect(levels).toHaveLength(release.scenes);
+    expect(release.scenes).toBe(release.worlds * 20);
     expect(new Set(levels.map((l) => l.id)).size).toBe(levels.length);
     for (const l of levels) {
       const ids = l.targets.map((t) => t.id);

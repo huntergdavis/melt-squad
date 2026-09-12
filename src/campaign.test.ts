@@ -11,6 +11,7 @@ import {
 } from "./campaign";
 import { loadSave } from "./save";
 import { levels } from "./levels";
+import release from "../public/release.json" with { type: "json" };
 const idle = { x: 0, y: 0, heat: 0, pressure: 0, tilt: 0 };
 const drop: Drop = {
   x: 0,
@@ -31,12 +32,16 @@ describe("The rescue atlas", () => {
       available: 20,
       complete: false,
     });
-    expect(packProgress("03", save)).toEqual({
+    expect(
+      packProgress(String(release.worlds + 1).padStart(2, "0"), save),
+    ).toEqual({
       done: 0,
       available: 0,
       complete: false,
     });
     expect(inPack("01")[0].id).toBe("cup");
+    for (let i = 1; i <= release.worlds; i++)
+      expect(inPack(String(i).padStart(2, "0"))).toHaveLength(20);
     expect(sockLevels.map((l) => l.id)).toEqual(
       Array.from(
         { length: 20 },

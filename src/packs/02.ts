@@ -1,5 +1,5 @@
 import type { Level, Target, Prop, PropKind, Verb } from "../types";
-import designs from "../../docs/campaign/02-06.json";
+import designs from "../../docs/campaign/02-06.json" with { type: "json" };
 
 const t = (
   id: string,

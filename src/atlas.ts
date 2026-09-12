@@ -4,6 +4,7 @@ import {
   mapPoint,
   nextRescue,
   packProgress,
+  mapLandmarks,
 } from "./campaign";
 import { levels } from "./levels";
 import { World } from "./engine";
@@ -106,21 +107,21 @@ export function drawAtlas(
       progress.done >= 4,
     );
     art.prop(
-      world.id === "02" ? "washer" : "wizard",
+      (mapLandmarks[world.id] ?? mapLandmarks["01"])[0],
       width * 0.62,
       height * 0.44,
       scale,
       progress.done >= 8,
     );
     art.prop(
-      world.id === "02" ? "sock" : "duck",
+      (mapLandmarks[world.id] ?? mapLandmarks["01"])[1],
       width * 0.39,
       height * 0.63,
       scale,
       progress.done >= 12,
     );
     art.prop(
-      world.id === "02" ? "moth" : "heart",
+      (mapLandmarks[world.id] ?? mapLandmarks["01"])[2],
       width * 0.52,
       height * 0.8,
       scale,

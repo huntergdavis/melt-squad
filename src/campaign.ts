@@ -1,6 +1,11 @@
 import { levels } from "./levels";
 import type { Level, PropKind } from "./types";
 import type { Save } from "./save";
+export const mapLandmarks: Record<string, [PropKind, PropKind, PropKind]> = {
+  "01": ["wizard", "duck", "heart"],
+  "02": ["washer", "sock", "moth"],
+  "03": ["mailbox", "eel", "octopus"],
+};
 
 const themes: [string, string, PropKind, string][] = [
   [
@@ -18,7 +23,7 @@ const themes: [string, string, PropKind, string][] = [
   [
     "Brine & Parcel",
     "Deliver a little friendship, above and below sea level.",
-    "letter",
+    "crab",
     "#b7dfe0",
   ],
   [

@@ -4,15 +4,15 @@ One complete twenty-scene world per release. No placeholder scenes count as
 playable. Every release must pass local tests, the GitHub Pages pipeline, and
 a live-browser check before the next world is started.
 
-**Implemented in this tree: 2/20 worlds · 40/400 scenes.**
-**Remaining campaign: 18 worlds · 360 scenes.**
+**Implemented in this tree: 3/20 worlds · 60/400 scenes.**
+**Remaining campaign: 17 worlds · 340 scenes.**
 
 | World | Name | Implemented | Release |
 | --- | --- | ---: | --- |
 | 01 | First Shift | 20/20 | Original launch |
 | 02 | The Midnight Sock Exchange | 20/20 | [pack-02](https://github.com/huntergdavis/melt-squad/releases/tag/pack-02) |
-| 03 | Brine & Parcel | 0/20 | Next |
-| 04 | The Mostly Clockwork Circus | 0/20 | Planned |
+| 03 | Brine & Parcel | 20/20 | [pack-03](https://github.com/huntergdavis/melt-squad/releases/tag/pack-03) |
+| 04 | The Mostly Clockwork Circus | 0/20 | Next |
 | 05 | Borough of Very Small Affairs | 0/20 | Planned |
 | 06 | The Great Pudding Republic | 0/20 | Planned |
 | 07 | Fossilbean Preschool | 0/20 | Planned |

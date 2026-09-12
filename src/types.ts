@@ -5,7 +5,8 @@ export type Theme =
   | "garden"
   | "cosmos"
   | "town"
-  | "laundry";
+  | "laundry"
+  | "reef";
 export type PropKind =
   | "cup"
   | "wizard"
@@ -34,7 +35,17 @@ export type PropKind =
   | "worm"
   | "cape"
   | "trousers"
-  | "receipt";
+  | "receipt"
+  | "crab"
+  | "eel"
+  | "octopus"
+  | "snail"
+  | "mailbox"
+  | "shell"
+  | "divingbell"
+  | "parcel"
+  | "anemone"
+  | "bubble";
 export interface Target {
   id: string;
   name: string;

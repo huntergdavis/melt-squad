@@ -1,5 +1,6 @@
 import { CELL, temperatureColor, type World } from "./engine";
 import { H, W, clamp, type PropKind, type Theme } from "./types";
+import { drawPostal } from "./art/postal";
 const motionSafe = (time: number, reduced: boolean) => (reduced ? 0 : time);
 
 const palettes: Record<Theme, [string, string, string]> = {
@@ -9,6 +10,7 @@ const palettes: Record<Theme, [string, string, string]> = {
   cosmos: ["#283d58", "#738b99", "#304c64"],
   town: ["#d9e3db", "#e8d8bd", "#acc0b2"],
   laundry: ["#363958", "#9490b2", "#555674"],
+  reef: ["#245967", "#7fb5b2", "#517f83"],
 };
 export class Renderer {
   ctx: CanvasRenderingContext2D;
@@ -98,6 +100,10 @@ export class Renderer {
     c.save();
     c.translate(x, y);
     c.scale(scale, scale);
+    if (drawPostal(this, kind, happy, t, tint)) {
+      c.restore();
+      return;
+    }
     if (kind === "ghost") {
       c.translate(0, Math.sin(t * 1.5) * 5);
       this.round(-38, -85, 76, 85, 37, "#ffe4ac");
@@ -397,6 +403,37 @@ export class Renderer {
     } else if (world.level.theme === "garden") {
       for (let i = 0; i < 7; i++)
         this.circle(i * 165, 487, 100 + (i % 3) * 20, "#9fae83");
+    } else if (world.level.theme === "reef") {
+      for (let i = 0; i < 6; i++) {
+        const x = 80 + i * 163;
+        this.round(x, 80, 116, 103, 16, "#deaeaa");
+        this.round(x + 12, 97, 92, 55, 9, "#245f70");
+        this.line([x + 15, 165, x + 101, 165], "#f0d4b6", 5);
+      }
+      for (let i = 0; i < 14; i++) {
+        const x = i < 7 ? 24 + i * 13 : 835 + (i - 7) * 15;
+        this.line(
+          [
+            x,
+            504,
+            x - 9,
+            460,
+            x + Math.sin(motion + i) * 12,
+            408 - (i % 4) * 30,
+          ],
+          "#9fcab4",
+          10,
+        );
+      }
+      for (let i = 0; i < 10; i++) {
+        const x = (i * 113 + 37) % W,
+          y = H - ((i * 71 + motion * 9) % H);
+        c.beginPath();
+        c.arc(x, y, 7 + (i % 3) * 4, 0, Math.PI * 2);
+        c.strokeStyle = "#d9f7f0";
+        c.lineWidth = 2;
+        c.stroke();
+      }
     } else {
       for (let i = 0; i < 70; i++)
         this.circle(
@@ -436,6 +473,17 @@ export class Renderer {
           motion,
           ["#c9b6dc", "#a4cbbf", "#e4b697"][i % 3],
         );
+    }
+    if (world.level.theme === "reef") {
+      this.round(235, 63, 490, 58, 17, "#244f60ed", "#dca8a0");
+      c.fillStyle = "#fff0ce";
+      c.textAlign = "center";
+      c.font = "600 25px Outfit, sans-serif";
+      c.fillText(
+        world.completed ? "DELIVERED WITH FEELING." : "BRINE & PARCEL",
+        480,
+        100,
+      );
     }
     this.round(82, 487, 796, 23, 12, "#ffffff55");
     this.round(64, 506, 832, 70, 25, ground);
@@ -655,7 +703,7 @@ export class Renderer {
       c.textAlign = "left";
       c.font = "bold 11px system-ui";
       c.letterSpacing = "2px";
-      c.fillStyle = ["cosmos", "laundry"].includes(world.level.theme)
+      c.fillStyle = ["cosmos", "laundry", "reef"].includes(world.level.theme)
         ? "#e5efdf"
         : "#416965";
       c.fillText("MELT SQUAD  /  RESCUE CAM", 28, 31);

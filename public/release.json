@@ -1,7 +1,7 @@
 {
-  "release": "pack-02",
-  "version": "0.2.0",
-  "worlds": 2,
-  "scenes": 40,
-  "latestWorld": "The Midnight Sock Exchange"
+  "release": "pack-03",
+  "version": "0.3.0",
+  "worlds": 3,
+  "scenes": 60,
+  "latestWorld": "Brine & Parcel"
 }

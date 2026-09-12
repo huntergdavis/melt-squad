@@ -1,4 +1,5 @@
 import { test, expect } from "@playwright/test";
+import release from "../public/release.json" with { type: "json" };
 
 test("dispatch, keyboard, pause, hints, and all authored scenes", async ({
   page,
@@ -16,7 +17,9 @@ test("dispatch, keyboard, pause, hints, and all authored scenes", async ({
   });
   await page.goto("./");
   await expect(page.locator(".world-island")).toHaveCount(20);
-  await expect(page.locator(".world-island.released")).toHaveCount(2);
+  await expect(page.locator(".world-island.released")).toHaveCount(
+    release.worlds,
+  );
   await page.screenshot({
     path: "scratch/dispatch-desktop.png",
     fullPage: true,
@@ -100,7 +103,7 @@ test("a real stream finishes the teacup, saves medals, and advances", async ({
   );
   await page.reload();
   await expect(page.locator("#total-progress")).toHaveText(
-    "1 / 40 calls answered",
+    `1 / ${release.scenes} calls answered`,
   );
 });
 
@@ -134,8 +137,14 @@ test("standard gamepad controls menus, thermal mix, and disconnect pause", async
       },
       { index, pressed },
     );
-    await page.waitForTimeout(80);
+    await page.evaluate(
+      () =>
+        new Promise<void>((resolve) =>
+          requestAnimationFrame(() => requestAnimationFrame(() => resolve())),
+        ),
+    );
   };
+  await button(13, false); // Establish the connected pad's released baseline.
   for (let i = 0; i < 2; i++) {
     await button(13, true);
     await button(13, false);

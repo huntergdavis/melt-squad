@@ -1,4 +1,6 @@
 import { test, expect } from "@playwright/test";
+import release from "../public/release.json" with { type: "json" };
+const pendingWorld = String(Math.min(20, release.worlds + 1)).padStart(2, "0");
 
 test("Pearl's first rescue earns its story postcard with actual water", async ({
   page,
@@ -64,7 +66,7 @@ test("world atlas, story path, browser Back, and legacy progress", async ({
   });
   await page.goto("./");
   await expect(page.locator("#total-progress")).toHaveText(
-    "1 / 40 calls answered",
+    `1 / ${release.scenes} calls answered`,
   );
   await page.locator('[data-world="02"]').click();
   await expect(page.locator(".scene-node")).toHaveCount(20);
@@ -108,18 +110,22 @@ test("world atlas, story path, browser Back, and legacy progress", async ({
 test("unbuilt worlds are previews, never fake playable scenes", async ({
   page,
 }) => {
-  await page.goto("./#world/03");
-  await expect(page.locator(".scene-node.unbuilt")).toHaveCount(20);
-  await expect(page.locator("[data-launch]")).toHaveCount(0);
-  await expect(
-    page.getByRole("button", { name: "Coming later", exact: true }),
-  ).toBeDisabled();
+  await page.goto(`./#world/${pendingWorld}`);
+  await expect(page.locator(".scene-node.unbuilt")).toHaveCount(
+    release.worlds < 20 ? 20 : 0,
+  );
+  if (release.worlds < 20) {
+    await expect(page.locator("[data-launch]")).toHaveCount(0);
+    await expect(
+      page.getByRole("button", { name: "Coming later", exact: true }),
+    ).toBeDisabled();
+  }
   await page.goto("./#play/not-a-scene");
   await expect(page.locator(".world-island")).toHaveCount(20);
   await expect(page.locator("#announcement")).toContainText("isn't available");
   await page.goto("./#play/02.16");
   await page.locator('.nav-item[data-action="atlas"]').click();
-  await page.locator('[data-world="03"]').click();
+  await page.locator(`[data-world="${pendingWorld}"]`).click();
   await page.getByRole("button", { name: "All worlds", exact: false }).click();
   await page
     .getByRole("button", { name: "Continue adventure", exact: false })
