@@ -268,6 +268,9 @@ function pause() {
     return;
   }
   if (world.completed) return;
+  // The normal HUD is throttled. Snapshot its final simulation time now so
+  // the displayed clock cannot appear to tick forward after Pause opens.
+  updateHUD();
   openModal(
     "pause",
     '<div class="eyebrow">TAKE A BREATHER</div><h2>Even heroes need<br>a tea break.</h2><p>Your rescue is paused. Nothing will melt while you’re away.</p><div class="dialog-actions"><button class="primary" data-action="close">Back to the rescue ↗</button><button class="quiet" data-action="restart">Restart call</button><button class="quiet" data-action="hub">World map</button>' +

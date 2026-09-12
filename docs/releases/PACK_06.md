@@ -22,6 +22,9 @@ about napkins, a soup dumpling, and a very crunchy choir.
 - A long-channel fix preserves parcels already in transit under the same
   350-parcel cap; sustained high-pressure inflow can no longer starve a distant
   basin by repeatedly discarding its approaching water.
+- Pause now snapshots the throttled HUD immediately. The first candidate's CI
+  caught the old clock display refreshing one second after simulation had
+  already stopped; the assertion remains strict and unchanged.
 
 Adapted from World 06 in [02-06.json](../campaign/02-06.json), following the
 [authoring contract](../LEVEL_AUTHORING.md). PHASE is a staged freeze/melt/recast
