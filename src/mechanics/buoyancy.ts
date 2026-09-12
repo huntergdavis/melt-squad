@@ -3,7 +3,9 @@
  * only vertical motion is simulated, not rocking, waves, or thermal melting. */
 export interface BuoyancyPlan {
   id: string;
-  iceTarget: string;
+  /** Exactly one source: an earned ice target, or an already-built exhibit. */
+  iceTarget?: string;
+  prebuilt?: boolean;
   fillTarget: string;
   basin: { x: number; y: number; w: number; h: number };
   pontoon: { x: number; w: number; h: number; depth: number };
@@ -12,6 +14,8 @@ export interface BuoyancyPlan {
   iceDensity?: number;
   waterDensity?: number;
   dockY: number;
+  /** Half-height of the visible success band, in pixels; default precision is unchanged. */
+  dockTolerance?: number;
 }
 
 export interface BuoyancyState {
@@ -60,11 +64,15 @@ function geometry(plan: BuoyancyPlan): Geometry | undefined {
   const ppm = plan.pixelsPerMeter;
   const iceDensity = plan.iceDensity ?? 917;
   const waterDensity = plan.waterDensity ?? 1000;
+  const prebuilt = plan.prebuilt === true;
   // Bounded board-scale models keep the integrator numerically well conditioned.
   // Bad authoring is rejected, never silently changed into a winning setup.
   if (
     !plan.id ||
-    !plan.iceTarget ||
+    (plan.prebuilt !== undefined && typeof plan.prebuilt !== "boolean") ||
+    (prebuilt
+      ? plan.iceTarget !== undefined
+      : typeof plan.iceTarget !== "string" || !plan.iceTarget.length) ||
     !plan.fillTarget ||
     plan.iceTarget === plan.fillTarget ||
     !inRange(b.x, 0, 960) ||
@@ -79,7 +87,8 @@ function geometry(plan: BuoyancyPlan): Geometry | undefined {
     !inRange(iceDensity, 100, 2000) ||
     !inRange(waterDensity, 500, 2000) ||
     !inRange(plan.loadMass, 0, 1e6) ||
-    !inRange(plan.dockY, 0, 580)
+    !inRange(plan.dockY, 0, 580) ||
+    !inRange(plan.dockTolerance ?? 0.5, 0.5, 12)
   )
     return;
   const area = (p.w / ppm) * p.depth;
@@ -118,7 +127,12 @@ function initial(g?: Geometry): BuoyancyState {
 }
 
 export function createBuoyancy(plan: BuoyancyPlan): BuoyancyState {
-  return initial(geometry(plan));
+  const state = initial(geometry(plan));
+  // A museum's existing plinth is visibly present on its dry floor immediately.
+  // A build-first pontoon remains absent until its real construction completes.
+  if (state.valid && plan.prebuilt === true)
+    stepBuoyancy(state, plan, false, 0, 0);
+  return state;
 }
 
 /** Archimedes: upward force = water density × submerged volume × gravity.
@@ -141,7 +155,7 @@ export function stepBuoyancy(
   }
   const fill = clamp(fillProgress, 0, 1);
   const waterY = g.floor - plan.basin.h * fill;
-  if (iceBuilt !== true) {
+  if (plan.prebuilt !== true && iceBuilt !== true) {
     Object.assign(state, initial(g), { waterY });
     return;
   }
@@ -199,7 +213,8 @@ export function stepBuoyancy(
   const inEquilibrium =
     Math.abs(state.buoyantForce - state.weight) <= state.weight * 0.005;
   const resting = Math.abs(state.velocity) <= 0.001;
-  const aligned = Math.abs(state.deckY - plan.dockY) <= 0.5;
+  const aligned =
+    Math.abs(state.deckY - plan.dockY) <= (plan.dockTolerance ?? 0.5);
   const qualifies =
     fill === 1 && state.floating && inEquilibrium && resting && aligned;
   state.settled = qualifies ? Math.min(REST_HOLD, state.settled + dt) : 0;

@@ -12,6 +12,7 @@ import { weddingLevels } from "./packs/11";
 import { seamworksLevels } from "./packs/12";
 import { conservatoryLevels } from "./packs/13";
 import { myceliumLevels } from "./packs/14";
+import { instituteLevels } from "./packs/15";
 
 const target = (
   id: string,
@@ -473,4 +474,5 @@ export const levels: Level[] = [
   ...seamworksLevels,
   ...conservatoryLevels,
   ...myceliumLevels,
+  ...instituteLevels,
 ];

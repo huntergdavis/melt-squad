@@ -16,6 +16,7 @@ export const mapLandmarks: Record<string, [PropKind, PropKind, PropKind]> = {
   "12": ["dozycourier", "bramble", "dreambook"],
   "13": ["breebarometer", "sleetseedling", "snowpeas"],
   "14": ["sprigporter", "ednalibrarian", "myceliumcarriage"],
+  "15": ["marginassistant", "zeroexhibit", "almostkettle"],
 };
 
 const themes: [string, string, PropKind, string][] = [
@@ -106,7 +107,7 @@ const themes: [string, string, PropKind, string][] = [
   [
     "The Institute of Almost Possible",
     "The science is questionable. The enthusiasm isn't.",
-    "wizard",
+    "drprobably",
     "#ced6ea",
   ],
   [

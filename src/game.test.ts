@@ -50,23 +50,28 @@ describe("Authored calls", () => {
       }
       if (l.buoyancy) {
         const plan = l.buoyancy;
-        const ice = l.targets.find((t) => t.id === plan.iceTarget)!;
         const fill = l.targets.find((t) => t.id === plan.fillTarget)!;
-        expect(ice.verb).toBe("freeze");
         expect(fill.verb).toBe("fill");
-        expect(fill.requires).toContain(ice.id);
         expect([fill.x, fill.y, fill.w, fill.h]).toEqual([
           plan.basin.x,
           plan.basin.y,
           plan.basin.w,
           plan.basin.h,
         ]);
-        expect([ice.x, ice.y, ice.w, ice.h]).toEqual([
-          plan.pontoon.x,
-          plan.basin.y + plan.basin.h - plan.pontoon.h,
-          plan.pontoon.w,
-          plan.pontoon.h,
-        ]);
+        if (plan.prebuilt) {
+          expect(plan.iceTarget).toBeUndefined();
+          expect(new World(l).buoyancy!.active).toBe(true);
+        } else {
+          const ice = l.targets.find((t) => t.id === plan.iceTarget)!;
+          expect(ice.verb).toBe("freeze");
+          expect(fill.requires).toContain(ice.id);
+          expect([ice.x, ice.y, ice.w, ice.h]).toEqual([
+            plan.pontoon.x,
+            plan.basin.y + plan.basin.h - plan.pontoon.h,
+            plan.pontoon.w,
+            plan.pontoon.h,
+          ]);
+        }
         expect(l.needsSignals).toContain(plan.id);
         expect(new World(l).buoyancy!.valid).toBe(true);
       }

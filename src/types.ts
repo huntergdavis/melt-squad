@@ -22,7 +22,8 @@ export type Theme =
   | "wedding"
   | "seamworks"
   | "conservatory"
-  | "mycelium";
+  | "mycelium"
+  | "institute";
 export type PropKind =
   | "cup"
   | "wizard"
@@ -283,7 +284,37 @@ export type PropKind =
   | "sprighalt"
   | "modestcrate"
   | "staffsupper"
-  | "myceliumpanorama";
+  | "myceliumpanorama"
+  | "drprobably"
+  | "marginassistant"
+  | "zeroexhibit"
+  | "welcomeplaque"
+  | "emptinesscaption"
+  | "almostkettle"
+  | "biscuitclipboard"
+  | "turningproof"
+  | "luminousmoss"
+  | "ceramicsun"
+  | "tinymuseum"
+  | "upsidedownroom"
+  | "roomforidea"
+  | "squaretoast"
+  | "squaretoaststack"
+  | "squaretoastgarden"
+  | "tomorrowfossil"
+  | "questionplant"
+  | "visitorqueue"
+  | "marginnotes"
+  | "lightquestion"
+  | "tinyocean"
+  | "oceanstar"
+  | "oceanhorse"
+  | "moonmarble"
+  | "visitorquestions"
+  | "footnotesymbol"
+  | "footnoteexplanation"
+  | "uncertaincase"
+  | "institutepanorama";
 export interface PhaseStep {
   verb: "freeze" | "melt";
   name: string;

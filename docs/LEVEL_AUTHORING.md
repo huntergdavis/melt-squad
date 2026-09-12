@@ -114,14 +114,19 @@ every original call yet has a bespoke ending animation.
   buoyancy, with wet damping, floor contact, and bounded integration substeps.
   `dockY` is only a measurement: no force targets that coordinate. Completion
   requires full water, free floating, balanced forces, a resting deck within
-  half a pixel of the mark, and a 0.45-second stable hold. Invalid, grounded,
+  half a pixel of the mark by default, and a 0.45-second stable hold. Invalid, grounded,
   incomplete, or sunk bodies cannot certify success. See `10.18`.
   The freeze footprint rests inside the basin on its floor. Once built, the
   renderer replaces that stationary rectangle with the physical deck/body and
   anchors the model athletes at its actual height. The waterline uses the same
   calibrated coordinates. This is not a volume-conserving fluid solver and does
   not model waves, rocking, moving loads, or remelting a completed pontoon.
-  Local recall found no reusable buoyancy implementation. The existing balance
+  An already-built exhibit may instead set `prebuilt: true` and omit `iceTarget`;
+  the body then rests visibly on its dry floor from the first frame. Declaring
+  both sources, or neither, is invalid. See the single-FILL footnote in `15.18`.
+  Optional `dockTolerance` is a finite 0.5–12 pixel half-band, default 0.5;
+  draw that actual band and retain all full-water, force, velocity, and rest checks.
+  At World 10's introduction, local recall found no reusable buoyancy implementation. The existing balance
   module supplied only the bounded-step/rest-hold convention. Physics reference:
   [OpenStax, Archimedes' principle](https://openstax.org/books/university-physics-volume-1/pages/14-4-archimedes-principle-and-buoyancy)
   and [density table](https://openstax.org/books/college-physics-2e/pages/11-2-density).

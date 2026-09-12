@@ -9,6 +9,7 @@ export function drawBuoyancy(r: Renderer, world: World, time: number) {
   if (!plan || !state || !state.valid) return;
   const c = r.ctx;
   const { basin, pontoon } = plan;
+  const institute = world.level.theme === "institute";
   const center = pontoon.x + pontoon.w / 2;
   c.save();
   c.textAlign = "right";
@@ -17,33 +18,47 @@ export function drawBuoyancy(r: Renderer, world: World, time: number) {
   c.fillText("FULL", basin.x - 19, basin.y + 5);
   r.line([basin.x - 11, basin.y, basin.x - 3, basin.y], "#426b6b", 3);
   const dockX = basin.x + basin.w + 15;
-  r.round(dockX, plan.dockY, 104, 12, 4, "#b18867", "#766852");
-  r.line(
-    [dockX + 12, plan.dockY + 12, dockX + 12, basin.y + basin.h],
-    "#b18867",
-    8,
-  );
-  r.line(
-    [dockX + 91, plan.dockY + 12, dockX + 91, basin.y + basin.h],
-    "#b18867",
-    8,
-  );
-  r.round(
-    dockX - 1,
-    plan.dockY - 33,
-    112,
-    24,
-    7,
-    state.docked ? "#d3edc7" : "#fff0cf",
-    "#7c8c7a",
-  );
-  c.textAlign = "center";
-  c.fillStyle = "#365b5b";
-  c.fillText(
-    state.docked ? "LEVEL ✓" : "DOCK MARK",
-    dockX + 55,
-    plan.dockY - 17,
-  );
+  if (institute) {
+    const band = plan.dockTolerance ?? 0.5;
+    r.round(
+      basin.x - 8,
+      plan.dockY - band,
+      basin.w + 16,
+      band * 2,
+      6,
+      "#a5c7a777",
+    );
+    for (const x of [basin.x - 8, basin.x + basin.w + 8])
+      r.line([x, plan.dockY - band, x, plan.dockY + band], "#648975", 3);
+  } else {
+    r.round(dockX, plan.dockY, 104, 12, 4, "#b18867", "#766852");
+    r.line(
+      [dockX + 12, plan.dockY + 12, dockX + 12, basin.y + basin.h],
+      "#b18867",
+      8,
+    );
+    r.line(
+      [dockX + 91, plan.dockY + 12, dockX + 91, basin.y + basin.h],
+      "#b18867",
+      8,
+    );
+    r.round(
+      dockX - 1,
+      plan.dockY - 33,
+      112,
+      24,
+      7,
+      state.docked ? "#d3edc7" : "#fff0cf",
+      "#7c8c7a",
+    );
+    c.textAlign = "center";
+    c.fillStyle = "#365b5b";
+    c.fillText(
+      state.docked ? "LEVEL ✓" : "DOCK MARK",
+      dockX + 55,
+      plan.dockY - 17,
+    );
+  }
   c.setLineDash([5, 6]);
   r.line(
     [pontoon.x - 15, plan.dockY, dockX - 2, plan.dockY],
@@ -79,23 +94,30 @@ export function drawBuoyancy(r: Renderer, world: World, time: number) {
       "#edfafa",
       4,
     );
-    r.prop("modelathletes", center, state.deckY, 0.85, state.docked, time);
-    r.round(center - 55, state.deckY - 86, 110, 22, 6, "#fff2d8", "#a59677");
-    c.fillStyle = "#496462";
-    c.fillText(
-      `${Math.round(plan.loadMass * 1000)} g TEAM`,
-      center,
-      state.deckY - 71,
-    );
+    if (institute)
+      r.prop("footnotesymbol", center, state.deckY, 1, state.docked, time);
+    else {
+      r.prop("modelathletes", center, state.deckY, 0.85, state.docked, time);
+      r.round(center - 55, state.deckY - 86, 110, 22, 6, "#fff2d8", "#a59677");
+      c.fillStyle = "#496462";
+      c.fillText(
+        `${Math.round(plan.loadMass * 1000)} g TEAM`,
+        center,
+        state.deckY - 71,
+      );
+    }
   }
   const caption = !state.active
     ? "BUILD THE PONTOON"
     : state.docked
-      ? "EVERYONE RISES TOGETHER"
+      ? institute
+        ? "A FOOTNOTE WORTH RAISING"
+        : "EVERYONE RISES TOGETHER"
       : (fill?.progress ?? 0) < 1
         ? "ADD WATER · WATCH THE DECK RISE"
         : "LET THE DECK SETTLE";
   c.fillStyle = "#426365";
+  c.textAlign = "center";
   c.font = "bold 13px system-ui";
   c.fillText(caption, basin.x + basin.w / 2, basin.y + basin.h + 45);
   c.restore();

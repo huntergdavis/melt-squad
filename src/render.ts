@@ -14,6 +14,7 @@ import { drawWedding } from "./art/wedding";
 import { drawSeamworks } from "./art/seamworks";
 import { drawConservatory } from "./art/conservatory";
 import { drawMycelium } from "./art/mycelium";
+import { drawInstitute } from "./art/institute";
 import { propIsReady } from "./art/state";
 const motionSafe = (time: number, reduced: boolean) => (reduced ? 0 : time);
 
@@ -36,6 +37,7 @@ const palettes: Record<Theme, [string, string, string]> = {
   seamworks: ["#3c435f", "#aaa6c3", "#62677f"],
   conservatory: ["#c8dfd4", "#eff0cf", "#9aaa8c"],
   mycelium: ["#adcec1", "#ecdfbc", "#8eaa91"],
+  institute: ["#d7dde3", "#f2e4c6", "#96aaa3"],
 };
 export class Renderer {
   ctx: CanvasRenderingContext2D;
@@ -138,7 +140,8 @@ export class Renderer {
       drawWedding(this, kind, happy, t, tint) ||
       drawSeamworks(this, kind, happy, t, tint) ||
       drawConservatory(this, kind, happy, t, tint) ||
-      drawMycelium(this, kind, happy, t, tint, progress)
+      drawMycelium(this, kind, happy, t, tint, progress) ||
+      drawInstitute(this, kind, happy, t, tint, progress)
     ) {
       c.restore();
       return;
@@ -442,6 +445,20 @@ export class Renderer {
     } else if (world.level.theme === "garden") {
       for (let i = 0; i < 7; i++)
         this.circle(i * 165, 487, 100 + (i % 3) * 20, "#9fae83");
+    } else if (world.level.theme === "institute") {
+      for (const x of [112, 410, 708]) {
+        this.round(x, 178, 140, 228, 9, "#f9edcc", "#829b97");
+        this.round(x + 12, 191, 116, 168, 4, "#c1d3d0", "#819792");
+        this.round(x + 42, 375, 56, 15, 3, "#e1bf83");
+        this.line([x + 70, 151, x + 70, 177], "#8e987e", 3);
+        this.circle(x + 70, 149, 7, "#f4d495");
+      }
+      for (let x = 75; x < 900; x += 50)
+        this.line(
+          [x, 471, x + 25, 482, x, 493, x - 25, 482, x, 471],
+          "#abb5a4",
+          2,
+        );
     } else if (world.level.theme === "mycelium") {
       for (const [x, y, color] of [
         [150, 170, "#b68d78"],
@@ -860,6 +877,19 @@ export class Renderer {
         world.completed
           ? "THERE IS ROOM FOR ANOTHER CHAPTER."
           : "THE RUNAWAY ENDING LIBRARY",
+        480,
+        100,
+      );
+    }
+    if (world.level.theme === "institute") {
+      this.round(215, 63, 530, 58, 9, "#fff3d8", "#aa9679");
+      this.circle(233, 92, 3, "#b89e74");
+      this.circle(727, 92, 3, "#b89e74");
+      c.fillStyle = "#426b67";
+      c.textAlign = "center";
+      c.font = "600 24px Outfit, sans-serif";
+      c.fillText(
+        world.completed ? "DEFINITELY WORTH ASKING." : "ALMOST POSSIBLE",
         480,
         100,
       );

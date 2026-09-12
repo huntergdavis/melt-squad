@@ -49,6 +49,63 @@ function finiteState(state: BuoyancyState) {
 }
 
 describe("Archimedes buoyancy for the floating podium", () => {
+  it("shows an explicitly prebuilt exhibit on the dry floor and floats it without a construction target", () => {
+    const exhibit: BuoyancyPlan = {
+      ...plan,
+      iceTarget: undefined,
+      prebuilt: true,
+      dockTolerance: 8,
+    };
+    const state = createBuoyancy(exhibit);
+    expect(state.valid && state.active && state.grounded).toBe(true);
+    expect(state.deckY).toBe(440);
+    expect(state.waterY).toBe(485);
+    expect(state.mass).toBeCloseTo(3.86385, 8);
+    expect(state.docked).toBe(false);
+    run(exhibit, 0.5, 1800, false, state);
+    expect(state.floating).toBe(true);
+    expect(state.deckY).toBeCloseTo(equilibrium(exhibit, 0.5), 4);
+    expect(state.docked).toBe(false);
+    run(exhibit, 1, 1800, false, state);
+    expect(state.docked).toBe(true);
+    expect(state.deckY).toBeCloseTo(equilibrium(exhibit), 4);
+    expect(state.buoyantForce).toBeCloseTo(state.weight, 6);
+    finiteState(state);
+    const replay = createBuoyancy(exhibit);
+    expect(replay.active && replay.grounded).toBe(true);
+    expect(replay.deckY).toBe(440);
+    expect(replay.settled).toBe(0);
+    expect(replay.docked).toBe(false);
+    expect(createBuoyancy(plan).active).toBe(false);
+  });
+
+  it("measures a generous exhibit band without attracting the body to its mark or bypassing physical settling", () => {
+    const exhibit: BuoyancyPlan = {
+      ...plan,
+      iceTarget: undefined,
+      prebuilt: true,
+      dockTolerance: 8,
+    };
+    const inside = run({ ...exhibit, dockY: plan.dockY + 6 }, 1, 1800, false);
+    const outside = run({ ...exhibit, dockY: plan.dockY + 10 }, 1, 1800, false);
+    const precise = run(
+      { ...exhibit, dockY: plan.dockY + 6, dockTolerance: undefined },
+      1,
+      1800,
+      false,
+    );
+    expect(inside.docked).toBe(true);
+    expect(outside.docked).toBe(false);
+    expect(precise.docked).toBe(false);
+    expect(inside.deckY).toBe(outside.deckY);
+    expect(inside.deckY).toBe(precise.deckY);
+    expect(inside.velocity).toBe(outside.velocity);
+    expect(inside.buoyantForce).toBe(outside.buoyantForce);
+    expect(inside.floating && !inside.grounded && !inside.sunk).toBe(true);
+    expect(Math.abs(inside.velocity)).toBeLessThanOrEqual(0.001);
+    expect(inside.settled).toBe(0.45);
+  });
+
   it("rests on the dry floor with actual weight and no upward displacement force", () => {
     const state = run(plan, 0, 600);
     expect(state.deckY).toBe(440);
@@ -187,6 +244,12 @@ describe("Archimedes buoyancy for the floating podium", () => {
       { ...plan, waterDensity: 0 },
       { ...plan, dockY: Infinity },
       { ...plan, iceTarget: "basin" },
+      { ...plan, iceTarget: undefined },
+      { ...plan, prebuilt: true },
+      { ...plan, dockTolerance: 0 },
+      { ...plan, dockTolerance: 13 },
+      { ...plan, dockTolerance: NaN },
+      { ...plan, dockTolerance: Infinity },
       { ...plan, basin: { ...plan.basin, h: 0 } },
       { ...plan, pontoon: { ...plan.pontoon, depth: -1 } },
       { ...plan, pontoon: { ...plan.pontoon, x: 1000 } },
