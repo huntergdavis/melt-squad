@@ -36,8 +36,9 @@ Targets have id/name/verb/x/y/w/h. Optional temp and pressure pairs tune warm
 tasks. Optional effort scales the work required. Optional requires lists
 earlier target IDs: blocked tasks do not intercept droplets or gain progress.
 Completed structures stay stable, so a later hot-water task cannot invalidate
-a finished bridge. Explicit `phase` recipes are the exception: their visible
-build/open sequence deliberately reuses the same footprint.
+a finished bridge. Explicit `phase` recipes deliberately reuse one footprint
+in a visible build/open sequence. Marked `reversibleIce` ballast cups instead
+remain continuously adjustable until their physical balance is solved.
 
 Each call should have its own recognizable scene, one clear joke, and a small
 thermal idea. Combine verbs and geometry, not just names. Warm-up first calls
@@ -105,6 +106,22 @@ every original call yet has a bespoke ending animation.
   drawing scale in pixels. Massless arms with a hanging pivot ballast settle
   under damping. The `id` signals only after opposing torque matches and the
   beam rests level with nonempty loads. This is not buoyancy.
+  Optional `fixedMass` adds a permanent character load to a target's capacity.
+  In `17.14`, Button is 1 kg plus up to 1 kg ice; the admiral is 0.25 kg plus
+  up to 1 kg ice. Both full cups therefore remain unequal.
+- Target `reversibleIce: true` is an explicit FREEZE balance cup, not a normal
+  construction or a `phase.steps` checklist. The target must be a declared
+  balance load, and the level must require that balance's signal. Cold at or
+  below −10° grows actual normalized ice volume; heat at or above 10° trims it,
+  including already-full ice. Neutral water leaves volume unchanged. `effort`
+  controls adjustment speed, and volume stays within 0–1.
+  Cups ride their real hinge endpoints with their mouths 40 pixels below the
+  beam. Keep their entire tilted sweep reachable and provide clear character,
+  capacity, and total-mass feedback. Only a settled physical win marks these
+  objectives complete; it preserves their actual partial volumes and masses.
+  Capacity bars are not completion bars. Switch water off to let in-flight
+  droplets finish and the beam settle. The local capture/solvability helper
+  uses the ordinary nozzle to grow and trim; it never writes a winning state.
 - `buoyancy`: the BALANCE family's floating-body exhibit. A completed
   `iceTarget` creates a rectangular pontoon; `fillTarget` supplies the basin's
   calibrated water height. Board geometry is pixels, `pixelsPerMeter` supplies
@@ -172,7 +189,8 @@ every original call yet has a bespoke ending animation.
   Thus a basin may depend on `mold:formed` while remelting waits for that basin.
   The build/fill/open recipe strip, objective text, and monotonic overall progress
   show the sequence. Restart clears all phase history. See `06.14`.
-  This is staged reversal, not yet freely adjustable coupled thermal bodies.
+  This is staged reversal; continuously adjustable balance cups use the
+  separate `reversibleIce` contract above.
   `09.15` uses the same mechanism for freeze → melt → freeze: its ink basin
   starts enabled beneath the page, while the final recast waits for that basin.
   Local eroded holes admit real droplets before the whole page clears.

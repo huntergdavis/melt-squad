@@ -4,8 +4,8 @@ One complete twenty-scene world per release. No placeholder scenes count as
 playable. Every release must pass local tests, the GitHub Pages pipeline, and
 a live-browser check before the next world is started.
 
-**Implemented in this tree: 16/20 worlds · 320/400 scenes.**
-**Remaining campaign: 4 worlds · 80 scenes.**
+**Implemented in this tree: 17/20 worlds · 340/400 scenes.**
+**Remaining campaign: 3 worlds · 60 scenes.**
 
 | World | Name | Implemented | Release |
 | --- | --- | ---: | --- |
@@ -25,8 +25,8 @@ a live-browser check before the next world is started.
 | 14 | The Mycelium Local | 20/20 | [pack-14](https://github.com/huntergdavis/melt-squad/releases/tag/pack-14) |
 | 15 | The Institute of Almost Possible | 20/20 | [pack-15](https://github.com/huntergdavis/melt-squad/releases/tag/pack-15) |
 | 16 | Last Exit Before Breakfast | 20/20 | [pack-16](https://github.com/huntergdavis/melt-squad/releases/tag/pack-16) |
-| 17 | Toybox After Bedtime | 0/20 | Next |
-| 18 | Apocalypse, Rescheduled | 0/20 | Planned |
+| 17 | Toybox After Bedtime | 20/20 | [pack-17](https://github.com/huntergdavis/melt-squad/releases/tag/pack-17) |
+| 18 | Apocalypse, Rescheduled | 0/20 | Next |
 | 19 | The Hotel Between Tuesdays | 0/20 | Planned |
 | 20 | The Great Thaw Festival | 0/20 | Planned |
 
@@ -44,8 +44,8 @@ a live-browser check before the next world is started.
   OPTICS' geometric mirror reflection, ice occlusion, and actual detectors.
   World 10 adds buoyancy; World 11 adds real branching beam splitters.
 - Implemented with World 06: PHASE's staged freeze/melt/recast sequence and
-  FLOW's full-basin overflow spillways. Freely adjustable coupled thermal bodies
-  remain an extension. Build each extension when its first world needs it;
+  FLOW's full-basin overflow spillways. World 17 adds continuously adjustable
+  ice ballast coupled to a hinged balance. Build further extensions when needed;
   do not silently substitute a basic target for its puzzle.
 - Implemented with World 07: unequal-arm seesaws with fixed character loads,
   physical settling before victory, and thaw-started rotating nursery mobiles.
@@ -68,6 +68,8 @@ a live-browser check before the next world is started.
   prebuilt floating exhibits, and measured buoyancy height bands with real settling.
 - Implemented with World 16: a three-pancake sequential overflow route, three
   breakfast rhythm lanes with ordered untimed play, and a gentle shared-table finale.
+- Implemented with World 17: real reversible ice volume, fixed character mass
+  plus adjustable ballast on moving cups, and a three-arm biscuit planetarium.
 - Still requires real-device feedback: physical gamepad comfort and mobile
   touch ergonomics. Automated controller and phone-layout checks are not a claim
   that physical hardware was tested.

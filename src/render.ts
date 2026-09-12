@@ -16,6 +16,7 @@ import { drawConservatory } from "./art/conservatory";
 import { drawMycelium } from "./art/mycelium";
 import { drawInstitute } from "./art/institute";
 import { drawDiner } from "./art/diner";
+import { drawToybox } from "./art/toybox";
 import { propIsReady } from "./art/state";
 const motionSafe = (time: number, reduced: boolean) => (reduced ? 0 : time);
 
@@ -40,6 +41,7 @@ const palettes: Record<Theme, [string, string, string]> = {
   mycelium: ["#adcec1", "#ecdfbc", "#8eaa91"],
   institute: ["#d7dde3", "#f2e4c6", "#96aaa3"],
   diner: ["#35435f", "#c8b9bd", "#809a9d"],
+  toybox: ["#414361", "#c2b6cb", "#aa939b"],
 };
 export class Renderer {
   ctx: CanvasRenderingContext2D;
@@ -144,7 +146,8 @@ export class Renderer {
       drawConservatory(this, kind, happy, t, tint) ||
       drawMycelium(this, kind, happy, t, tint, progress) ||
       drawInstitute(this, kind, happy, t, tint, progress) ||
-      drawDiner(this, kind, happy, t, tint, progress)
+      drawDiner(this, kind, happy, t, tint, progress) ||
+      drawToybox(this, kind, happy, t, tint, progress)
     ) {
       c.restore();
       return;
@@ -448,6 +451,17 @@ export class Renderer {
     } else if (world.level.theme === "garden") {
       for (let i = 0; i < 7; i++)
         this.circle(i * 165, 487, 100 + (i % 3) * 20, "#9fae83");
+    } else if (world.level.theme === "toybox") {
+      this.round(90, 155, 160, 270, 12, "#fff0ce", "#876f7e");
+      this.line([170, 155, 170, 425], "#94758a", 8);
+      this.line([90, 290, 250, 290], "#94758a", 8);
+      this.circle(128, 205, 26, "#fff4bd");
+      this.round(780, 140, 60, 340, 12, "#b49778");
+      this.round(745, 136, 130, 25, 8, "#d6b994");
+      for (let x = 95; x < 900; x += 68) {
+        this.round(x, 468, 56, 28, 6, x % 3 ? "#bd9ba5" : "#94b2ac");
+        this.line([x + 8, 472, x + 8, 492], "#fff0db", 2);
+      }
     } else if (world.level.theme === "diner") {
       for (const x of [115, 610]) {
         this.round(x, 169, 235, 239, 45, "#1b2946", "#d6e3df");
@@ -898,6 +912,17 @@ export class Renderer {
         world.completed
           ? "THERE IS ROOM FOR ANOTHER CHAPTER."
           : "THE RUNAWAY ENDING LIBRARY",
+        480,
+        100,
+      );
+    }
+    if (world.level.theme === "toybox") {
+      this.round(225, 63, 510, 58, 13, "#f3e6c9", "#a491a7");
+      c.fillStyle = "#62516e";
+      c.textAlign = "center";
+      c.font = "600 23px Outfit, sans-serif";
+      c.fillText(
+        world.completed ? "SMALL IS A VERY GOOD SIZE." : "TOYBOX AFTER BEDTIME",
         480,
         100,
       );
@@ -1373,7 +1398,9 @@ export class Renderer {
           c.font = "bold 10px system-ui";
           c.textAlign = "center";
           c.fillText(
-            t.name.replace(/^Follow the /, "").toUpperCase(),
+            world.level.theme === "toybox"
+              ? t.id.replace(/Moon$/, "").toUpperCase()
+              : t.name.replace(/^Follow the /, "").toUpperCase(),
             t.x + t.w / 2,
             t.y - 15,
           );

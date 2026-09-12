@@ -5,14 +5,14 @@
 A hose-powered puzzle game about helping a wonderfully weird world warm up.
 Thaw an upside-down space wizard, build a penguin an ice bridge, give the moon
 a bath, help an octopus plan a wedding, and teach a nightmare to become a cozy forest.
-**320 hand-authored rescue calls. Sixteen playful worlds. One very helpful hose.**
+**340 hand-authored rescue calls. Seventeen playful worlds. One very helpful hose.**
 
 [Play in your browser](https://hunterdavis.com/melt-squad/)
 
 Explore the rescue atlas, follow a world's story trail, or pick any available
-scene. New in **Last Exit Before Breakfast**: help an octopus cook, a comet hauler,
-and a pancake with lunar ambitions turn a lonely space diner into a shared table.
-Route scenic syrup, play a breakfast beat, and save a seat for the cook.
+scene. New in **Toybox After Bedtime**: join a one-eyed plush captain, a tin duck,
+and a shy wind-up star for very small emergencies. Balance a feather admiral,
+thaw orbiting biscuit moons, and let the smallest light lead the parade.
 No lives, no grinding, no account.
 
 ## Your equipment
@@ -32,12 +32,13 @@ Mouse and touch: drag the nozzle in the scene and adjust the two sliders.
 
 Hot water erodes ice. Cold water builds marked structures. Gentle warmth
 rescues delicate things. Pressure spins machines. Mix the five verbs across
-320 individually authored puzzles, with no lives to lose and every released call available
+340 individually authored puzzles, with no lives to lose and every released call available
 from the start. Medals, best times, and sound preference stay in your browser.
 
 These are arcade thermal puzzles, not a full fluid-dynamics simulation.
 Completed constructions stay stable unless a marked recipe asks you to remelt
-them. Rinse channels and overflow spillways carry actual routed water;
+them. Marked ballast cups can be grown and trimmed repeatedly to balance a real seesaw.
+Rinse channels and overflow spillways carry actual routed water;
 moving care pads offer a saved stationary assist. Rhythm gates have clear
 GO/REST cues and saved untimed play; both assists are in Pause. Balance actual
 water and ice loads, reflect sunlight through a freshly melted opening, or
@@ -80,6 +81,6 @@ The Vite base path is `/melt-squad/`.
 - [Design thesis](docs/DESIGN_THESIS.md)
 - [Level authoring and architecture](docs/LEVEL_AUTHORING.md)
 - [Next slices](docs/BACKLOG.md)
-- [Campaign release ledger](docs/RELEASES.md) — sixteen worlds implemented; four to go
+- [Campaign release ledger](docs/RELEASES.md) — seventeen worlds implemented; three to go
 - [400-scene campaign plan](docs/CAMPAIGN_BACKLOG.md) — the full design backlog
 - [Art credits and licenses](CREDITS.md)

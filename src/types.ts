@@ -24,7 +24,8 @@ export type Theme =
   | "conservatory"
   | "mycelium"
   | "institute"
-  | "diner";
+  | "diner"
+  | "toybox";
 export type PropKind =
   | "cup"
   | "wizard"
@@ -345,7 +346,38 @@ export type PropKind =
   | "mallowlamp"
   | "dinerguestbook"
   | "dinerpanorama"
-  | "dinermug";
+  | "dinermug"
+  | "captainbutton"
+  | "glimstar"
+  | "junduck"
+  | "toyfireengine"
+  | "cardboardbadge"
+  | "buttonwelcome"
+  | "dollteasummit"
+  | "glimperch"
+  | "marblesoup"
+  | "longdog"
+  | "toyxylophone"
+  | "snowexplorer"
+  | "stringrocket"
+  | "crayongarden"
+  | "mittenghost"
+  | "mooncheese"
+  | "repairqueue"
+  | "featheradmiral"
+  | "plushbus"
+  | "biscuitmountain"
+  | "blockaudience"
+  | "glimstage"
+  | "biscuitmoon"
+  | "ducknebula"
+  | "toyparadefloat"
+  | "toyboxpanorama"
+  | "toyteacup"
+  | "toybag"
+  | "departuretag"
+  | "paradepennant"
+  | "buttonseated";
 export interface PhaseStep {
   verb: "freeze" | "melt";
   name: string;
@@ -354,6 +386,9 @@ export interface PhaseStep {
   needsSignals?: string[];
 }
 export interface Target {
+  /** Actual ice volume: cold grows it, hot trims it, even when full. A named
+   * physical balance (not filling this cup) determines completion. */
+  reversibleIce?: boolean;
   id: string;
   name: string;
   verb: Verb;

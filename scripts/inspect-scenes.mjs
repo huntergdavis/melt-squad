@@ -19,6 +19,12 @@ try {
       const level = levels.find((level) => level.id === id);
       if (!level) throw new Error("Unknown scene: " + id);
       const world = new World(level);
+      if (world.targets.some((t) => t.reversibleIce)) {
+        const { solveBallast } = await import(
+          "/melt-squad/scripts/solve-ballast.ts"
+        );
+        solveBallast(world);
+      }
       const idle = { x: 0, y: 0, heat: 0, pressure: 0, tilt: 0 };
       const operations = world.targets.reduce(
         (n, t) => n + (t.phase?.steps.length ?? 1),

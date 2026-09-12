@@ -103,6 +103,39 @@ export function drawMeasurements(r: Renderer, world: World) {
         y = dy * side * arm;
       const mass = side < 0 ? state.leftMass : state.rightMass;
       const capacity = side < 0 ? scale.left.mass : scale.right.mass;
+      const load = side < 0 ? scale.left : scale.right;
+      const ice = world.targets.find(
+        (target) => target.id === load.target && target.reversibleIce,
+      );
+      if (ice) {
+        // The actual collision cup rides this endpoint; its ice body is drawn
+        // once by the target renderer, at its measured partial volume.
+        r.line(
+          [x - 54, y + 40, x - 54, y + 115, x + 54, y + 115, x + 54, y + 40],
+          "#a78a70",
+          4,
+        );
+        r.line(
+          [x - 54, y + 40, x - 20, y, x + 20, y, x + 54, y + 40],
+          "#ae9fbb",
+          2,
+        );
+        r.round(x - 34, y - 3, 68, 8, 3, "#d4b487", "#806978");
+        r.prop(
+          side < 0 ? "buttonseated" : "featheradmiral",
+          x,
+          y - 3,
+          side < 0 ? 0.55 : 0.7,
+          world.completed,
+          world.elapsed,
+        );
+        r.round(x - 82, y + 119, 164, 22, 6, "#fff0d5", "#a78a70");
+        c.fillStyle = "#345651";
+        c.font = "bold 12px system-ui";
+        c.textAlign = "center";
+        c.fillText(mass.toFixed(2) + " kg · toy + ice", x, y + 133);
+        continue;
+      }
       r.line([x, y, x - 28, y + 49, x + 28, y + 49, x, y], "#82968c", 2);
       const height = Math.min(25, (25 * mass) / capacity);
       if (height > 0 && !(mycelium && side < 0))

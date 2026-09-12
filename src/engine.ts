@@ -26,6 +26,7 @@ export interface LiveTarget extends Target {
   motionStartedAt: number;
 }
 export function targetProgress(t: LiveTarget): number {
+  if (t.reversibleIce) return Number(t.done);
   return t.done ? 1 : (t.phaseStep + t.progress) / (t.phase?.steps.length ?? 1);
 }
 export interface Drop {
@@ -56,6 +57,8 @@ export interface Spark {
 export const temperatureColor = (t: number) =>
   t < 0 ? "#71d8ff" : t < 55 ? "#ffc983" : "#ff785a";
 export function requirements(t: Target, untimed = false): string {
+  if (t.reversibleIce)
+    return "ICE · cold grows / hot trims · water off to settle";
   if (t.pulse && !untimed)
     return "ON BEAT · " + requirements({ ...t, pulse: undefined });
   if (t.verb === "melt") return "HOT · 10° or more";
@@ -135,6 +138,7 @@ export class World {
         motionStartedAt: t.motion?.after?.length ? -1 : 0,
       };
     });
+    if (this.targets.some((t) => t.reversibleIce)) this.updateMechanics(0);
   }
   random() {
     this.seed = (Math.imul(1664525, this.seed) + 1013904223) >>> 0;
@@ -149,15 +153,46 @@ export class World {
     );
   }
   get completionPending() {
-    return !this.completed && this.targets.every((t) => t.done);
+    return (
+      !this.completed &&
+      this.targets.every(
+        (t) =>
+          t.done ||
+          (this.isBalanceCup(t) &&
+            !!this.balance &&
+            Math.abs(
+              this.balance.leftMass * (this.level.balance!.left.arm ?? 1) -
+                this.balance.rightMass * (this.level.balance!.right.arm ?? 1),
+            ) < 0.02),
+      )
+    );
+  }
+  private isBalanceCup(t: Target) {
+    const plan = this.level.balance;
+    return (
+      t.reversibleIce === true &&
+      t.verb === "freeze" &&
+      !!plan &&
+      this.level.needsSignals?.includes(plan.id) === true &&
+      (plan.left.target === t.id || plan.right.target === t.id)
+    );
   }
   private finishIfReady() {
     if (this.completed) return true;
     if (
-      !this.targets.every((t) => t.done) ||
+      !this.targets.every(
+        (t) =>
+          t.done ||
+          (this.isBalanceCup(t) && this.signals.has(this.level.balance!.id)),
+      ) ||
       this.level.needsSignals?.some((id) => !this.signals.has(id))
     )
       return false;
+    for (const t of this.targets)
+      if (this.isBalanceCup(t)) {
+        t.done = true;
+        t.completedAt = this.elapsed;
+      }
     this.completed = true;
     this.burst(W / 2, H / 3, "#ff9870", 55);
     return true;
@@ -193,14 +228,40 @@ export class World {
     const plan = this.level.balance;
     if (plan && this.balance) {
       const mass = (load: typeof plan.left) => {
-        if (!load.target) return load.mass;
+        const fixed = load.fixedMass ?? 0;
+        if (!load.target) return fixed + load.mass;
         const target = this.targets.find((t) => t.id === load.target);
-        return load.mass * (target?.done ? 1 : (target?.progress ?? 0));
+        return (
+          fixed +
+          load.mass *
+            (target?.done && !target.reversibleIce
+              ? 1
+              : (target?.progress ?? 0))
+        );
       };
       stepBalance(this.balance, mass(plan.left), mass(plan.right), dt, {
         leftArm: plan.left.arm,
         rightArm: plan.right.arm,
       });
+      if (
+        [plan.left, plan.right].some(
+          (load) =>
+            !Number.isFinite(load.fixedMass ?? 0) || (load.fixedMass ?? 0) < 0,
+        )
+      ) {
+        this.balance.level = false;
+        this.balance.settled = 0;
+      }
+      for (const [side, load] of [
+        [-1, plan.left],
+        [1, plan.right],
+      ] as const) {
+        const t = this.targets.find((target) => target.id === load.target);
+        if (!t || !this.isBalanceCup(t)) continue;
+        const radius = side * plan.arm * (load.arm ?? 1);
+        t.x = plan.x + Math.cos(this.balance.angle) * radius - t.w / 2;
+        t.y = plan.y + Math.sin(this.balance.angle) * radius + 40;
+      }
       if (this.balance.level) this.signals.add(plan.id);
     }
     if (this.level.optics) {
@@ -279,6 +340,25 @@ export class World {
     }
     const heat = drop.temp,
       pressure = drop.pressure;
+    if (t.reversibleIce) {
+      if (!this.isBalanceCup(t)) return;
+      this.hits++;
+      t.flash = 0.3;
+      if (heat > -10 && heat < 10) {
+        t.feedback = "Neutral water · use cold to grow or hot to trim";
+        return;
+      }
+      const direction = heat <= -10 ? 1 : -1;
+      const strength = clamp(Math.abs(heat) / 25, 0.4, 1.8);
+      t.progress = clamp(
+        t.progress + (direction * 0.004 * strength) / (t.effort ?? 1),
+        0,
+        1,
+      );
+      t.feedback = direction > 0 ? "Growing ballast" : "Trimming ballast";
+      if (this.random() < 0.16) this.burst(x, y, "#84e7ef", 2);
+      return;
+    }
     const valid =
       t.verb === "melt"
         ? heat >= 10

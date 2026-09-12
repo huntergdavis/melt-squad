@@ -359,10 +359,15 @@ function updateHUD() {
       ? "✓"
       : String(world.targets.indexOf(t) + 1);
     row.querySelector("small")!.textContent = t.done
-      ? "A little good deed, done."
+      ? t.reversibleIce
+        ? "Balanced · ballast stays just this size."
+        : "A little good deed, done."
       : !available
         ? world.waitingFor(t)
-        : (t.phase
+        : (t.reversibleIce
+            ? Math.round(t.progress * 100) + "% ICE CAPACITY · "
+            : "") +
+          (t.phase
             ? `STEP ${t.phaseStep + 1}/${t.phase.steps.length} · `
             : "") +
           (t.pulse
@@ -378,7 +383,8 @@ function updateHUD() {
             : "") +
           requirements(t, world.untimed);
     row.querySelector<HTMLElement>("i")!.style.width =
-      Math.round(targetProgress(t) * 100) + "%";
+      Math.round((t.reversibleIce ? t.progress : targetProgress(t)) * 100) +
+      "%";
   }
 }
 function action(name: string) {

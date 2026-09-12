@@ -1,7 +1,7 @@
 {
-  "release": "pack-16",
-  "version": "0.16.0",
-  "worlds": 16,
-  "scenes": 320,
-  "latestWorld": "Last Exit Before Breakfast"
+  "release": "pack-17",
+  "version": "0.17.0",
+  "worlds": 17,
+  "scenes": 340,
+  "latestWorld": "Toybox After Bedtime"
 }

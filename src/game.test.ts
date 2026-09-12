@@ -4,6 +4,7 @@ import { World, requirements, type Drop } from "./engine";
 import { deadzone, padControls } from "./input";
 import { loadSave, recordWin, writeSave } from "./save";
 import release from "../public/release.json" with { type: "json" };
+import { solveBallast } from "../scripts/solve-ballast";
 const idle = { x: 0, y: 0, heat: 0, pressure: 0, tilt: 0 };
 const drop = (temp: number, pressure = 45): Drop => ({
   x: 0,
@@ -34,6 +35,8 @@ describe("Authored calls", () => {
         for (const load of [l.balance.left, l.balance.right]) {
           if (load.target) expect(ids).toContain(load.target);
           expect(load.mass).toBeGreaterThan(0);
+          expect(Number.isFinite(load.fixedMass ?? 0)).toBe(true);
+          expect(load.fixedMass ?? 0).toBeGreaterThanOrEqual(0);
           expect(load.arm ?? 1).toBeGreaterThan(0);
           expect(load.arm ?? 1).toBeGreaterThanOrEqual(0.1);
           expect(load.arm ?? 1).toBeLessThanOrEqual(10);
@@ -143,6 +146,14 @@ describe("Authored calls", () => {
         }
       }
       for (const t of l.targets) {
+        if (t.reversibleIce) {
+          expect(t.verb).toBe("freeze");
+          expect(t.phase).toBeUndefined();
+          expect([l.balance?.left.target, l.balance?.right.target]).toContain(
+            t.id,
+          );
+          expect(l.needsSignals).toContain(l.balance?.id);
+        }
         for (const id of t.motion?.after ?? []) {
           expect(ids).toContain(id);
           expect(id).not.toBe(t.id);
@@ -188,6 +199,7 @@ describe("Authored calls", () => {
   for (const l of levels)
     it('solves "' + l.name + '" through actual water particles', () => {
       const world = new World(l);
+      if (world.targets.some((t) => t.reversibleIce)) solveBallast(world);
       const operations = world.targets.reduce(
         (n, t) => n + (t.phase?.steps.length ?? 1),
         0,
