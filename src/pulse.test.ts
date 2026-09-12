@@ -104,4 +104,63 @@ describe("Gentle rhythm gates", () => {
       loadSave({ getItem: () => '{"version":1,"untimed":"yes"}' }).untimed,
     ).toBeUndefined();
   });
+  it("ordered untimed lanes hold one lamp open and advance only after actual water finishes it", () => {
+    const ordered: Level = {
+      ...rehearsal,
+      targets: rehearsal.targets.map((t, i) => ({
+        ...t,
+        pulse: { ...t.pulse!, untimedOrder: i + 1 },
+      })),
+    };
+    const world = new World(ordered);
+    world.untimed = true;
+    const [a, b] = world.targets;
+    const spray = (t: typeof a, frames: number, pressure = 85) => {
+      Object.assign(world.nozzle, {
+        x: t.x + t.w / 2,
+        y: t.y - 52,
+        temp: 30,
+        pressure,
+      });
+      for (let i = 0; i < frames; i++) world.update(1 / 60, idle);
+    };
+    spray(b, 180);
+    expect(b.progress).toBe(0);
+    expect(b.feedback).toContain("NEXT");
+    expect(world.mistakes).toBe(0);
+    expect(world.pulseOpen(a)).toBe(true);
+    spray(a, 60, 30);
+    expect(a.progress).toBe(0);
+    spray(a, 360);
+    expect(a.done).toBe(true);
+    expect(world.pulseOpen(b)).toBe(true);
+    spray(b, 360);
+    expect(world.completed).toBe(true);
+    const replay = new World(ordered);
+    replay.untimed = true;
+    expect(replay.pulseOpen(replay.targets[1])).toBe(false);
+  });
+  it("switching rhythm assist preserves partial work and timed lanes retain their own windows", () => {
+    const world = new World({
+      ...rehearsal,
+      targets: rehearsal.targets.map((t, i) => ({
+        ...t,
+        pulse: { ...t.pulse!, untimedOrder: i + 1 },
+      })),
+    });
+    const [a, b] = world.targets;
+    world.elapsed = 2;
+    expect(world.pulseOpen(b)).toBe(true);
+    world.impact(b, jet, b.x, b.y);
+    const progress = b.progress;
+    expect(progress).toBeGreaterThan(0);
+    world.untimed = true;
+    expect(world.pulseOpen(a)).toBe(true);
+    expect(world.pulseOpen(b)).toBe(false);
+    world.impact(b, jet, b.x, b.y);
+    expect(b.progress).toBe(progress);
+    world.untimed = false;
+    expect(world.pulseOpen(b)).toBe(true);
+    expect(b.progress).toBe(progress);
+  });
 });

@@ -2,7 +2,7 @@
 
 ## Campaign expansion — one complete world per release
 
-Current implementation: **180 scenes / 9 worlds**. See the [release ledger](RELEASES.md).
+Current implementation: **200 scenes / 10 worlds**. See the [release ledger](RELEASES.md).
 
 - [x] Design 19 new themed levels of 20 scenes each: 380 new scenes, 400 total
       including the existing collection.
@@ -29,6 +29,8 @@ Current implementation: **180 scenes / 9 worlds**. See the [release ledger](RELE
       drainage and source overflow, two-prism refraction, and a welcoming town hall.
 - [x] Pack 09: twenty Runaway Ending Library scenes, a paper-and-punctuation cast,
       actual second-draft recasting, moving book carts, and an inclusive picnic book.
+- [x] Pack 10: twenty Mount Oops sports scenes, mythological athletes, ordered
+      untimed rhythm lamps, real loaded-pontoon buoyancy, and a medal for the bench.
 - [x] In-game credits with local Kenney and font license acknowledgements.
 
 Start with the [campaign plan](CAMPAIGN_BACKLOG.md) and

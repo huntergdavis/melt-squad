@@ -4,8 +4,8 @@ One complete twenty-scene world per release. No placeholder scenes count as
 playable. Every release must pass local tests, the GitHub Pages pipeline, and
 a live-browser check before the next world is started.
 
-**Implemented in this tree: 9/20 worlds · 180/400 scenes.**
-**Remaining campaign: 11 worlds · 220 scenes.**
+**Implemented in this tree: 10/20 worlds · 200/400 scenes.**
+**Remaining campaign: 10 worlds · 200 scenes.**
 
 | World | Name | Implemented | Release |
 | --- | --- | ---: | --- |
@@ -18,8 +18,8 @@ a live-browser check before the next world is started.
 | 07 | Fossilbean Preschool | 20/20 | [pack-07](https://github.com/huntergdavis/melt-squad/releases/tag/pack-07) |
 | 08 | Emberborough Town Hall | 20/20 | [pack-08](https://github.com/huntergdavis/melt-squad/releases/tag/pack-08) |
 | 09 | The Runaway Ending Library | 20/20 | [pack-09](https://github.com/huntergdavis/melt-squad/releases/tag/pack-09) |
-| 10 | Mount Oops Sports Club | 0/20 | Next |
-| 11 | Ever After, Everywhere | 0/20 | Planned |
+| 10 | Mount Oops Sports Club | 20/20 | [pack-10](https://github.com/huntergdavis/melt-squad/releases/tag/pack-10) |
+| 11 | Ever After, Everywhere | 0/20 | Next |
 | 12 | The Somnolent Seamworks | 0/20 | Planned |
 | 13 | The Forecast Conservatory | 0/20 | Planned |
 | 14 | The Mycelium Local | 0/20 | Planned |
@@ -42,7 +42,7 @@ a live-browser check before the next world is started.
   progress, saved untimed assist, and controller-accessible assist toggles.
 - Implemented with World 05: BALANCE's equal-arm mass/torque/settling slice and
   OPTICS' geometric mirror reflection, ice occlusion, and actual detectors.
-  Buoyancy and beam splitters remain extensions for their future worlds.
+  World 10 adds buoyancy; beam splitters remain an extension for a future world.
 - Implemented with World 06: PHASE's staged freeze/melt/recast sequence and
   FLOW's full-basin overflow spillways. Freely adjustable coupled thermal bodies
   remain an extension. Build each extension when its first world needs it;
@@ -53,6 +53,8 @@ a live-browser check before the next world is started.
   reflection, plug-closed waste branches, and directly filled source overflow.
 - Implemented with World 09: a three-stage ice-page redraft, real drip-fed ink,
   turbine-started horizontal book carts, and optional completed-basin story colors.
+- Implemented with World 10: opt-in sequential untimed rhythm lanes and a
+  buoyant ice pontoon with fixed load, displaced-water force, and dock settling.
 - Still requires real-device feedback: physical gamepad comfort and mobile
   touch ergonomics. Automated controller and phone-layout checks are not a claim
   that physical hardware was tested.

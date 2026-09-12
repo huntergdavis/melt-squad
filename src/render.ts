@@ -8,6 +8,8 @@ import { drawPudding } from "./art/pudding";
 import { drawPreschool } from "./art/preschool";
 import { drawEmberborough } from "./art/emberborough";
 import { drawLibrary } from "./art/library";
+import { drawSports } from "./art/sports";
+import { drawBuoyancy } from "./art/buoyancy";
 const motionSafe = (time: number, reduced: boolean) => (reduced ? 0 : time);
 
 const palettes: Record<Theme, [string, string, string]> = {
@@ -24,6 +26,7 @@ const palettes: Record<Theme, [string, string, string]> = {
   preschool: ["#d7dfbc", "#f1ead0", "#a8bd9e"],
   emberborough: ["#ead7c1", "#f5e5cb", "#a4b1a3"],
   library: ["#46465f", "#b4a5b2", "#817486"],
+  sports: ["#c3dfe0", "#f1e7c9", "#bba88b"],
 };
 export class Renderer {
   ctx: CanvasRenderingContext2D;
@@ -120,7 +123,8 @@ export class Renderer {
       drawPudding(this, kind, t, happy) ||
       drawPreschool(this, kind, happy, t, tint) ||
       drawEmberborough(this, kind, happy, t, tint) ||
-      drawLibrary(this, kind, happy, t, tint)
+      drawLibrary(this, kind, happy, t, tint) ||
+      drawSports(this, kind, happy, t, tint)
     ) {
       c.restore();
       return;
@@ -424,6 +428,34 @@ export class Renderer {
     } else if (world.level.theme === "garden") {
       for (let i = 0; i < 7; i++)
         this.circle(i * 165, 487, 100 + (i % 3) * 20, "#9fae83");
+    } else if (world.level.theme === "sports") {
+      for (const x of [100, 790]) {
+        this.round(x, 165, 70, 315, 8, "#fff4d9", "#b8a58a");
+        for (let i = 0; i < 4; i++)
+          this.line([x + 12 + i * 15, 180, x + 12 + i * 15, 455], "#c4b498", 3);
+        this.round(x - 10, 151, 90, 25, 7, "#fff4d9", "#b8a58a");
+        this.round(x - 7, 360, 84, 120, 15, x < 200 ? "#da9c81" : "#7ea8ad");
+      }
+      for (let lane = 0; lane < 3; lane++) {
+        this.round(
+          250,
+          400 + lane * 29,
+          460,
+          20,
+          10,
+          ["#eab995", "#90bcb4", "#c4b0cb"][lane],
+        );
+      }
+      this.line([225, 150, 480, 172, 735, 150], "#5d827e", 3);
+      for (const x of [290, 385, 480, 575, 670]) {
+        c.beginPath();
+        c.moveTo(x - 10, 165);
+        c.lineTo(x + 10, 165);
+        c.lineTo(x, 187);
+        c.closePath();
+        c.fillStyle = x % 2 ? "#eab995" : "#90bcb4";
+        c.fill();
+      }
     } else if (world.level.theme === "library") {
       this.circle(480, 225, 215, "#e6c890");
       for (const x of [90, 735]) {
@@ -720,6 +752,19 @@ export class Renderer {
         100,
       );
     }
+    if (world.level.theme === "sports") {
+      this.round(235, 63, 490, 58, 17, "#fff0d4", "#9aa693");
+      c.fillStyle = "#416568";
+      c.textAlign = "center";
+      c.font = "600 24px Outfit, sans-serif";
+      c.fillText(
+        world.completed
+          ? "EVERYBODY HELPED. EVEN THE BENCH."
+          : "MOUNT OOPS SPORTS CLUB",
+        480,
+        100,
+      );
+    }
     this.round(82, 487, 796, 23, 12, "#ffffff55");
     this.round(64, 506, 832, 70, 25, ground);
     this.round(64, 501, 832, 17, 8, "#edf2df");
@@ -868,6 +913,12 @@ export class Renderer {
     for (const [index, t] of world.targets.entries()) {
       const available = world.available(t);
       const prism = world.level.optics?.prisms?.find((p) => p.target === t.id);
+      if (
+        t.done &&
+        world.buoyancy?.active &&
+        world.level.buoyancy?.iceTarget === t.id
+      )
+        continue;
       if (t.done && prism) continue;
       if (t.done && t.verb !== "freeze" && t.verb !== "fill") continue;
       c.save();
@@ -904,11 +955,12 @@ export class Renderer {
         c.stroke();
         c.setLineDash([]);
         if (!prism && (t.verb === "freeze" || t.verb === "fill")) {
-          const h = Math.max(0, (t.h - 4) * t.progress);
+          const isFloatBasin = world.level.buoyancy?.fillTarget === t.id;
+          const h = Math.max(0, (t.h - (isFloatBasin ? 0 : 4)) * t.progress);
           if (h > 0)
             this.round(
               t.x + 2,
-              t.y + t.h - h - 2,
+              t.y + t.h - h - (isFloatBasin ? 0 : 2),
               t.w - 4,
               h,
               4,
@@ -964,7 +1016,9 @@ export class Renderer {
             !available
               ? "WAIT"
               : world.untimed
-                ? "OPEN"
+                ? open
+                  ? "OPEN"
+                  : "NEXT"
                 : open
                   ? "GO!"
                   : "REST",
@@ -975,7 +1029,8 @@ export class Renderer {
           this.round(
             t.x,
             t.y - 15,
-            t.w * (world.untimed ? 1 : t.pulse.open / t.pulse.period),
+            t.w *
+              (world.untimed ? (open ? 1 : 0) : t.pulse.open / t.pulse.period),
             5,
             2,
             "#6a9c83",
@@ -1018,6 +1073,7 @@ export class Renderer {
       }
     }
     drawMeasurements(this, world);
+    drawBuoyancy(this, world, motion);
     if (!thumbnail) {
       // A tiny squad member anchors the hose, not an information panel.
       this.prop("robot", 130, 493, 0.64, true, motion);

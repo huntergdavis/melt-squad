@@ -365,10 +365,16 @@ function updateHUD() {
         : (t.phase
             ? `STEP ${t.phaseStep + 1}/${t.phase.steps.length} · `
             : "") +
-          (t.pulse && !world.untimed
-            ? world.pulseOpen(t)
-              ? "GO · "
-              : "REST · "
+          (t.pulse
+            ? world.untimed
+              ? t.pulse.untimedOrder === undefined
+                ? ""
+                : world.pulseOpen(t)
+                  ? "OPEN · "
+                  : "NEXT · "
+              : world.pulseOpen(t)
+                ? "GO · "
+                : "REST · "
             : "") +
           requirements(t, world.untimed);
     row.querySelector<HTMLElement>("i")!.style.width =

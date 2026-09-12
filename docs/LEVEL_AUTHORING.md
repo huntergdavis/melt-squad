@@ -88,6 +88,10 @@ every original call yet has a bespoke ending animation.
   Gates use simulation time, so pause stops the beat. Saved untimed assist
   holds gates open without skipping thermal conditions or prerequisites;
   reduced-motion visitors default to untimed unless they explicitly choose otherwise.
+  Optional positive `untimedOrder` numbers opt a set of lanes into patient
+  sequencing: only the lowest unfinished numbered lane stays OPEN; the others
+  show NEXT. Timed mode still follows their independent phase offsets. Switching
+  modes preserves all work. Unnumbered gates retain their all-open assist.
 - Prop `follow` attaches artwork to a live target. `reveal` defines the final
   pose/kind after the scene completes; `revealOnly` is for earned visual arrivals.
   `stamp` supplies the completion postcard's tiny joke.
@@ -99,6 +103,26 @@ every original call yet has a bespoke ending animation.
   drawing scale in pixels. Massless arms with a hanging pivot ballast settle
   under damping. The `id` signals only after opposing torque matches and the
   beam rests level with nonempty loads. This is not buoyancy.
+- `buoyancy`: the BALANCE family's floating-body exhibit. A completed
+  `iceTarget` creates a rectangular pontoon; `fillTarget` supplies the basin's
+  calibrated water height. Board geometry is pixels, `pixelsPerMeter` supplies
+  scale, pontoon `depth` is metres, `loadMass` kilograms, densities kg/m³.
+  Ice defaults to 917 and fresh water to 1000 kg/m³. The centered fixed load
+  keeps the deck horizontal; vertical force is gravity minus displaced-water
+  buoyancy, with wet damping, floor contact, and bounded integration substeps.
+  `dockY` is only a measurement: no force targets that coordinate. Completion
+  requires full water, free floating, balanced forces, a resting deck within
+  half a pixel of the mark, and a 0.45-second stable hold. Invalid, grounded,
+  incomplete, or sunk bodies cannot certify success. See `10.18`.
+  The freeze footprint rests inside the basin on its floor. Once built, the
+  renderer replaces that stationary rectangle with the physical deck/body and
+  anchors the model athletes at its actual height. The waterline uses the same
+  calibrated coordinates. This is not a volume-conserving fluid solver and does
+  not model waves, rocking, moving loads, or remelting a completed pontoon.
+  Local recall found no reusable buoyancy implementation. The existing balance
+  module supplied only the bounded-step/rest-hold convention. Physics reference:
+  [OpenStax, Archimedes' principle](https://openstax.org/books/university-physics-volume-1/pages/14-4-archimedes-principle-and-buoyancy)
+  and [density table](https://openstax.org/books/college-physics-2e/pages/11-2-density).
 - `optics`: a source direction, fixed mirrors tied to completed freeze targets,
   and circular detectors. Mirror angles are tangent angles in radians. Real
   rays reflect geometrically and stop on remaining melt-target ice cells;

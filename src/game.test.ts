@@ -24,6 +24,7 @@ describe("Authored calls", () => {
       const ids = l.targets.map((t) => t.id);
       const signals = [
         l.balance?.id,
+        l.buoyancy?.id,
         ...(l.optics?.detectors.map((d) => d.id) ?? []),
         ...l.targets.flatMap(
           (t) => t.phase?.steps.map((step) => step.signal) ?? [],
@@ -40,6 +41,28 @@ describe("Authored calls", () => {
       }
       for (const signal of l.needsSignals ?? [])
         expect(signals).toContain(signal);
+      if (l.buoyancy) {
+        const plan = l.buoyancy;
+        const ice = l.targets.find((t) => t.id === plan.iceTarget)!;
+        const fill = l.targets.find((t) => t.id === plan.fillTarget)!;
+        expect(ice.verb).toBe("freeze");
+        expect(fill.verb).toBe("fill");
+        expect(fill.requires).toContain(ice.id);
+        expect([fill.x, fill.y, fill.w, fill.h]).toEqual([
+          plan.basin.x,
+          plan.basin.y,
+          plan.basin.w,
+          plan.basin.h,
+        ]);
+        expect([ice.x, ice.y, ice.w, ice.h]).toEqual([
+          plan.pontoon.x,
+          plan.basin.y + plan.basin.h - plan.pontoon.h,
+          plan.pontoon.w,
+          plan.pontoon.h,
+        ]);
+        expect(l.needsSignals).toContain(plan.id);
+        expect(new World(l).buoyancy!.valid).toBe(true);
+      }
       for (const id of l.mobile?.targets ?? [])
         expect(l.targets.find((t) => t.id === id)?.motion).toBeDefined();
       for (const mirror of l.optics?.mirrors ?? []) {
@@ -117,6 +140,15 @@ describe("Authored calls", () => {
           expect(t.pulse.open).toBeGreaterThanOrEqual(0.3);
           expect(t.pulse.open).toBeLessThanOrEqual(t.pulse.period);
           expect(Number.isFinite(t.pulse.phase ?? 0)).toBe(true);
+          if (t.pulse.untimedOrder !== undefined) {
+            expect(Number.isInteger(t.pulse.untimedOrder)).toBe(true);
+            expect(t.pulse.untimedOrder).toBeGreaterThan(0);
+            expect(
+              l.targets.filter(
+                (other) => other.pulse?.untimedOrder === t.pulse!.untimedOrder,
+              ),
+            ).toHaveLength(1);
+          }
         }
         for (const id of t.requires ?? [])
           expect(ids.indexOf(id)).toBeLessThan(ids.indexOf(t.id));

@@ -1,6 +1,7 @@
 import type { BalancePlan } from "./mechanics/balance";
 import type { OpticsPlan } from "./mechanics/optics";
 import type { FlowBranch } from "./mechanics/flow";
+import type { BuoyancyPlan } from "./mechanics/buoyancy";
 
 export type Verb = "melt" | "freeze" | "warm" | "fill" | "spin";
 export type Theme =
@@ -16,7 +17,8 @@ export type Theme =
   | "pudding"
   | "preschool"
   | "emberborough"
-  | "library";
+  | "library"
+  | "sports";
 export type PropKind =
   | "cup"
   | "wizard"
@@ -145,7 +147,27 @@ export type PropKind =
   | "paperboat"
   | "communalbook"
   | "bookplate"
-  | "guestbook";
+  | "guestbook"
+  | "coachnika"
+  | "gus"
+  | "irisharpy"
+  | "centaurathlete"
+  | "cyclopsathlete"
+  | "paddedcolumn"
+  | "sportsbench"
+  | "whistle"
+  | "relaybaton"
+  | "sportsribbon"
+  | "pastalaurel"
+  | "vegetablemedal"
+  | "scoreplacard"
+  | "hurdle"
+  | "sportsplate"
+  | "sportsdiscus"
+  | "sportstowel"
+  | "modelathletes"
+  | "sportshug"
+  | "sportscup";
 export interface PhaseStep {
   verb: "freeze" | "melt";
   name: string;
@@ -179,7 +201,13 @@ export interface Target {
     after?: string[];
   };
   /** Seconds per beat, seconds accepting water, and a seconds offset. */
-  pulse?: { period: number; open: number; phase?: number };
+  pulse?: {
+    period: number;
+    open: number;
+    phase?: number;
+    /** In untimed mode, lower numbered lanes finish before this lamp opens. */
+    untimedOrder?: number;
+  };
 }
 export interface Prop {
   kind: PropKind;
@@ -209,6 +237,7 @@ export interface Level {
   pack?: string;
   stamp?: string;
   balance?: BalancePlan;
+  buoyancy?: BuoyancyPlan;
   optics?: OpticsPlan;
   /** Physical readings required in addition to completed targets. */
   needsSignals?: string[];

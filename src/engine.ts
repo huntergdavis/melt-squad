@@ -6,6 +6,11 @@ import {
 } from "./mechanics/balance";
 import { traceOptics } from "./mechanics/optics";
 import { availableRoutes, branchOpen } from "./mechanics/flow";
+import {
+  createBuoyancy,
+  stepBuoyancy,
+  type BuoyancyState,
+} from "./mechanics/buoyancy";
 
 export const CELL = 10;
 export interface LiveTarget extends Target {
@@ -77,6 +82,7 @@ export class World {
   signals = new Set<string>();
   private phaseSignals = new Set<string>();
   balance?: BalanceState;
+  buoyancy?: BuoyancyState;
   light: ReturnType<typeof traceOptics> = {
     segments: [],
     lit: new Set<string>(),
@@ -100,6 +106,7 @@ export class World {
   private seed = 17;
   constructor(public level: Level) {
     if (level.balance) this.balance = createBalance();
+    if (level.buoyancy) this.buoyancy = createBuoyancy(level.buoyancy);
     this.nozzle = {
       x: level.start[0],
       y: level.start[1],
@@ -173,7 +180,9 @@ export class World {
             ? phase.name.toLowerCase()
             : id === this.level.balance?.id
               ? "let the scale settle level"
-              : "light the detector",
+              : id === this.level.buoyancy?.id
+                ? "let the floating deck settle at the dock"
+                : "light the detector",
         );
     }
     return "First: " + tasks.join(" + ");
@@ -198,6 +207,13 @@ export class World {
       this.light = traceOptics(this.level.optics, this.targets);
       for (const id of this.light.lit) this.signals.add(id);
     }
+    if (this.level.buoyancy && this.buoyancy) {
+      const plan = this.level.buoyancy;
+      const ice = this.targets.find((t) => t.id === plan.iceTarget);
+      const fill = this.targets.find((t) => t.id === plan.fillTarget);
+      stepBuoyancy(this.buoyancy, plan, !!ice?.done, fill?.progress ?? 0, dt);
+      if (this.buoyancy.docked) this.signals.add(plan.id);
+    }
   }
   pulsePosition(t: Target): number {
     if (!t.pulse) return 0;
@@ -205,11 +221,20 @@ export class World {
     return ((((this.elapsed + phase) % period) + period) % period) / period;
   }
   pulseOpen(t: Target): boolean {
-    return (
-      !t.pulse ||
-      this.untimed ||
-      this.pulsePosition(t) < t.pulse.open / t.pulse.period
-    );
+    if (!t.pulse) return true;
+    if (this.untimed) {
+      const order = t.pulse.untimedOrder;
+      return (
+        order === undefined ||
+        !this.targets.some(
+          (other) =>
+            !other.done &&
+            other.pulse?.untimedOrder !== undefined &&
+            other.pulse.untimedOrder < order,
+        )
+      );
+    }
+    return this.pulsePosition(t) < t.pulse.open / t.pulse.period;
   }
   get progress() {
     return (
@@ -242,7 +267,9 @@ export class World {
     if (t.done || !this.available(t)) return;
     if (!this.pulseOpen(t)) {
       t.flash = 0.3;
-      t.feedback = "REST · wait for GO, or turn on untimed assist";
+      t.feedback = this.untimed
+        ? "NEXT · finish the earlier lit lane"
+        : "REST · wait for GO, or turn on untimed assist";
       return; // A missed beat never removes progress or counts as a mistake.
     }
     if (t.flowOnly && !drop.routed) {
