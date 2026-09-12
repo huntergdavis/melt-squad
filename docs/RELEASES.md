@@ -1,0 +1,49 @@
+# Campaign release ledger
+
+One complete twenty-scene world per release. No placeholder scenes count as
+playable. Every release must pass local tests, the GitHub Pages pipeline, and
+a live-browser check before the next world is started.
+
+**Implemented in this tree: 2/20 worlds · 40/400 scenes.**
+**Remaining campaign: 18 worlds · 360 scenes.**
+
+| World | Name | Implemented | Release |
+| --- | --- | ---: | --- |
+| 01 | First Shift | 20/20 | Original launch |
+| 02 | The Midnight Sock Exchange | 20/20 | [pack-02](https://github.com/huntergdavis/melt-squad/releases/tag/pack-02) |
+| 03 | Brine & Parcel | 0/20 | Next |
+| 04 | The Mostly Clockwork Circus | 0/20 | Planned |
+| 05 | Borough of Very Small Affairs | 0/20 | Planned |
+| 06 | The Great Pudding Republic | 0/20 | Planned |
+| 07 | Fossilbean Preschool | 0/20 | Planned |
+| 08 | Emberborough Town Hall | 0/20 | Planned |
+| 09 | The Runaway Ending Library | 0/20 | Planned |
+| 10 | Mount Oops Sports Club | 0/20 | Planned |
+| 11 | Ever After, Everywhere | 0/20 | Planned |
+| 12 | The Somnolent Seamworks | 0/20 | Planned |
+| 13 | The Forecast Conservatory | 0/20 | Planned |
+| 14 | The Mycelium Local | 0/20 | Planned |
+| 15 | The Institute of Almost Possible | 0/20 | Planned |
+| 16 | Last Exit Before Breakfast | 0/20 | Planned |
+| 17 | Toybox After Bedtime | 0/20 | Planned |
+| 18 | Apocalypse, Rescheduled | 0/20 | Planned |
+| 19 | The Hotel Between Tuesdays | 0/20 | Planned |
+| 20 | The Great Thaw Festival | 0/20 | Planned |
+
+## Campaign foundation
+
+- Implemented: twenty-destination atlas, twenty-node story paths, scene list,
+  previews, freely accessible released scenes, Continue, replay, browser Back,
+  ID-preserving saves, visible unbuilt states, local-license credits screen.
+- Implemented with World 02: connected rinse channels with routed-only goals;
+  slow deterministic moving targets with saved stationary assist; character
+  reveals and completion postcards/stamps.
+- Not yet implemented: BALANCE, OPTICS, PHASE, PULSE. Build each system when its
+  first world needs it; do not silently substitute a basic target for its puzzle.
+- Still requires real-device feedback: physical gamepad comfort and mobile
+  touch ergonomics. Automated controller and phone-layout checks are not a claim
+  that physical hardware was tested.
+
+The [scene catalog](campaign/SCENE_CATALOG.md) preserves all 380 source designs.
+Older optional ideas in [BACKLOG.md](BACKLOG.md) are separate from this bounded
+twenty-world campaign and are not silently marked complete by it.

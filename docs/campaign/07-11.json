@@ -1,0 +1,833 @@
+{
+  "packs": [
+    {
+      "id": "07",
+      "title": "Fossilbean Preschool",
+      "premise": "Principal Fern, a triceratops in reading glasses, runs a nursery for very small dinosaurs with very large feelings. Pebble the ankylosaur and Dapple the diplodocus are preparing their first family open day.",
+      "arc": "Learn the nursery's care stations, help the children become classroom helpers, visit neighboring kitchens and caves, rehearse together, and assemble an open-day portrait that welcomes every shape of family. Optional playground experiments enrich the day without gating the finale.",
+      "signature": "Pastel fossil blocks, huge dotted construction outlines beside tiny belongings, contrasting care temperatures, and children's increasingly elaborate attempts to help. Dinosaur actions and classroom transformations are scripted completion presentations unless a scene declares a system dependency.",
+      "newArt": [
+        "Triceratops principal kit: glasses, cardigan, clipboard, proud and puzzled poses",
+        "Small dinosaur cast kit: ankylosaur Pebble, diplodocus Dapple, pterosaur classmates, interchangeable expression and parent variants",
+        "Nursery furniture kit: low cubbies, giant coat hooks, washable mats, cots, padded fossil blocks",
+        "Care-station kit: leaf bowls, thermometers, milk cups, warming pads, labeled turbine fans",
+        "Playground kit: nest outlines, footprints, sand-table fossils, mobile arms, balance beam",
+        "Open-day decoration kit: crayon portraits, handmade badges, leaf bunting, family-photo backdrop"
+      ],
+      "scenes": [
+        {
+          "id": "07.01",
+          "title": "A Name Tag for a Neck",
+          "setup": "Dapple's scarf hangs over an iced name badge in the right cubbies. Principal Fern waits beside a cold badge stamper at upper left.",
+          "puzzle": "MELT the badge ice at 40°. Its completion enables the left stamper; WARM that station within 30–40° and 20–40% pressure. Reposition between the low badge and the higher stamper instead of aiming through the decorative scarf.",
+          "payoff": "Fern stamps Dapple's badge and attaches it halfway up her neck. Dapple proudly bends into the attendance photograph.",
+          "crossover": ["town"],
+          "requires": []
+        },
+        {
+          "id": "07.02",
+          "title": "Three Leaves, One Lunch",
+          "setup": "Pebble has arranged three leaf bowls in a broad triangle. The central lunch warmer carries a sleepy leaf icon, while the two side bowls show simple water-drop marks.",
+          "puzzle": "FILL both side basins with 20° water in either order. Together they enable the center WARM target, requiring 35–45° and 20–35% pressure. Shift the nozzle above each basin; decorative stems do not route water between them.",
+          "payoff": "The bowls gain bright little leaf lunches. Pebble serves Fern a single leaf on an absurdly large plate.",
+          "crossover": ["kitchen", "garden"],
+          "requires": []
+        },
+        {
+          "id": "07.03",
+          "title": "The Nap Nest Committee",
+          "setup": "Two dotted nest pads lie beneath a sleeping-volcano mural: Dapple's long rectangle and Pebble's compact square. A blanket warmer stands between them.",
+          "puzzle": "FREEZE both nest footprints at −20°, choosing either order and moving along Dapple's wider outline. Completing both enables the blanket WARM target at 25–35° and 20–40% pressure. The finished pads remain stable during warming.",
+          "payoff": "A cutaway adds cushions to the pads. Both children curl up; Fern falls asleep holding the official nap agenda.",
+          "crossover": ["cave"],
+          "requires": []
+        },
+        {
+          "id": "07.04",
+          "title": "An Extremely Small Breeze",
+          "setup": "A giant fan overlooks Pebble's paper windmill. Ice covers its service label low left; its exposed turbine sits high right with clear aiming space above.",
+          "puzzle": "MELT the label patch at 40° to enable the turbine. SPIN it with 20° water at 80% pressure. The change from clearing ice to driving the marked turbine is the lesson; the paper windmill is completion animation.",
+          "payoff": "The giant fan turns lazily. Pebble's paper windmill makes one triumphant revolution and receives a classroom-helper badge.",
+          "crossover": ["town"],
+          "requires": []
+        },
+        {
+          "id": "07.05",
+          "title": "Drips for the Class Fern",
+          "setup": "The class fern's basin sits below a wide suspended ice rectangle. Dapple has drawn a raincloud around the ice for an indoor weather lesson.",
+          "puzzle": "Use 40° water to MELT a narrow opening over the basin, letting later drops FILL it through the opening. These targets have no prerequisite link: real droplet access creates the connection. Finish clearing the remaining marked ice to complete the scene.",
+          "payoff": "The watered plant unfolds a leaf shaped like Principal Fern's glasses. Dapple records the forecast as 'teacher-shaped.'",
+          "crossover": ["garden"],
+          "requires": []
+        },
+        {
+          "id": "07.06",
+          "title": "Mittens for a Tail Club",
+          "setup": "Pebble's mitten is iced into the left cubby above a drying pad. Dapple's dotted boot rack and sock warmer occupy the right cubby.",
+          "puzzle": "Complete either branch first: MELT the left mitten ice at 40°, then WARM its drying pad at 30–40°/20–35%; or FREEZE the right rack at −20°, then WARM its sock pad at 40–50°/35–50%. Each pad requires only its own branch's first target.",
+          "payoff": "Everyone gains cozy accessories. Pebble solemnly puts the oversized mitten on his tail, exactly as intended.",
+          "crossover": ["town"],
+          "requires": []
+        },
+        {
+          "id": "07.07",
+          "title": "One Step per Little Foot",
+          "setup": "Three dotted step blocks rise toward a marked handwashing basin on the right. The children wait beneath a handwashing mural throughout play.",
+          "puzzle": "FREEZE the low, middle, then high footprint at −20°, with each block requiring the previous one. All three enable the sink FILL target at 20°. Move the nozzle directly between rectangles; the stairs do not redirect the stream.",
+          "payoff": "In a cutaway, the children climb their new steps to wash. Dapple uses the entire staircase to wash one foot.",
+          "crossover": ["town", "kitchen"],
+          "requires": []
+        },
+        {
+          "id": "07.08",
+          "title": "The Blanket Is a Map",
+          "setup": "Four care pads occupy a blanket backdrop's corners: Pebble's sunny patch, Dapple's shady patch, an egg pillow, and Fern's tea corner, linked by crayon arrows.",
+          "puzzle": "WARM Pebble's pad at 40–50°/40–55% and Dapple's at 25–35°/20–35% in either order. Both enable the egg pillow FREEZE footprint at −20°. That enables Fern's tea-basin FILL at 20°; the drawn lines are prerequisite cues, not channels.",
+          "payoff": "The blanket becomes a classroom picnic map. Fern discovers the children have reserved the biggest square for her teacup.",
+          "crossover": ["garden", "kitchen"],
+          "requires": []
+        },
+        {
+          "id": "07.09",
+          "title": "Pancake with a Passport",
+          "setup": "The kitchen cart holds an iced pancake upper left, dotted serving plinth lower right, and cold griddle between. Dapple has made breakfast a passport.",
+          "puzzle": "MELT the pancake's ice rectangle at 40° and FREEZE the plinth footprint at −20° in either order. Both enable the griddle WARM target at 50–60° and 25–40% pressure. Reposition to keep the independent cold and warm tasks visually distinct.",
+          "payoff": "A scripted serving reveals a leaf pancake on its plinth. Fern stamps its passport 'admitted to tummy.'",
+          "crossover": ["kitchen", "town"],
+          "requires": []
+        },
+        {
+          "id": "07.10",
+          "title": "Bedtime Under the Stalactites",
+          "setup": "The cave reading nook has an iced book panel above a lantern warmer, plus dotted seat cushions in both lower corners. Stalactites decorate the backdrop.",
+          "puzzle": "MELT the book panel at 40° to enable the lantern WARM target at 35–45°/20–35%. Independently FREEZE both seat footprints at −20°. Completing the lantern and both seats ends the scene; cave scenery neither blocks droplets nor threatens the class.",
+          "payoff": "Fern opens the book in a cutaway. The cave's illustrated bats turn out to be attending the same bedtime story.",
+          "crossover": ["cave"],
+          "requires": []
+        },
+        {
+          "id": "07.11",
+          "title": "The Moon Needs a Booster Seat",
+          "setup": "A visiting moon mascot waits beside a squat planetarium projector. Its dotted booster-seat footprint lies low left; the projector turbine sits high right, above a star-shaped water basin.",
+          "puzzle": "FREEZE the booster footprint at −20°, then FILL the independent star basin with 20° water. Both enable the projector SPIN target at 20° and 80% pressure. Reach the turbine from above its own rectangle; the displayed orbit is decorative.",
+          "payoff": "The seated moon receives a paper crown. The projector shows Pebble's constellation: six stars connected into a potato.",
+          "crossover": ["cosmos", "town"],
+          "requires": []
+        },
+        {
+          "id": "07.12",
+          "title": "A Garden for Imaginary Teeth",
+          "setup": "Three pretend-tooth pots line the garden bench. Ice covers the central basin; outer basins remain exposed. Pebble holds a cardboard seed packet.",
+          "puzzle": "FILL the exposed basins at 20° in either order. MELT the central slab at 40°, then FILL the center basin; it is enabled from the start, so an early hole can admit useful drops. Complete all three basins and the slab.",
+          "payoff": "Three tooth-shaped flowers pop up in the ending animation. Pebble beams; Fern labels them 'definitely not for biting.'",
+          "crossover": ["garden"],
+          "requires": []
+        },
+        {
+          "id": "07.13",
+          "title": "Parents of Several Sizes",
+          "setup": "An iced invitation stack sits between two dotted portrait stands: Pebble's broad low stand and Dapple's tall narrow one. A welcome warmer occupies the center.",
+          "puzzle": "MELT the invitations at 40° to enable both stand footprints. FREEZE each at −20° in either order, distributing spray across the wide stand and repositioning for the tall one. Both stands enable a welcome WARM pad at 30–40°/20–40%.",
+          "payoff": "The invitations unfold into different-sized welcome signs. Fern discovers that every family has drawn itself with the same enormous smile.",
+          "crossover": ["town"],
+          "requires": []
+        },
+        {
+          "id": "07.14",
+          "title": "Inside Voices, Outside Fan",
+          "setup": "The rehearsal corner has a large turbine left, a delicate microphone warmer right, and a dotted music stand below. Crayon arrows show preparation branches.",
+          "puzzle": "SPIN the fan at 20°/80% and FREEZE the stand at −20° in either order. Both enable the microphone WARM target at 30–40° and 15–30% pressure. Lower pressure deliberately before servicing the microphone; no sound-level simulation is involved.",
+          "payoff": "The fan flutters leaf sheet music while the microphone lights. Pebble whispers a speech so proudly that Fern applauds before it starts.",
+          "crossover": ["town", "garden"],
+          "requires": []
+        },
+        {
+          "id": "07.15",
+          "title": "A Fair Share of Seesaw",
+          "setup": "An optional playground beam has a fixed three-unit dinosaur one arm-length left of its pivot. A one-unit ice-seat footprint sits three arm-lengths right.",
+          "puzzle": "FREEZE the right seat at −20°. BALANCE must give the completed ice actual mass and let its equal opposing torque level the beam. The success condition is a resting level beam, with no deadline; this experiment needs physical supports and weights.",
+          "payoff": "Fern explains fairness with a picture card. The smallest dinosaur gets the grandest seat and offers the model dinosaur a biscuit.",
+          "crossover": ["garden"],
+          "requires": ["BALANCE"]
+        },
+        {
+          "id": "07.16",
+          "title": "The Dress Rehearsal Has Socks",
+          "setup": "Three costume cubbies pair iced sock patches with warming pads. Pebble's pad shows sun, Dapple's shade, and Fern's a teacup.",
+          "puzzle": "MELT all three sock patches at 40°, in any order; each enables only its own pad. WARM Pebble's at 40–50°/30–45%, Dapple's at 25–35°/20–35%, and Fern's at 35–45°/20–35%. Group similar settings or finish each cubby before moving on.",
+          "payoff": "The costumes gain clean warm socks. Fern wears hers over her horns because the children insist that is formal dress.",
+          "crossover": ["town"],
+          "requires": []
+        },
+        {
+          "id": "07.17",
+          "title": "The Leaf Orchestra Tuning",
+          "setup": "Dapple's stage has an iced song card at center, instrument basin low left, dotted music stand low right, and fan turbine beside the curtain.",
+          "puzzle": "MELT the song card at 40° to enable the bowl FILL and stand FREEZE targets. Complete those branches at 20° and −20° respectively; together they enable the fan SPIN at 20°/80%. All performers remain scripted presentation.",
+          "payoff": "The completed stage plays a gentle leaf-rustling flourish. Dapple bows so deeply that her paper conductor hat lands on Pebble.",
+          "crossover": ["garden", "town"],
+          "requires": []
+        },
+        {
+          "id": "07.18",
+          "title": "The Mobile Makes the Rounds",
+          "setup": "An optional mobile carries three blanket-warmer targets on a slowly rotating arm. All targets remain reachable; an iced start plaque sits below.",
+          "puzzle": "MELT the plaque at 40° to start deterministic MOTION. WARM each circulating target within 30–40°/20–40%, following it with the nozzle. There is no deadline or reset between revolutions; completed targets stay complete while the remaining targets keep moving.",
+          "payoff": "The mobile stops for a cutaway showing three tiny plush dinosaurs tucked into blanket hammocks. Fern awards it an honorary nap diploma.",
+          "crossover": ["cosmos", "town"],
+          "requires": ["MOTION"]
+        },
+        {
+          "id": "07.19",
+          "title": "Helper Badges for the Helpers",
+          "setup": "Fern's thank-you desk has an iced badge sheet above a basin left, plus a dotted display frame and cold ribbon warmer right.",
+          "puzzle": "MELT a hole through the badge sheet at 40° to begin FILLING the enabled basin below, then finish both targets. Separately FREEZE the frame at −20°. The basin and frame together enable the ribbon WARM target at 30–40°/20–35%.",
+          "payoff": "Fern receives a gigantic 'excellent grown-up' badge. Its ribbon was measured by Dapple, so the children wrap it around the whole classroom.",
+          "crossover": ["kitchen", "town"],
+          "requires": []
+        },
+        {
+          "id": "07.20",
+          "title": "Everybody Fits in the Picture",
+          "setup": "An iced welcome plaque overlooks two dotted risers, a flower basin, and a camera pad. Nursery families wait in the portrait backdrop.",
+          "puzzle": "MELT the plaque at 40°. It enables riser FREEZE at −20° and flower-basin FILL at 20°; complete those three targets in any order. They enable the camera's WARM pad at 30–40°/15–30%, finishing with a gentle setting. Optional playground exhibits are unnecessary.",
+          "payoff": "Families pose comfortably on the risers. Dapple curls around the frame as a living border; Fern's huge helper badge completes the picture.",
+          "crossover": ["town", "garden"],
+          "requires": []
+        }
+      ]
+    },
+    {
+      "id": "08",
+      "title": "Emberborough Town Hall",
+      "premise": "Mayor Cinder has promised a town hall welcoming residents of every size and temperature. Flint, a tiny wyvern clerk, needs the squad to turn a frozen civic fortress into a place where asking for help feels easy.",
+      "arc": "Open the service desks, discover incompatible residents can be accommodated together, welcome visitors from neighboring worlds, prepare the council chamber, and celebrate a public building sized for everyone. Experimental drainage and daylight services are optional side rooms.",
+      "signature": "Dragon-scale brass fittings, bureaucratic objects made comically enormous, paired service stations with readable thermal needs, and visible prerequisite diagrams drawn as official paperwork. Civic machinery and residents animate in scripted payoffs unless a dependency is declared.",
+      "newArt": [
+        "Dragon official kit: Mayor Cinder's sash, Flint's sleeve garters, modular horns, wings, scales, and citizen expressions",
+        "Municipal desk kit: queue cards, forms, stamp pads, counters, service windows, bell turrets",
+        "Dragon infrastructure kit: oversized radiators, brass turbine vents, nest inspection stamps, chimney-shaped basins",
+        "Council chamber kit: podium footprints, reversible-looking decorative signs, scaled seating, ribbon posts",
+        "Public-service experiment kit: visible drainage troughs, source basin, prism sockets, sunbeam detector plaques",
+        "Community notice kit: cave addresses, garden permits, visitor badges, hand-drawn thank-you notices"
+      ],
+      "scenes": [
+        {
+          "id": "08.01", "title": "Ring for a Reasonable Dragon",
+          "setup": "An ice-covered help bell sits on the low reception counter. Flint's cold desk pad occupies a separate rectangle above the counter's right end, beneath a sign reading 'All Questions Welcome.'",
+          "puzzle": "MELT the bell's ice at 40°. Completion enables Flint's WARM pad at 35–45° and 20–40% pressure. Move above the second rectangle; the counter is background art, not an obstacle.",
+          "payoff": "The bell gives a friendly ding. Flint climbs a scripted stack of forms and opens the enormous service window.",
+          "crossover": ["town"], "requires": []
+        },
+        {
+          "id": "08.02", "title": "Application for One Puddle",
+          "setup": "Mayor Cinder's first applicant is a duck dragon carrying a tiny umbrella. Two permit basins sit left and right of a cold approval stamp, each labeled with a different droplet icon.",
+          "puzzle": "FILL both independent basins with 20° water, in either order. Their combined completion enables the stamp WARM target at 40–50°/25–45%. Aim into each basin directly; their illustrated paperwork connection carries no liquid.",
+          "payoff": "Flint stamps a puddle permit. The duck dragon opens the umbrella over the paperwork and proudly stands in the pictured puddle.",
+          "crossover": ["town", "garden"], "requires": []
+        },
+        {
+          "id": "08.03", "title": "A Ramp for the Rump",
+          "setup": "A dragon waits beside two dotted landing footprints: broad and low left, narrow and tall right. A desk warmer and iced chair plaque mark separate branch endings.",
+          "puzzle": "FREEZE either landing at −20°. The broad landing enables desk WARM at 35–45°/20–40%; the tall landing enables chair-plaque MELT at 40°. Finish local branches or group cold construction first. The finished landings form the entrance route only in the cutaway.",
+          "payoff": "The dragon ascends in a cutaway, sits comfortably, and reveals that the consultation concerns a very small chair.",
+          "crossover": ["town"], "requires": []
+        },
+        {
+          "id": "08.04", "title": "Your Number Is Quite Large",
+          "setup": "The queue machine has a frozen number placard low left and an exposed turbine high right. A dragon family waits beneath a huge roll of ticket paper suspended in the background.",
+          "puzzle": "MELT the placard at 40°, then SPIN the enabled turbine at 20° and 80% pressure. Reposition above the turbine rather than treating the illustrated paper roll as a hose channel.",
+          "payoff": "A scripted ticket unfurls across the room. It reads '1'; the family is delighted to be first and offers everyone spare paper.",
+          "crossover": ["town"], "requires": []
+        },
+        {
+          "id": "08.05", "title": "The Fountain Has Office Hours",
+          "setup": "The lobby's moustache fountain has two exposed basins separated horizontally beneath a dormant turbine. A frozen municipal-hours plaque sits well off to the right.",
+          "puzzle": "FILL the left basin at 20° to enable the turbine; SPIN it at 20°/80%. Independently MELT the hours plaque at 40° to enable the right basin's FILL target. Choose which branch to finish first; both preparations trigger the scripted fountain.",
+          "payoff": "The ending animates a moustache-shaped fountain spray. Flint updates the sign to 'Back, With Moustache.'",
+          "crossover": ["town", "garden"], "requires": []
+        },
+        {
+          "id": "08.06", "title": "Nest Permit, Guest Permit",
+          "setup": "The left applicant has a dotted nest model and stamp pad; the right has an iced visitor badge and separate pad. Both wait politely.",
+          "puzzle": "Left branch: FREEZE the nest at −20°, then WARM its stamp at 25–35°/20–35%. Right branch: MELT badge ice at 40°, then WARM its stamp at 50–60°/35–50%. Each stamp depends only on its own preparation; choose branch order.",
+          "payoff": "Both receive approvals simultaneously. They exchange enthusiastic recommendations for homes with exactly opposite weather.",
+          "crossover": ["town", "cave"], "requires": []
+        },
+        {
+          "id": "08.07", "title": "The Three Official Teas",
+          "setup": "A diagonal row of labeled warming stations serves Flint, Cinder, and the frost archivist. Their cups vary from thimble to bucket, but every target rectangle has clear access from above.",
+          "puzzle": "WARM Flint's pad at 30–40°/20–35%, Cinder's at 55–65°/40–55%, and the archivist's at 15–25°/15–30%. All three are independent. Choose an efficient temperature progression or finish by position; pressure must also match each station.",
+          "payoff": "A cutaway fills the cups with tea. The archivist offers Cinder a tiny biscuit balanced on an enormous saucer.",
+          "crossover": ["kitchen", "town"], "requires": []
+        },
+        {
+          "id": "08.08", "title": "Balcony for the Short Speech",
+          "setup": "A frozen speech card hangs at upper center. Two dotted podium blocks sit below, one wide and one narrow, beside the warming pad for Flint's miniature speaking trumpet.",
+          "puzzle": "MELT the card at 40° to enable both podium FREEZE footprints. Complete those at −20° in either order; both enable the trumpet WARM target at 35–45°/20–35%. Completed podiums remain stable while the trumpet is warmed.",
+          "payoff": "Flint delivers the shortest possible welcome from the tallest podium. Mayor Cinder holds up a card saying 'Excellent Length.'",
+          "crossover": ["town"], "requires": []
+        },
+        {
+          "id": "08.09", "title": "Records from Before Carpets",
+          "setup": "The cave archive stores two frozen address tablets at different heights. A central reading-lamp warmer lies below them. Flint has brought a feather duster larger than the entire archive doorway.",
+          "puzzle": "MELT both tablet rectangles at 40°, choosing either first. Together they enable the reading lamp's WARM target at 30–40°/20–35%. Reposition above each tablet; decorative cave formations do not collide with droplets.",
+          "payoff": "The tablets reveal ancient residents requesting softer floors. Cinder unrolls the archive's first rug, patterned with approving little dragons.",
+          "crossover": ["cave", "town"], "requires": []
+        },
+        {
+          "id": "08.10", "title": "Soup at the Service Window",
+          "setup": "The community kitchen trolley parks beneath two service windows. A common soup basin is low center; an adult-dragon warming pad sits left and a hatchling pad sits right, with clearly different thermometer cards.",
+          "puzzle": "FILL the common basin with 20° water. It enables both independent WARM pads: adult at 50–60°/35–50%, hatchling at 30–40°/20–35%. The basin has no narrow temperature requirement; serving temperatures belong to the pads.",
+          "payoff": "The cutaway serves comforting soup. Flint receives a ladle-sized bowl and uses a paperclip as a spoon.",
+          "crossover": ["kitchen", "town"], "requires": []
+        },
+        {
+          "id": "08.11", "title": "Rooftop Rights for Bees",
+          "setup": "The bee dragon's rooftop plan places a planter basin left, dotted shade shelter right, and nectar warmer centrally above the bench.",
+          "puzzle": "FILL the planter at 20° and FREEZE the shelter at −20° in either order. Both enable the nectar WARM target at 30–40°/20–35%. Plants, bees, and shade are presented in the completion animation, with no pollination or temperature-field simulation.",
+          "payoff": "Flowers open around the shelter. The bee dragon posts a tiny notice welcoming visitors who can fit through a sunflower.",
+          "crossover": ["garden", "town"], "requires": []
+        },
+        {
+          "id": "08.12", "title": "Visitor Parking for a Comet",
+          "setup": "A comet dragon waits outside the observatory annex. A dotted visitor-seat footprint lies lower left; an ice-covered sky chart lies right, beneath a separate telescope turbine target.",
+          "puzzle": "FREEZE the seat at −20° and MELT the chart at 40°, in either order. Both enable the telescope SPIN at 20°/80%. The telescope turns only as scripted presentation after completion; no target follows its rotation.",
+          "payoff": "Flint issues a visitor badge the comet wears like a tiny moon. Cinder adds a very long tail space to the parking illustration.",
+          "crossover": ["cosmos", "town"], "requires": []
+        },
+        {
+          "id": "08.13", "title": "A Desk That Asks for Help",
+          "setup": "An iced form stack buries Flint's desk. Flanking assistant counters each pair a dotted shelf with a stamp pad; Flint's tea warmer sits below.",
+          "puzzle": "MELT the forms at 40°, enabling both shelves. FREEZE them at −20°; each shelf enables its own stamp WARM target at 35–45°/20–40%. Both completed stamps unlock Flint's tea WARM pad at 30–40°/20–35%.",
+          "payoff": "Volunteer dragons take the counters in a cutaway. Flint finally sits down, astonished that asking for help has a simple form.",
+          "crossover": ["town", "kitchen"], "requires": []
+        },
+        {
+          "id": "08.14", "title": "The Whispering Complaint Horn",
+          "setup": "An enormous ventilation turbine stands beside the public suggestion horn's small warming pad. Between them, an iced instruction card shows a large breeze arrow followed by a tiny speaking bubble.",
+          "puzzle": "MELT the instruction card at 40°, SPIN the enabled vent at 20°/80%, then WARM the enabled horn at 25–35°/15–30%. The final pressure drop is essential. No microphone input or sound-based objective is required.",
+          "payoff": "The horn opens with a polite chime. Its first suggestion is a request for a smaller suggestion horn, which Flint records enthusiastically.",
+          "crossover": ["town"], "requires": []
+        },
+        {
+          "id": "08.15", "title": "Rainwater on the Proper Form",
+          "setup": "An optional source basin feeds a visible fork: left trough toward decorative paperwork, right trough toward a garden reservoir. A plug outline spans the left trough.",
+          "puzzle": "FREEZE the permanent left plug at −20°, then FILL the source at 20°. FLOW must route persistent overflow along the remaining connected trough into the destination reservoir. The destination completes only from connected flow, requiring new channel and basin logic.",
+          "payoff": "The reservoir waters a scripted rooftop flower display. Flint stamps the dry forms 'successfully not a pond.'",
+          "crossover": ["garden", "town"], "requires": ["FLOW"]
+        },
+        {
+          "id": "08.16", "title": "Chairs for Every Opinion",
+          "setup": "The council chamber has three dotted seat-platform footprints arranged in a shallow arc. Above each is a labeled speaking-pad target; Cinder's empty mayoral chair is conspicuously the same size as everyone else's.",
+          "puzzle": "FREEZE all three platforms at −20° in any order. Each enables its corresponding WARM speaking pad: frost resident 20–30°/15–30%, Flint 30–40°/20–35%, Cinder 50–60°/35–50%. The three branches stay independent and require no speaking schedule.",
+          "payoff": "Residents take their seats in a cutaway. The tiniest speaker receives the largest round of illustrated applause.",
+          "crossover": ["town", "cave"], "requires": []
+        },
+        {
+          "id": "08.17", "title": "Minutes with Tiny Footprints",
+          "setup": "Flint's transcription warmer sits high left, a notice-board footprint stands center, and iced meeting notes occupy the right above a wash basin.",
+          "puzzle": "WARM the transcription pad at 30–40°/20–35% to enable board FREEZE at −20°. The board enables notes MELT at 40°; clearing those enables basin FILL at 20°. Follow the four-stage ladder across the desk, adjusting temperature between every stage.",
+          "payoff": "The board displays the minutes as friendly pictograms. A hatchling adds a careful footprint signature, and Cinder adds one matching stamp.",
+          "crossover": ["town", "kitchen"], "requires": []
+        },
+        {
+          "id": "08.18", "title": "Sunshine by Appointment",
+          "setup": "An optional daylight exhibit has a beam source, iced shutter, two descending prism footprints, and a sunshine detector beside the bench.",
+          "puzzle": "MELT the shutter at 40°, then FREEZE both fixed-angle prism footprints at −20°. OPTICS must refract the actual beam through both completed prisms onto the detector; detector illumination completes the exhibit. Prisms remain fixed and do not need to melt again.",
+          "payoff": "A real illuminated patch reaches the bench. In the cutaway, Cinder and Flint share it with a sleepy municipal cat dragon.",
+          "crossover": ["cosmos", "town"], "requires": ["OPTICS"]
+        },
+        {
+          "id": "08.19", "title": "The Department of Thank You",
+          "setup": "Thank-you stations form a triangle: iced citizen letter above, flower basin low left, dotted pedestal low right. A separate applause turbine stands beside them.",
+          "puzzle": "MELT the letter at 40° to enable FILL on the flower basin at 20° and FREEZE on the pedestal at −20°. Both enable the applause SPIN target at 20°/80%. Nothing must physically balance on the pedestal during play.",
+          "payoff": "The turbine triggers gentle mechanical clapping. Flint discovers the letter thanks the whole office, including the cat dragon and the help bell.",
+          "crossover": ["town", "garden"], "requires": []
+        },
+        {
+          "id": "08.20", "title": "Town Hall, Open Wings",
+          "setup": "An iced welcome plaque overlooks two ribbon-post footprints, guest-tea warmer, and celebration turbine. Cinder and Flint wait beside the illustrated doorway.",
+          "puzzle": "MELT the plaque at 40°, enabling both posts. FREEZE the posts at −20°; together they enable guest-tea WARM at 30–40°/20–35%, then celebration SPIN at 20°/80%. Drainage and optics exhibits are optional and never prerequisites for this scene.",
+          "payoff": "The doorway unfolds into a welcoming panorama in the ending. Cinder holds one ribbon end; Flint holds the other from atop the municipal cat.",
+          "crossover": ["town", "kitchen", "garden"], "requires": []
+        }
+      ]
+    },
+    {
+      "id": "09",
+      "title": "The Runaway Ending Library",
+      "premise": "Page, a moth librarian, discovers that the library's endings have left their frozen books to look for new jobs. Endy, a walking full stop, helps the squad prepare comfortable homes for stories that no longer want the usual ending.",
+      "arc": "Restore basic book care, meet misplaced endings, visit genre annexes, let characters exchange roles, build an inclusive reading room, and bind a communal book in which everyone chooses to stay. Optional reversible-page and moving-cart exhibits are side stories.",
+      "signature": "Warm lamplight against oversized icy pages, punctuation-shaped characters, ice windows above ink basins, and branching restoration desks. Written choices and character decisions are scripted story presentation; playable requirements remain visible target settings and prerequisites.",
+      "newArt": [
+        "Moth librarian Page kit: spectacles, cardigan, lantern, wing poses, reading expressions",
+        "Living punctuation kit: full stop Endy, comma family, question-mark scholar, exclamation-mark usher",
+        "Story-character kit: retired paper wolf, cardboard knight, sleeping moon, folded-paper gardener",
+        "Library furniture kit: oversized open books, book carts, ladders as scenery, desks, lamps, bookplate plaques",
+        "Book-care station kit: ink basins, dotted spine molds, page-ice panels, binding turbines, labeled drying pads",
+        "Genre annex kit: cookbook trays, cave-story shelves, star atlases, seed catalogs, paper scenery inserts",
+        "Ending-room kit: modular printed ending cards, giant communal book, bookmark bunting, reversible page exhibit"
+      ],
+      "scenes": [
+        {
+          "id": "09.01", "title": "The Full Stop Calls in Sick",
+          "setup": "Endy sits beside a frozen returns label at the low desk. Page's reading-lamp warmer is higher on the right; the open book behind them ends in an embarrassingly long blank line.",
+          "puzzle": "MELT the returns label at 40° to enable the lamp WARM target at 30–40°/20–35%. Move to the lamp's own rectangle; the book and punctuation character are illustrated props during play.",
+          "payoff": "The lamp lights. Endy puts up a 'brief pause' sign, and Page offers a tiny chair rather than sending him back to work.",
+          "crossover": ["town"], "requires": []
+        },
+        {
+          "id": "09.02", "title": "Ink for a Fresh Beginning",
+          "setup": "Two dry ink basins occupy opposite ends of the repair desk. A dotted book-spine mold lies between them, with a printed diagram connecting both basins to the mold.",
+          "puzzle": "FILL the left and right basins with 20° water, choosing either order. Both enable the spine FREEZE footprint at −20°. The finishing animation colors the basin water as ink; neither basin physically transfers water into the mold.",
+          "payoff": "Page binds a blank notebook around the new spine in a cutaway. Endy writes its first word: 'Perhaps.'",
+          "crossover": ["town", "kitchen"], "requires": []
+        },
+        {
+          "id": "09.03", "title": "A Bookmark with Boundaries",
+          "setup": "Three bookmark-stand footprints differ: wide left, tall right, short center. Each points to a local finishing station: ink cup, bookplate warmer, or iced label.",
+          "puzzle": "FREEZE each stand at −20° to enable its own ending: left cup FILL at 20°, right bookplate WARM at 30–40°/20–35%, center label MELT at 40°. Branches are independent; choose a local route or group matching settings across the varied rectangles.",
+          "payoff": "Bookmarks take their places in the ending. One reads 'You may stop here,' which Endy immediately recommends to the entire library.",
+          "crossover": ["town"], "requires": []
+        },
+        {
+          "id": "09.04", "title": "Please Turn the Page Politely",
+          "setup": "The page-turning machine has an ice-covered instruction panel below an exposed turbine. Page holds a paper fan beside an enormous book whose corners have frozen into decorative curls.",
+          "puzzle": "MELT the instruction panel at 40°, then SPIN the enabled turbine at 20°/80%. The turbine is stationary throughout play. Page turning happens only after completion, so no moving target or paper simulation is required.",
+          "payoff": "The machine turns one page with exaggerated care. Underneath is a smaller book asking to be turned equally politely.",
+          "crossover": ["town"], "requires": []
+        },
+        {
+          "id": "09.05", "title": "A Window in Chapter Twelve",
+          "setup": "A page-shaped ice rectangle hangs above a basin labeled 'new possibilities.' Endy points to a vertical carving guide framed by curled-paper scenery.",
+          "puzzle": "MELT a window along the guide at 40°, allowing later drops to FILL the already-enabled basin. Complete the rest of the marked ice as well. The useful opening comes from local erosion, with no hidden page-choice input.",
+          "payoff": "The basin becomes a painted ocean in the ending. A paper boat carries the former final sentence off for a well-earned holiday.",
+          "crossover": ["cosmos", "town"], "requires": []
+        },
+        {
+          "id": "09.06", "title": "The Wolf Applies for Gardening",
+          "setup": "A retired paper wolf waits between a frozen gardening certificate on the left and a dotted potting-bench footprint on the right. A seedling basin sits low center beneath a watering-can illustration.",
+          "puzzle": "MELT the certificate at 40° and FREEZE the bench at −20° in either order. Together they enable the seedling FILL target at 20°. The wolf changes occupations only in the payoff; it is never a moving goal.",
+          "payoff": "The wolf puts on flower-print gloves. Page changes its shelf card from 'terrifying' to 'excellent with begonias.'",
+          "crossover": ["garden", "town"], "requires": []
+        },
+        {
+          "id": "09.07", "title": "Warm Regards, Different Degrees",
+          "setup": "Three letter-ending pads line the desk: a shy 'best wishes,' a cheerful 'see you soon,' and a grand 'forever yours.' Their thermometer and pressure cards differ visibly.",
+          "puzzle": "WARM the shy pad at 25–35°/15–30%, cheerful at 35–45°/25–40%, and grand at 50–60°/40–55%. All are independent. Choose spatial order or progress from cooler to warmer, matching pressure as well as temperature.",
+          "payoff": "The restored endings sign three friendly letters. The grand one addresses its extravagant declaration to the library's reliably comfortable armchair.",
+          "crossover": ["town"], "requires": []
+        },
+        {
+          "id": "09.08", "title": "The Knight Returns the Ladder",
+          "setup": "The paper knight waits beside an iced return slip. Dotted display shelves sit left and right, with a thank-you stamp below the right shelf.",
+          "puzzle": "MELT the slip at 40° to enable both shelves; FREEZE them at −20° in either order. Both enable stamp WARM at 30–40°/20–35%. Aim directly at each target; the decorative ladder provides neither access nor collision.",
+          "payoff": "The knight returns a borrowed ladder and joins the shelving team. Endy adds 'helped tidy up' as an entirely respectable heroic ending.",
+          "crossover": ["town", "cave"], "requires": []
+        },
+        {
+          "id": "09.09", "title": "Dessert on the Last Page",
+          "setup": "The cookbook annex pairs two iced recipes with separate basins below. An oven-pad warmer sits right; the wolf holds a basket of herbs.",
+          "puzzle": "For each branch, MELT its recipe ice at 40° and FILL the basin below with positive-temperature water; both basins start enabled. Complete all ice and basins, then WARM the enabled oven pad at 50–60°/25–40%.",
+          "payoff": "The cookbook's closing illustration becomes a shared pudding. The wolf supplies mint and receives the first entirely non-alarming review of its career.",
+          "crossover": ["kitchen", "garden"], "requires": []
+        },
+        {
+          "id": "09.10", "title": "The Cave Echo Wants an Epilogue",
+          "setup": "A cave-story shelf holds a frozen echo caption at upper left, a dotted reading-seat outline lower right, and a cold lantern pad at center. Repeated speech bubbles decorate the walls.",
+          "puzzle": "MELT the caption at 40° and FREEZE the seat at −20° in either order. Both enable lantern WARM at 35–45°/20–35%. The echoes are visual dialogue in the ending, not sound-sensitive targets or timed responses.",
+          "payoff": "The cave's final echo adds 'and they stayed for tea.' Page sets out an extra cup for the very good listener.",
+          "crossover": ["cave", "kitchen"], "requires": []
+        },
+        {
+          "id": "09.11", "title": "An Atlas for a Homesick Moon",
+          "setup": "A sleepy paper moon waits beside an iced atlas left. Its dotted pillow lies low right beneath a separate, stationary constellation-projector turbine.",
+          "puzzle": "MELT the atlas panel at 40° and FREEZE the pillow footprint at −20° in either order. Together they enable the projector SPIN at 20°/80%. Star patterns appear in a scripted projection; there are no optical paths or beam detectors.",
+          "payoff": "The atlas displays the moon's favorite constellation: a rocking chair. Endy changes the ending from 'vanished' to 'went home for a nap.'",
+          "crossover": ["cosmos"], "requires": []
+        },
+        {
+          "id": "09.12", "title": "The Seed Catalog Sprouts Hope",
+          "setup": "The seed-catalog annex has an iced page above a central planter basin, plus exposed basins on both sides. Paper flowers curl around the backdrop.",
+          "puzzle": "FILL both exposed basins with 20° water. MELT a hole through the middle ice at 40° to FILL its already-enabled basin, then finish clearing the page. Basin order is free; the page physically interrupts droplets until locally eroded.",
+          "payoff": "The finishing animation grows flowers printed with the word 'again.' The wolf gives Page a bouquet that is also a very optimistic index.",
+          "crossover": ["garden"], "requires": []
+        },
+        {
+          "id": "09.13", "title": "A Career Fair for Endings",
+          "setup": "The wolf's iced diploma sits above a warmer left; the knight's dotted bookstand and separate warmer stand right. Endy offers encouragement between them.",
+          "puzzle": "Wolf branch: MELT diploma ice at 40°, then WARM its pad at 30–40°/20–35%. Knight branch: FREEZE the bookstand at −20°, then WARM its pad at 45–55°/35–50%. Complete branches in either order; each pad requires only its own preparation.",
+          "payoff": "The two swap cheerful recommendation letters. The wolf suggests the knight try storytime; the knight requests beginner-level gardening gloves.",
+          "crossover": ["town", "garden"], "requires": []
+        },
+        {
+          "id": "09.14", "title": "Exclamation Marks Learn to Whisper",
+          "setup": "A large turbine overlooks two punctuation-choir warmers: exclamation mark left, question mark right. Their different settings cards remain clearly visible.",
+          "puzzle": "SPIN the turbine at 20°/80% to enable both WARM pads. Service the exclamation pad at 35–45°/15–30% and the question pad at 25–35°/20–35%, in either order. Pressure changes are target conditions; choir volume is scripted presentation.",
+          "payoff": "The choir performs an almost silent flourish. Page applauds with her wings while Endy holds up an approving, appropriately small dot.",
+          "crossover": ["town"], "requires": []
+        },
+        {
+          "id": "09.15", "title": "The Page That Wants a Second Draft",
+          "setup": "An optional reusable ice-page mold sits above an enabled ink basin. Pictograms show that same page being formed, opened, then formed again.",
+          "puzzle": "FREEZE the page at −20° to register its first imprint. PHASE then permits MELTING that completed construction at 40° so droplets can FILL the basin below. Re-FREEZE the same mold after basin completion; success requires the recorded cycle and final frozen page.",
+          "payoff": "The second draft replaces a lonely ending with a picnic invitation. Page files the eraser under 'useful second chances.'",
+          "crossover": ["town", "kitchen"], "requires": ["PHASE"]
+        },
+        {
+          "id": "09.16", "title": "Long Stories Need Small Chairs",
+          "setup": "Three dotted reading seats alternate wide, narrow, wide across the foreground. Two cold lamps above mark separate short-story and long-story corners.",
+          "puzzle": "FREEZE all three seats at −20° in any order. They jointly enable both WARM lamps: short-story corner at 30–40°/20–35%, long-story corner at 40–50°/30–45%. Finish either lamp first; neither depends on elapsed reading time.",
+          "payoff": "The knight reads aloud in a cutaway. Every listener finds a comfortable chair, including a very long dragon made from a single paper sentence.",
+          "crossover": ["town", "cave"], "requires": []
+        },
+        {
+          "id": "09.17", "title": "The Plot Thickens Comfortably",
+          "setup": "An iced chapter card hangs above an ink basin. A dotted binding frame sits left and cover-press warmer right, surrounded by the cast's contributed pictures.",
+          "puzzle": "MELT the chapter ice at 40° and FILL the already-enabled basin through the opening. Complete both, and separately FREEZE the frame at −20°. Basin and frame enable cover-press WARM at 45–55°/25–40%; finish all remaining ice as well.",
+          "payoff": "The shared book gains a cover showing everyone's favorite place. Endy chooses the comfortably blank space where another friend can be drawn later.",
+          "crossover": ["town", "garden", "cosmos"], "requires": []
+        },
+        {
+          "id": "09.18", "title": "The Book Cart Takes the Scenic Route",
+          "setup": "Two optional delivery carts carry warming targets along separate horizontal tracks. A fixed turbine starts their slow movement; both tracks remain fully reachable.",
+          "puzzle": "SPIN the turbine at 20°/80% to activate deterministic MOTION. Follow and WARM the left cart at 30–40°/20–35% and the right at 45–55°/30–45%, in either order. There is no deadline; completed cart targets stay complete on later passes.",
+          "payoff": "The carts park in a scripted cutaway with everyone's book delivered. Endy's tiny pamphlet arrives ceremoniously on the largest cart.",
+          "crossover": ["town", "cosmos"], "requires": ["MOTION"]
+        },
+        {
+          "id": "09.19", "title": "Permission to Leave a Blank",
+          "setup": "Two iced contributor cards flank a broad guest-book stand footprint. A dedication warmer sits below; Page intentionally left the illustrated last page partly blank.",
+          "puzzle": "MELT both contributor-card ice patches at 40° in either order, enabling the stand. FREEZE its broad footprint at −20°, then WARM the enabled dedication pad at 25–35°/15–30%. The blank illustration is not a missing target.",
+          "payoff": "Page writes 'room for whoever arrives next' beneath the blank. Endy sits beside it, pleased that finishing a book need not close its welcome.",
+          "crossover": ["town"], "requires": []
+        },
+        {
+          "id": "09.20", "title": "And They All Had Library Cards",
+          "setup": "The communal book has two dedication warmers, two dotted display feet, and an iced title plaque. Page's story cast gathers around the backdrop table.",
+          "puzzle": "WARM Page's dedication at 30–40°/20–35% and Endy's at 20–30°/15–25%, in either order. Each enables one display-foot FREEZE target at −20°. Both feet enable the title-plaque MELT at 40°; completed feet remain stable. Optional exhibits are not prerequisites.",
+          "payoff": "The book opens to a shared picnic. Endy places the final full stop, then scoots aside for a small 'welcome back.'",
+          "crossover": ["town", "garden", "kitchen"], "requires": []
+        }
+      ]
+    },
+    {
+      "id": "10",
+      "title": "Mount Oops Sports Club",
+      "premise": "Coach Nika, a retired sphinx, hosts a mythological sports day for Gus the minotaur, Iris the harpy, and friends who have never fitted standard sporting equipment. The squad helps turn awkward preparations into games everyone can enjoy.",
+      "arc": "Teach equipment care, adapt familiar events to unusual bodies, borrow ideas from neighboring venues, rehearse cooperation, and stage a closing ceremony celebrating useful kindness. Optional rhythm lanes and a buoyancy demonstration do not gate the sports day.",
+      "signature": "Classical columns wrapped in gym mats, comically mismatched equipment, bold lane colors and measurable thermal stations, with friendly sports action reserved for scripted payoffs. Scores, races, and athlete movement are not live mechanics unless explicitly declared.",
+      "newArt": [
+        "Myth athlete kit: sphinx coach Nika, minotaur Gus, harpy Iris, modular centaur and cyclops teammates",
+        "Athletic outfit kit: sweatbands, numbered bibs, wing sleeves, horn caps, oversized sneakers",
+        "Sports venue kit: padded columns, lane stripes, spectator benches, podium outlines, giant chalkboards",
+        "Equipment kit: hurdle frames, discus displays, starting blocks, landing pads, relay batons, score placards",
+        "Hydration and care kit: trough basins, warming pads, towel molds, turbine fans, equipment ice panels",
+        "Festival prize kit: pasta wreaths, vegetable medals, helper badges, wing-shaped ribbons",
+        "Optional exhibit kit: rhythm lane lights, untimed-mode placard, buoyant platform mold, water-height and load markers"
+      ],
+      "scenes": [
+        {
+          "id": "10.01", "title": "The Sphinx Asks for a Stretch",
+          "setup": "Nika's whistle warmer sits left of Gus's broad stretching-mat pad. Different settings cards label each; Gus already wears sweatbands on both horns.",
+          "puzzle": "WARM the whistle pad at 30–40°/20–35% to enable the mat. WARM the mat at 40–50°/30–45%, moving across its wider rectangle. Both temperature and pressure change between targets; solving a verbal riddle is not required.",
+          "payoff": "Nika sounds a tiny whistle. Gus demonstrates a splendid stretch that ends with him gently straightening a bent decorative column.",
+          "crossover": ["town"], "requires": []
+        },
+        {
+          "id": "10.02", "title": "Eight Cups for Four Hooves",
+          "setup": "Two long hydration troughs sit on opposite sides of a low drink station. A centaur teammate has brought eight cups because they were unsure whether the team counts hands or hooves.",
+          "puzzle": "FILL both independent trough basins with 20° water. Together they enable the central drink-pad WARM target at 25–35°/20–35%. Each trough collects direct nozzle droplets; there is no simulated connection or spill penalty between them.",
+          "payoff": "A cutaway distributes the cups to athletes and spectators alike. Nika declares the extra cups excellent advance planning.",
+          "crossover": ["kitchen", "town"], "requires": []
+        },
+        {
+          "id": "10.03", "title": "Starting Blocks for Sideways Feet",
+          "setup": "Iris's narrow starting-block footprint sits high left, Gus's broad block low right. An iced lane-name plaque occupies a separate rectangle between them.",
+          "puzzle": "FREEZE both footprints at −20° in either order, spreading droplets across Gus's wider block. Together they enable the plaque MELT target at 40°. Completed blocks remain stable; the later hot stream cannot undo the finished equipment.",
+          "payoff": "The athletes take their places in a cutaway. Iris stands sideways on purpose, and Nika redraws the lane arrow to match.",
+          "crossover": ["town"], "requires": []
+        },
+        {
+          "id": "10.04", "title": "A Tailwind with Manners",
+          "setup": "The club's large turbine fan stands at upper right, with a frozen instruction placard lower left. Iris holds a ribbon that droops sadly beneath a backdrop of entirely decorative wind swirls.",
+          "puzzle": "MELT the placard at 40°, then SPIN the enabled stationary turbine at 20°/80%. The fan's wind and the ribbon's movement appear only in the completion animation; live droplets are not blown sideways.",
+          "payoff": "The fan gives one dignified flutter. Iris's ribbon traces a flourish that accidentally ties a bow around Nika's whistle.",
+          "crossover": ["garden", "town"], "requires": []
+        },
+        {
+          "id": "10.05", "title": "The Hurdle Prefers a Doorway",
+          "setup": "Gus's hurdle-doorway display has two dotted padded-post footprints flanking an iced sign. A small ribbon warmer stands separately at upper right.",
+          "puzzle": "FREEZE the left post at −20° to enable sign MELT at 40°. Independently FREEZE the right post to enable ribbon WARM at 25–35°/15–30%. Complete either branch first or group cold work; both branches prepare the scripted doorway demonstration.",
+          "payoff": "The ending installs a friendly padded doorway. Gus walks through with a theatrical bow, and Iris goes around to demonstrate another excellent option.",
+          "crossover": ["town", "garden"], "requires": []
+        },
+        {
+          "id": "10.06", "title": "Long Jump, Longer Welcome",
+          "setup": "Two dotted landing pads sit side by side: short and broad, long and narrow. A cold launch-board warmer stands separately at the left.",
+          "puzzle": "FREEZE either landing pad first at −20°, then complete the other. Together they enable launch-board WARM at 35–45°/20–40%. Choose nozzle positions for different footprint proportions; landing stability and jump distance are not simulated.",
+          "payoff": "A cutaway shows Gus taking a modest hop and Iris a graceful glide. Nika gives both chalk marks shaped like enthusiastic stars.",
+          "crossover": ["garden"], "requires": []
+        },
+        {
+          "id": "10.07", "title": "Discus or Dinner Plate",
+          "setup": "Two ice-covered equipment labels flank a dotted display-rack footprint. One label shows a discus, the other a picnic plate. Gus has thoughtfully packed sandwiches in the sporting-equipment basket.",
+          "puzzle": "MELT both label rectangles at 40° in either order to enable rack FREEZE at −20°. The rack then enables a towel-pad WARM target at 30–40°/20–35%. Sorting happens in the scripted reveal rather than through object dragging.",
+          "payoff": "Nika places the discus on its rack and the sandwiches on the plate. Gus is appointed assistant coach for refreshments.",
+          "crossover": ["kitchen", "town"], "requires": []
+        },
+        {
+          "id": "10.08", "title": "Cool Heads, Cozy Knees",
+          "setup": "Three care pads form a triangle around the team bench: Iris's wing towel above, Gus's knee wrap lower left, and Nika's tea warmer lower right. Each has its own pressure-and-temperature card.",
+          "puzzle": "WARM Iris's pad at 25–35°/15–30%, Gus's at 40–50°/30–45%, and Nika's at 35–45°/20–35%. All targets are independent. Choose position order or group nearby settings; no target demands a simultaneous hold with another.",
+          "payoff": "The athletes settle comfortably on the bench. Nika's teacup wears a tiny team sweatband and receives an honorary roster number.",
+          "crossover": ["kitchen", "town"], "requires": []
+        },
+        {
+          "id": "10.09", "title": "Pasta Laurels for Everyone",
+          "setup": "The visiting kitchen cart has an iced wreath recipe above a water basin, a dotted medal-tray footprint on the right, and a cooking-pad warmer on the left. Gus is official noodle inspector.",
+          "puzzle": "MELT the recipe at 40° and FILL the enabled basin beneath through the opening, completing both. Independently FREEZE the tray at −20°. Basin and tray enable cooking-pad WARM at 50–60°/25–40%.",
+          "payoff": "The cutaway assembles pasta laurels with generous bow ties. Gus proudly wears his wreath slightly off-center to leave room for both horns.",
+          "crossover": ["kitchen"], "requires": []
+        },
+        {
+          "id": "10.10", "title": "The Echo Relay Takes a Breath",
+          "setup": "Three cold baton pads descend across the cave's echo mural. A separate stationary bell turbine stands far right beneath decorative stalactites.",
+          "puzzle": "WARM the three baton pads left to right at 30–40°/20–35%, with each requiring the previous one. All three enable bell SPIN at 20°/80%. The relay order uses target prerequisites, not timed handoffs or sound detection.",
+          "payoff": "The ending shows a gentle baton exchange. The cave echo finishes its own cheer late, and Nika applauds its commitment.",
+          "crossover": ["cave"], "requires": []
+        },
+        {
+          "id": "10.11", "title": "The Flowerbed Gets a Lane",
+          "setup": "Two garden planter basins flank a dotted spectator-shade footprint. A scoring-placard warmer sits above center. Iris reserved the front row for pollinators.",
+          "puzzle": "FILL both planters at 20° and FREEZE the shade footprint at −20° in any order. Those three targets enable placard WARM at 30–40°/20–35%. Flowers and visiting insects appear in a scripted reveal, with no live pollination objective.",
+          "payoff": "The flowerbed gains its own spectator sign. A bee lands on Gus's laurel in the cutaway and receives a tiny complimentary ticket.",
+          "crossover": ["garden"], "requires": []
+        },
+        {
+          "id": "10.12", "title": "A Comet Joins the Relay",
+          "setup": "The cosmic guest station pairs an iced badge left with a dotted baton cradle low right. A stationary projector turbine overlooks the waiting comet.",
+          "puzzle": "MELT the badge at 40° and FREEZE the cradle at −20° in either order. Both enable projector SPIN at 20°/80%. The comet and projected stars move only in the ending; all playable target zones stay stationary.",
+          "payoff": "The welcome projection shows a very long relay lane. The comet hands over a tiny baton with an enormous, carefully folded ribbon tail.",
+          "crossover": ["cosmos"], "requires": []
+        },
+        {
+          "id": "10.13", "title": "Equipment Exchange of the Gods",
+          "setup": "Gus's iced horn-cap label sits above his warmer left. Iris's dotted wing-sleeve rack stands beside her warmer right, each branch marked separately.",
+          "puzzle": "Gus branch: MELT the label at 40°, then WARM his pad at 40–50°/30–45%. Iris branch: FREEZE the rack at −20°, then WARM her pad at 25–35°/15–30%. Choose branch order; each warmer requires only its own preparation.",
+          "payoff": "The repaired equipment fits properly. Gus's spare horn cap becomes an excellent megaphone for Iris, who announces the snack break.",
+          "crossover": ["town"], "requires": []
+        },
+        {
+          "id": "10.14", "title": "The Cheer Goes Through Training",
+          "setup": "Upper-corner fan turbines each overlook a smaller warming pad: ribbon handles left, Nika's whistle right. Large arrows connect each turbine to its own pad.",
+          "puzzle": "SPIN both turbines at 20°/80%, or finish one branch first. Each enables its own WARM pad: ribbon handles at 30–40°/20–35%, whistle at 25–35°/15–30%. The challenge is deliberately lowering pressure after each turbine, with no rhythm requirement.",
+          "payoff": "The ending produces a coordinated ribbon flourish. Nika's quiet whistle receives the most attentive response of the entire rehearsal.",
+          "crossover": ["town", "garden"], "requires": []
+        },
+        {
+          "id": "10.15", "title": "The Rhythm Lane Has Patience",
+          "setup": "An optional board has three stationary baton warmers with lamps cycling left to right. An accessibility placard shows each lamp staying lit until completion.",
+          "puzzle": "Under PULSE, WARM each lane at 30–40°/20–35% during its lit phase; dark phases preserve progress. In untimed mode, the current lamp stays lit until that target completes, then advances. No deadline, lost lives, or extra action input is required.",
+          "payoff": "The lamps form a friendly applause wave. Iris and Gus perform a relay at their own pace, with Nika matching their rhythm.",
+          "crossover": ["town", "cosmos"], "requires": ["PULSE"]
+        },
+        {
+          "id": "10.16", "title": "The Podium Refuses to Rank",
+          "setup": "Three equal-height podium footprints vary in width for different athletes. Each has a separate medal warmer above; the backdrop omits ranking numbers.",
+          "puzzle": "FREEZE each podium at −20° to enable its corresponding WARM pad: Gus at 40–50°/30–45%, Iris at 25–35°/15–30%, Nika at 35–45°/20–35%. Complete whole branches or group the cold work before warming; finished podiums remain stable.",
+          "payoff": "The cast steps up in a cutaway. Every medal reads 'made it nicer for someone,' and Gus immediately points at Iris's medal approvingly.",
+          "crossover": ["town"], "requires": []
+        },
+        {
+          "id": "10.17", "title": "Five Events, One Helpful Hose",
+          "setup": "Three rehearsal bays stay separate: iced event card and drink basin left, dotted landing mat and towel warmer center, stationary flag turbine right.",
+          "puzzle": "Left bay: MELT the card at 40°, enabling basin FILL at 20°. Center: FREEZE the mat at −20°, enabling towel WARM at 30–40°/20–35%. Right: SPIN the turbine at 20°/80%, enabled from the start. All three bays must finish; choose their order.",
+          "payoff": "The ending runs a gentle five-event montage. Gus wins a huge chalk star for remembering to bring everyone a towel.",
+          "crossover": ["town", "kitchen", "garden"], "requires": []
+        },
+        {
+          "id": "10.18", "title": "The Floating Podium Experiment",
+          "setup": "An optional basin contains a pontoon footprint with preset model-athlete load. Filling to its calibrated full-water mark floats the deck level with the dock.",
+          "puzzle": "FREEZE the pontoon at −20°, then FILL the basin at 20°. BALANCE must simulate the completed ice's buoyancy, fixed load, and deck height. Success requires a stable floating deck at the dock mark after filling; no connected water channels are involved.",
+          "payoff": "The model athletes float together. Nika labels the exhibit 'everyone rises with the occasion,' and Gus supplies model-sized towels.",
+          "crossover": ["garden", "town"], "requires": ["BALANCE"]
+        },
+        {
+          "id": "10.19", "title": "A Medal for the Bench",
+          "setup": "An iced thank-you plaque hangs above the illustrated team bench. Two dotted badge stands flank it; a gentle ribbon warmer sits low center.",
+          "puzzle": "MELT the plaque at 40°, enabling both badge stands. FREEZE the wide and narrow footprints at −20° in either order, then WARM the jointly enabled ribbon pad at 25–35°/15–30%. The bench itself is scenery throughout play.",
+          "payoff": "Gus drapes a medal over the bench in a cutaway. Everyone sits down together, which Nika calls the bench's best event.",
+          "crossover": ["town", "garden"], "requires": []
+        },
+        {
+          "id": "10.20", "title": "The Games End with a Group Hug",
+          "setup": "Closing-ceremony equipment includes an iced team banner, two wreath-stand footprints, shared drink basin, and celebration turbine. Athletes wait around the open foreground.",
+          "puzzle": "MELT the banner at 40° to enable the two stands' FREEZE targets at −20° and basin FILL at 20°. Complete those in any order, then SPIN the enabled celebration turbine at 20°/80%. Neither optional experiment is a prerequisite.",
+          "payoff": "The ending showers paper laurels over a carefully arranged group hug. Nika's final scoreboard reads 'Everybody Helped,' including the bench.",
+          "crossover": ["town", "garden", "kitchen"], "requires": []
+        }
+      ]
+    },
+    {
+      "id": "11",
+      "title": "Ever After, Everywhere",
+      "premise": "Ada, an octopus wedding planner, and Bell, a small sentient service bell, are arranging a ceremony for Rill the cloud sprite and Moss the garden golem. Their families arrive from incompatible climates through illustrated dimensional doorways, and everyone deserves a comfortable seat.",
+      "arc": "Learn the couple's wishes, build a welcoming guest plan, borrow food and decorations from neighboring worlds, resolve affectionate misunderstandings, rehearse the shared ceremony, and open a reception with room for everyone. Optional prism and reversible-ring exhibits remain separate from ceremony readiness.",
+      "signature": "Elegant paper place cards beside impossible guest silhouettes, paired warm and cold preparation branches, frozen lace panels above basins, and eight-armed planning diagrams. Doorways, guest travel, weather, and romantic transformations are scripted presentation unless a future dependency is stated.",
+      "newArt": [
+        "Planner cast kit: octopus Ada with clipboard and ribbon variants, expressive sentient Bell with bow ties",
+        "Couple kit: cloud sprite Rill and garden golem Moss with joyful, shy, and ceremonial poses",
+        "Guest silhouette kit: cave crystal aunt, moon grandparent, flower cousins, steam uncle, miniature cloud family",
+        "Wedding furniture kit: variable-size seats, place-card desks, dotted ring cushions, aisle markers, arch sections",
+        "Service kit: cake trays, drink basins, warming pads, fan turbines, invitation printer, lace-ice panels",
+        "Dimensional backdrop kit: modular cave, kitchen, garden, town, and star-window frames without live portals",
+        "Celebration kit: leaf confetti, rings, ribbon spools, communal portrait frame, reusable handwritten dedication cards",
+        "Optional exhibit kit: paired fixed-angle prism sockets, beam detector place cards, reusable phase-ring molds"
+      ],
+      "scenes": [
+        {
+          "id": "11.01", "title": "Two Names, One Very Long Table",
+          "setup": "Rill's and Moss's iced name cards occupy opposite ends of the welcome desk. Bell's announcement warmer sits between them, beneath Ada's eight-arrow seating sketch.",
+          "puzzle": "MELT both name-card patches at 40°, choosing either order. Together they enable Bell's WARM pad at 30–40°/20–35%. Move above each ice rectangle; the drawn table and arrows are visual organization, not stream obstacles.",
+          "payoff": "Bell announces the couple with a gentle ding. Ada unfolds the seating sketch and reveals that both names were always meant for the same table.",
+          "crossover": ["town"], "requires": []
+        },
+        {
+          "id": "11.02", "title": "Something Borrowed, Something Dewy",
+          "setup": "Two refreshment basins sit beneath Rill's illustrated relatives. Moss's larger hand-warmer pad stands right; place cards show cups on one side, mittens on the other.",
+          "puzzle": "FILL both basins with 20° water in either order. Their completion enables Moss's WARM pad at 40–50°/25–40%. Basin water needs only a positive temperature; the precise comfort range applies to the separate warmer.",
+          "payoff": "Rill's relatives receive dew cups in the cutaway. Moss offers a warmed stone hand to Bell, who gives it a grateful ceremonial polish.",
+          "crossover": ["kitchen", "garden"], "requires": []
+        },
+        {
+          "id": "11.03", "title": "A Cushion for a Very Serious Ring",
+          "setup": "A narrow ring-cushion footprint lies left of a broad one. An iced ribbon label sits above; the real rings remain on Ada's clipboard.",
+          "puzzle": "FREEZE both cushion footprints at −20°, choosing order and distributing droplets across their different shapes. Together they enable the ribbon-label MELT target at 40°. The completed cushions remain stable under later warming; rings are positioned only during the payoff.",
+          "payoff": "Ada presents the rings on their new cushions. Bell solemnly approves both and wears the smaller one as a temporary crown.",
+          "crossover": ["town", "cave"], "requires": []
+        },
+        {
+          "id": "11.04", "title": "Invitations at Eight Hands per Minute",
+          "setup": "Ada's printer has a stationary turbine high left, seal warmer low right, and iced address plaque between. Envelopes fan across the backdrop.",
+          "puzzle": "MELT the address plaque at 40°, then SPIN the enabled printer at 20°/80%. Printer completion enables seal WARM at 30–40°/15–30%. Reduce pressure for the last target; the title describes Ada's enthusiasm, not a timed objective.",
+          "payoff": "The printer produces invitations in a scripted flourish. Ada signs eight at once, including a tiny invitation addressed to Bell's spare bow tie.",
+          "crossover": ["town"], "requires": []
+        },
+        {
+          "id": "11.05", "title": "Check-In for Rain and Granite",
+          "setup": "Cloud guests have an umbrella-stand footprint and warmer left. Stone guests have an iced luggage label and separate warmer right, with clear branch icons.",
+          "puzzle": "Cloud branch: FREEZE the stand at −20°, then WARM its pad at 25–35°/15–30%. Stone branch: MELT the label at 40°, then WARM its pad at 45–55°/30–45%. Each warmer depends only on its own preparation; choose branch order.",
+          "payoff": "The families settle in comfortably. The cloud aunt checks an umbrella; the stone uncle checks a suitcase containing one carefully folded fern.",
+          "crossover": ["town", "garden"], "requires": []
+        },
+        {
+          "id": "11.06", "title": "Lace with Useful Little Holes",
+          "setup": "A lace-ice rectangle hangs above two flower basins. Each has a carving guide above it; all remaining ice also needs clearing.",
+          "puzzle": "At 40°, MELT an opening above either basin and FILL it with later droplets; repeat for the other. Both basins start enabled. Finish the remaining marked ice to complete the panel. Lace decoration itself imposes no precision-preservation or spill penalty.",
+          "payoff": "The ending hangs paper lace above two bright bouquets. Moss notices that Rill has folded one flower into the shape of Ada's clipboard.",
+          "crossover": ["garden", "town"], "requires": []
+        },
+        {
+          "id": "11.07", "title": "Flowers with Conflicting Forecasts",
+          "setup": "Three bouquet-preparation pads rise diagonally from the desk: cave blossoms, garden roses, and star lilies. Each shows its own clear temperature and pressure card; the flowers themselves remain illustrated props.",
+          "puzzle": "WARM cave blossoms at 20–30°/15–30%, roses at 35–45°/25–40%, and star lilies at 45–55°/35–50%. All targets are independent. Choose a sensible setting progression while repositioning for each pad; no climate simulation couples the stations.",
+          "payoff": "The completed bouquets open in three distinct colors. Ada braids them together, delighted that a mixed forecast can make an excellent centerpiece.",
+          "crossover": ["cave", "garden", "cosmos"], "requires": []
+        },
+        {
+          "id": "11.08", "title": "The Aisle Is a Friendly Suggestion",
+          "setup": "A broad dais footprint sits left, a tall narrow marker center, and a shallow mat right. Welcome-light warmer and flower basin occupy separate upper corners.",
+          "puzzle": "FREEZE all three footprints at −20°. Left dais plus right mat enable light WARM at 30–40°/20–35%; center marker independently enables flower-basin FILL at 20°. Finish either branch first. The couple follows the aisle only in the cutaway.",
+          "payoff": "The couple rehearses at an unhurried pace in the cutaway. Rill drifts beside the aisle, and Moss happily shifts over to join them.",
+          "crossover": ["town"], "requires": []
+        },
+        {
+          "id": "11.09", "title": "Cake for the Cloud Side",
+          "setup": "The kitchen display has an iced recipe above a mixing basin. Two separate icing warmers stand right, labeled with Rill's cloud and Moss's leaf.",
+          "puzzle": "MELT the recipe at 40° and FILL the enabled basin below, finishing both targets. Basin completion enables both WARM pads: cloud icing at 25–35°/15–30%, leaf icing at 40–50°/25–40%. Complete either pad first without affecting the other.",
+          "payoff": "A two-sided cake appears in the ending: fluffy clouds on one face, fondant ferns on the other. Bell requests the corner where both meet.",
+          "crossover": ["kitchen", "garden"], "requires": []
+        },
+        {
+          "id": "11.10", "title": "The Cave Aunt Brings an Echo",
+          "setup": "The cave window frames an iced greeting card left, dotted chime stand low right, and chime warmer above. Rill's crystal aunt holds an illustrated echo.",
+          "puzzle": "MELT the greeting-card ice at 40° and FREEZE the chime stand at −20°, in either order. Together they enable chime WARM at 30–40°/15–30%. Echoes and ringing occur only in the scripted ending; no sound detection is required.",
+          "payoff": "The aunt's gift repeats 'happy for you' in a little speech bubble. Bell discovers a new friend with a similarly resonant conversational style.",
+          "crossover": ["cave", "town"], "requires": []
+        },
+        {
+          "id": "11.11", "title": "Grandmother Moon Needs a Shawl",
+          "setup": "Grandmother Moon's star window overlooks a dotted shawl stand. An iced family photo sits low left; a shawl warmer stands right.",
+          "puzzle": "FREEZE the stand at −20° and MELT the photo ice at 40°, choosing either order. Together they enable shawl WARM at 25–35°/15–30%. Grandmother stays in the backdrop during play; her orbit is an ending animation.",
+          "payoff": "Grandmother receives a shawl decorated with tiny stars. She spots baby Rill in the family photo and immediately requests another copy for her crater shelf.",
+          "crossover": ["cosmos", "town"], "requires": []
+        },
+        {
+          "id": "11.12", "title": "The Garden Signs the Guest Book",
+          "setup": "Flower cousins surround a desk with two ink basins, a central writing-stand footprint, and a drying warmer above. Leaf signatures decorate the bench.",
+          "puzzle": "FILL both basins with 20° water to enable stand FREEZE at −20°. Stand completion enables drying-pad WARM at 30–40°/20–35%. The water becomes illustrated plant ink in the payoff; no liquid transfer or handwriting recognition is needed.",
+          "payoff": "The cousins sign with leaf prints. Ada finds a particularly small print from the fern that arrived in the stone uncle's suitcase.",
+          "crossover": ["garden", "town"], "requires": []
+        },
+        {
+          "id": "11.13", "title": "A Seating Plan with Weather",
+          "setup": "Cloud, stone, and star guest warmers form a broad triangle. Each has a dotted seat-platform footprint below, linked by matching family icons.",
+          "puzzle": "FREEZE each platform at −20° to enable its own WARM pad: cloud 25–35°/15–30%, stone 45–55°/30–45%, stars 35–45°/20–35%. Branches are independent. Group the cold work or complete guests individually; their climates do not alter neighboring targets.",
+          "payoff": "A cutaway seats the families comfortably together. The stone uncle shares his fern with Grandmother Moon, who offers it some excellent illustrated moonlight.",
+          "crossover": ["garden", "cosmos", "town"], "requires": []
+        },
+        {
+          "id": "11.14", "title": "Bell Practices the Quiet Ding",
+          "setup": "A large turbine stands beside Bell's tiny announcement warmer. An iced speech card sits lower left; Ada's eight pencils point to 'gentle.'",
+          "puzzle": "MELT the speech card at 40°, SPIN the enabled fan at 20°/80%, then WARM Bell's enabled pad at 25–35°/15–30%. The pressure drop is the challenge. Bell's volume and the fan's air movement are scripted completion presentation.",
+          "payoff": "Bell produces a perfectly polite ding. Rill and Moss lean closer together to listen, which Ada records as an unexpected success in rehearsal.",
+          "crossover": ["town"], "requires": []
+        },
+        {
+          "id": "11.15", "title": "Place Cards Catch a Rainbow",
+          "setup": "An optional beam source and iced shutter overlook a splitter-prism footprint. Two fixed-angle lens sockets point toward separate detector place cards for Rill and Moss.",
+          "puzzle": "FREEZE the splitter and both fixed-angle lenses at −20°, then MELT the shutter at 40°. OPTICS must split and refract the actual beam onto both name-card detectors; illuminating both completes the exhibit. Nothing moves or needs refreezing.",
+          "payoff": "A rainbow reaches both names. Bell positions its bow tie in the colorful light and calls the result formal enough.",
+          "crossover": ["cosmos", "garden"], "requires": ["OPTICS"]
+        },
+        {
+          "id": "11.16", "title": "Favors for Extra Hands",
+          "setup": "Two favor desks pair tray footprints with iced thank-you tags. A shared ribbon warmer sits between them; Ada's tray holds eight packages.",
+          "puzzle": "FREEZE either tray at −20° to enable its own tag MELT at 40°; repeat for the other desk. Both tags enable ribbon WARM at 30–40°/20–35%. Choose grouped cold and hot work or finish one branch at a time.",
+          "payoff": "The finished favors contain tiny seed packets and cloud-shaped biscuits. Ada discovers eight thank-you packages addressed to her, one for each helpful hand.",
+          "crossover": ["kitchen", "garden"], "requires": []
+        },
+        {
+          "id": "11.17", "title": "The Rehearsal Has a Rehearsal",
+          "setup": "Bell supervises a ceremony model: iced instructions above a flower basin, dotted arch right, vows warmer left, stationary ribbon turbine far right.",
+          "puzzle": "MELT the card at 40° and FILL the enabled basin below, completing both. Independently FREEZE the arch at −20°. Arch and basin enable vows WARM at 30–40°/20–35%, then ribbon SPIN at 20°/80%.",
+          "payoff": "Paper stand-ins perform a miniature ceremony in the ending. Ada is moved to discover Bell has drawn all eight of her arms in the model audience.",
+          "crossover": ["town", "garden", "kitchen"], "requires": []
+        },
+        {
+          "id": "11.18", "title": "A Ring with a Second First Draft",
+          "setup": "An optional ice-band footprint sits beside an engraving warmer. Pictograms show leaf and cloud proofs; practice casts stay separate from the real rings.",
+          "puzzle": "FREEZE the band at −20° to record the leaf proof. WARM the enabled engraver at 30–40°/20–35% to select the cloud proof. PHASE permits MELTING the completed band at 40° and re-FREEZING the same footprint; success requires the second completed cast.",
+          "payoff": "The second proof shows leaf and cloud together in its engraving. Moss and Rill keep both drafts in their memory book.",
+          "crossover": ["cave", "town"], "requires": ["PHASE"]
+        },
+        {
+          "id": "11.19", "title": "Vows for a Cloudy Day",
+          "setup": "Rill's iced vow card hangs above a basin left; Moss's keepsake-box footprint sits right. Each branch ends in a gentle ribbon warmer.",
+          "puzzle": "Left: MELT the card at 40° and FILL its enabled basin, then WARM its ribbon at 25–35°/15–30%. Right: FREEZE the box at −20°, then WARM its ribbon at 35–45°/20–35%. Choose branch order; finish all marked card ice.",
+          "payoff": "The cards promise ordinary kindness through every forecast. Bell carefully adds a tiny bookmark so the couple can find their favorite sentence again.",
+          "crossover": ["town", "garden"], "requires": []
+        },
+        {
+          "id": "11.20", "title": "You May Now Welcome Everybody",
+          "setup": "Two vows warmers flank an arch footprint. A toast basin sits below; an iced portrait window stands right, framed by guest silhouettes.",
+          "puzzle": "WARM Rill's pad at 25–35°/15–30% and Moss's at 40–50°/25–40%. Both enable arch FREEZE at −20°, then toast-basin FILL at 20°, then portrait-panel MELT at 40°. Optional prism and ring-proof exhibits are never prerequisites.",
+          "payoff": "The cleared portrait reveals the ceremony and a generous reception panorama. Ada holds eight bouquets while Bell quietly rings; the newlyweds save the best corner of cake for them.",
+          "crossover": ["town", "garden", "kitchen", "cosmos", "cave"], "requires": []
+        }
+      ]
+    }
+  ]
+}

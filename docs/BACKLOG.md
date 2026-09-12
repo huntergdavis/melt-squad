@@ -1,5 +1,26 @@
 # Melt Squad — next slices
 
+## Campaign expansion — one complete world per release
+
+Current implementation: **40 scenes / 2 worlds**. See the [release ledger](RELEASES.md).
+
+- [x] Design 19 new themed levels of 20 scenes each: 380 new scenes, 400 total
+      including the existing collection.
+- [x] Record setup, puzzle sequence, payoff, crossovers, reusable art, and
+      explicit future-system dependencies.
+- [x] Design [overworld navigation](campaign/WORLD_MAP.md): a twenty-world
+      rescue atlas, themed scene paths, quick Continue, and accessible controls.
+- [x] Implement world-map navigation; preserve
+      save IDs and clearly distinguish playable content from coming-later previews.
+- [ ] Build and playtest the new content one themed pack at a time.
+- [x] Pack 02: twenty Sock Exchange scenes, original cast, postcards, routed
+      rinse water, moving care pads, and stationary assist.
+- [x] In-game credits with local Kenney and font license acknowledgements.
+
+Start with the [campaign plan](CAMPAIGN_BACKLOG.md) and
+[complete 380-scene catalog](campaign/SCENE_CATALOG.md). Those source designs
+are distinct from the implemented/released counts in the release ledger.
+
 ## First playable collection
 
 - [x] Client-only TypeScript/Canvas game with static GitHub Pages workflow.
@@ -29,7 +50,8 @@
 
 ## P2 — expand the dispatch book
 
-- [ ] Content packs toward hundreds of calls, after validating the first 20.
+- [x] Design content packs toward hundreds of calls; see the campaign backlog.
+- [ ] Implement those content packs after validating their representative slices.
 - [ ] More spatial puzzles: mirrors, pipes, pressure gates, balance, insulation.
 - [ ] Daily rescue, optional challenge medals, a postcard collection.
 - [ ] Level-author preview tools and content validation outside the test suite.

@@ -1,0 +1,273 @@
+{
+  "packs": [
+    {
+      "id": "19",
+      "title": "The Hotel Between Tuesdays",
+      "premise": "Ms Between, a six-armed cuttlefish receptionist, runs a hotel for guests stranded between peculiar destinations. Yesterday the snail porter worries that useful service always means arriving faster.",
+      "arc": "Prepare extraordinary rooms, welcome familiar travelers, and help Yesterday discover that remembering a guest's needs matters more than speed. The hotel becomes a place to belong, not just somewhere to pass through.",
+      "signature": "Cutaway rooms with impossible illustrated views, fixed brass service stations, luggage of absurd scale, and consistent warm hotel signage grounding every strange setting.",
+      "newArt": [
+        "Ms Between receptionist",
+        "Yesterday snail porter",
+        "brass hotel fixtures",
+        "cutaway guest rooms",
+        "impossible window postcards",
+        "nested suitcases",
+        "aquarium lift",
+        "shared departure lounge"
+      ],
+      "scenes": [
+        {
+          "id": "19.01",
+          "title": "The Bell Before the Door",
+          "setup": "The hotel entrance is drawn behind a reception desk whose bell is hidden in an oversized ice cube.",
+          "puzzle": "Melt the bell's ice target, then SPIN its exposed high-pressure ringer. A separate WARM welcome seal at 25–45° finishes the greeting; the illustrated door opens only in the payoff. WARM targets use 10–35% pressure.",
+          "payoff": "Ms Between answers before the bell stops ringing. Yesterday arrives with the welcome mat, only slightly after the welcome.",
+          "crossover": [
+            "town"
+          ],
+          "requires": []
+        },
+        {
+          "id": "19.02",
+          "title": "A Room With a View of Monday",
+          "setup": "A window displays a rainy Monday while two fixed bedside maintenance targets show a frozen curtain catch and an empty flower vase.",
+          "puzzle": "Melt the curtain catch, FILL the vase, then WARM the bedside lamp at 30–50° and 10–40% pressure. The weekday outside is a before/after illustration, not a clock-driven state.",
+          "payoff": "The window reveals the one pleasant minute of Monday. Yesterday writes it down so the next guest can see it too.",
+          "crossover": [
+            "garden",
+            "town"
+          ],
+          "requires": []
+        },
+        {
+          "id": "19.03",
+          "title": "A Pillow That Woke Up Early",
+          "setup": "A grumpy cloud-shaped pillow waits beside a frozen blanket badge and a small dotted bedside snowbank.",
+          "puzzle": "FREEZE the snowbank footprint, melt the blanket badge's ice cap, and WARM a separate bedtime charm at 20–35° with 10–35% pressure. Both preparations must finish before the charm responds.",
+          "payoff": "The pillow finally yawns and settles. Ms Between awards Yesterday a silent bell for especially considerate room service.",
+          "crossover": [
+            "cave",
+            "town"
+          ],
+          "requires": []
+        },
+        {
+          "id": "19.04",
+          "title": "Check-In for a Raincloud",
+          "setup": "A raincloud guest hovers decoratively above two empty umbrella-shaped basins; its luggage tag is encased in ice on a fixed stand.",
+          "puzzle": "FILL both basins directly, then melt the luggage-tag block. Their completion unlocks a 25–45° WARM guest badge. Rain falls only in the ending, with no simulated collection before success. WARM targets use 10–35% pressure.",
+          "payoff": "The cloud signs with a tiny rainbow. Yesterday produces an umbrella for the luggage rather than for himself.",
+          "crossover": [
+            "garden",
+            "town"
+          ],
+          "requires": []
+        },
+        {
+          "id": "19.05",
+          "title": "Breakfast at Almost Midnight",
+          "setup": "Two adjacent room-service trays belong to a sleepy sun and an energetic moon, with contrasting temperature labels on their warming stations.",
+          "puzzle": "Melt the shared serving hatch's ice cap, FILL both drink cups, then WARM the sun's station at 50–70° and the moon's at 20–40°, both using 10–35% pressure.",
+          "payoff": "The guests exchange dishes and decide they prefer each other's breakfast. The temperature choices remain on the receipt as helpful suggestions.",
+          "crossover": [
+            "cosmos",
+            "kitchen"
+          ],
+          "requires": []
+        },
+        {
+          "id": "19.06",
+          "title": "The Staircase Takes Annual Leave",
+          "setup": "The drawn staircase is enjoying a holiday postcard while three marked temporary stair sections await construction beside it.",
+          "puzzle": "FREEZE all three fixed stair footprints, then melt the luggage trolley's release badge and SPIN its stationary axle. The trolley climbs only in the ending; ice steps are not simulated supports.",
+          "payoff": "The staircase returns carrying souvenirs and finds everything handled. Yesterday receives a postcard addressed to The Reliable One.",
+          "crossover": [
+            "town",
+            "cave"
+          ],
+          "requires": []
+        },
+        {
+          "id": "19.07",
+          "title": "The Suitcase With a Conservatory",
+          "setup": "An open suitcase reveals a tiny greenhouse cutaway, with an icy latch outside and three reachable service targets inside.",
+          "puzzle": "Melt the latch, then independently FILL the water tank and FREEZE a plant-bed footprint. Both unlock a WARM orchid marker at 25–45° and 10–35% pressure; perspective is decorative, not a second physics scale.",
+          "payoff": "A bellhop-sized vine offers Yesterday a flower. He carefully records which room prefers sunlight without luggage handling.",
+          "crossover": [
+            "garden",
+            "town"
+          ],
+          "requires": []
+        },
+        {
+          "id": "19.08",
+          "title": "Wake-Up Call for a Small Planet",
+          "setup": "A sleepy planet fills the honeymoon observatory illustration; its wake-up equipment sits on two fixed bedside stands.",
+          "puzzle": "Melt separate ice caps over a clock turbine and a tea cup, then SPIN the turbine and FILL the cup. Their joint completion opens a gentle 35–55° WARM sunrise badge. WARM targets use 10–35% pressure.",
+          "payoff": "The planet opens one eye and asks for five more geological minutes. Ms Between grants a late checkout.",
+          "crossover": [
+            "cosmos",
+            "kitchen"
+          ],
+          "requires": []
+        },
+        {
+          "id": "19.09",
+          "title": "Two Universes, One Honeymoon",
+          "setup": "The wedding planners deliver two guests whose half-rooms show a snowy cave and a flowering garden, joined by a shared breakfast nook.",
+          "puzzle": "FREEZE the cave-side decoration, WARM the garden-side welcome lamp at 30–50°, then FILL two nook cups. Both climate preparations must finish before the drinks station becomes active. WARM targets use 10–35% pressure.",
+          "payoff": "The couple eats facing the shared window rather than either private view. Yesterday remembers which guest likes the blue cup.",
+          "crossover": [
+            "cave",
+            "garden",
+            "kitchen"
+          ],
+          "requires": []
+        },
+        {
+          "id": "19.10",
+          "title": "The Preschool Conference Wing",
+          "setup": "Dinosaur preschool staff arrive with a towering stack of naptime mats and an ice-coated seminar bell.",
+          "puzzle": "Melt the bell cap, FREEZE two low mat-rack footprints, and WARM a stationary milk badge at 25–40° and 10–30% pressure. The prepared nursery unlocks a SPIN quiet-time sign instead of a loud bell.",
+          "payoff": "Every adult dinosaur falls asleep during the presentation. The hatchlings tuck them in and appoint Yesterday temporary head teacher.",
+          "crossover": [
+            "garden",
+            "town",
+            "kitchen"
+          ],
+          "requires": []
+        },
+        {
+          "id": "19.11",
+          "title": "Laundry Delivered by Moonlight",
+          "setup": "Sock-exchange staff leave three chilled linen parcels at successively higher service stands, plus a tiny empty guest-bath basin.",
+          "puzzle": "Melt each parcel's fixed ice wrapper from above or with nozzle tilt, then FILL the basin. All wrappers and the basin unlock a WARM towel badge at 30–50° and 10–35% pressure.",
+          "payoff": "The linen unfolds into a blanket fort for an homesick ghost. Yesterday stays outside the fort until invited in.",
+          "crossover": [
+            "town",
+            "kitchen"
+          ],
+          "requires": []
+        },
+        {
+          "id": "19.12",
+          "title": "A Train on the Balcony",
+          "setup": "A mushroom railway carriage appears in the balcony illustration; the room contains two platform footprints and a stationary conductor's service board.",
+          "puzzle": "FREEZE the platform zones, melt the board's timetable cap, then SPIN its departure seal. Both platform sections must be complete before the seal can respond; the carriage's departure is scripted.",
+          "payoff": "The conductor offers Yesterday a tour, but he first checks whether the guest wants the curtains closed. The train waits happily.",
+          "crossover": [
+            "garden",
+            "town"
+          ],
+          "requires": []
+        },
+        {
+          "id": "19.13",
+          "title": "The Lift That Keeps Fish",
+          "setup": "An aquarium lift moves slowly between three floors, carrying fixed-to-the-cabin frosted window targets past the open maintenance shaft.",
+          "puzzle": "Use MOTION to track and melt the lift's three moving ice targets, then service its moving WARM cabin badge at 25–45° and 10–35% pressure. A stationary assist stops cabin motion without changing the thermal goals.",
+          "payoff": "The fish point out each floor like proud tour guides. Yesterday learns the lift stops wherever someone looks interested.",
+          "crossover": [
+            "town",
+            "cave"
+          ],
+          "requires": [
+            "MOTION"
+          ]
+        },
+        {
+          "id": "19.14",
+          "title": "Two Guests, Four Slippers",
+          "setup": "A snow giant and a miniature sun share a lounge, each with two labelled stationary slipper-care stations well away from their bodies.",
+          "puzzle": "FREEZE the giant's two slipper forms and WARM the sun's two badges at 55–75° and 10–45% pressure. Finish with a shared liquid-water FILL tea bowl; the two climate needs are independent, not coupled.",
+          "payoff": "The guests swap stories instead of arguing over the thermostat. Yesterday brings an extra cushion sized for nobody in particular.",
+          "crossover": [
+            "cave",
+            "cosmos",
+            "kitchen"
+          ],
+          "requires": []
+        },
+        {
+          "id": "19.15",
+          "title": "Checkout Before Check-In",
+          "setup": "A guest from the wrong Tuesday has put its departure card above its still-frozen welcome basket, confusing the reception desk.",
+          "puzzle": "Follow a clear target chain: melt the departure card, WARM its seal at 30–45°, then FILL the newly unlocked welcome cup. SPIN the date stamp only after the cup is full. WARM targets use 10–35% pressure.",
+          "payoff": "Ms Between stamps both cards Welcome Anyway. Yesterday decides that calendars are less important than whether someone has eaten.",
+          "crossover": [
+            "town",
+            "kitchen"
+          ],
+          "requires": []
+        },
+        {
+          "id": "19.16",
+          "title": "Room Service by Tributary",
+          "setup": "A cutaway wall reveals one upper reservoir feeding three guest-room basins through visible channels with fixed ice gates.",
+          "puzzle": "Melt the gates to establish FLOW connections, then feed the upper reservoir. The three downstream basins must receive actual routed liquid; hitting their illustrated cups directly does not count as delivery.",
+          "payoff": "Three guests raise their cups at the same time. Yesterday follows the channels with a tiny tray just in case.",
+          "crossover": [
+            "town",
+            "kitchen",
+            "garden"
+          ],
+          "requires": [
+            "FLOW"
+          ]
+        },
+        {
+          "id": "19.17",
+          "title": "The Guest With an Empty Name Tag",
+          "setup": "A coat-shaped traveler worries that its blank luggage label means no room is available. A frozen tag hangs directly above an active welcome bowl, with a separate seal target off to the side.",
+          "puzzle": "The MELT tag and FILL bowl are both active from the start, with the bowl directly below the ice. Carve a hole so hose droplets reach the bowl before the remaining ice is cleared. Both completions unlock a WARM welcome seal at 25–45° and 10–35% pressure.",
+          "payoff": "The label becomes Guest, with a little heart. The coat sits comfortably instead of hovering near the exit.",
+          "crossover": [
+            "town",
+            "garden"
+          ],
+          "requires": []
+        },
+        {
+          "id": "19.18",
+          "title": "A Night Desk for the Night Desk",
+          "setup": "Ms Between's own tiny break room is hidden inside the reception model, with reachable service zones arranged diagonally across the cutaway.",
+          "puzzle": "Melt the frozen chair badge, FILL the tea cup, and WARM a reading lamp at 30–45° with 10–35% pressure. A final SPIN privacy-sign wheel marks the end of her shift.",
+          "payoff": "Yesterday takes the desk without making a speech. Ms Between uses all six arms to do absolutely nothing.",
+          "crossover": [
+            "town",
+            "kitchen"
+          ],
+          "requires": []
+        },
+        {
+          "id": "19.19",
+          "title": "Keys to Small Kindnesses",
+          "setup": "Three returning guests wait beside personalized key stations: a cloud's icy perch, a planet's warm lamp, and a ghost's frozen blanket clasp.",
+          "puzzle": "FREEZE the perch, WARM the lamp at 40–60°, and melt the blanket clasp. Their joint completion unlocks two shared FILL refreshments; station badges distinguish each job without a new matching minigame. WARM targets use 10–35% pressure.",
+          "payoff": "Yesterday hands out the right rooms without checking a list. The guests greet him by name before thanking the receptionist.",
+          "crossover": [
+            "garden",
+            "cosmos",
+            "town"
+          ],
+          "requires": []
+        },
+        {
+          "id": "19.20",
+          "title": "No One Leaves Through an Empty Lobby",
+          "setup": "The departure lounge gathers the hotel's guests around a frozen route board, two unfinished ice lantern bases, and a shared tea service.",
+          "puzzle": "Melt the route board and FREEZE both bases, then FILL two cups. WARM the lounge beacon at 30–50° with 10–35% pressure before SPINNING the departure bell. All prerequisites are within this scene.",
+          "payoff": "Every guest pauses to wave to Yesterday. The last room card reads Always Welcome, including on Wednesdays.",
+          "crossover": [
+            "town",
+            "garden",
+            "cosmos",
+            "kitchen"
+          ],
+          "requires": []
+        }
+      ]
+    }
+  ]
+}

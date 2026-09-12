@@ -1,0 +1,990 @@
+{
+  "packs": [
+    {
+      "id": "12",
+      "title": "The Somnolent Seamworks",
+      "premise": "Stitch the moth tailor and Dozy the delivery pillow mend damaged dreams in a workshop hanging beneath a sleeping moon. Their newest customer, Bramble, is a nightmare who would rather be somebody's comforting forest. Cast actions and dream transformations are scripted completion vignettes, not simulated characters.",
+      "arc": "Learn the repair bench, discover that useful dreams need different treatments, then help Bramble rehearse a gentler role. Finished repairs furnish a shared bedtime collection. Two optional experimental benches do not gate the final collection or its release.",
+      "signature": "Patchwork silhouettes, oversized thread spools, dotted rectangular ice stitches, and stacked dream-window targets. Ordinary scenes use stationary targets and visible prerequisite stitching; completed patches remain stable during later warm tasks. All active work sits below the reachable upper margin.",
+      "newArt": [
+        "Stitch moth tailor with folded-wing, inspecting, and delighted poses",
+        "Dozy pillow courier with envelope pocket and squash poses",
+        "Bramble soft antlered nightmare with nervous and leafy variants",
+        "Modular sewing benches, bobbin turbines, rectangular quilt frames, and dream-window borders",
+        "Reusable dream props: cloud hems, moon buttons, paper forests, pocket teapots, and floating-looking shelves",
+        "Completion transitions for stitched patterns, sleeping postcards, and dream delivery"
+      ],
+      "scenes": [
+        {
+          "id": "12.01",
+          "title": "A Yawn in the Works",
+          "setup": "Stitch's welcome sign is trapped inside a broad ice rectangle above the repair bench. Dozy waits beside an empty outgoing tray, already wearing a delivery stamp.",
+          "puzzle": "Use MELT at 10 degrees or warmer, moving across the sign's full width rather than drilling one narrow hole. The reachable upper edge teaches sweeping a wide target.",
+          "payoff": "The sign unfolds into an enormous yawn. Dozy stamps it RECEIVED and yawns back, starting the workshop's first repaired dream.",
+          "crossover": ["town", "cosmos"],
+          "requires": []
+        },
+        {
+          "id": "12.02",
+          "title": "Pillow with Altitude",
+          "setup": "Dozy's spare pillow hangs in frozen packing above a dotted cushion footprint. Stitch has placed a tiny Please Land Here card beside it.",
+          "puzzle": "FREEZE the wide lower footprint with water at minus 10 degrees or colder, then reposition above the smaller packing rectangle and MELT it. The packing target requires the completed cushion.",
+          "payoff": "A completion vignette drops the pillow onto the cushion. It bounces once, lands upright, and applies for a less exciting postal route.",
+          "crossover": ["cave", "cosmos"],
+          "requires": []
+        },
+        {
+          "id": "12.03",
+          "title": "The Shy Goodnight",
+          "setup": "A speech-shaped brooch sits low on Stitch's bench. Its GOODNIGHT lettering is faint, and Dozy is leaning in with an unnecessarily large listening funnel.",
+          "puzzle": "WARM the brooch at 25–40 degrees and 15–35 percent pressure. Its broad target makes setting the hose, not pinpoint accuracy, the lesson; wrong settings visibly reverse warmth progress.",
+          "payoff": "The lettering glows and a small goodnight bubble appears. Dozy lowers the funnel and answers with a bubble even smaller.",
+          "crossover": ["town", "garden"],
+          "requires": []
+        },
+        {
+          "id": "12.04",
+          "title": "Spool of Tomorrow",
+          "setup": "A frozen thread cassette occupies the left bench; its separate bobbin turbine stands to the right. Three blank dream postcards hang underneath, comfortably below both targets.",
+          "puzzle": "MELT the cassette, then SPIN the unlocked bobbin using liquid water and at least 70 percent pressure. Move between the offset stations; the thread illustration does not route water.",
+          "payoff": "The bobbin winds a sunrise across all three postcards. Stitch gives Dozy the first one: tomorrow, with a properly sewn edge.",
+          "crossover": ["kitchen", "cosmos"],
+          "requires": []
+        },
+        {
+          "id": "12.05",
+          "title": "Two Sides of the Blanket",
+          "setup": "A quilt frame has two separated dotted patches, one high on the left and one low on the right. Its central comfort badge remains dark.",
+          "puzzle": "FREEZE both rectangular patches in either order, repositioning to reach their exposed tops. Both are prerequisites for the central WARM badge, which needs 30–45 degrees and 20–40 percent pressure.",
+          "payoff": "The finished quilt gains two mismatched but equally proud squares. Dozy wraps up in it with the shipping label still outside.",
+          "crossover": ["town", "garden"],
+          "requires": []
+        },
+        {
+          "id": "12.06",
+          "title": "Snore and Whisper",
+          "setup": "Two dream customers occupy opposite ends of a shelf: a brass snore trumpet with a turbine, and a small whisper brooch with a warmth meter.",
+          "puzzle": "Service the independent stations in either order. SPIN the trumpet above 70 percent pressure; WARM the brooch at 20–35 degrees and 10–25 percent. Completed targets stay finished while settings change.",
+          "payoff": "The trumpet produces a politely illustrated puff while the brooch lights up. Stitch labels the pair duet, then issues the trumpet a tiny handkerchief.",
+          "crossover": ["town", "kitchen"],
+          "requires": []
+        },
+        {
+          "id": "12.07",
+          "title": "A Window for Rain",
+          "setup": "A rectangular pane of dream ice hangs above a marked rain-cup basin. The cup is slightly right of center, beneath a visible patch of blue sky.",
+          "puzzle": "MELT the pane locally, widening an opening above the cup. After the pane target completes, FILL the basin with liquid water through the cleared space; droplets elsewhere earn no basin progress.",
+          "payoff": "The cup reveals a miniature rainy afternoon under its handle. Dozy opens a postage-stamp umbrella and declares the weather excellent for naps.",
+          "crossover": ["garden", "kitchen"],
+          "requires": []
+        },
+        {
+          "id": "12.08",
+          "title": "Bramble's Audition",
+          "setup": "Bramble waits beside a tall dotted backdrop and two little lantern badges. The current stage illustration contains rather more teeth than the invitation promised.",
+          "puzzle": "FREEZE the backdrop footprint first. Then WARM the two separated lantern badges at 25–45 degrees and 15–35 percent pressure, visiting both without needing simultaneous progress.",
+          "payoff": "The scripted backdrop becomes a quiet forest and Bramble's teeth become welcoming leaves. Stitch offers an audition card reading Comforting, With Potential.",
+          "crossover": ["cave", "garden"],
+          "requires": []
+        },
+        {
+          "id": "12.09",
+          "title": "Teapot with a Horizon",
+          "setup": "A teapot dream has a frozen rectangular lid and a separate empty cup basin below its spout illustration. Bramble brings a napkin the size of a meadow.",
+          "puzzle": "MELT the lid, then FILL the cup directly from the nozzle; the illustrated spout is not a channel. Finish by WARMing the unlocked teapot badge at 35–50 degrees and 20–40 percent pressure.",
+          "payoff": "The cup's surface becomes a painted sunset. Bramble folds the meadow napkin down to a single considerate hill.",
+          "crossover": ["kitchen", "garden", "cosmos"],
+          "requires": []
+        },
+        {
+          "id": "12.10",
+          "title": "Cave of Lost Endings",
+          "setup": "Three frozen book-end rectangles form staggered shelves in a dream cave. Each reveals one part of a bedtime ending; a central reading badge waits below.",
+          "puzzle": "MELT all three blocks in any order, moving above each shelf rather than relying on decorative cave walls. Their completion unlocks a WARM reading badge at 20–40 degrees and 10–30 percent pressure.",
+          "payoff": "The three endings become and everyone, found a blanket, including the cave. Bramble looks especially pleased about the last part.",
+          "crossover": ["cave", "town"],
+          "requires": []
+        },
+        {
+          "id": "12.11",
+          "title": "The Dream that Grew Tomatoes",
+          "setup": "Two empty watering basins flank a dotted trellis patch. Stitch's dream tomatoes are drawn as tiny red planets, each with an anxious little orbit.",
+          "puzzle": "FILL both basins independently with water above zero. Together they unlock the trellis FREEZE footprint. Reposition before changing to cold water so the stream reaches the trellis's exposed upper edge.",
+          "payoff": "In the completion illustration, the tomatoes settle onto the finished trellis. One keeps a single moon, which Stitch agrees is within the gardening allowance.",
+          "crossover": ["garden", "cosmos"],
+          "requires": []
+        },
+        {
+          "id": "12.12",
+          "title": "Crosswalk for Sleepwalkers",
+          "setup": "A toy town dream lacks two rectangular crosswalk sections. A sleepy streetlamp badge stands on the far right; its empty tea basin sits on the left.",
+          "puzzle": "FREEZE both crossing footprints, FILL the tea basin, then WARM the streetlamp at 30–45 degrees and 15–30 percent pressure. The lamp requires all three preparations; no character moves during the work.",
+          "payoff": "Dozy and Bramble cross in a short vignette. The streetlamp bends to illuminate their slippers rather than interrogate their destination.",
+          "crossover": ["town", "kitchen"],
+          "requires": []
+        },
+        {
+          "id": "12.13",
+          "title": "Inside-Out Apology",
+          "setup": "Bramble's old frightening mask hangs between two repair stations: frozen outer packaging on the left and an exposed reassurance badge on the right.",
+          "puzzle": "MELT the packaging and WARM the badge at 20–35 degrees and 10–25 percent in either order. Both unlock a lower FREEZE footprint for a new mask lining; no finished warmth needs maintenance.",
+          "payoff": "The mask turns over in the reveal, showing a soft smile on its former inside. Bramble keeps the dramatic antlers for hanging guests' coats.",
+          "crossover": ["cave", "garden"],
+          "requires": []
+        },
+        {
+          "id": "12.14",
+          "title": "Moonlight Alterations",
+          "setup": "At an optional optical bench, a fixed moonbeam misses two stitched-eye detectors. Two dotted ice-prism sockets lie between the beam source and the sleepy mask.",
+          "puzzle": "With OPTICS, FREEZE the two marked prism footprints and use their authored reflection paths to light both detectors. MELT a separate frost patch from the second detector before checking its actual beam signal.",
+          "payoff": "The mask projects matching moons onto its eyelids. Stitch calls it a minor alteration and quietly wears safety spectacles shaped like stars.",
+          "crossover": ["cosmos", "cave"],
+          "requires": ["OPTICS"]
+        },
+        {
+          "id": "12.15",
+          "title": "The Very Large Small Worry",
+          "setup": "A huge frozen worry envelope fills the center bench. Its reassuring reply is represented by three tiny warmth badges spread along an open lower shelf.",
+          "puzzle": "MELT the wide envelope before the three reply badges become active. Then WARM them at 25–40 degrees and 15–35 percent pressure, choosing an efficient left-to-right route instead of trying to spray all three together.",
+          "payoff": "The enormous worry unfolds into a small note asking whether moss counts as a pillow. Bramble demonstrates that it very much does.",
+          "crossover": ["town", "garden"],
+          "requires": []
+        },
+        {
+          "id": "12.16",
+          "title": "A Queue of Different Nights",
+          "setup": "Four repair trays form a staircase: a basin, an ice block, a dotted patch, and a warmth badge. Dozy's labels show four customers, not four grades of urgency.",
+          "puzzle": "Choose the order for FILL, MELT, and FREEZE at three separate stations. Their completion unlocks WARM at 30–45 degrees and 20–40 percent pressure. Move the nozzle to each exposed top; nothing must be completed quickly.",
+          "payoff": "Four different dreams receive matching finished stamps. Dozy adds a fifth stamp to Bramble: Helpful, Which Is Not the Same as Harmless-Looking.",
+          "crossover": ["town", "kitchen", "cave"],
+          "requires": []
+        },
+        {
+          "id": "12.17",
+          "title": "The Bedtime Binding",
+          "setup": "The repaired postcards surround a large book frame. Two dotted spine patches sit above a central turbine, with a comfort badge offset to the lower right.",
+          "puzzle": "FREEZE both spine patches, then SPIN the binding turbine with liquid water above 70 percent pressure. Finally WARM the unlocked comfort badge at 25–40 degrees and 10–30 percent pressure, making the sharp setting change deliberate.",
+          "payoff": "The collection closes around all the postcards. Bramble appears on the cover carrying a lantern, no longer hiding behind somebody else's scary title.",
+          "crossover": ["town", "cosmos", "garden"],
+          "requires": []
+        },
+        {
+          "id": "12.18",
+          "title": "A Seam that Can Reconsider",
+          "setup": "An optional experimental quilt has one reusable rectangular ice seam between two dream panels. Stitch wants to demonstrate that changing one's mind can be an honest repair.",
+          "puzzle": "With PHASE, FREEZE the seam to complete the first panel's support state, deliberately MELT that same finished seam, then FREEZE it again after the second panel becomes available. Each state change must be visibly acknowledged; ordinary completed targets remain irreversible elsewhere.",
+          "payoff": "The quilt ends with a reversible-looking decorative fold. Bramble signs the experiment Changed My Mind, Still Me.",
+          "crossover": ["garden", "cosmos"],
+          "requires": ["PHASE"]
+        },
+        {
+          "id": "12.19",
+          "title": "Last Collection",
+          "setup": "Dozy's delivery satchel has a frozen clasp above two dotted packing cradles. An independent turbine station powers the illustrated address stamper at the far left.",
+          "puzzle": "FREEZE both cradles before MELTing the clasp; separately SPIN the stamper with liquid water above 70 percent pressure. The completed clasp and stamper together unlock WARM on the departure seal at 30–45 degrees and 15–35 percent pressure.",
+          "payoff": "The satchel receives a stack of dream-books in a completion vignette. Dozy discovers a pocket-sized forest reserved for breaks between deliveries.",
+          "crossover": ["town", "kitchen", "garden"],
+          "requires": []
+        },
+        {
+          "id": "12.20",
+          "title": "Everybody Gets a Goodnight",
+          "setup": "Stitch, Dozy, and Bramble gather around three dark bedside badges beneath the finished dream collection. Their fourth, empty chair holds the squad's folded work towel.",
+          "puzzle": "FILL the central bedtime cup, then WARM three separated badges at 25–40 degrees and 10–30 percent pressure. All three unlock a small SPIN lullaby turbine; completed warmth remains safe during the final strong jet.",
+          "payoff": "Windows across the sleeping moon light with repaired dreams. Bramble opens the forest dream's door, and the last goodnight bubble is addressed to the squad.",
+          "crossover": ["cosmos", "town", "garden", "kitchen"],
+          "requires": []
+        }
+      ]
+    },
+    {
+      "id": "13",
+      "title": "The Forecast Conservatory",
+      "premise": "Nimbus the cloud gardener, Bree the barometer beetle, and a stubborn seedling called Sleet grow pocket-sized weather for communities with very specific needs. A cold snap has mixed up their nursery. Growth, cloud travel, and weather releases are scripted reveals except where a scene explicitly requires a future system.",
+      "arc": "Restore nursery stations, learn that different weather deserves different care, and prepare a traveling collection that includes Sleet rather than pruning away their oddness. Optional channel and moving-planter experiments are side exhibits; the seed collection can graduate without them.",
+      "signature": "Glasshouse arches frame reachable stationary rectangular seed beds, ice panes, rain basins, and climate badges. Contrasting WARM ranges create genuine tuning puzzles; clouds and foliage decorate the spaces between targets rather than pretending to collide with water.",
+      "newArt": [
+        "Nimbus cloud gardener with watering-apron and umbrella poses",
+        "Bree barometer beetle with readable expression dial",
+        "Sleet seedling with boot-shaped leaves and later mixed-weather blossoms",
+        "Modular greenhouse benches, glass arches, seed packets, canopy ice panes, and rain basins",
+        "Weather plants: sunflowers with little suns, snow peas, fog mushrooms, thunder gourds, and rainbow vines",
+        "Reusable sprouting, cloud-release, rain-curtain, and seed-exchange completion overlays"
+      ],
+      "scenes": [
+        {
+          "id": "13.01",
+          "title": "The Frozen Forecast",
+          "setup": "Nimbus stands beside a nursery sign sealed in a tall ice rectangle. Three illustrated forecast pots sit underneath, their labels all reading Brisk, Possibly Very Brisk.",
+          "puzzle": "MELT the sign with water at 10 degrees or warmer, tracing its height from a nozzle position above the exposed top. Clearing one corner is not enough to restore the whole label.",
+          "payoff": "The sign reveals a cheerful forecast for Indoor Gardening. Bree turns her expression dial from worried to a cautiously botanical smile.",
+          "crossover": ["garden", "town"],
+          "requires": []
+        },
+        {
+          "id": "13.02",
+          "title": "A Bed for Snow Peas",
+          "setup": "A frozen snow-pea packet hangs above an empty dotted planting bed. Nimbus has provided a miniature scarf and, less helpfully, an enormous soup spoon.",
+          "puzzle": "FREEZE the broad bed footprint at minus 10 degrees or colder before MELTing the packet's smaller ice target above it. The planting animation waits for both completed targets; no loose seeds need to be caught.",
+          "payoff": "Snow peas sprout wearing little snow caps. Nimbus removes the soup spoon from the gardening manual and pretends it was a bookmark.",
+          "crossover": ["garden", "kitchen"],
+          "requires": []
+        },
+        {
+          "id": "13.03",
+          "title": "The Sunseed's Sweater",
+          "setup": "A sunseed sits inside an open rectangular care frame low on the bench. Its tiny knitted sweater is visible, but the face on its pot looks distinctly unconvinced.",
+          "puzzle": "WARM the care frame at 35–50 degrees and 15–35 percent pressure. The task is maintaining the labeled range; a hotter setting is not a faster solution and reverses unfinished warmth.",
+          "payoff": "The seed unfolds one glowing petal and hangs its sweater on the pot handle. Bree records the first voluntary spring of the day.",
+          "crossover": ["garden", "cosmos"],
+          "requires": []
+        },
+        {
+          "id": "13.04",
+          "title": "A Breeze with References",
+          "setup": "The ventilation wheel is iced over on the right-hand bench. A row of paper reference letters hangs on the left, each praising the breeze's excellent punctuality.",
+          "puzzle": "MELT the wheel's rectangular cover, then SPIN its unlocked turbine with liquid water and at least 70 percent pressure. Aim at the marked turbine rather than the decorative hanging letters.",
+          "payoff": "The letters flutter in the completion reveal. A small cloud receives its first indoor breeze, and Nimbus hands the wheel an Employee of the Air rosette.",
+          "crossover": ["garden", "town"],
+          "requires": []
+        },
+        {
+          "id": "13.05",
+          "title": "Two Kinds of Comfortable",
+          "setup": "A sunseed and a fog mushroom occupy widely separated care frames. Their large labels disagree about comfortable: the mushroom wants mild warmth, while the sunseed requests a brighter afternoon.",
+          "puzzle": "WARM the mushroom at 20–35 degrees and 10–30 percent pressure, then the sunseed at 55–75 degrees and 35–55 percent, or reverse the order. Finished care remains complete; neither needs simultaneous maintenance.",
+          "payoff": "Both bloom differently. Nimbus adds two separate comfort settings to the nursery guide instead of averaging everyone into a disappointed drizzle.",
+          "crossover": ["garden", "cave"],
+          "requires": []
+        },
+        {
+          "id": "13.06",
+          "title": "Rain through the Skylight",
+          "setup": "Two ice panes sit above separate narrow rain basins. The left basin is centered beneath its pane; the right is offset, making the same nozzle position unsuitable for both.",
+          "puzzle": "MELT each pane, then FILL its associated basin using liquid water through the cleared area. Each basin requires only its own pane, so finish either branch first rather than clearing everything by habit.",
+          "payoff": "Two nursery clouds puff up in the reveal, one round and one gloriously lopsided. Bree gives both identical watering certificates.",
+          "crossover": ["garden", "town"],
+          "requires": []
+        },
+        {
+          "id": "13.07",
+          "title": "Sleet's Unusual Roots",
+          "setup": "Sleet waits between a dotted cold bed and a separate warm care badge. Their seed packet shows both a snowflake and a sun, neither crossed out.",
+          "puzzle": "FREEZE the cold bed, then WARM the separate care badge at 25–40 degrees and 15–30 percent pressure. The badge unlocks after the bed; cold roots remain stable while the hose warms the other station.",
+          "payoff": "Sleet grows one snowy leaf and one sunny leaf. Nimbus replaces the label Mixed Up with Mixed Weather, which Sleet appears to prefer.",
+          "crossover": ["garden", "cosmos"],
+          "requires": []
+        },
+        {
+          "id": "13.08",
+          "title": "The Rain Collector's Hat",
+          "setup": "A broad hat-shaped basin sits above a smaller turbine station. Nimbus's new headwear will display a tiny rainbow once its two separate preparations are complete.",
+          "puzzle": "FILL the marked hat basin, then move below and beside it to SPIN the unlocked turbine. The hat does not drain into the wheel; the player supplies both targets directly with liquid water.",
+          "payoff": "A painted rainbow unfolds from the hat brim. Bree climbs onto it in the completion vignette and requests a less spectacular staff uniform.",
+          "crossover": ["garden", "kitchen", "town"],
+          "requires": []
+        },
+        {
+          "id": "13.09",
+          "title": "Soup Weather",
+          "setup": "The kitchen annex needs a rainy-day display: two empty soup basins flank an unlit steam-flower care frame. A snow-pea plant supervises from a safely decorative shelf.",
+          "puzzle": "FILL both basins above zero, then WARM the unlocked steam-flower at 40–55 degrees and 20–40 percent pressure. Filling has no hidden cooking-temperature requirement; precision belongs only to the care frame.",
+          "payoff": "The flower releases a scripted curl of steam shaped like a blanket. Nimbus serves the snow pea a bowl of soup without making any assumptions about ingredients.",
+          "crossover": ["kitchen", "garden"],
+          "requires": []
+        },
+        {
+          "id": "13.10",
+          "title": "Fog for a Small Cave",
+          "setup": "A miniature cave diorama has two frozen rectangular viewing windows at different heights. Its fog-mushroom care badge sits on an open side ledge, not behind a colliding cave wall.",
+          "puzzle": "MELT both windows to unlock the badge, then WARM it at 20–35 degrees and 10–25 percent pressure. Reposition above the higher window instead of trying to blast through the illustrated roof.",
+          "payoff": "Soft display fog curls through the diorama. A painted cave dragon gains a privacy curtain and a sign reading Home, Please Knock.",
+          "crossover": ["cave", "garden"],
+          "requires": []
+        },
+        {
+          "id": "13.11",
+          "title": "Moonflowers at Noon",
+          "setup": "Three moonflower pots form a descending diagonal beneath a painted night sky. Each pot has a dotted ice collar; a single light badge sits beyond the lowest pot.",
+          "puzzle": "FREEZE all three collar footprints, moving above each rather than spraying diagonally through inactive targets. Then WARM the badge at 30–45 degrees and 15–35 percent pressure; the moon art does not change droplet gravity.",
+          "payoff": "The moonflowers open like little observatories. Nimbus supplies each with a pair of gardening binoculars, including the pot facing the wall.",
+          "crossover": ["cosmos", "garden"],
+          "requires": []
+        },
+        {
+          "id": "13.12",
+          "title": "Forecast for the High Street",
+          "setup": "A toy street has a frozen picnic sign, a dry duck-pond basin, and a dotted frost-skating patch in three separate bays. Bree presents requests from three very different neighbors.",
+          "puzzle": "MELT the sign, FILL the pond, and FREEZE the skating patch in any order. All unlock the central SPIN display wheel, which needs liquid water at 70 percent pressure or more.",
+          "payoff": "The three neighborhood scenes animate together. Nimbus proudly issues a forecast of Something for Everyone, in clearly marked locations.",
+          "crossover": ["town", "garden", "kitchen"],
+          "requires": []
+        },
+        {
+          "id": "13.13",
+          "title": "A Rainforest in Three Pots",
+          "setup": "Three rain basins decrease in width from left to right. Their leafy illustrations become increasingly extravagant, culminating in one enormous leaf above the smallest basin.",
+          "puzzle": "FILL all three independently with liquid water. Move closer above the narrow last target instead of assuming higher pressure is always helpful; the challenge is stream placement, not spill penalties or a hidden temperature band.",
+          "payoff": "Three pocket rainforests unfold. The smallest receives the largest leaf, which Sleet borrows as an umbrella with excellent confidence and poor visibility.",
+          "crossover": ["garden", "cosmos"],
+          "requires": []
+        },
+        {
+          "id": "13.14",
+          "title": "The Connected Forecast",
+          "setup": "An optional irrigation exhibit connects an upper reservoir to two lower cloud basins. Ice blocks close both branch mouths; the far channel takes a visibly longer route.",
+          "puzzle": "With FLOW, MELT either branch blockage and FILL the upper reservoir so persistent water actually reaches that branch's cloud basin. Clear the other blockage and continue supplying the reservoir until both connected basins are full; no finished construction must be reversed.",
+          "payoff": "Two clouds unfurl a shared rain curtain. Bree labels the channel map Plumbing, Occasionally Mistaken for Destiny.",
+          "crossover": ["garden", "cave"],
+          "requires": ["FLOW"]
+        },
+        {
+          "id": "13.15",
+          "title": "Thunder Gourd, Inside Voice",
+          "setup": "A thunder gourd sits between a large turbine and a small care badge. Sleet has drawn a rehearsal audience of three flowerpots, all wearing ear defenders.",
+          "puzzle": "SPIN the turbine with liquid water above 70 percent pressure, then WARM the unlocked badge at 25–40 degrees and 10–20 percent pressure. The deliberate strong-to-gentle change controls the tasks, not simulated sound volume.",
+          "payoff": "The gourd produces one tiny illustrated rumble. The flowerpots applaud in the reveal, and Nimbus awards a ribbon for thunder appropriate to the venue.",
+          "crossover": ["garden", "town"],
+          "requires": []
+        },
+        {
+          "id": "13.16",
+          "title": "Labels after the Frost",
+          "setup": "Four frozen label blocks surround two nursery trays. The left pair belongs to warm-weather plants; the right pair belongs to cold-weather plants, identified by large matching pictures.",
+          "puzzle": "MELT either pair to unlock its own tray: WARM the left at 40–55 degrees and 20–40 percent pressure, FREEZE the right footprint. Complete both branches without mistaking inactive transparent targets for physical shields.",
+          "payoff": "The labels return to their pots. Sleet receives a double-sided label and immediately begins using the blank edge for doodles.",
+          "crossover": ["garden", "town", "cave"],
+          "requires": []
+        },
+        {
+          "id": "13.17",
+          "title": "Packing a Little Spring",
+          "setup": "Three traveling seed cases occupy stepped benches: a dry basin case, a dotted cold cradle, and a frozen clasp case. A departure badge sits at the clear lower edge.",
+          "puzzle": "FILL the basin and FREEZE the cradle in either order; both unlock MELT on the clasp. Finish by WARMing the departure badge at 30–45 degrees and 15–35 percent pressure, following the pictured packing sequence.",
+          "payoff": "The cases close around three different seasons. Nimbus leaves the fourth case open so Sleet can decide how much weather to bring.",
+          "crossover": ["town", "garden", "cosmos"],
+          "requires": []
+        },
+        {
+          "id": "13.18",
+          "title": "The Wandering Hanging Basket",
+          "setup": "In an optional kinetic greenhouse bay, a planter basin rides a slow visible horizontal rail. Two stationary rest marks indicate the ends of its repeating route.",
+          "puzzle": "With MOTION, FILL the actual moving basin using liquid water, following its broad predictable path. Progress persists between passes, with no missed-pass punishment or deadline; decorative leaves do not change the collision zone.",
+          "payoff": "The completed planter parks and grows a vine shaped like a return ticket. Bree admits that mobile gardening has excellent scenery.",
+          "crossover": ["garden", "town"],
+          "requires": ["MOTION"]
+        },
+        {
+          "id": "13.19",
+          "title": "Sleet's Demonstration",
+          "setup": "Sleet's show bench combines two dotted root patches, an offset rain basin, and a sun badge. Nimbus has replaced the old inspection clipboard with a little audience chair.",
+          "puzzle": "FREEZE both root patches, FILL the independent basin, then WARM the sun badge at 35–50 degrees and 15–35 percent pressure. All preparations are required, but the finished cold patches remain stable beside the warm finale.",
+          "payoff": "Sleet blooms with snowy leaves, warm petals, and a personal drizzle. Nimbus writes Good at Being Sleet, without adding any qualifications.",
+          "crossover": ["garden", "cosmos", "kitchen"],
+          "requires": []
+        },
+        {
+          "id": "13.20",
+          "title": "A Forecast Worth Sharing",
+          "setup": "The traveling cases flank a wide frozen greenhouse nameplate. Three finished-plant portraits surround the central dispatch turbine, leaving a clear vertical aiming lane above it.",
+          "puzzle": "MELT the nameplate, then complete two independent WARM farewell badges at 25–40 degrees and 15–35 percent pressure. All three unlock the final SPIN turbine; switch to liquid water above 70 percent pressure to launch the reveal.",
+          "payoff": "The cases depart in a scripted seed-exchange procession. The conservatory's new nameplate reads Locally Grown Weather, Including the Unexpected, with Sleet's boots painted underneath.",
+          "crossover": ["garden", "town", "cosmos"],
+          "requires": []
+        }
+      ]
+    },
+    {
+      "id": "14",
+      "title": "The Mycelium Local",
+      "premise": "Conductor Gills, Sprig the tiny mushroom porter, and Edna the spore librarian are reopening a fungal railway beneath an enormous garden. Every passenger has a reason to travel and absolutely no interest in an express service. Ordinary trains, doors, passengers, and signals move only in scripted completion vignettes.",
+      "arc": "Recover the station, make room for unusual cargo, reconnect the library and garden stops, and prepare a local service that includes the overlooked smallest platform. Optional freight-motion and balance demonstrations are separate training sidings, not prerequisites for reopening the railway.",
+      "signature": "Cap-shaped roofs, gill-striped signs, stepped platform targets, and diagrammatic prerequisite routes. Ice track sections are fixed rectangular construction footprints; their completion licenses a train cutaway, not physical rail simulation. Open overhead nozzle access remains visible at every ordinary station.",
+      "newArt": [
+        "Conductor Gills shaggy-cap mushroom with ticket-punch and waving poses",
+        "Sprig button-mushroom porter with oversized cap and luggage trolley poses",
+        "Edna inkcap librarian with spore envelopes and reading spectacles",
+        "Modular mushroom platforms, gill-roof station bays, rectangular track beds, and signposts",
+        "Reusable stationary train carriage, boiler badge, exposed turbine, and freight-rack kits",
+        "Passengers and cargo: snail family, acorn crates, book bundles, teacups, and soft spore sacks"
+      ],
+      "scenes": [
+        {
+          "id": "14.01",
+          "title": "Tickets under Ice",
+          "setup": "The ticket window is one broad ice rectangle beneath a mushroom roof. Sprig stands beside it with a ticket punch larger than their entire face.",
+          "puzzle": "MELT across the window using water at 10 degrees or warmer. Move along the exposed upper edge to clear its full width; the cap roof is scenery, not a physical obstacle.",
+          "payoff": "Gills opens the booth in the reveal and accepts Sprig's first carefully punched ticket. It contains one magnificent hole and no remaining destination.",
+          "crossover": ["town", "garden"],
+          "requires": []
+        },
+        {
+          "id": "14.02",
+          "title": "Boiler, Not Broiler",
+          "setup": "A stationary carriage displays a large boiler-care badge beside a painted pressure gauge. Edna's library crate waits nearby with a prominent Please Do Not Toast sticker.",
+          "puzzle": "WARM the boiler badge at 45–65 degrees and 25–45 percent pressure. The gauge mirrors this target's progress; it is not an additional sensor or a hidden overheating failure system.",
+          "payoff": "The carriage produces a comfortable illustrated puff. Edna opens the crate to reveal books wearing little dust jackets, relieved to remain unroasted.",
+          "crossover": ["kitchen", "town"],
+          "requires": []
+        },
+        {
+          "id": "14.03",
+          "title": "A Very Short Missing Railway",
+          "setup": "Two dotted rectangular track beds interrupt the platform illustration. The parked carriage has a frozen wheel-cover target at its far end, with clear nozzle access above.",
+          "puzzle": "FREEZE both track footprints at minus 10 degrees or colder, then MELT the wheel cover. The cover requires both tracks; finished tracks remain stable during melting, and no train is physically supported by ice simulation.",
+          "payoff": "The carriage crosses in a short completion cutaway. Gills announces a successful journey of almost three mushroom caps.",
+          "crossover": ["cave", "garden", "town"],
+          "requires": []
+        },
+        {
+          "id": "14.04",
+          "title": "The Departure Fan",
+          "setup": "A low turbine and a high frozen destination board occupy opposite sides of the station. Sprig has arranged three enormous hats beneath the ventilation illustration.",
+          "puzzle": "MELT the board to reveal its lettering, then SPIN the unlocked turbine with liquid water at 70 percent pressure or more. Reposition between heights rather than treating the painted vent as a water conduit.",
+          "payoff": "The board reads Local Service and the hats flutter in the reveal. Gills insists that airing the hats is an important part of route preparation.",
+          "crossover": ["town", "garden"],
+          "requires": []
+        },
+        {
+          "id": "14.05",
+          "title": "Water Stops, Plural",
+          "setup": "Three locomotive-water basins sit at different heights along an empty siding. The smallest belongs to Sprig's handcart, which has acquired a thoroughly unnecessary smokestack.",
+          "puzzle": "FILL all three marked basins with water above zero. Choose a route between their exposed tops and adjust nozzle position for the narrow handcart basin; none is connected to another or loses water over time.",
+          "payoff": "Each vehicle gains a painted steam curl. Sprig's handcart produces the smallest curl and receives the loudest ceremonial applause.",
+          "crossover": ["town", "kitchen"],
+          "requires": []
+        },
+        {
+          "id": "14.06",
+          "title": "Luggage with Branches",
+          "setup": "An acorn passenger's large coat is frozen above an empty dotted luggage rack. A separate warmth badge marks the seat cushion to the right.",
+          "puzzle": "FREEZE the rack before MELTing the coat's packing block. Independently WARM the cushion at 25–40 degrees and 10–30 percent pressure. All three preparations finish before the passenger boards in the reveal.",
+          "payoff": "The acorn hangs up a coat full of tiny branches. Sprig adds Leaf Room to the luggage allowance and offers a miniature lint roller.",
+          "crossover": ["garden", "town"],
+          "requires": []
+        },
+        {
+          "id": "14.07",
+          "title": "The Drip-Reading Room",
+          "setup": "Edna's carriage library has two frozen rectangular skylights above offset collection basins. Illustrated shelves leave a clear working gap down the center of the scene.",
+          "puzzle": "MELT one skylight and FILL its basin through the cleared area, then repeat on the other branch. Each basin depends only on its own skylight, rewarding completion of a local pair before crossing the carriage.",
+          "payoff": "Edna unveils rain-themed reading seats beneath dry-looking illustrated shelves. The first book is A Brief History of Drips, Volume One of Seven.",
+          "crossover": ["cave", "town", "kitchen"],
+          "requires": []
+        },
+        {
+          "id": "14.08",
+          "title": "Quiet Car, Warm Welcome",
+          "setup": "Two carriage badges face each other across a wide aisle. One labels a cool mushroom nursery; the other labels a cozy reading nook, both awaiting their own comfortable conditions.",
+          "puzzle": "WARM the nursery at 15–30 degrees and 10–25 percent pressure, and the nook at 40–55 degrees and 20–40 percent. Complete either first; there is no requirement to maintain both ranges at once.",
+          "payoff": "The nursery settles beneath a leaf blanket while Edna opens the nook. Gills conducts the opening announcement entirely on a small written card.",
+          "crossover": ["garden", "town"],
+          "requires": []
+        },
+        {
+          "id": "14.09",
+          "title": "Platform Soup",
+          "setup": "The station kitchen has a frozen menu above two empty bowl basins. A kitchen badge sits between them; snow-pea passengers wait beside the open counter.",
+          "puzzle": "MELT the menu, FILL both unlocked bowls directly, then WARM the kitchen badge at 40–55 degrees and 20–40 percent pressure. Bowl filling needs only liquid water; the final badge supplies the precision-temperature task.",
+          "payoff": "Two scripted soup servings appear. Gills names one platform one and the other platform two, then notices both have arrived ahead of the train.",
+          "crossover": ["kitchen", "town"],
+          "requires": []
+        },
+        {
+          "id": "14.10",
+          "title": "Observatory on the Local",
+          "setup": "A stationary observation carriage has a frozen star-chart panel high on the left and a telescope turbine low on the right. The painted moon peers over the mushroom roof.",
+          "puzzle": "MELT the panel, then SPIN the telescope's marked turbine above 70 percent pressure with liquid water. The telescope turns only in the completion vignette; neither the sky nor the moon changes hose gravity.",
+          "payoff": "The telescope reveals a constellation shaped like Sprig's handcart. Edna reserves the name Porter's Rest and refuses to charge it for luggage.",
+          "crossover": ["cosmos", "cave", "town"],
+          "requires": []
+        },
+        {
+          "id": "14.11",
+          "title": "Crossing for Six Small Feet",
+          "setup": "A beetle family's street crossing lacks three short rectangular sections. A frozen station-name block sits beyond them, and Sprig has painted enormous arrows to a very small destination.",
+          "puzzle": "FREEZE the three spaced crossing footprints in any order, then MELT the unlocked name block. Keep the nozzle above each short section; the illustrated road and waiting family are not collision obstacles.",
+          "payoff": "The family crosses in the reveal, carrying one pea between all six helpers. Their destination is revealed as Somewhere Nearby, a perfectly respectable stop.",
+          "crossover": ["town", "garden"],
+          "requires": []
+        },
+        {
+          "id": "14.12",
+          "title": "Seeds in the Sleeper Car",
+          "setup": "Two seed crates occupy opposite ends of a carriage. Each has a basin below a frozen label; a dotted dividing panel stands in the clear central aisle.",
+          "puzzle": "MELT each label to unlock its own FILL basin, finishing the branches in either order. Then FREEZE the central panel footprint after both basins complete; it is a constructed prop, not a live water barrier.",
+          "payoff": "The panel gains a painted night sky and the seeds settle into sleeper berths. Edna supplies a bedtime timetable with no small print.",
+          "crossover": ["garden", "town", "cosmos"],
+          "requires": []
+        },
+        {
+          "id": "14.13",
+          "title": "Everyone's Ticket Matters",
+          "setup": "Four ticket-care badges form a zigzag across the booking counter. Two belong to chilly spore travelers; two belong to warm-root visitors, marked with large blue and amber portraits.",
+          "puzzle": "WARM blue badges at 15–30 degrees and 10–30 percent pressure; amber badges need 45–60 degrees and 25–45 percent. Group matching settings or follow the counter order, keeping each target's finished progress permanent.",
+          "payoff": "All four tickets unfold into seats with different cushions. Sprig punches each carefully this time, leaving enough ticket to know where to sit.",
+          "crossover": ["town", "garden"],
+          "requires": []
+        },
+        {
+          "id": "14.14",
+          "title": "The Ascending Freight Cup",
+          "setup": "An optional siding has a stationary lift turbine and a cup basin on a slow vertical carrier. Both endpoint marks sit within nozzle reach.",
+          "puzzle": "With MOTION, SPIN the turbine to start the carrier's predictable loop, then FILL the moving cup with liquid water. Progress persists through missed passes; the turbine need not be repeatedly completed or held under a second stream.",
+          "payoff": "The carrier parks with one safely delivered cup. Gills certifies Sprig for lifting refreshments to slightly more impressive heights.",
+          "crossover": ["town", "cave", "kitchen"],
+          "requires": ["MOTION"]
+        },
+        {
+          "id": "14.15",
+          "title": "Junction of Good Reasons",
+          "setup": "Two independent signal bays label the library branch and the garden branch. Each contains a frozen sign above its own turbine, with the final route board between them.",
+          "puzzle": "Complete each MELT-to-SPIN pair in either order. Both branches unlock a central WARM route badge at 30–45 degrees and 15–35 percent pressure; signal completion changes the display, not a live train's path.",
+          "payoff": "The route board links both destinations. Edna sends books to the garden while Nimbus's illustrated seed parcels arrive at the library for research purposes.",
+          "crossover": ["town", "garden"],
+          "requires": []
+        },
+        {
+          "id": "14.16",
+          "title": "Lost, Found, and Slightly Damp",
+          "setup": "Three lost-property ice blocks enclose a tall umbrella, a wide scarf, and a squat lunchbox. An empty return basin sits on the open side shelf.",
+          "puzzle": "MELT all three shapes, changing sweep direction to match their silhouettes. Their completion unlocks FILL on the return basin; warm liquid is sufficient, and no item needs to be physically pushed or caught.",
+          "payoff": "The returned belongings appear neatly sorted beside a fresh water bowl. A snail claims the umbrella and the lunchbox, then kindly lends Sprig the scarf.",
+          "crossover": ["town", "kitchen"],
+          "requires": []
+        },
+        {
+          "id": "14.17",
+          "title": "The Platform Nobody Noticed",
+          "setup": "Sprig points to an overlooked low platform between larger stations. Its dotted ramp, water basin, and frozen nameplate all have clear overhead nozzle access.",
+          "puzzle": "FREEZE the ramp and FILL the basin independently, then MELT the nameplate they unlock. Finish a WARM welcome badge at 25–40 degrees and 10–30 percent pressure; ramp use is reserved for the completion vignette.",
+          "payoff": "The nameplate reads Sprig Halt. A procession of tiny passengers appears, delighted that their size is no longer being mistaken for a lack of travel plans.",
+          "crossover": ["town", "garden", "cave"],
+          "requires": []
+        },
+        {
+          "id": "14.18",
+          "title": "The Freight that Weighed a Little",
+          "setup": "An optional freight scale supports a book crate opposite an empty water basin. A broad level band marks the platform height needed for the reveal.",
+          "puzzle": "With BALANCE, FILL a fixed inlet target to add counterweight water. Mass caps at the visibly marked successful capacity, preventing overshoot. Only the scale prop moves as actual torque levels its beam; the hose target stays stationary.",
+          "payoff": "The balanced platform carries the crate in a short reveal. Edna discovers its heaviest volume is A Small Book of Modest Ideas.",
+          "crossover": ["town", "cave"],
+          "requires": ["BALANCE"]
+        },
+        {
+          "id": "14.19",
+          "title": "Nothing Leaves Hungry",
+          "setup": "Three bowl basins sit beneath the final service trolley's frozen menu strip. A separate wheel turbine stands to the right, away from the illustrated seats.",
+          "puzzle": "MELT the menu to unlock the bowls, FILL all three, then SPIN the trolley turbine with liquid water above 70 percent pressure. The last basin is narrower, encouraging a close nozzle position before returning to the wheel.",
+          "payoff": "Sprig serves the snail family, Gills, and Edna. A fourth bowl appears for the porter: a gentle reminder that staff are people too.",
+          "crossover": ["kitchen", "town", "garden"],
+          "requires": []
+        },
+        {
+          "id": "14.20",
+          "title": "All Aboard, Eventually",
+          "setup": "The train waits beside Sprig Halt. Two dotted welcome panels frame its boiler badge; a separate departure turbine occupies the open side bay.",
+          "puzzle": "FREEZE both welcome panels, WARM the unlocked boiler at 45–65 degrees and 25–45 percent pressure, then SPIN the turbine with liquid water above 70 percent. There is no countdown; departure waits for every preparation.",
+          "payoff": "The completed train visits the repaired stops in a short illustrated procession. Gills' final announcement is We Have Time, and Sprig's little platform receives the biggest wave.",
+          "crossover": ["town", "garden", "cave", "kitchen"],
+          "requires": []
+        }
+      ]
+    },
+    {
+      "id": "15",
+      "title": "The Institute of Almost Possible",
+      "premise": "Dr. Probably the axolotl curator, Margin the folded-paper assistant, and Zero the small decorative black-hole exhibit prepare a museum for visitors. Its frozen displays have lost their explanations, but not their enthusiasm. Impossible transformations are theatrical completion reveals unless a scene explicitly requests a real future physics system.",
+      "arc": "Reopen modest exhibits, discover that strange results deserve careful labels, and let Zero curate a display about useful emptiness. The finale celebrates good questions rather than perfect certainty. Optional optical and buoyancy demonstrations are annexes, not required routes through the museum.",
+      "signature": "Exhibit cases isolate stationary rectangular targets with large pictorial cause-and-effect labels. Mirrored layouts, negative-space ice windows, paired temperature ranges, and separated preparation branches make the laboratory readable without fake sensor logic. All work zones have open nozzle access.",
+      "newArt": [
+        "Dr. Probably axolotl curator with pointer, puzzled, and proud poses",
+        "Margin folded-paper assistant with clipboard wings and unfolding poses",
+        "Zero outlined black-hole character with expressions, explicitly decorative outside named future exhibits",
+        "Modular museum plinths, rectangular display cases, specimen labels, brass turbines, and observation windows",
+        "Reusable exhibits: tomorrow fossil, impossible kettle, moon marble, square toast, question-mark plant, and miniature ocean",
+        "Scripted reveal overlays for specimen silhouettes, explanatory cards, silhouettes becoming labels, and visitor postcards"
+      ],
+      "scenes": [
+        {
+          "id": "15.01",
+          "title": "Please Unfreeze the Explanation",
+          "setup": "The museum's welcome plaque is trapped in a wide ice slab above an empty plinth. Dr. Probably waits with a pointer aimed confidently at absolutely nothing.",
+          "puzzle": "MELT the slab with water at 10 degrees or warmer, sweeping across the whole rectangular label. The low plinth leaves ample space to see where drops contact ice and where cleared holes let them pass.",
+          "payoff": "The plaque reads We Think You'll Like This. Margin adds an encouraging underline, and the curator finally has something specific to point at.",
+          "crossover": ["town", "cave"],
+          "requires": []
+        },
+        {
+          "id": "15.02",
+          "title": "An Excellent Nothing",
+          "setup": "Zero occupies the empty center of a display outline. Two dotted rectangular case edges sit on either side, and the exhibit caption is folded at the bottom.",
+          "puzzle": "FREEZE both case-edge footprints at minus 10 degrees or colder, leaving the illustrated central space untouched. Both are ordinary rectangular construction targets; the apparent hole does not attract droplets or alter gravity.",
+          "payoff": "The caption unfolds: Nothing, Carefully Presented. Zero gains a little curator's ribbon and looks considerably less like an exhibit somebody forgot to deliver.",
+          "crossover": ["cosmos", "town"],
+          "requires": []
+        },
+        {
+          "id": "15.03",
+          "title": "The Almost Boiling Kettle",
+          "setup": "A transparent kettle display has a large care badge and a painted strip labeled Quite Enough. Dr. Probably has put a biscuit on the observation clipboard.",
+          "puzzle": "WARM the badge at 45–60 degrees and 20–40 percent pressure. Higher heat reverses unfinished progress instead of proving enthusiasm; the kettle is a warm target, not a fill basin with an invented temperature requirement.",
+          "payoff": "The kettle produces one steam question mark. The curator answers it by moving the biscuit from the clipboard onto a proper plate.",
+          "crossover": ["kitchen", "town"],
+          "requires": []
+        },
+        {
+          "id": "15.04",
+          "title": "Proof by Turning",
+          "setup": "A frozen rectangular display cover conceals a wheel diagram. Its separate exposed turbine stands lower and to the right, beside Margin's stack of unturned explanatory cards.",
+          "puzzle": "MELT the cover, then SPIN the unlocked turbine with liquid water at 70 percent pressure or more. The diagram is decorative; the actual wheel target, not the printed arrow, receives the stream.",
+          "payoff": "The display flips to its reverse side, labeled Also Interesting. Margin proudly discovers that an explanation can have more than one page.",
+          "crossover": ["town", "cosmos"],
+          "requires": []
+        },
+        {
+          "id": "15.05",
+          "title": "A Pair of Qualified Answers",
+          "setup": "Two identical-looking specimen frames sit far apart. One holds a cool luminous moss, the other a warm ceramic sun; their large care labels reveal the important difference.",
+          "puzzle": "WARM the moss at 15–30 degrees and 10–25 percent pressure, and the sun at 55–75 degrees and 35–55 percent. Complete either first and keep finished progress, demonstrating different settings without simultaneous-state mechanics.",
+          "payoff": "Both specimens glow in different colors. Dr. Probably replaces the exhibit title Same Thing with Similar Frame, Different Thing.",
+          "crossover": ["garden", "cosmos", "cave"],
+          "requires": []
+        },
+        {
+          "id": "15.06",
+          "title": "A Hole Worth Looking Through",
+          "setup": "Two ice-window targets frame specimen silhouettes. An already-active basin sits beneath the left pane, where droplets reach it through a carved opening.",
+          "puzzle": "MELT an opening through the left pane to FILL the basin with later liquid drops. Finish both panes as well; their completion and the full basin jointly trigger the reveal. The silhouettes are art, not sensors.",
+          "payoff": "The specimen behind the windows turns out to be a second tiny museum. Its curator is also pointing at an empty plinth, which Zero finds relatable.",
+          "crossover": ["cave", "town"],
+          "requires": []
+        },
+        {
+          "id": "15.07",
+          "title": "Gravity, Displayed Upside Down",
+          "setup": "Upside-down furniture decorates an exhibit with two normally oriented basin targets on open stands. Margin has taped THIS WAY UP labels to both, arrows pointing down.",
+          "puzzle": "FILL both basins using ordinary downward ballistic water. Move above each target; this current-engine exhibit explicitly keeps normal gravity and offers no ceiling collection or reversed droplets despite its upside-down set dressing.",
+          "payoff": "The completion card rotates the furniture drawing while the water stays level. Dr. Probably titles the demonstration A Change of Perspective, Not of Plumbing.",
+          "crossover": ["cosmos", "kitchen", "town"],
+          "requires": []
+        },
+        {
+          "id": "15.08",
+          "title": "Zero's First Exhibit",
+          "setup": "Zero arranges an empty dotted frame beside a frozen label and a welcome badge. The empty display's preparation diagram is exceptionally careful.",
+          "puzzle": "FREEZE the frame footprint, then MELT the label it unlocks. WARM the final badge at 25–40 degrees and 10–30 percent pressure; the result celebrates completed work rather than requiring any interaction with an invisible target.",
+          "payoff": "The label reads Room for the Next Idea. Margin leaves a blank page underneath, and Zero signs it with a beautifully circular flourish.",
+          "crossover": ["cosmos", "town"],
+          "requires": []
+        },
+        {
+          "id": "15.09",
+          "title": "The Square Toast Question",
+          "setup": "A kitchen exhibit displays three frozen toast rectangles of different widths. An empty butter-dish basin waits below, with a dotted napkin footprint set off to one side.",
+          "puzzle": "MELT the three toast-cover targets, choosing sweep widths to match each. Their completion unlocks FILL on the dish; independently FREEZE the napkin's display stand, a stable construction prop rather than actual edible ice.",
+          "payoff": "The toast reveal shows increasingly improbable square toppings. Dr. Probably concedes that breakfast geometry may be a matter of personal taste.",
+          "crossover": ["kitchen", "town"],
+          "requires": []
+        },
+        {
+          "id": "15.10",
+          "title": "A Fossil of Next Tuesday",
+          "setup": "A broad cave specimen is encased in ice above two dotted support footprints. Its label claims to be older than next week, a position Margin has marked for review.",
+          "puzzle": "FREEZE both support footprints before MELTing the specimen case. The supports remain finished during heating; the fossil is revealed in place, without requiring live mass, falling objects, or a physically stable excavation.",
+          "payoff": "The fossil is a birthday cake with a small calendar. Dr. Probably files it under Evidence That Someone Is Looking Forward to Something.",
+          "crossover": ["cave", "kitchen", "town"],
+          "requires": []
+        },
+        {
+          "id": "15.11",
+          "title": "Botany of a Question Mark",
+          "setup": "Three dotted trellis sections stand beside an empty watering basin. Beneath them, the plant illustration resembles a determined punctuation mark lying down.",
+          "puzzle": "FILL the basin to unlock all three FREEZE trellis targets. Build the short lower section and two taller sections in any order, moving to each exposed top; the plant's later curl is a scripted reveal, not growing collision geometry.",
+          "payoff": "The plant rises into a question mark. Margin places a blank answer card beside it, and the curator decides not to rush.",
+          "crossover": ["garden", "town"],
+          "requires": []
+        },
+        {
+          "id": "15.12",
+          "title": "The Queue that Went Somewhere",
+          "setup": "A miniature civic exhibit contains two frozen entrance signs and two separate warmth badges. Painted visitors queue in delightfully wrong directions until the display is ready.",
+          "puzzle": "Complete either sign's MELT-to-WARM branch first. Both badges need 25–40 degrees and 15–35 percent pressure; separate prerequisites and offset heights reward planning a local route, not moving the painted visitors with hose force.",
+          "payoff": "The visitors rearrange in the reveal to admire Zero's empty frame. Its queue is labeled Room for Everyone and, for once, actually illustrates the point.",
+          "crossover": ["town", "cosmos"],
+          "requires": []
+        },
+        {
+          "id": "15.13",
+          "title": "Margin's Margin Notes",
+          "setup": "Four frozen note tabs border a giant explanation card. Two care badges below represent the original exhibit and Margin's suggested correction.",
+          "puzzle": "MELT all four tabs, then WARM the two badges at contrasting settings: 20–35 degrees and 10–25 percent pressure on the left, 45–60 degrees and 25–45 percent on the right. Finished work does not reset when the other setting changes.",
+          "payoff": "The correction becomes a second explanation card. Dr. Probably credits Margin in larger lettering than their own signature.",
+          "crossover": ["town", "kitchen"],
+          "requires": []
+        },
+        {
+          "id": "15.14",
+          "title": "The Light Takes the Long Way",
+          "setup": "An optional optical case sends a fixed beam toward a detector beyond two frost panes. Both panes intersect the beam at different horizontal positions.",
+          "puzzle": "With OPTICS, MELT aligned apertures through both panes until the actual beam reaches the detector. Finish remaining marked ice too; the two pane completions and illuminated detector gate the reveal. No prisms, movable mirrors, or extra controls are involved.",
+          "payoff": "The detector illuminates a question mark beyond both windows. Zero receives a visitor card asking whether light appreciates a clear explanation.",
+          "crossover": ["cosmos", "cave"],
+          "requires": ["OPTICS"]
+        },
+        {
+          "id": "15.15",
+          "title": "Ocean, Some Assembly Required",
+          "setup": "Three disconnected ocean basins occupy descending shelves. Each holds a painted sea creature, including a whale with optimistic expectations about available space.",
+          "puzzle": "FILL all three basins directly with water above zero, moving between their exposed tops. The shelves are not connected waterways; a narrow middle basin makes careful nozzle placement more useful than simply maximizing pressure.",
+          "payoff": "The painted creatures animate in their completed exhibits. The whale blows a tiny polite fountain, and Margin supplies an appropriately tiny admission ticket.",
+          "crossover": ["garden", "cosmos", "kitchen"],
+          "requires": []
+        },
+        {
+          "id": "15.16",
+          "title": "The Moon on Loan",
+          "setup": "A moon marble rests in a frozen rectangular travel case. Its dotted display cradle sits below, while a polishing turbine stands independently on the right-hand bench.",
+          "puzzle": "FREEZE the cradle before MELTing the case; separately SPIN the turbine with liquid water above 70 percent pressure. All preparations finish before the marble is transferred in the completion vignette, without rolling-ball physics.",
+          "payoff": "The moon marble appears on its cradle with a reassuringly large return label. Dr. Probably checks the loan period: until everyone has had a look.",
+          "crossover": ["cosmos", "town", "cave"],
+          "requires": []
+        },
+        {
+          "id": "15.17",
+          "title": "Visitors Become Curators",
+          "setup": "Three unfinished exhibit bays surround an empty center card. One needs a water basin, one a cold display frame, and one a frozen explanatory label restored.",
+          "puzzle": "FILL, FREEZE, and MELT the separate bays in an order of your choosing. All three unlock the central WARM card at 30–45 degrees and 15–35 percent pressure; task order changes your route, not the eventual canonical exhibit selection.",
+          "payoff": "The card becomes a visitors' page of questions. Zero's first contribution asks whether anyone else enjoys having room to think.",
+          "crossover": ["town", "garden", "cosmos"],
+          "requires": []
+        },
+        {
+          "id": "15.18",
+          "title": "The Floating Footnote",
+          "setup": "An optional buoyancy tank holds a floating plinth carrying a footnote symbol. Its fixed fill zone sits below a generous target-height band.",
+          "puzzle": "With BALANCE, FILL the fixed tank so its actual water level buoyantly raises the plinth into the generous height band. Tank capacity caps at the successful level, avoiding irreversible overshoot; the supported symbol moves physically rather than appearing only after completion.",
+          "payoff": "The footnote reaches its own explanation: Important Enough to Come Up Here. Margin finally gets to point above the main text.",
+          "crossover": ["kitchen", "cosmos"],
+          "requires": ["BALANCE"]
+        },
+        {
+          "id": "15.19",
+          "title": "A Case for Uncertainty",
+          "setup": "Two dotted case sections frame Zero's empty plinth. Above them sit separate ice-label blocks; a warm hospitality badge waits on an open lower shelf.",
+          "puzzle": "FREEZE each case section to unlock its matching MELT label. Complete both local branches, then WARM the hospitality badge at 25–40 degrees and 10–30 percent pressure. The finished case edges stay intact through later heat.",
+          "payoff": "The labels read What We Know and What We Wonder. Zero places a welcome mat between them and leaves the middle comfortably open.",
+          "crossover": ["town", "cosmos", "cave"],
+          "requires": []
+        },
+        {
+          "id": "15.20",
+          "title": "Grand Opening, Small Print",
+          "setup": "The exhibits surround a frozen banner, an empty refreshments basin, and a dotted podium. Dr. Probably and Margin share one modest step stool.",
+          "puzzle": "MELT the banner, FILL the basin, and FREEZE the podium independently. Together they unlock a WARM welcome badge at 30–45 degrees and 15–35 percent pressure, followed by the final SPIN curtain turbine above 70 percent.",
+          "payoff": "The museum opens with the banner Almost Possible, Definitely Worth Asking. Zero's room-for-ideas exhibit receives the first visitor, who brings a beautifully ordinary question.",
+          "crossover": ["town", "cosmos", "garden", "kitchen"],
+          "requires": []
+        }
+      ]
+    },
+    {
+      "id": "16",
+      "title": "Last Exit Before Breakfast",
+      "premise": "Miso the octopus cook runs a tiny galactic roadside diner with Mallow, a pancake who wants to become a moon. Zip the comet hauler keeps returning with neighbors who need more than a quick refill. Food, vehicle departures, and character gestures are scripted payoffs; ordinary scenes do not simulate cooking chemistry or spaceflight.",
+      "arc": "Reopen the counter, accommodate wildly different travelers, and turn a lonely stopping place into a shared table. Mallow discovers that being someone's familiar light matters more than becoming enormous. Optional syrup routing and rhythm service are side activities, never required for the final breakfast.",
+      "signature": "Chrome counter bays, station-shaped food targets, wide ice-covered menus, and strongly contrasting hospitality badges. Fixed basin, turbine, and construction rectangles remain readable among cosmic props. All ordinary aiming uses standard gravity and an open reachable top edge, even in space.",
+      "newArt": [
+        "Miso octopus cook with apron, spatula, cup-serving, and resting poses",
+        "Mallow pancake character with butter-pat hat, moonlike glow, and bashful poses",
+        "Zip comet hauler with scarf, travel mug, and parked comet-truck silhouette",
+        "Reusable diner counter bays, booths, stool footprints, service turbines, menu boards, and dish basins",
+        "Cosmic food kit: ringed bagels, star-shaped toast, moon pies, comet noodles, herb pots, and syrup vessels",
+        "Traveler silhouettes for polar explorers, sun couriers, cave surveyors, and neighborhood regulars",
+        "Scripted serving, booth-arrival, parked-vehicle departure, and shared-breakfast tableau transitions"
+      ],
+      "scenes": [
+        {
+          "id": "16.01",
+          "title": "Open, Eventually",
+          "setup": "A long ice rectangle covers the diner's OPEN sign. Miso sets one clean mug below it; Zip waits beside a parked comet truck.",
+          "puzzle": "MELT the whole sign using water at 10 degrees or warmer. Its long horizontal shape rewards a deliberate sweep from the accessible upper edge, not repeatedly pouring into one completed hole.",
+          "payoff": "The sign lights up and gains a small handwritten Under New Temperature notice. Zip raises the travel mug in what looks suspiciously like a relieved salute.",
+          "crossover": ["kitchen", "cosmos", "town"],
+          "requires": []
+        },
+        {
+          "id": "16.02",
+          "title": "One Cup, Two Jobs",
+          "setup": "A marked mug basin sits left of a separate warming-coaster badge. Mallow watches from the counter, proudly balancing a butter pat like a tiny captain's hat.",
+          "puzzle": "FILL the mug with liquid water, then WARM the unlocked coaster at 35–50 degrees and 15–35 percent pressure. The mug has no hidden heat requirement; the separate badge makes the temperature-and-pressure task explicit.",
+          "payoff": "Miso serves the finished mug to Zip. Mallow adds one dignified butter-pat salute and is immediately promoted to Breakfast Host.",
+          "crossover": ["kitchen", "town"],
+          "requires": []
+        },
+        {
+          "id": "16.03",
+          "title": "A Stool for a Long Journey",
+          "setup": "Zip's travel scarf is frozen above an empty dotted stool footprint. A second, much smaller stool outline sits beside it for Mallow's first official break.",
+          "puzzle": "FREEZE both rectangular stool footprints at minus 10 degrees or colder, then MELT the scarf's packing target. The scarf requires both seats; sitting and scarf removal happen only in the completion vignette.",
+          "payoff": "Zip and Mallow settle side by side. Miso changes the sign from Quick Stop to Take the Time You Need, without raising the price of anything.",
+          "crossover": ["kitchen", "town", "cosmos"],
+          "requires": []
+        },
+        {
+          "id": "16.04",
+          "title": "Jukebox at the Edge of Space",
+          "setup": "A frozen jukebox cover stands beside a low exposed turbine. Its illustrated record sleeve features a very serious asteroid playing an extremely small triangle.",
+          "puzzle": "MELT the cover, then SPIN the turbine with liquid water at 70 percent pressure or more. The two offset work zones invite a clear nozzle move; decorative notes are not targets or timing cues.",
+          "payoff": "The jukebox produces a cheerful visual music flourish. Zip taps the mug, Miso taps the counter, and Mallow contributes one perfectly adequate triangle-shaped butter pat.",
+          "crossover": ["town", "kitchen", "cosmos"],
+          "requires": []
+        },
+        {
+          "id": "16.05",
+          "title": "Their Usual, Not Yours",
+          "setup": "A polar explorer and a sun courier have separate care badges at opposite counter ends. Their order pictures make it clear that comfortable breakfast temperatures are not universal.",
+          "puzzle": "WARM the explorer's badge at 15–30 degrees and 10–25 percent pressure; the courier's needs 65–85 degrees and 30–50 percent. Complete either first, then change settings; no simultaneous maintenance or spoiled-order penalty is required.",
+          "payoff": "Miso serves two visibly different breakfasts. The travelers exchange postcards instead of trying to persuade each other that one is eating incorrectly.",
+          "crossover": ["kitchen", "cosmos", "cave"],
+          "requires": []
+        },
+        {
+          "id": "16.06",
+          "title": "Stars through the Menu",
+          "setup": "Two frozen menu-window rectangles hang over narrow condiment basins. One basin aligns with its window; the other sits visibly to the side beneath a painted star chart.",
+          "puzzle": "MELT each window, then FILL its associated basin directly through the cleared opening or from its open side. Complete the independent branches in either order; the star chart does not bend or attract water.",
+          "payoff": "The menu reveals constellations named after everyday breakfasts. Mallow points to a pancake-shaped moon and quietly begins practicing a more celestial posture.",
+          "crossover": ["kitchen", "cosmos"],
+          "requires": []
+        },
+        {
+          "id": "16.07",
+          "title": "The Dish That Went Around",
+          "setup": "A wide wash basin sits above a separate drying turbine. Three dirty-looking plates decorate a stationary rack to the side, where Miso has run out of tentacles for holding them.",
+          "puzzle": "FILL the wash basin, then reposition to SPIN the unlocked turbine above 70 percent pressure. Supply the wheel directly rather than expecting basin runoff; washing and rack rotation are explicitly completion animations.",
+          "payoff": "The clean plates appear in a neat stack. Miso frees one tentacle to pat Mallow's butter hat back into a less ambitious orbit.",
+          "crossover": ["kitchen", "town"],
+          "requires": []
+        },
+        {
+          "id": "16.08",
+          "title": "Cold Case, Warm Welcome",
+          "setup": "A dotted dessert display stands beside an empty saucer basin and a hospitality badge. The special is a moon pie wearing a scarf.",
+          "puzzle": "FREEZE the display footprint and FILL the separate saucer in either order. Both unlock WARM on the hospitality badge at 25–40 degrees and 10–30 percent pressure; the finished cold display remains intact during the welcome task.",
+          "payoff": "The moon pie appears in its display and the scarf becomes bunting. Mallow decides moons can be delicious without needing to be enormous.",
+          "crossover": ["kitchen", "cosmos", "garden"],
+          "requires": []
+        },
+        {
+          "id": "16.09",
+          "title": "Breakfast from the Crystal Cave",
+          "setup": "A cave surveyor brings three frozen cases: tall, wide, and small. Miso's receiving basin waits below with clear overhead access.",
+          "puzzle": "MELT all three case targets, matching nozzle sweeps to their proportions rather than inventing pressure-sensitive fragile containers. Their completion unlocks FILL on the receiving basin; no loose crystal needs to be pushed into it.",
+          "payoff": "The cases reveal salt, spoons, and a very carefully packed thank-you pebble. Miso gives the pebble the best seat on the condiment shelf.",
+          "crossover": ["cave", "kitchen"],
+          "requires": []
+        },
+        {
+          "id": "16.10",
+          "title": "Herbs with a View",
+          "setup": "Two herb-pot basins flank a dotted trellis on the windowsill. A painted nebula frames Miso's hopeful garnish vine.",
+          "puzzle": "FILL both pot basins with liquid water, then FREEZE the unlocked trellis footprint. The plants climb only in the reveal; their decorative growth never becomes a new wall or moving hose target.",
+          "payoff": "The vine forms a tiny green awning over the window. Zip receives a garnish leaf shaped like the home planet they were hoping to visit.",
+          "crossover": ["garden", "kitchen", "cosmos"],
+          "requires": []
+        },
+        {
+          "id": "16.11",
+          "title": "The Regulars' Unusual Table",
+          "setup": "A neighborhood table lacks two rectangular extensions of different lengths. Behind it, a frozen reservation block separates two welcome badges on the open counter.",
+          "puzzle": "FREEZE both extensions, MELT the reservation block, then WARM the two unlocked badges at 25–40 degrees and 10–30 percent pressure. The table is furnished in the reveal, not physically balanced on simulated ice supports.",
+          "payoff": "The reservation reads Anyone Who Calls This Their Usual. Travelers with very different silhouettes settle around the completed table without needing identical chairs.",
+          "crossover": ["town", "kitchen", "cosmos"],
+          "requires": []
+        },
+        {
+          "id": "16.12",
+          "title": "A Pit Stop for the Comet",
+          "setup": "Zip's parked truck has a frozen hatch, separate coolant basin, and diagnostic turbine. Mallow has added a moon to its travel postcard.",
+          "puzzle": "MELT the hatch to unlock FILL on the coolant basin, then SPIN the diagnostic turbine above 70 percent pressure using liquid water. The truck stays stationary throughout; there is no thrust, steering, or moving service target.",
+          "payoff": "The completed diagnostic displays Ready, Whenever You Are. Zip keeps the engine illustration quiet and goes back inside to finish breakfast with Mallow.",
+          "crossover": ["cosmos", "town", "kitchen"],
+          "requires": []
+        },
+        {
+          "id": "16.13",
+          "title": "The Long Counter Shortens",
+          "setup": "Five small mug basins alternate heights along the counter. Illustrated travelers wait behind them, leaving every target's top accessible to the nozzle.",
+          "puzzle": "FILL each basin directly with liquid water. Plan a left-to-right or height-grouped route, moving close to the narrow cups instead of using pressure as a substitute for aim; no waiting customer imposes a timer.",
+          "payoff": "The served travelers slide closer together in a scripted reveal. What looked like a long service queue becomes one sprawling conversation about the best-looking nebula.",
+          "crossover": ["kitchen", "town", "cosmos"],
+          "requires": []
+        },
+        {
+          "id": "16.14",
+          "title": "The Long Way to the Pancakes",
+          "setup": "An optional exhibit stacks three pancake basins in a zigzag. Ice closes both connecting outlets; a syrup-colored reservoir sits above the highest basin.",
+          "puzzle": "With FLOW, MELT the outlet blocks, then FILL the reservoir so persistent water fills each basin and overflows through its actual channel into the next. Work from either end before supplying water; no viscosity, cooking chemistry, or reversible construction is assumed.",
+          "payoff": "Three pancakes receive one continuous scenic syrup route. Mallow names the lower pancake breakfast with a particularly interesting journey.",
+          "crossover": ["kitchen", "garden", "cosmos"],
+          "requires": ["FLOW"]
+        },
+        {
+          "id": "16.15",
+          "title": "A Dish for Different Suns",
+          "setup": "Three care badges form a triangle: cool dessert at lower left, warm noodles at lower right, and a sun-courier plate above.",
+          "puzzle": "WARM the badges at 15–30, 40–55, and 65–80 degrees respectively, all at 20–35 percent pressure. Choose a monotonic temperature route to reduce retuning, while moving above each target; completed dishes never cool back into unfinished tasks.",
+          "payoff": "Miso serves a three-temperature tasting tray. The customers swap stories instead of plates, discovering a much safer way to sample one another's home climates.",
+          "crossover": ["kitchen", "cosmos", "garden"],
+          "requires": []
+        },
+        {
+          "id": "16.16",
+          "title": "The Smallest Order",
+          "setup": "An enormous frozen order slip fills the counter above one dotted place-setting footprint and a small warmth badge.",
+          "puzzle": "MELT the broad slip to unlock FREEZE on the place-setting footprint, then WARM the final badge at 25–40 degrees and 10–25 percent pressure. The sequence becomes physically smaller and gentler as the actual request is revealed.",
+          "payoff": "The order reads Somewhere to Sit. Miso supplies the completed place, and Mallow quietly joins the traveler rather than offering an unnecessary special.",
+          "crossover": ["town", "kitchen"],
+          "requires": []
+        },
+        {
+          "id": "16.17",
+          "title": "Window Service, Without the Hurry",
+          "setup": "Two narrow ice strips cover the serving window above separate collection basins. Outside, a comet truck, garden cart, and pedestrian form an illustrated queue.",
+          "puzzle": "Complete both MELT-to-FILL branches, then SPIN the unlocked service-sign turbine with liquid water above 70 percent pressure. The queue advances only after completion; there are no moving customer targets, deadlines, or vehicle collisions.",
+          "payoff": "The sign turns to Walk-ins Welcome Too. The person on foot receives the first wave from Miso, and Zip applauds from the parked truck.",
+          "crossover": ["town", "kitchen", "garden", "cosmos"],
+          "requires": []
+        },
+        {
+          "id": "16.18",
+          "title": "The Breakfast Beat",
+          "setup": "Three stationary turbines fill an optional jukebox exhibit. Their framed lights pulse slowly in a repeating pattern of large breakfast icons.",
+          "puzzle": "With PULSE, SPIN each turbine using liquid water above 70 percent pressure while its gate is open. Progress persists between cycles without penalty. Untimed accessibility mode holds the next light open until its turbine completes, using the same hose controls.",
+          "payoff": "The jukebox produces a three-part breakfast flourish. Miso, Zip, and Mallow each take one illustrated beat, leaving plenty of room between notes.",
+          "crossover": ["town", "kitchen", "cosmos"],
+          "requires": ["PULSE"]
+        },
+        {
+          "id": "16.19",
+          "title": "Mallow's Modest Orbit",
+          "setup": "Mallow's moon ambition becomes a window display: a dotted rectangular stand, a frozen moon-shaped picture inside a rectangular case, and a gentle light-care badge set separately below.",
+          "puzzle": "FREEZE the stand before MELTing the picture's case, then WARM the badge at 25–40 degrees and 10–30 percent pressure. The stand remains fixed; no actual orbit, levitation, or gravitational effect is required.",
+          "payoff": "A soft moonlike lamp illuminates Mallow's welcome stool. Zip says the diner is now easy to find, and Mallow discovers a smaller, useful kind of shining.",
+          "crossover": ["cosmos", "kitchen", "town"],
+          "requires": []
+        },
+        {
+          "id": "16.20",
+          "title": "Breakfast Is a Place",
+          "setup": "Three breakfast basins flank a frozen guestbook beneath Mallow's light. Miso's unlit place badge waits at the counter's quiet end.",
+          "puzzle": "FILL the three basins and MELT the guestbook in either branch order. All four preparations unlock Miso's WARM place badge at 30–45 degrees and 15–35 percent pressure. The final task is a gentle welcome, not another high-pressure departure.",
+          "payoff": "Miso sits down with the travelers. The guestbook fills with routes leading back to one diner, and its sign changes to See You Next Breakfast.",
+          "crossover": ["kitchen", "town", "cosmos", "garden"],
+          "requires": []
+        }
+      ]
+    }
+  ]
+}

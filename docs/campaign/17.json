@@ -1,0 +1,264 @@
+{
+  "packs": [
+    {
+      "id": "17",
+      "title": "Toybox After Bedtime",
+      "premise": "Captain Button, a one-eyed plush rabbit, recruits neglected toys into a night-shift rescue crew. Their newest member, a shy wind-up star called Glim, thinks being small means being useless.",
+      "arc": "Repair the playroom's little routines, take the toys on make-believe expeditions, then build a nightlight parade in which Glim becomes the guide rather than the passenger.",
+      "signature": "Oversized everyday furniture frames tiny service stations; visible patchwork repairs, toy-scale rescue equipment, and transformations from pretend play into practical kindness.",
+      "newArt": [
+        "Captain Button plush rabbit",
+        "Glim wind-up star",
+        "tin duck Jun",
+        "wooden train and blocks",
+        "dollhouse furniture",
+        "toy planets and cardboard rockets",
+        "patchwork parade float"
+      ],
+      "scenes": [
+        {
+          "id": "17.01",
+          "title": "One Brave Wooden Wheel",
+          "setup": "Jun's toy fire engine sits beside the toybox with one ice-coated wheel and a very serious cardboard rescue badge.",
+          "puzzle": "Melt the wheel's broad ice cap, then SPIN its exposed axle with liquid water at 70% pressure or more. These are separate targets; the engine moves only in the completion animation.",
+          "payoff": "Jun advances exactly one wooden block and declares the station operational. Button salutes the shortest emergency response on record.",
+          "crossover": [
+            "town"
+          ],
+          "requires": []
+        },
+        {
+          "id": "17.02",
+          "title": "Stuffing, Not Steaming",
+          "setup": "Button's patched sleeve has frozen stiff while his detachable badge rests at a lower repair station.",
+          "puzzle": "Thaw the sleeve's ice rectangle, then WARM the badge at 25–45° and 10–35% pressure. The badge's warming target, not the melting task, enforces gentle handling.",
+          "payoff": "Button can wave again. He uses the restored arm to offer Glim a place on the crew instead of another inspection.",
+          "crossover": [
+            "town",
+            "kitchen"
+          ],
+          "requires": []
+        },
+        {
+          "id": "17.03",
+          "title": "The Dollhouse Tea Summit",
+          "setup": "Three mismatched dolls await tea around a table too small for their extremely large diplomatic hats.",
+          "puzzle": "FILL two side-by-side cups with liquid water in either order. Both unlock a central WARM teapot target at 30–50° and 10–45% pressure; the shared final pour is scripted.",
+          "payoff": "The dolls replace their seating dispute with a biscuit-sharing agreement. Jun eats the cardboard biscuit and politely regrets it.",
+          "crossover": [
+            "kitchen"
+          ],
+          "requires": []
+        },
+        {
+          "id": "17.04",
+          "title": "Glim's First Perch",
+          "setup": "Glim's tiny boots are frozen above a dotted star-shaped landing assembly made from three rectangular construction zones.",
+          "puzzle": "FREEZE all three low landing sections, then melt the raised boot block. Glim's fall is a completion cutaway after the support tasks are finished, not live support physics.",
+          "payoff": "Glim lands safely, discovers the perch fits perfectly, and asks whether rescuers are allowed to be rescued sometimes. Button nods.",
+          "crossover": [
+            "cave",
+            "cosmos"
+          ],
+          "requires": []
+        },
+        {
+          "id": "17.05",
+          "title": "Marble Soup Kitchen",
+          "setup": "Hungry marbles queue behind a pretend soup counter; its two serving stations have different-sized ice caps.",
+          "puzzle": "Clear both caps by sweeping across their widths, then FILL their exposed bowls. Finish by WARMING the chef's tasting spoon at 25–40° and 10–35% pressure.",
+          "payoff": "The marbles gather around a steaming pot without becoming ingredients. The chef revises the menu's troubling punctuation.",
+          "crossover": [
+            "kitchen",
+            "town"
+          ],
+          "requires": []
+        },
+        {
+          "id": "17.06",
+          "title": "A Bridge for the Longest Dog",
+          "setup": "A wooden pull-along dachshund spans most of a chalk river, but its tail still needs a place to stand.",
+          "puzzle": "FREEZE three separated bridge footprints from near bank to far bank in any order. Their joint completion unlocks the dog's frozen departure tag; melting it triggers the crossing cutaway.",
+          "payoff": "The dog crosses for an absurdly long time. Glim walks beside its tail and is promoted to rear-end navigation officer.",
+          "crossover": [
+            "garden"
+          ],
+          "requires": []
+        },
+        {
+          "id": "17.07",
+          "title": "Xylophone Lunch Break",
+          "setup": "A toy xylophone's four bright keys are encased in separate narrow ice targets, with a turbine music stand beside them.",
+          "puzzle": "Sweep across the four fixed ice strips, using nozzle position rather than any rhythm requirement. Clearing all four unlocks a high-pressure SPIN target that starts the tune.",
+          "payoff": "The xylophone plays a four-note lunch announcement. Every toy knows the words despite there being no words.",
+          "crossover": [
+            "town",
+            "kitchen"
+          ],
+          "requires": []
+        },
+        {
+          "id": "17.08",
+          "title": "The Snow Globe Inside Job",
+          "setup": "A miniature explorer waves from a glass-free display globe with a frozen entrance, empty pond, and dotted snowbank.",
+          "puzzle": "Melt the entrance cap to unlock the pond and snowbank stations. FILL the pond with liquid water, then change to cold water to FREEZE the bank; both enable a WARM welcome lamp at 25–45° and 10–35% pressure.",
+          "payoff": "The explorer leaves the globe to inspect a much larger globe: a football. Glim brings a map made from a napkin.",
+          "crossover": [
+            "cave",
+            "garden"
+          ],
+          "requires": []
+        },
+        {
+          "id": "17.09",
+          "title": "Cardboard Launch Authority",
+          "setup": "A cardboard rocket has borrowed the space wizard's boots as thrusters, one at either side of its launch card.",
+          "puzzle": "Melt both boot ice blocks and FREEZE two rectangular exhaust-display footprints below the rocket. All four preparations unlock the central high-pressure SPIN starter; launch motion remains a scripted reveal.",
+          "payoff": "The rocket rises on a plainly visible string. The wizard insists the string is a highly advanced propulsion spell.",
+          "crossover": [
+            "cosmos",
+            "cave"
+          ],
+          "requires": []
+        },
+        {
+          "id": "17.10",
+          "title": "Dinosaur in the Crayon Garden",
+          "setup": "A visiting preschool dinosaur has mistaken a row of crayons for flowerbeds; three toy sprouts have distinct climate badges.",
+          "puzzle": "FREEZE the blue sprout's pot footing, WARM the yellow sprout at 25–45°, and WARM the orange sprout at 55–75°. Both warmth goals use 10–45% pressure and can be serviced in either order.",
+          "payoff": "The crayons become a colorful garden in the ending illustration. The dinosaur names every flower after Button.",
+          "crossover": [
+            "garden",
+            "town"
+          ],
+          "requires": []
+        },
+        {
+          "id": "17.11",
+          "title": "A Sock Ghost's Sleepover",
+          "setup": "A friendly guest from the sock exchange arrives with a frozen overnight bag and a tiny empty hot-water bottle.",
+          "puzzle": "Melt the bag's broad ice panel, FILL the bottle target, then WARM a separate comfort patch at 30–45° and 10–35% pressure. The ghost itself is presentation, not a moving target.",
+          "payoff": "The ghost curls up in a spare mitten. Jun asks if it needs the light on and gets a relieved nod.",
+          "crossover": [
+            "town",
+            "kitchen"
+          ],
+          "requires": []
+        },
+        {
+          "id": "17.12",
+          "title": "Moon Cheese, Toy Size",
+          "setup": "The kitchen's toy moon has frozen above a cheese-board observatory, and its astronomer is a very optimistic mouse.",
+          "puzzle": "FREEZE two telescope feet, melt the moon's ice shell, then WARM its exposed center at 35–55° with 10–35% pressure. The new footing is stable after completion.",
+          "payoff": "The telescope points at the moon; the mouse points at the cheese. They agree this counts as interdisciplinary research.",
+          "crossover": [
+            "cosmos",
+            "kitchen"
+          ],
+          "requires": []
+        },
+        {
+          "id": "17.13",
+          "title": "The Little Red Repair Line",
+          "setup": "Three toys offer separate repair stations along a diagonal shelf: a frozen helmet, an empty canteen, and a stiff comfort patch.",
+          "puzzle": "MELT, FILL, and WARM the three stations with different nozzle positions and settings. Only the comfort patch requires 20–40° and 10–30% pressure; completing all stations unlocks the crew's SPIN stamp.",
+          "payoff": "Glim runs the inspection queue and remembers everyone's name. Button quietly moves the captain's badge out of sight.",
+          "crossover": [
+            "town"
+          ],
+          "requires": []
+        },
+        {
+          "id": "17.14",
+          "title": "Seesaw for a Feather Captain",
+          "setup": "Button and a feather-light toy admiral sit on opposite ends of a real hinged seesaw above a foam playmat.",
+          "puzzle": "Grow ice ballast in two marked cups and melt it back until the BALANCE system reports a level beam. PHASE permits adjusting already-formed ballast; tilt, not a completion checklist, determines success.",
+          "payoff": "The admiral finally sees over the toybox rim and spots the parade route. Button admits balance is harder than bravery.",
+          "crossover": [
+            "garden",
+            "town"
+          ],
+          "requires": [
+            "BALANCE",
+            "PHASE"
+          ]
+        },
+        {
+          "id": "17.15",
+          "title": "The Hottest Seat in Pretend Town",
+          "setup": "A plush bus has four passenger benches and two conspicuous service panels, one frosty and one overheated-looking.",
+          "puzzle": "Melt the frosty panel, build a separate FREEZE cooling block, then WARM the ticket pad at 25–45° and 10–35% pressure. Cooling the pictured bus is the payoff, not a simulated temperature network.",
+          "payoff": "The passengers stop hopping between seats. Glim takes the driver's helper seat and gets to ring the departure bell.",
+          "crossover": [
+            "town",
+            "cave"
+          ],
+          "requires": []
+        },
+        {
+          "id": "17.16",
+          "title": "Biscuit Tin Mountain Rescue",
+          "setup": "Jun is marooned on a stack of biscuit tins while Button lays out three low rescue-platform blueprints.",
+          "puzzle": "Build two independent rescue branches: the left FREEZE platform unlocks the left MELT tag; the two right FREEZE platforms jointly unlock the right MELT tag. Complete both branches to trigger Jun's scripted descent.",
+          "payoff": "Jun climbs down carrying a biscuit larger than the rescue vehicle. It is labelled essential equipment.",
+          "crossover": [
+            "cave",
+            "kitchen"
+          ],
+          "requires": []
+        },
+        {
+          "id": "17.17",
+          "title": "Stars Without Stage Fright",
+          "setup": "Glim faces a practice audience of painted blocks; two oversized ice curtains flank a little unlit star podium.",
+          "puzzle": "Melt the left and right curtain targets, then WARM the stationary podium at 30–50° and 10–40% pressure. A separate SPIN applause wheel unlocks only after Glim's station is ready.",
+          "payoff": "The blocks applaud with tiny hinged hands. Glim discovers that being seen can feel different from being inspected.",
+          "crossover": [
+            "town",
+            "cosmos"
+          ],
+          "requires": []
+        },
+        {
+          "id": "17.18",
+          "title": "The Rotating Biscuit Planet",
+          "setup": "A toy planetarium carries three ice-coated biscuit moons around a central lamp on clearly visible mechanical arms.",
+          "puzzle": "Use the MOTION system's slow orbital targets: position the nozzle above an orbit, then track the moons as they pass through the stream. Melt all three; orbit speed has a stationary assist setting.",
+          "payoff": "The lamp reveals constellation-shaped biscuit crumbs. Jun insists the newly discovered Duck Nebula always existed.",
+          "crossover": [
+            "cosmos",
+            "kitchen"
+          ],
+          "requires": [
+            "MOTION"
+          ]
+        },
+        {
+          "id": "17.19",
+          "title": "Parade With a Spare Button",
+          "setup": "The repaired toys assemble a float with an empty reservoir, frozen axle, and unfinished front-and-rear ice decorations.",
+          "puzzle": "Complete two parallel preparations: MELT then SPIN the axle, and FREEZE both decoration zones then FILL the reservoir. Their joint completion unlocks a 30–50° WARM signal lamp. WARM targets use 10–35% pressure.",
+          "payoff": "Every repaired toy takes a visible job on the float. Button's missing eye becomes the emblem on the parade banner.",
+          "crossover": [
+            "town",
+            "garden"
+          ],
+          "requires": []
+        },
+        {
+          "id": "17.20",
+          "title": "The Smallest Light Goes First",
+          "setup": "The toybox doorway becomes a grand night parade route, with Glim's lamp between two frosted departure pennants.",
+          "puzzle": "FREEZE two route-marker bases, melt both pennants, FILL the lamp's decorative fuel cup, then WARM its separate glow target at 35–55° and 10–35% pressure. Finish with the high-pressure departure SPIN wheel.",
+          "payoff": "Glim leads the whole parade across the sleeping room as its new nightlight. Button follows, finally comfortable not being first.",
+          "crossover": [
+            "town",
+            "cosmos",
+            "kitchen"
+          ],
+          "requires": []
+        }
+      ]
+    }
+  ]
+}

@@ -8,6 +8,7 @@ const palettes: Record<Theme, [string, string, string]> = {
   garden: ["#e9dddc", "#eaf0d8", "#a4b98f"],
   cosmos: ["#283d58", "#738b99", "#304c64"],
   town: ["#d9e3db", "#e8d8bd", "#acc0b2"],
+  laundry: ["#363958", "#9490b2", "#555674"],
 };
 export class Renderer {
   ctx: CanvasRenderingContext2D;
@@ -84,12 +85,127 @@ export class Renderer {
     this.circle(x - 18 * size, y + 7 * size, 5 * size, "#f8a698");
     this.circle(x + 18 * size, y + 7 * size, 5 * size, "#f8a698");
   }
-  prop(kind: PropKind, x: number, y: number, scale = 1, happy = false, t = 0) {
+  prop(
+    kind: PropKind,
+    x: number,
+    y: number,
+    scale = 1,
+    happy = false,
+    t = 0,
+    tint?: string,
+  ) {
     const c = this.ctx;
     c.save();
     c.translate(x, y);
     c.scale(scale, scale);
-    if (kind === "cup") {
+    if (kind === "ghost") {
+      c.translate(0, Math.sin(t * 1.5) * 5);
+      this.round(-38, -85, 76, 85, 37, "#ffe4ac");
+      for (let i = 0; i < 4; i++) this.circle(-28 + i * 19, -2, 10, "#ffe4ac");
+      this.face(0, -45, 1.1, happy);
+      this.round(-21, -88, 42, 12, 5, "#bf8ea8");
+      this.line([-33, -25, -52, happy ? -65 : -18], "#ffe4ac", 12);
+      this.line([33, -25, 51, happy ? -55 : -18], "#ffe4ac", 12);
+    } else if (kind === "sock") {
+      c.rotate(happy ? Math.sin(t * 2) * 0.08 : -0.08);
+      this.round(-24, -75, 47, 80, 14, tint ?? "#edb692");
+      this.round(-24, -18, 76, 32, 15, tint ?? "#edb692");
+      this.round(-25, -77, 50, 12, 4, "#faf0d4");
+      this.line([-20, -51, 20, -51], "#ffffff66", 5);
+      this.face(0, -32, 0.65, happy);
+      if (!tint) {
+        this.round(-30, -89, 60, 9, 3, "#654d67");
+        this.round(-19, -108, 38, 24, 8, "#85687f");
+        this.circle(31, -27, 13, "#d7f0ef88");
+        this.line([38, -17, 50, -2], "#654d67", 5);
+      }
+    } else if (kind === "moth") {
+      c.save();
+      c.scale(1 + Math.sin(t * 6) * 0.09, 1);
+      this.round(-47, -25, 45, 40, 20, "#e3d3f0");
+      this.round(2, -25, 45, 40, 20, "#e3d3f0");
+      this.circle(-24, -5, 8, "#c1aecf");
+      this.circle(24, -5, 8, "#c1aecf");
+      c.restore();
+      this.round(-10, -22, 20, 46, 10, "#f4d298");
+      this.line([-5, -20, -14, -38], "#f4d298", 3);
+      this.line([5, -20, 14, -38], "#f4d298", 3);
+      this.face(0, -14, 0.4, happy);
+      if (happy) this.round(-15, -28, 30, 5, 2, "#685976");
+    } else if (kind === "washer") {
+      this.round(-62, -105, 124, 122, 14, "#625f86", "#bab9d0");
+      this.round(-53, -95, 106, 23, 5, "#c9c5d8");
+      this.circle(0, -24, 43, "#b5cbd3");
+      this.circle(0, -24, 33, "#424966");
+      for (let i = 0; i < 3; i++)
+        this.circle(-28 + i * 26, -83, 4, happy ? "#ffd391" : "#747899");
+      c.save();
+      c.translate(0, -24);
+      c.rotate(happy ? t * 2 : 0);
+      this.line([-20, 0, 0, -18, 20, 0, 0, 18, -20, 0], "#d5b6d1", 6);
+      c.restore();
+    } else if (kind === "basket") {
+      this.round(-62, -38, 124, 59, 12, "#b7947d", "#d9b799");
+      for (let i = 0; i < 6; i++)
+        this.line([-49 + i * 19, -30, -49 + i * 19, 12], "#d9b799", 4);
+      this.line([-52, -6, 52, -6], "#d9b799", 4);
+      if (happy) this.face(0, -16, 0.5, true);
+    } else if (kind === "receipt") {
+      this.round(-35, -55, 70, 82, 3, "#fff0cf");
+      for (let i = 0; i < 4; i++)
+        this.line(
+          [-23, -40 + i * 13, 17 + (i % 2) * 8, -40 + i * 13],
+          "#ad91a5",
+          3,
+        );
+      this.circle(14, 6, 12, happy ? "#db9379" : "#c4c1d0");
+      if (happy) this.line([8, 5, 13, 11, 23, -1], "#fff0cf", 3);
+    } else if (kind === "worm") {
+      for (let i = 0; i < 5; i++)
+        this.circle(-45 + i * 22, -10 + Math.sin(t * 2 + i) * 4, 17, "#e4a798");
+      this.face(40, -12, 0.55, happy);
+      if (happy)
+        for (let i = 0; i < 3; i++)
+          this.round(-44 + i * 25, -28, 19, 22, 5, "#796986");
+    } else if (["coat", "apron", "cape", "trousers", "scarf"].includes(kind)) {
+      const cloth =
+        tint ??
+        (
+          {
+            coat: "#b4ccd1",
+            apron: "#eee0b7",
+            cape: "#817594",
+            trousers: "#a6b1d0",
+            scarf: "#dea895",
+          } as Record<string, string>
+        )[kind];
+      if (kind === "scarf") {
+        this.round(-42, -68, 84, 24, 10, cloth);
+        this.round(-33, -58, 26, 88, 9, cloth);
+        this.round(8, -53, 26, 63, 9, cloth);
+      } else if (kind === "trousers") {
+        this.round(-43, -75, 86, 34, 7, cloth);
+        this.round(-43, -50, 35, 72, 6, cloth);
+        this.round(8, -50, 35, 72, 6, cloth);
+        this.circle(-23, -56, 8, "#ffe0a1");
+        this.circle(23, -56, 8, "#d9d0ec");
+      } else {
+        c.beginPath();
+        c.moveTo(-26, -78);
+        c.lineTo(26, -78);
+        c.lineTo(56, 18);
+        c.lineTo(-56, 18);
+        c.closePath();
+        c.fillStyle = cloth;
+        c.fill();
+        if (kind === "coat") {
+          this.line([-30, -62, -65, -12], cloth, 23);
+          this.line([30, -62, 65, -12, 79, -38], cloth, 23);
+        }
+        if (kind === "apron") this.round(-25, -18, 50, 26, 7, "#bdc7a0");
+        this.face(0, -39, 0.75, happy);
+      }
+    } else if (kind === "cup") {
       c.strokeStyle = "#fbf5e6";
       c.lineWidth = 15;
       c.beginPath();
@@ -297,6 +413,30 @@ export class Renderer {
       this.circle(780, 150, 43, "#b0b6c1");
     }
     c.globalAlpha = 1;
+    if (world.level.theme === "laundry") {
+      this.round(70, 65, 820, 62, 15, "#34344ed9");
+      c.fillStyle = "#ffe4ac";
+      c.textAlign = "center";
+      c.font = "600 24px Outfit, sans-serif";
+      c.fillText(
+        world.completed
+          ? "ODD SOCKS. GOOD COMPANY."
+          : "PEARL'S MIDNIGHT EXCHANGE",
+        480,
+        102,
+      );
+      this.line([80, 151, 880, 151], "#d7c4c3", 3);
+      for (let i = 0; i < 7; i++)
+        this.prop(
+          "sock",
+          170 + i * 105,
+          193,
+          0.26,
+          world.completed,
+          motion,
+          ["#c9b6dc", "#a4cbbf", "#e4b697"][i % 3],
+        );
+    }
     this.round(82, 487, 796, 23, 12, "#ffffff55");
     this.round(64, 506, 832, 70, 25, ground);
     this.round(64, 501, 832, 17, 8, "#edf2df");
@@ -307,20 +447,76 @@ export class Renderer {
       this.circle(x, y, 1 + (i % 3), "#ffffff");
       c.globalAlpha = 1;
     }
+    if (world.level.channels) {
+      const channels = world.level.channels;
+      for (let i = 0; i < channels.branches.length; i++) {
+        const points = world.channelPath(i).flat();
+        this.line(points, "#353c5d", 21);
+        this.line(points, "#aaa9c7", 12);
+      }
+      const inlet = channels.inlet;
+      this.round(inlet.x, inlet.y, inlet.w, inlet.h, 8, "#d4e6df", "#435b70");
+      c.fillStyle = "#2d465b";
+      c.textAlign = "center";
+      c.font = "bold 14px system-ui";
+      c.fillText("INLET ↓", inlet.x + inlet.w / 2, inlet.y + 25);
+      for (const drop of world.runoff) {
+        const at = world.runoffPosition(drop);
+        this.circle(at.x, at.y, 3, "#8ce2f4");
+      }
+    }
+    for (const t of world.level.targets)
+      if (t.motion) {
+        c.beginPath();
+        c.ellipse(
+          t.x + t.w / 2,
+          t.y + t.h / 2,
+          t.motion.rx,
+          t.motion.ry,
+          0,
+          0,
+          Math.PI * 2,
+        );
+        c.strokeStyle = "#eee0cb66";
+        c.lineWidth = 8;
+        c.stroke();
+      }
     for (const p of world.level.props) {
       const target = world.targets.find((t) => t.id === p.target);
       const done = target?.done ?? world.completed;
+      if (p.revealOnly && !done) continue;
       const since = target?.done
         ? world.elapsed - target.completedAt + world.celebration
         : 0;
       let x = p.x,
         y = p.y;
+      const followed = world.targets.find((t) => t.id === p.follow);
+      if (followed) {
+        x = followed.x + followed.w / 2;
+        y = followed.y + followed.h * 0.75;
+      }
+      const reveal = world.completed ? p.reveal : undefined;
+      if (reveal) {
+        const mix = this.reducedMotion
+          ? 1
+          : clamp(world.celebration / 1.2, 0, 1);
+        x += (reveal.x - x) * mix;
+        y += (reveal.y - y) * mix;
+      }
       if (done && p.kind === "wizard") y += clamp(since * 160, 0, 120);
       if (done && (p.kind === "penguin" || p.kind === "cat"))
         x += clamp(since * 90, 0, 280);
       if (done && p.kind === "ufo") y -= clamp(since * 50, 0, 120);
       if (p.kind === "duck" && target) y -= target.progress * 22;
-      this.prop(p.kind, x, y, p.scale, done, motion);
+      this.prop(
+        reveal?.kind ?? p.kind,
+        x,
+        y,
+        reveal?.scale ?? p.scale,
+        done,
+        motion,
+        p.tint,
+      );
     }
     for (const [index, t] of world.targets.entries()) {
       const available = world.available(t);
@@ -397,6 +593,17 @@ export class Renderer {
       }
       c.restore();
       if (!thumbnail && !t.done) {
+        if (t.motion) {
+          this.round(t.x + 5, t.y - 28, t.w - 10, 19, 6, "#fff1db");
+          c.fillStyle = "#434661";
+          c.font = "bold 10px system-ui";
+          c.textAlign = "center";
+          c.fillText(
+            t.name.replace(/^Follow the /, "").toUpperCase(),
+            t.x + t.w / 2,
+            t.y - 15,
+          );
+        }
         this.circle(t.x - 12, t.y - 12, 13, available ? "#214f50" : "#899d97");
         c.fillStyle = "#fffcf0";
         c.font = "bold 13px system-ui";
@@ -448,7 +655,9 @@ export class Renderer {
       c.textAlign = "left";
       c.font = "bold 11px system-ui";
       c.letterSpacing = "2px";
-      c.fillStyle = world.level.theme === "cosmos" ? "#e5efdf" : "#416965";
+      c.fillStyle = ["cosmos", "laundry"].includes(world.level.theme)
+        ? "#e5efdf"
+        : "#416965";
       c.fillText("MELT SQUAD  /  RESCUE CAM", 28, 31);
       c.letterSpacing = "0px";
       const active = world.targets.find((t) => t.flash > 0 && t.feedback);

@@ -1,0 +1,272 @@
+{
+  "packs": [
+    {
+      "id": "18",
+      "title": "Apocalypse, Rescheduled",
+      "premise": "An ominous moth named Ann delivers an END OF THE WORLD notice. The Four Ponies of Mild Inconvenience and a very small stone giant help the squad investigate one suspiciously fixable omen after another.",
+      "arc": "Replace panic with practical help, discover that the notice meant an end-of-day celebration, and transform the supposed instruments of doom into neighborhood party equipment.",
+      "signature": "Grand prophetic silhouettes contrasted with tiny domestic inconveniences; red warning seals become warm lamps, and ominous machines reveal charming everyday jobs.",
+      "newArt": [
+        "Ann the paperwork moth",
+        "Four Ponies of Mild Inconvenience",
+        "pocket stone giant",
+        "omen billboards and warning seals",
+        "marshmallow meteor",
+        "tiny kraken kettle",
+        "end-of-day party platform"
+      ],
+      "scenes": [
+        {
+          "id": "18.01",
+          "title": "A Notice Written in Frost",
+          "setup": "Ann pins an enormous frosted warning notice above a small town bell. The signature is hidden beneath a second ice patch.",
+          "puzzle": "Melt the broad notice panel and the narrower signature patch separately. Both unlock a high-pressure SPIN bell target; revealing writing is a scripted effect, not letter-recognition gameplay.",
+          "payoff": "The signature reads Regards, Scheduling. Ann admits this sounds less cosmic than expected, but keeps her emergency clipboard.",
+          "crossover": [
+            "town"
+          ],
+          "requires": []
+        },
+        {
+          "id": "18.02",
+          "title": "The Pony of Late Breakfast",
+          "setup": "The first ominous pony blocks nothing at all; it is simply standing beside a frozen cereal bowl and an empty milk cup.",
+          "puzzle": "Melt the cereal's ice cap, FILL the adjacent cup, then WARM a separate serving-spoon target at 25–40° with 10–35% pressure. All three stations remain stationary.",
+          "payoff": "The pony eats breakfast and changes its title to The Pony of Reasonably Soon. Its threatening banner becomes a napkin.",
+          "crossover": [
+            "kitchen",
+            "town"
+          ],
+          "requires": []
+        },
+        {
+          "id": "18.03",
+          "title": "Meteor With a Soft Center",
+          "setup": "A marshmallow meteor rests safely in a display crater while the pocket giant frets over a frozen roasting stand.",
+          "puzzle": "FREEZE two marked cradle feet, melt the meteor's ice shell, then WARM its exposed marshmallow badge at 30–50° and 10–35% pressure. No actual falling or impact simulation is involved.",
+          "payoff": "The meteor unfolds into a picnic centerpiece. The giant takes a crumb-sized bite and declares the planet deliciously safe.",
+          "crossover": [
+            "cosmos",
+            "garden"
+          ],
+          "requires": []
+        },
+        {
+          "id": "18.04",
+          "title": "The Dramatic Last Kettle",
+          "setup": "A tiny kraken peers from an empty kettle beneath a melodramatic Steam of Destiny sign.",
+          "puzzle": "Melt the spout's ice block, FILL the kettle basin, then WARM a separate tea charm at 35–55° and 10–45% pressure. The steam display appears only after the charm is ready.",
+          "payoff": "Eight tiny tentacles distribute tea. The prophecy turns out to describe a beverage with a very enthusiastic marketing department.",
+          "crossover": [
+            "kitchen",
+            "cave"
+          ],
+          "requires": []
+        },
+        {
+          "id": "18.05",
+          "title": "Seven Seals and One Walrus",
+          "setup": "Seven little ice seals sit in a broad arc around a walrus who is embarrassed by the accidental wordplay.",
+          "puzzle": "Melt the seven small fixed ice blocks, choosing the sweep direction. Their joint completion unlocks a WARM (10–35% pressure) applause badge at 25–45°; no animal must be targeted with the stream.",
+          "payoff": "The walrus opens seven envelopes, all party invitations. Ann starts a folder marked Evidence Against Doom.",
+          "crossover": [
+            "town",
+            "cave"
+          ],
+          "requires": []
+        },
+        {
+          "id": "18.06",
+          "title": "The River of Tomato Soup",
+          "setup": "A painted river of red soup has three disconnected serving basins and an unlit welcome lantern along its bank.",
+          "puzzle": "FILL each independent basin with liquid water; painted river art does not connect them. All three unlock the WARM lantern at 30–50° and 10–35% pressure, revealing the soup-kitchen scene.",
+          "payoff": "The apparently alarming river becomes the longest lunch counter in town. The second pony requests a smaller spoon.",
+          "crossover": [
+            "kitchen",
+            "garden"
+          ],
+          "requires": []
+        },
+        {
+          "id": "18.07",
+          "title": "A Crack in the Picnic",
+          "setup": "An illustrated fault line divides a picnic blanket into four patches. The pocket giant has arrived with four marked repair footprints.",
+          "puzzle": "FREEZE all four narrow footprints, then melt two ice-covered basket clasps at opposite ends. The blanket joins in the ending animation; completed ice does not need physical support behavior.",
+          "payoff": "The giant sits down and is immediately offered the only normal-sized sandwich. It is taller than the giant.",
+          "crossover": [
+            "garden",
+            "cave"
+          ],
+          "requires": []
+        },
+        {
+          "id": "18.08",
+          "title": "Ominous Choir, Warm-Up Please",
+          "setup": "Three prophecy singers stand behind climate-labelled vocal-care stations. Their frozen music stand occupies the lower corner.",
+          "puzzle": "WARM the stations at 20–35°, 35–50°, and 50–65°, all at 10–40% pressure. Finish by melting the music-stand cap; the choir has no timed or pitch-matching input.",
+          "payoff": "The choir sings an uplifting shopping list. Nobody recalls why they originally rehearsed it in a minor key.",
+          "crossover": [
+            "town",
+            "kitchen"
+          ],
+          "requires": []
+        },
+        {
+          "id": "18.09",
+          "title": "The Dragon Has a Calendar",
+          "setup": "Emberborough lends a dragon clerk to inspect the notice. Its frozen desk calendar sits above an empty ink basin.",
+          "puzzle": "Melt both calendar-page ice panels, FILL the ink basin, and SPIN the large date stamp at high pressure. The stamp unlocks only when both pages and the basin are ready.",
+          "payoff": "The dragon circles End of Day, not End of World. Ann demands a second opinion from someone with smaller handwriting.",
+          "crossover": [
+            "town",
+            "cosmos"
+          ],
+          "requires": []
+        },
+        {
+          "id": "18.10",
+          "title": "Dream of an Unmade Bed",
+          "setup": "A borrowed dream-workshop bed hovers in the illustration while three fixed service targets sit on clearly grounded maintenance stands.",
+          "puzzle": "FREEZE a dream-anchor footprint, melt the pillow's separate ice cap, then WARM the bedtime charm at 25–45° with 10–35% pressure. The floating bed remains decorative, never a moving goal.",
+          "payoff": "The third pony awakens from a nightmare about laundry. It is visibly relieved to learn this is still a manageable problem.",
+          "crossover": [
+            "cave",
+            "town"
+          ],
+          "requires": []
+        },
+        {
+          "id": "18.11",
+          "title": "Soup Tributaries of Destiny",
+          "setup": "Three real channels connect an upper soup reservoir to neighborhood bowls. Two adjustable ice plugs visibly determine which route receives water.",
+          "puzzle": "Use FLOW to fill every connected bowl, freezing and remelting the plugs to redirect runoff. PHASE makes completed plugs reversible. Reservoir liquid, not direct hits on downstream target zones, supplies the bowls.",
+          "payoff": "A map of ominous tributaries becomes a map of dinner deliveries. The walrus appoints itself ambassador for second helpings.",
+          "crossover": [
+            "kitchen",
+            "garden"
+          ],
+          "requires": [
+            "FLOW",
+            "PHASE"
+          ]
+        },
+        {
+          "id": "18.12",
+          "title": "A Mushroom Track to Tomorrow",
+          "setup": "The mushroom railway offers a final train, but its conductor clarifies that this merely means the last service before supper.",
+          "puzzle": "FREEZE two station-platform footprints, melt the engine badge's ice cap, then SPIN the stationary departure wheel. The train departs in a cutaway after all targets finish, with no moving hitboxes.",
+          "payoff": "The fourth pony catches the train and leaves its doom banner behind. The conductor folds it into an excellent picnic cloth.",
+          "crossover": [
+            "garden",
+            "town"
+          ],
+          "requires": []
+        },
+        {
+          "id": "18.13",
+          "title": "The Missing Small Print",
+          "setup": "Ann finds four separated ice-covered footnote cards arranged around a central moth-sized reading lamp.",
+          "puzzle": "Melt the four cards in any order, then WARM the lamp at 25–40° and 10–30% pressure. The last prerequisite reveals the printed clarification; the player does not need to read tiny text to solve it.",
+          "payoff": "Huge lettering spells out Celebration, Bring Snacks. Ann relaxes for the first time and requests a very small chair.",
+          "crossover": [
+            "town",
+            "cosmos"
+          ],
+          "requires": []
+        },
+        {
+          "id": "18.14",
+          "title": "The Doom Clock's Tea Chime",
+          "setup": "An elaborate clock exposes three fixed turbine bells in succession, each framed by a large, slowly pulsing ring.",
+          "puzzle": "Use PULSE gates to SPIN only the currently open bell with high-pressure liquid water. Success advances the chime sequence; missed windows simply repeat. An untimed mode leaves each bell open until serviced.",
+          "payoff": "The terrifying countdown ends with a polite kettle whistle. The pocket giant pours tea as though this was obvious all along.",
+          "crossover": [
+            "town",
+            "kitchen"
+          ],
+          "requires": [
+            "PULSE"
+          ]
+        },
+        {
+          "id": "18.15",
+          "title": "Banners With Less Foreboding",
+          "setup": "Three icy warning pennants hang above separate low decoration moulds. The new party artwork is visible on tags beside them.",
+          "puzzle": "Melt all three pennant caps, then FREEZE the three unlocked decoration footprints. A final WARM welcome seal at 30–50° joins the two preparation stages without requiring real fabric or paint simulation. WARM targets use 10–35% pressure.",
+          "payoff": "Beware becomes Be Here. Abandon Hope becomes Abundant Soup. Ann keeps one tiny skull because she likes its smile.",
+          "crossover": [
+            "town",
+            "garden"
+          ],
+          "requires": []
+        },
+        {
+          "id": "18.16",
+          "title": "The Giant's Very Small Job",
+          "setup": "The pocket giant gets its own serving station: a frozen stool, empty cup, and comfortably warm hand-rest badge.",
+          "puzzle": "Melt the stool's ice, FILL the cup, then WARM the hand-rest at 25–45° and 10–35% pressure. Independently FREEZE both table footings. All five preparations unlock the final SPIN service bell at 70% pressure or more.",
+          "payoff": "The giant becomes host instead of heavy equipment. Every guest bends down to ask for its recommendation.",
+          "crossover": [
+            "kitchen",
+            "town"
+          ],
+          "requires": []
+        },
+        {
+          "id": "18.17",
+          "title": "Four Ponies, Four Useful Errands",
+          "setup": "The four ponies line up at distinct party stations: frozen bun tray, empty drinks bowl, unfinished ice pedestal, and comfort lantern.",
+          "puzzle": "Service the MELT, FILL, FREEZE, and WARM stations in any order; the lantern wants 30–50° at 10–40% pressure. All four unlock a shared high-pressure SPIN parade wheel.",
+          "payoff": "Their banners now read Breakfast, Naps, Snacks, and Company. Nobody misses the previous branding, including the ponies.",
+          "crossover": [
+            "kitchen",
+            "garden",
+            "town"
+          ],
+          "requires": []
+        },
+        {
+          "id": "18.18",
+          "title": "Constellation of Mild Reassurance",
+          "setup": "A real light beam enters three ice prisms above a town-scale star map. Its intended landing points form a smiling constellation.",
+          "puzzle": "Grow or erode each fixed prism using PHASE, following visible notch/full-height marks. OPTICS traces actual beams: left-notched reaches the left star, center-full reaches the middle star, right-notched reaches the right star. Adjust until all detectors are lit; illustrated ray guides make the geometry readable.",
+          "payoff": "A huge reassuring face appears in the sky. Ann points out that the face has a biscuit crumb on its chin.",
+          "crossover": [
+            "cosmos",
+            "town"
+          ],
+          "requires": [
+            "OPTICS",
+            "PHASE"
+          ]
+        },
+        {
+          "id": "18.19",
+          "title": "Invitations for the Nervous",
+          "setup": "Formerly worried neighbors wait beside two frozen invitation boards and a welcoming refreshment station, visibly hesitant rather than obstructing the nozzle.",
+          "puzzle": "Melt both boards, FILL the two refreshment cups, and WARM separate welcome badges at 25–45°. All preparation targets unlock a final SPIN doorbell; guests move only in the reveal. WARM targets use 10–35% pressure.",
+          "payoff": "The neighbors bring chairs instead of emergency bags. Ann makes sure the quietest guest has a seat near an exit.",
+          "crossover": [
+            "town",
+            "kitchen"
+          ],
+          "requires": []
+        },
+        {
+          "id": "18.20",
+          "title": "A Perfectly Ordinary Tomorrow",
+          "setup": "The supposed doom platform is now a party stage with a frozen date sign, two ice-decoration footprints, drinks bowl, and sunset lantern.",
+          "puzzle": "Build both FREEZE decorations and melt the date sign, then FILL the bowl. WARM the sunset lantern at 35–55° with 10–35% pressure before SPINNING the celebration bell. All goals use existing rules.",
+          "payoff": "The sign flips to See You Tomorrow. Ann turns off her emergency clipboard light and finally joins the ponies at the table.",
+          "crossover": [
+            "town",
+            "cosmos",
+            "garden",
+            "kitchen"
+          ],
+          "requires": []
+        }
+      ]
+    }
+  ]
+}

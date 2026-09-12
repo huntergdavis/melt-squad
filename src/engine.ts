@@ -19,6 +19,13 @@ export interface Drop {
   life: number;
   temp: number;
   pressure: number;
+  routed?: boolean;
+}
+export interface Runoff {
+  branch: number;
+  distance: number;
+  temp: number;
+  pressure: number;
 }
 export interface Spark {
   x: number;
@@ -34,7 +41,10 @@ export const temperatureColor = (t: number) =>
 export function requirements(t: Target): string {
   if (t.verb === "melt") return "HOT · 10° or more";
   if (t.verb === "freeze") return "COLD · −10° or less";
-  if (t.verb === "fill") return "WATER · above 0°";
+  if (t.verb === "fill")
+    return t.flowOnly
+      ? "ROUTED WATER · feed the inlet above 0°"
+      : "WATER · above 0°";
   if (t.verb === "spin") return "JET · 70% pressure + water above 0°";
   return (
     (t.temp?.join("–") ?? "20–55") +
@@ -47,6 +57,9 @@ export class World {
   targets: LiveTarget[];
   drops: Drop[] = [];
   sparks: Spark[] = [];
+  runoff: Runoff[] = [];
+  stationary = false;
+  private routeCursor = 0;
   nozzle: {
     x: number;
     y: number;
@@ -77,6 +90,8 @@ export class World {
         rows = Math.ceil(t.h / CELL);
       return {
         ...t,
+        x: t.x + (t.motion ? Math.cos(t.motion.phase ?? 0) * t.motion.rx : 0),
+        y: t.y + (t.motion ? Math.sin(t.motion.phase ?? 0) * t.motion.ry : 0),
         cols,
         rows,
         cells: Array(cols * rows).fill(1),
@@ -126,6 +141,11 @@ export class World {
   }
   impact(t: LiveTarget, drop: Drop, x: number, y: number) {
     if (t.done || !this.available(t)) return;
+    if (t.flowOnly && !drop.routed) {
+      t.flash = 0.3;
+      t.feedback = "Feed the inlet — this tub needs river water";
+      return;
+    }
     const heat = drop.temp,
       pressure = drop.pressure;
     const valid =
@@ -209,6 +229,17 @@ export class World {
       return;
     }
     this.elapsed += dt;
+    for (const [i, t] of this.targets.entries()) {
+      const base = this.level.targets[i];
+      if (!base.motion) continue;
+      const angle = this.stationary
+        ? 0
+        : (this.elapsed * Math.PI * 2) / base.motion.period;
+      const phase = base.motion.phase ?? 0;
+      t.x = base.x + Math.cos(angle + phase) * base.motion.rx;
+      t.y = base.y + Math.sin(angle + phase) * base.motion.ry;
+    }
+    this.updateRunoff(dt);
     const n = this.nozzle;
     const magnitude = Math.max(1, Math.hypot(input.x, input.y));
     n.x = clamp(n.x + (input.x / magnitude) * 270 * dt, 55, W - 55);
@@ -278,11 +309,101 @@ export class World {
           hit = true;
           break;
         }
+        const inlet = this.level.channels?.inlet;
+        if (
+          !hit &&
+          inlet &&
+          d.temp > 0 &&
+          x >= inlet.x &&
+          x <= inlet.x + inlet.w &&
+          y >= inlet.y &&
+          y <= inlet.y + inlet.h
+        ) {
+          const routes = this.level.channels!.branches.flatMap(
+            (branch, index) =>
+              !branch.gate ||
+              this.targets.find((t) => t.id === branch.gate)?.done
+                ? [index]
+                : [],
+          );
+          if (routes.length)
+            this.runoff.push({
+              branch: routes[this.routeCursor++ % routes.length],
+              distance: 0,
+              temp: d.temp,
+              pressure: d.pressure,
+            });
+          d.life = 0;
+          hit = true;
+        }
       }
     }
     this.drops = this.drops
       .filter((d) => d.life > 0 && d.x > 0 && d.x < W)
       .slice(-350);
     this.sparks = this.sparks.slice(-220);
+    this.runoff = this.runoff.slice(-350);
+  }
+  channelPath(branch: number): [number, number][] {
+    const channels = this.level.channels!;
+    const route = channels.branches[branch];
+    const target = this.targets.find((t) => t.id === route.target)!;
+    return [
+      [
+        channels.inlet.x + channels.inlet.w / 2,
+        channels.inlet.y + channels.inlet.h / 2,
+      ],
+      channels.junction,
+      ...(route.via ?? []),
+      [target.x + target.w / 2, target.y + target.h / 2],
+    ];
+  }
+  runoffPosition(drop: Runoff): { x: number; y: number; arrived: boolean } {
+    const points = this.channelPath(drop.branch);
+    let distance = drop.distance;
+    for (let i = 1; i < points.length; i++) {
+      const [x, y] = points[i - 1],
+        [endX, endY] = points[i];
+      const length = Math.hypot(endX - x, endY - y);
+      if (length > 0 && distance < length)
+        return {
+          x: x + ((endX - x) * distance) / length,
+          y: y + ((endY - y) * distance) / length,
+          arrived: false,
+        };
+      distance -= length;
+    }
+    const [x, y] = points.at(-1)!;
+    return { x, y, arrived: true };
+  }
+  private updateRunoff(dt: number) {
+    this.runoff = this.runoff.filter((drop) => {
+      drop.distance += dt * 220;
+      const point = this.runoffPosition(drop);
+      if (!point.arrived) return true;
+      const branch = this.level.channels!.branches[drop.branch];
+      // A gate may change later; recheck connectivity on delivery as well.
+      if (
+        !branch.gate ||
+        this.targets.find((t) => t.id === branch.gate)?.done
+      ) {
+        const target = this.targets.find((t) => t.id === branch.target)!;
+        this.impact(
+          target,
+          {
+            ...drop,
+            x: point.x,
+            y: point.y,
+            vx: 0,
+            vy: 0,
+            life: 1,
+            routed: true,
+          },
+          point.x,
+          point.y,
+        );
+      }
+      return false;
+    });
   }
 }

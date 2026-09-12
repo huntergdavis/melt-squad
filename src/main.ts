@@ -1,4 +1,5 @@
 import "./style.css";
+import "./atlas.css";
 import { levels } from "./levels";
 import { World, requirements } from "./engine";
 import { Renderer } from "./render";
@@ -6,6 +7,8 @@ import { Input } from "./input";
 import { Sound } from "./audio";
 import { loadSave, recordWin, writeSave } from "./save";
 import { clamp, H, W } from "./types";
+import { campaign, inPack, mapNeighbor, nextRescue, packOf } from "./campaign";
+import { drawAtlas, escapeHtml, sceneIndex } from "./atlas";
 
 const $ = <T extends HTMLElement = HTMLElement>(selector: string) =>
   document.querySelector<T>(selector)!;
@@ -13,9 +16,16 @@ const save = loadSave(),
   sound = new Sound(),
   input = new Input();
 sound.muted = save.muted;
+save.stationary ??= window.matchMedia(
+  "(prefers-reduced-motion: reduce)",
+).matches;
 let world = new World(levels[0]),
   levelIndex = 0,
   mode: "hub" | "play" = "hub";
+let currentWorld: string | undefined,
+  selectedScene: string | undefined,
+  started = false;
+let focusPreview = false;
 let recorded = false,
   lastGoals = 0,
   modalKind = "",
@@ -32,27 +42,26 @@ $("#app").innerHTML = `
     <a class="brand" href="#dispatch" data-action="hub">${icon}<span>MELT<br>SQUAD<span class="brand-small">THERMAL RESCUE DIVISION</span></span></a>
     <div class="station-label"><span class="status-dot"></span> STATION 07 · ON CALL</div>
     <nav aria-label="Main navigation">
-      <button class="nav-item active" data-action="hub"><span>▦</span> Dispatch board <span class="nav-arrow">↗</span></button>
+      <button class="nav-item active" data-action="atlas"><span>▦</span> Rescue atlas <span class="nav-arrow">↗</span></button>
       <button class="nav-item" data-action="help"><span>⌘</span> Field manual</button>
       <button class="nav-item" data-action="mute"><span>♫</span> <span class="sound-label">Sound on</span></button>
+      <button class="nav-item" data-action="credits"><span>♡</span> Credits & licenses</button>
     </nav>
     <div class="squad-note"><div class="mini-drop">♨</div><p>A little heat.<br>A lot of heart.</p><span>No bad guys.<br>Just very cold problems.</span></div>
     <div class="station-footer"><span id="pad-status">Keyboard ready</span><span>CLIENT-SIDE · NO SIGN-IN</span></div>
   </aside>
   <main>
-    <header class="topbar"><span>THE WORLD IS A LITTLE COLD. <b>LET’S FIX THAT.</b></span><span class="progress-pill" id="total-progress">0 / 20 calls answered</span></header>
+    <header class="topbar"><span>THE WORLD IS A LITTLE COLD. <b>LET’S FIX THAT.</b></span><span class="progress-pill" id="total-progress"></span></header>
     <section id="hub" aria-label="Dispatch board">
       <div class="hero">
         <div class="hero-copy"><div class="eyebrow">YOUR NEXT SMALL GOOD DEED</div><h1>Very cold problems.<br><em>Very warm hearts.</em></h1><p>Thaw a wizard. Rescue a teacup. Give the moon a bath.<br>Grab your hose. The wonderfully weird world needs you.</p><button class="primary" data-action="continue">Start your shift <span>↗</span></button><div class="hero-controls">WASD + arrow keys <span>·</span> Gamepad ready <span>·</span> Touch friendly</div></div>
         <div class="hero-art"><canvas id="hero-canvas" aria-label="An illustrated teacup waiting for a rescue"></canvas><div class="hero-sticker">100%<br><small>GOOD INTENTIONS</small></div></div>
       </div>
-      <div class="board-heading"><div><div class="eyebrow">THE DISPATCH BOARD</div><h2>Twenty calls. Plenty of heart.</h2></div><span class="board-note">Pick any call. Make a little difference.</span></div>
-      <div class="filters" aria-label="Filter calls"><button class="filter active" data-filter="all">All calls <span>20</span></button><button class="filter" data-filter="new">Unanswered</button><button class="filter" data-filter="done">Completed</button></div>
-      <div id="level-grid" class="level-grid"></div>
+      <div id="atlas"></div>
       <p class="board-footer">A small, hopeful game about making things a little better. <button data-action="credits">Made with care ↗</button></p>
     </section>
     <section id="play" hidden aria-label="Rescue mission">
-      <div class="mission-heading"><div><div class="eyebrow" id="mission-number"></div><h1 id="mission-title"></h1><p id="mission-pitch"></p></div><div class="mission-actions"><button class="quiet" data-action="restart" aria-label="Restart mission">↻ <span>Restart</span></button><button class="quiet" data-action="pause">Ⅱ <span>Pause</span></button></div></div>
+      <div class="mission-heading"><div><div class="eyebrow" id="mission-number"></div><h1 id="mission-title"></h1><p id="mission-pitch"></p></div><div class="mission-actions"><button class="quiet" data-action="hub">← World map</button><button class="quiet" data-action="restart" aria-label="Restart mission">↻ <span>Restart</span></button><button class="quiet" data-action="pause">Ⅱ <span>Pause</span></button></div></div>
       <div class="game-frame"><canvas id="game" tabindex="0" aria-label="Move the nozzle with WASD or drag. Arrow up/down controls temperature; left/right controls pressure."></canvas><div class="stage-bottom"><span id="stage-state">● WATER ON</span><span id="elapsed">00:00</span><button data-action="help">Controls / help ?</button></div></div>
       <div class="instrument-bar">
         <div class="instrument"><div class="instrument-title"><label for="temperature">TEMPERATURE</label><output id="temp-value">65°</output></div><input id="temperature" class="temperature" type="range" min="-40" max="100" step="1" value="65" aria-label="Water temperature"><div class="scale"><span>−40° · FREEZE</span><span>100° · MELT</span></div></div>
@@ -61,6 +70,7 @@ $("#app").innerHTML = `
       </div>
       <div class="objectives-heading"><h2>The little things to do</h2><button data-action="hint" class="text-button">Need a hint?</button></div><div id="objectives" class="objectives"></div>
       <p id="hint" class="hint" hidden></p>
+      <button id="motion-assist" class="quiet" data-action="motion-assist" hidden></button>
       <p class="control-strip"><span><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> move</span><span><kbd>↑</kbd><kbd>↓</kbd> temperature</span><span><kbd>←</kbd><kbd>→</kbd> pressure</span><span><kbd>Q</kbd><kbd>E</kbd> tilt</span><span><kbd>Space</kbd> water</span><span>or drag the nozzle + use the sliders</span></p>
     </section>
     <p id="save-warning" class="hint" hidden>Browser storage is unavailable. You can keep playing, but this session’s medals will not survive a reload.</p>
@@ -75,64 +85,76 @@ input.acceptsGameplay = () => mode === "play" && !dialog.open;
 const heroWorld = new World(levels[0]);
 heroWorld.nozzle.x = 315;
 heroWorld.nozzle.y = 180;
-let filter = "all";
 function persist() {
   $("#save-warning").hidden = writeSave(save);
 }
 function updateGlobal() {
   const count = levels.filter((l) => save.stars[l.id]).length;
-  $("#total-progress").textContent = count + " / 20 calls answered";
+  $("#total-progress").textContent =
+    count + " / " + levels.length + " calls answered";
+  const next = nextRescue(save);
+  $(".hero .primary").textContent = next
+    ? save.lastScene
+      ? "Continue adventure ↗"
+      : "Start your shift ↗"
+    : "All available rescues complete ✓";
   document
     .querySelectorAll(".sound-label")
     .forEach((el) => (el.textContent = save.muted ? "Sound off" : "Sound on"));
 }
 function drawBoard() {
-  $("#level-grid").innerHTML = "";
-  const selected = levels.filter(
-    (l) =>
-      filter === "all" ||
-      (filter === "done" ? !!save.stars[l.id] : !save.stars[l.id]),
-  );
-  if (!selected.length)
-    $("#level-grid").innerHTML =
-      '<p class="empty">No calls here yet. Your next little good deed is on the All calls board.</p>';
-  for (const l of selected) {
-    const i = levels.indexOf(l),
-      stars = save.stars[l.id] ?? 0;
-    const button = document.createElement("button");
-    button.className = "level-card";
-    button.dataset.level = String(i);
-    button.setAttribute(
-      "aria-label",
-      "Call " +
-        (i + 1) +
-        ": " +
-        l.name +
-        (stars ? ", completed with " + stars + " stars" : ""),
-    );
-    button.innerHTML =
-      '<div class="card-art theme-' +
-      l.theme +
-      '"><canvas aria-hidden="true"></canvas><span class="call-number">' +
-      String(i + 1).padStart(2, "0") +
-      '</span><span class="card-status">' +
-      (stars ? "★".repeat(stars) : "↗") +
-      '</span></div><div class="card-copy"><span class="card-chapter">' +
-      l.chapter +
-      "</span><h3>" +
-      l.name +
-      '</h3><span class="card-meta">' +
-      l.targets.length +
-      " little " +
-      (l.targets.length === 1 ? "task" : "tasks") +
-      " <span>·</span> " +
-      (i < 3 ? "START HERE" : "PUZZLE CALL") +
-      "</span></div>";
-    $("#level-grid").append(button);
-    const preview = new Renderer(button.querySelector("canvas")!);
-    preview.draw(new World(l), 0, true);
-  }
+  $("#hub .hero").hidden = !!currentWorld;
+  drawAtlas($("#atlas"), save, currentWorld, selectedScene);
 }
+function navigate(hash: string) {
+  if (location.hash === hash) route();
+  else location.hash = hash;
+}
+function route() {
+  const parts = location.hash.slice(1).split("/");
+  if (parts[0] === "play") {
+    const index = sceneIndex(parts[1]);
+    if (index >= 0) {
+      start(index);
+      return;
+    }
+  }
+  const valid = campaign.some((item) => item.id === parts[1]);
+  currentWorld = parts[0] === "world" && valid ? parts[1] : undefined;
+  selectedScene =
+    parts[2] === "scene" &&
+    levels.some(
+      (level) => level.id === parts[3] && packOf(level) === currentWorld,
+    )
+      ? parts[3]
+      : undefined;
+  if (selectedScene) {
+    save.lastWorld = currentWorld;
+    save.lastScene = selectedScene;
+  }
+  if (dialog.open) closeModal();
+  mode = "hub";
+  input.clear();
+  accumulator = 0;
+  $("#hub").hidden = false;
+  $("#play").hidden = true;
+  updateGlobal();
+  drawBoard();
+  persist();
+  const focus = focusPreview
+    ? document.querySelector<HTMLElement>("[data-launch]")
+    : selectedScene
+      ? document.querySelector<HTMLElement>(`[data-scene="${selectedScene}"]`)
+      : currentWorld
+        ? $(".scene-node.selected, .scene-node")
+        : $(".hero .primary");
+  focusPreview = false;
+  focus?.focus({ preventScroll: true });
+  if (parts[0] && parts[0] !== "atlas" && !(parts[0] === "world" && valid))
+    $("#announcement").textContent =
+      "That destination isn't available. Here is the rescue atlas.";
+}
+window.addEventListener("hashchange", route);
 function closeModal() {
   dialog.close();
   modalKind = "";
@@ -154,25 +176,40 @@ function showHelp() {
     '<div class="eyebrow">THE FIELD MANUAL</div><h2>A hose. Two sticks.<br>Endless good intentions.</h2><p>Move above a target and let the water do its thing. The nozzle points down; tilt it when a tricky angle calls for it.</p><div class="manual-grid"><div><h3>Keyboard</h3><p>WASD — move nozzle<br>↑ / ↓ — hotter / colder<br>← / → — less / more pressure<br>Q / E — tilt nozzle<br>Space — toggle water<br>R — restart · Esc — pause</p></div><div><h3>Gamepad</h3><p>Left stick — move nozzle<br>Right stick ↕ — temperature<br>Right stick ↔ — pressure<br>LB / RB — tilt nozzle<br>A / Cross — water / confirm<br>X / Square — restart<br>B / Circle or Start — pause<br>D-pad — navigate menus</p></div></div><p><b>Mouse / touch:</b> drag anywhere in the scene to move the nozzle. Use the temperature and pressure sliders below it.</p><div class="manual-verbs"><span>❄ Below −10° builds ice</span><span>♨ Above 10° melts ice</span><span>↗ 70% pressure spins wheels</span></div><p>Warming tasks show their safe temperature and pressure range. Completed structures stay stable. There are no lives to lose; restart or replay any call. Earn a rescue star by finishing, a second within 1.8× the par time, and a third within par with fewer than 60 wrong-setting droplet hits.</p><button class="primary" data-action="close">Got it. Let’s help someone.</button>',
   );
 }
-function start(index: number) {
+function start(index: number, restart = false) {
   if (dialog.open) closeModal();
+  const resume =
+    started && index === levelIndex && !world.completed && !restart;
   levelIndex = clamp(index, 0, levels.length - 1);
-  world = new World(levels[levelIndex]);
+  if (!resume) {
+    world = new World(levels[levelIndex]);
+    recorded = false;
+    lastGoals = 0;
+  }
+  started = true;
+  world.stationary = !!save.stationary;
+  currentWorld = packOf(world.level);
+  selectedScene = world.level.id;
+  save.lastWorld = currentWorld;
+  save.lastScene = selectedScene;
+  persist();
+  updateGlobal();
   mode = "play";
-  recorded = false;
-  lastGoals = 0;
   input.clear();
   accumulator = 0;
   $("#hub").hidden = true;
   $("#play").hidden = false;
   $("#hint").hidden = true;
   $("#mission-number").textContent =
-    "CALL " +
-    String(levelIndex + 1).padStart(2, "0") +
-    " / 20 · " +
-    world.level.chapter.toUpperCase();
+    "WORLD " +
+    currentWorld +
+    " · SCENE " +
+    String(inPack(currentWorld).indexOf(world.level) + 1).padStart(2, "0") +
+    " / 20";
   $("#mission-title").textContent = world.level.name;
   $("#mission-pitch").textContent = world.level.pitch;
+  $("#motion-assist").hidden = !world.targets.some((t) => t.motion);
+  updateAssist();
   $("#objectives").innerHTML = world.targets
     .map(
       (t, i) =>
@@ -193,22 +230,28 @@ function start(index: number) {
   updateHUD();
 }
 function hub() {
-  if (dialog.open) closeModal();
-  mode = "hub";
-  input.clear();
-  $("#hub").hidden = false;
-  $("#play").hidden = true;
-  updateGlobal();
-  drawBoard();
-  window.scrollTo({ top: 0 });
-  $(".hero .primary").focus({ preventScroll: true });
+  navigate(
+    currentWorld
+      ? `#world/${currentWorld}${selectedScene ? "/scene/" + selectedScene : ""}`
+      : "#atlas",
+  );
+}
+function updateAssist() {
+  $("#motion-assist").textContent = save.stationary
+    ? "Stationary assist: on · Let the cuffs move"
+    : "Want a steadier target? Turn on stationary assist";
+  $("#motion-assist").setAttribute("aria-pressed", String(!!save.stationary));
 }
 function pause() {
   if (dialog.open) {
     if (modalKind !== "win") closeModal();
     return;
   }
-  if (mode !== "play" || world.completed) return;
+  if (mode !== "play") {
+    if (currentWorld) navigate("#atlas");
+    return;
+  }
+  if (world.completed) return;
   openModal(
     "pause",
     '<div class="eyebrow">TAKE A BREATHER</div><h2>Even heroes need<br>a tea break.</h2><p>Your rescue is paused. Nothing will melt while you’re away.</p><div class="dialog-actions"><button class="primary" data-action="close">Back to the rescue ↗</button><button class="quiet" data-action="restart">Restart call</button><button class="quiet" data-action="hub">Dispatch board</button></div>',
@@ -222,7 +265,13 @@ function win() {
       (lastLevel
         ? "A warmer world.<br>Thanks to you."
         : "A little less cold.<br>A little more lovely.") +
-      '</h2><div class="win-stars" aria-label="' +
+      "</h2>" +
+      (world.level.stamp
+        ? '<canvas id="postcard" class="win-postcard" aria-label="The rescued laundry community"></canvas><div class="postcard-stamp">' +
+          escapeHtml(world.level.stamp) +
+          "</div>"
+        : "") +
+      '<div class="win-stars" aria-label="' +
       world.stars +
       ' stars">' +
       "★".repeat(world.stars) +
@@ -239,13 +288,15 @@ function win() {
       '<small>3-STAR PAR</small></span></div><div class="dialog-actions"><button class="primary" data-action="' +
       (lastLevel ? "hub" : "next") +
       '">' +
-      (lastLevel ? "Back to the station" : "Next little good deed ↗") +
+      (lastLevel ? "Back to the world map" : "Next little good deed ↗") +
       '</button><button class="quiet" data-action="restart">Replay this call</button>' +
       (lastLevel
         ? ""
-        : '<button class="text-button" data-action="hub">Dispatch board</button>') +
+        : '<button class="text-button" data-action="hub">World map</button>') +
       "</div>",
   );
+  const postcard = document.querySelector<HTMLCanvasElement>("#postcard");
+  if (postcard) new Renderer(postcard).draw(world, 0, true);
 }
 function formatTime(time: number) {
   return (
@@ -296,22 +347,36 @@ function updateHUD() {
 function action(name: string) {
   sound.unlock();
   if (name === "hub") hub();
-  else if (name === "continue")
-    start(
-      Math.max(
-        0,
-        levels.findIndex((l) => !save.stars[l.id]),
-      ),
+  else if (name === "atlas") navigate("#atlas");
+  else if (name === "continue" || name === "world-continue") {
+    const next = nextRescue(
+      save,
+      name === "world-continue" ? currentWorld : save.lastWorld,
+      name === "world-continue" ? inPack(currentWorld ?? "01") : levels,
     );
-  else if (name === "next") start(levelIndex + 1);
-  else if (
+    if (next) navigate("#play/" + next.id);
+    else navigate("#atlas");
+  } else if (name === "next") {
+    if (levels[levelIndex + 1]) navigate("#play/" + levels[levelIndex + 1].id);
+    else hub();
+  } else if (name === "map-list") {
+    save.mapList = !save.mapList;
+    persist();
+    drawBoard();
+    $("[data-action=map-list]").focus();
+  } else if (name === "motion-assist") {
+    save.stationary = !save.stationary;
+    world.stationary = !!save.stationary;
+    persist();
+    updateAssist();
+  } else if (
     name === "restart" &&
     mode === "play" &&
     (!dialog.open || ["pause", "win"].includes(modalKind))
   )
-    start(levelIndex);
+    start(levelIndex, true);
   else if (name === "pause") pause();
-  else if (name === "disconnect" && !dialog.open) pause();
+  else if (name === "disconnect" && mode === "play" && !dialog.open) pause();
   else if (name === "help") showHelp();
   else if (name === "close") closeModal();
   else if (name === "hint") {
@@ -329,16 +394,40 @@ function action(name: string) {
   } else if (name === "credits")
     openModal(
       "credits",
-      '<div class="eyebrow">MADE WITH CARE</div><h2>A small game.<br>A whole lot of warmth.</h2><p>Original Melt Squad characters and scenes are drawn in Canvas. Sparkle effects use the <a href="https://kenney.nl/assets/particle-pack" target="_blank" rel="noopener">Kenney Particle Pack</a>, licensed CC0. Sound is synthesized in your browser.</p><p>No accounts, analytics, model downloads, or server needed. Progress lives in this browser.</p><button class="primary" data-action="close">Back to the good deeds</button>',
+      `<div class="eyebrow">MADE WITH CARE</div><h2>A small game.<br>A whole lot of warmth.</h2>
+      <p>Melt Squad by Hunter Davis. Original characters, world maps, and scenes are drawn in Canvas and CSS. Sound is synthesized in your browser.</p>
+      <ul class="credits-list">
+        <li><strong>Kenney Particle Pack</strong> — sparkle sprite, CC0. <a href="${import.meta.env.BASE_URL}art/License.txt" target="_blank" rel="noopener">Read the license</a> · <a href="https://kenney.nl/assets/particle-pack" target="_blank" rel="noopener">Original artwork</a></li>
+        <li><strong>DM Sans</strong> — The DM Sans Project Authors, SIL Open Font License 1.1. <a href="${import.meta.env.BASE_URL}fonts/dm-sans-license.txt" target="_blank" rel="noopener">Read the license</a></li>
+        <li><strong>Outfit</strong> — The Outfit Project Authors, SIL Open Font License 1.1. <a href="${import.meta.env.BASE_URL}fonts/outfit-license.txt" target="_blank" rel="noopener">Read the license</a></li>
+      </ul><p>Built with TypeScript and Vite; tested with Vitest and Playwright. Thank you to the open-source creators who help little games exist.</p>
+      <p>No accounts, analytics, or server needed. Your progress stays in this browser.</p><button class="primary" data-action="close">Back to the good deeds</button>`,
     );
 }
 input.onAction = (name) => {
   if (name.startsWith("nav-")) {
     if (mode === "play" && !dialog.open) return;
     const root = dialog.open ? dialog : $("#hub");
+    const focused = document.activeElement as HTMLElement;
+    if (!dialog.open && focused?.dataset.node && !save.mapList) {
+      const index = mapNeighbor(Number(focused.dataset.node), name.slice(4));
+      if (index === Number(focused.dataset.node)) {
+        const escape =
+          name === "nav-down" || name === "nav-right"
+            ? "[data-launch]"
+            : "[data-action=map-list]";
+        (
+          document.querySelector<HTMLElement>(escape) ??
+          document.querySelector<HTMLElement>("[data-action=atlas]")
+        )?.focus();
+        return;
+      }
+      document.querySelector<HTMLElement>(`[data-node="${index}"]`)?.focus();
+      return;
+    }
     const buttons = Array.from(
-      root.querySelectorAll<HTMLButtonElement>("button"),
-    ).filter((b) => b.offsetParent !== null);
+      root.querySelectorAll<HTMLButtonElement>("button, a"),
+    ).filter((b) => b.offsetParent !== null && !b.hasAttribute("disabled"));
     const current = buttons.indexOf(
       document.activeElement as HTMLButtonElement,
     );
@@ -352,25 +441,27 @@ input.onAction = (name) => {
 };
 document.addEventListener("click", (e) => {
   const button = (e.target as HTMLElement).closest<HTMLElement>(
-    "[data-action], [data-level], [data-filter]",
+    "[data-action], [data-world], [data-scene], [data-launch]",
   );
   if (!button) return;
   if (button.dataset.action) {
     e.preventDefault();
     action(button.dataset.action);
-  } else if (button.dataset.level) start(Number(button.dataset.level));
-  else if (button.dataset.filter) {
-    filter = button.dataset.filter;
-    document
-      .querySelectorAll(".filter")
-      .forEach((el) =>
-        el.classList.toggle(
-          "active",
-          (el as HTMLElement).dataset.filter === filter,
-        ),
-      );
-    drawBoard();
-  }
+  } else if (button.dataset.world) navigate("#world/" + button.dataset.world);
+  else if (button.dataset.scene) {
+    focusPreview = true;
+    navigate(`#world/${currentWorld}/scene/${button.dataset.scene}`);
+  } else if (button.dataset.launch) navigate("#play/" + button.dataset.launch);
+});
+document.addEventListener("keydown", (e) => {
+  if (
+    (mode !== "hub" && !dialog.open) ||
+    !e.code.startsWith("Arrow") ||
+    e.target instanceof HTMLInputElement
+  )
+    return;
+  e.preventDefault();
+  input.onAction("nav-" + e.code.slice(5).toLowerCase());
 });
 document.addEventListener("pointerdown", () => sound.unlock(), { once: true });
 document.addEventListener("keydown", () => sound.unlock(), { once: true });
@@ -419,14 +510,25 @@ renderer.canvas.addEventListener("pointercancel", () => {
 document.addEventListener("visibilitychange", () => {
   if (document.hidden) {
     input.clear();
-    if (!dialog.open) pause();
+    if (mode === "play" && !dialog.open) pause();
   }
 });
 window.addEventListener("blur", () => {
-  if (!dialog.open) pause();
+  if (mode === "play" && !dialog.open) pause();
 });
 window.addEventListener("resize", () => {
-  if (mode === "hub") drawBoard();
+  if (mode === "hub" && !dialog.open) {
+    const active = document.activeElement as HTMLElement;
+    const identity = ["scene", "world", "action", "node"].find(
+      (key) => active.dataset?.[key],
+    );
+    const value = identity ? active.dataset[identity] : undefined;
+    drawBoard();
+    if (identity && value)
+      document
+        .querySelector<HTMLElement>(`[data-${identity}="${value}"]`)
+        ?.focus({ preventScroll: true });
+  }
 });
 function frame(now: number) {
   const dt = Math.min((now - (last || now)) / 1000, 0.05);
@@ -464,7 +566,5 @@ function frame(now: number) {
   } else heroRenderer.draw(heroWorld, now / 1000, true);
   requestAnimationFrame(frame);
 }
-updateGlobal();
-drawBoard();
-$(".hero .primary").focus({ preventScroll: true });
+route();
 requestAnimationFrame(frame);

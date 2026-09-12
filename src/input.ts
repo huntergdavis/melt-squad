@@ -17,6 +17,8 @@ export class Input {
   padName = "";
   private previous: boolean[] = [];
   private previousIndex = -1;
+  private menuDirection = "";
+  private menuRepeatAt = 0;
   onAction: (action: string) => void = () => {};
   acceptsGameplay: () => boolean = () => true;
   constructor() {
@@ -81,6 +83,30 @@ export class Input {
     const result = pad
       ? padControls(pad)
       : { x: 0, y: 0, heat: 0, pressure: 0, tilt: 0 };
+    if (pad && !this.acceptsGameplay()) {
+      const horizontal = Math.abs(result.x) > Math.abs(result.y);
+      const axis = horizontal ? result.x : result.y;
+      const direction =
+        Math.abs(axis) < 0.45
+          ? ""
+          : horizontal
+            ? axis < 0
+              ? "left"
+              : "right"
+            : axis < 0
+              ? "up"
+              : "down";
+      const now = performance.now();
+      if (
+        direction &&
+        (direction !== this.menuDirection || now >= this.menuRepeatAt)
+      ) {
+        this.onAction("nav-" + direction);
+        this.menuRepeatAt =
+          now + (direction !== this.menuDirection ? 350 : 180);
+      }
+      this.menuDirection = direction;
+    } else this.menuDirection = "";
     if (pad) {
       const buttons = pad.buttons.map((b) => b.pressed);
       // A newly connected/selected controller must release its buttons first.

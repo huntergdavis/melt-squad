@@ -1,0 +1,272 @@
+{
+  "packs": [
+    {
+      "id": "20",
+      "title": "The Great Thaw Festival",
+      "premise": "The squad's new friends meet in one expandable illustrated festival square. A shy volunteer pigeon coordinates the preparations, convinced every other world has brought something more impressive.",
+      "arc": "Build a welcoming festival through nineteen crossover contributions, then reveal that remembering everyone's needs was the pigeon's own indispensable contribution. The finale celebrates the whole campaign without requiring experimental physics systems.",
+      "signature": "The same recognizable plaza gains banners, stalls, guests, and warm lights through authored scene illustrations; each contributor introduces a different target arrangement and a small returning-character joke.",
+      "newArt": [
+        "volunteer pigeon coordinator",
+        "modular festival plaza backdrops",
+        "cross-theme stall signs",
+        "shared welcome table",
+        "celebration panorama",
+        "reused cast and props from Levels 01–19"
+      ],
+      "scenes": [
+        {
+          "id": "20.01",
+          "title": "A Teacup for the Whole Squad",
+          "setup": "The original smiling teacup stands at the festival entrance beside the wizard's frozen welcome sign and Cupid's dim heart-shaped lamp.",
+          "puzzle": "Melt the sign, FILL the cup, then WARM the heart lamp at 25–45° and 10–40% pressure. These three familiar stations introduce the plaza's clear left-to-right service route.",
+          "payoff": "The wizard hangs his boots right-side up. The pigeon receives the very first cup of tea rather than another assignment.",
+          "crossover": [
+            "kitchen",
+            "cave",
+            "garden"
+          ],
+          "requires": []
+        },
+        {
+          "id": "20.02",
+          "title": "Socks Across the Opening Arch",
+          "setup": "The sock exchange lends mismatched ghost bunting, with three fixed icy clips spread across the welcome arch and two low attachment footprints.",
+          "puzzle": "Melt the high clips using nozzle movement or tilt, FREEZE both low attachment zones, then SPIN a stationary hanging crank. Cloth deployment is a scripted payoff rather than rope physics.",
+          "payoff": "Every odd sock finds a different odd partner on the arch. The pigeon stops trying to make their colors match.",
+          "crossover": [
+            "town",
+            "cave"
+          ],
+          "requires": []
+        },
+        {
+          "id": "20.03",
+          "title": "Invitations Above Sea Level",
+          "setup": "Brine & Parcel's postal cart parks beside three empty stamp basins arranged in a triangle and a frosted address board.",
+          "puzzle": "FILL all three basins directly, melt the address-board cap, then WARM the shared postage seal at 30–50° and 10–35% pressure. No pipe network or matching-address interface is needed.",
+          "payoff": "Invitations emerge with tiny waterproof umbrellas. The first is delivered to a puddle that has never been invited anywhere.",
+          "crossover": [
+            "town",
+            "garden"
+          ],
+          "requires": []
+        },
+        {
+          "id": "20.04",
+          "title": "The Circus Builds a Queue",
+          "setup": "Clockwork performers turn waiting for admission into a show, with two frozen wheel caps above three dotted pedestal targets.",
+          "puzzle": "Clear both wheel caps, FREEZE the three separated pedestals, then SPIN two exposed turbine hubs. Both preparations gate the hubs; acrobats perform on the finished arrangement only after completion.",
+          "payoff": "The queue applauds itself for excellent waiting. A mechanical ringmaster gives the pigeon a ribbon for Most Considerate Interval.",
+          "crossover": [
+            "town",
+            "cosmos"
+          ],
+          "requires": []
+        },
+        {
+          "id": "20.05",
+          "title": "A Permit for Unexpected Delight",
+          "setup": "The tiny borough installs a miniature approval desk with four narrow ice-covered forms surrounding one large welcoming stamp.",
+          "puzzle": "Melt the four small form targets with deliberate repositioning. They unlock separate WARM ink at 25–45° and 10–35% pressure and liquid-water FILL rinse stations. Both completed stations unlock the final high-pressure SPIN approval stamp.",
+          "payoff": "The permit reads Everyone May Have a Nice Time. Its footnote explicitly includes volunteers, which the pigeon reads twice.",
+          "crossover": [
+            "town",
+            "kitchen"
+          ],
+          "requires": []
+        },
+        {
+          "id": "20.06",
+          "title": "The Buffet Declares Independence",
+          "setup": "The pudding delegation sets up three separate buffet stations: a frosted biscuit tray, a mould for an icy dessert, and a warm custard badge.",
+          "puzzle": "Melt the broad tray cap, FREEZE the narrow dessert footprint, and WARM the custard badge at 30–45° with 10–35% pressure. All three unlock two shared liquid-water FILL serving bowls.",
+          "payoff": "The desserts choose their own places at the table. A soup bowl gets honorary dessert citizenship without changing its contents.",
+          "crossover": [
+            "kitchen",
+            "town"
+          ],
+          "requires": []
+        },
+        {
+          "id": "20.07",
+          "title": "A Playground With Tail Room",
+          "setup": "Fossilbean's children find a play corner whose decorations leave room for tiny feet but not for enormous happy tails.",
+          "puzzle": "FREEZE two widely separated play-pad footprints, melt three fixed toy-chest ice caps, then WARM the welcome sun badge at 25–45°. The finished illustration expands the play corner rather than simulating collisions with tails. WARM targets use 10–35% pressure.",
+          "payoff": "Dapple turns around without apologizing. The pigeon adds Tail Room to the festival map as if it were always a neighborhood.",
+          "crossover": [
+            "garden",
+            "town"
+          ],
+          "requires": []
+        },
+        {
+          "id": "20.08",
+          "title": "Flint's Counter for Everybody",
+          "setup": "Emberborough brings a service counter with a low wyvern station, a medium dragon station, and a very high giant-dragon sign.",
+          "puzzle": "Melt ice caps at all three heights, FREEZE two contrasting-height counter bases, then WARM Flint's welcome badge at 30–50° and 10–35% pressure. Guests approach only after all services are prepared.",
+          "payoff": "No visitor has to crouch or ask for a stool. Flint and the pigeon exchange the relieved look of competent small organizers.",
+          "crossover": [
+            "town",
+            "cave"
+          ],
+          "requires": []
+        },
+        {
+          "id": "20.09",
+          "title": "Endings With Outdoor Seating",
+          "setup": "The runaway library installs two frozen book stands and a dotted reading-nest assembly around a quiet corner of the plaza.",
+          "puzzle": "Build two local branches: each book-stand MELT cap unlocks its matching outer FREEZE nest section. A shared middle FREEZE footing is active from the start. All three finished nest sections unlock the WARM reading lamp at 25–40° and 10–30% pressure.",
+          "payoff": "Endy the full stop sits after a sentence reading Stay As Long As You Like. The quiet corner becomes unexpectedly popular.",
+          "crossover": [
+            "garden",
+            "town"
+          ],
+          "requires": []
+        },
+        {
+          "id": "20.10",
+          "title": "A Podium for Trying Something",
+          "setup": "Mount Oops brings three medal-warming stations beside a frozen participation banner. No station is higher than the others.",
+          "puzzle": "Melt the banner, then WARM the three fixed medals at 20–35°, 35–50°, and 50–65°, using 10–35% pressure. All three unlock a high-pressure SPIN applause wheel; there is no score contest or rhythm gate.",
+          "payoff": "Gus receives a medal for joining in, then gives the pigeon one for making joining in possible. Both look genuinely surprised.",
+          "crossover": [
+            "garden",
+            "town",
+            "cosmos"
+          ],
+          "requires": []
+        },
+        {
+          "id": "20.11",
+          "title": "A Dance Floor for Every Kind of Pair",
+          "setup": "The wedding planners arrange two independent dance-floor footprints around a frozen music stand and two differently sized refreshment cups.",
+          "puzzle": "FREEZE both floor sections and melt the music cap to unlock the high-pressure SPIN band wheel. Independently FILL both refreshment cups. The completed band wheel AND both full cups unlock the final WARM welcome heart at 25–45° and 10–35% pressure.",
+          "payoff": "Couples, friends, siblings, and one happily unaccompanied pudding share the dance floor. The pigeon accepts an invitation to sit out a song.",
+          "crossover": [
+            "garden",
+            "town",
+            "kitchen"
+          ],
+          "requires": []
+        },
+        {
+          "id": "20.12",
+          "title": "A Quiet Tent for Loud Dreams",
+          "setup": "The dream tailors bring three soft-looking fixed repair badges beneath a frozen tent sign, making a calm corner away from the illustrated crowd.",
+          "puzzle": "Melt the sign and FREEZE two lantern-footing zones, then WARM all three badges at 20–35° and 10–30% pressure. The crowd cannot interrupt progress; quiet is a visual/audio payoff, not a stealth mechanic.",
+          "payoff": "Bramble offers visitors comforting forest dreams. The pigeon discovers that taking a break can be part of running a festival.",
+          "crossover": [
+            "garden",
+            "cave",
+            "town"
+          ],
+          "requires": []
+        },
+        {
+          "id": "20.13",
+          "title": "Weather for Both Sides of the Picnic",
+          "setup": "The conservatory installs two visibly separate weather stations: a snow-garden display and a sunny picnic awning with an empty welcome basin between them.",
+          "puzzle": "FREEZE three snow-garden footprints, WARM the sun badge at 50–70°, then FILL the center basin. Separate target stations make the contrasting climates readable; there is no coupled weather or temperature simulation. WARM targets use 10–35% pressure.",
+          "payoff": "Guests choose their favorite side and wave across the boundary. Nimbus orders one small cloud-shaped cushion for the organizer.",
+          "crossover": [
+            "garden",
+            "cave",
+            "cosmos"
+          ],
+          "requires": []
+        },
+        {
+          "id": "20.14",
+          "title": "The Last Train Makes Extra Stops",
+          "setup": "The mushroom railway adds three separated platform sections to the festival edge, with a frozen timetable and stationary departure turbine beside them.",
+          "puzzle": "FREEZE the three platform footprints, melt the timetable, then SPIN the departure turbine. A WARM (10–35% pressure) conductor's lantern at 30–45° is the final station, preventing an all-high-pressure solution.",
+          "payoff": "The train pauses in the ending panorama for every guest who wants one more goodbye. Sprig saves the pigeon a window seat.",
+          "crossover": [
+            "garden",
+            "town"
+          ],
+          "requires": []
+        },
+        {
+          "id": "20.15",
+          "title": "An Exhibit About Almost Giving Up",
+          "setup": "The museum displays an oversized frozen question mark beside two empty demonstration basins and a tiny, visibly dim curiosity lamp.",
+          "puzzle": "Melt the question mark's three rectangular ice sections, FILL both basins, then WARM the lamp at 25–45° with 10–35% pressure. The impossible transformation happens after completion, without unlisted optics or mass rules.",
+          "payoff": "Dr. Probably unveils an exhibit of the festival's first messy sketch. Its label thanks the pigeon for starting before everything was certain.",
+          "crossover": [
+            "cosmos",
+            "town"
+          ],
+          "requires": []
+        },
+        {
+          "id": "20.16",
+          "title": "Breakfast for the People Making Dinner",
+          "setup": "The galactic diner opens a crew-only counter, with two tall frozen coffee dispensers framing a low, gently labelled toast-warming station.",
+          "puzzle": "Melt both dispenser caps, FILL their two cups, then WARM the toast badge at 30–45° and 10–35% pressure. A high-pressure SPIN serving bell sits off to one side, requiring a final deliberate reposition.",
+          "payoff": "The cooks sit down while the guests serve them. The pigeon eats a whole meal without holding a clipboard.",
+          "crossover": [
+            "cosmos",
+            "kitchen",
+            "town"
+          ],
+          "requires": []
+        },
+        {
+          "id": "20.17",
+          "title": "The Parade Follows a Little Star",
+          "setup": "Captain Button's toy float reaches the plaza with Glim's lamp between two ice-covered pennants and two unfinished wheel-decoration forms.",
+          "puzzle": "Melt both pennant blocks and FREEZE both rectangular decoration zones. Those preparations unlock Glim's WARM lamp at 35–55° and 10–35% pressure, followed by a stationary SPIN departure axle.",
+          "payoff": "Glim leads the tiny parade into the enormous square. Every full-sized guest kneels briefly to make sure the toys can see.",
+          "crossover": [
+            "town",
+            "cosmos"
+          ],
+          "requires": []
+        },
+        {
+          "id": "20.18",
+          "title": "Tomorrow Has Already Sent Flowers",
+          "setup": "Ann and the four ponies deliver an ice-covered Tomorrow sign, two empty flower basins, and a dim end-of-day lantern.",
+          "puzzle": "Melt the sign, FILL both basins, then WARM the lantern at 30–50° and 10–35% pressure. FREEZE two low display feet before the final high-pressure SPIN chime unlocks.",
+          "payoff": "Ann replaces her emergency folder with a photo album. The supposedly ominous ponies distribute flowers with impeccable manners.",
+          "crossover": [
+            "town",
+            "garden",
+            "cosmos"
+          ],
+          "requires": []
+        },
+        {
+          "id": "20.19",
+          "title": "A Room for the Last Volunteer",
+          "setup": "Ms Between and Yesterday prepare a small guest-room stall just for the coordinator, with a frozen pillow badge, empty tea cup, and two low lantern bases.",
+          "puzzle": "FREEZE both lantern bases and melt the pillow badge in parallel, then FILL the cup. WARM the separate bedside glow at 25–40° and 10–30% pressure to complete the quiet room.",
+          "payoff": "The door card bears a tiny pigeon drawing. Yesterday keeps watch outside so the organizer can enjoy the festival without being on call.",
+          "crossover": [
+            "town",
+            "kitchen",
+            "garden"
+          ],
+          "requires": []
+        },
+        {
+          "id": "20.20",
+          "title": "The Warmest Place Is the Welcome",
+          "setup": "The completed plaza gathers every delegation around two frozen welcome pennants, two ice-lantern footprints, a shared basin, a central heart lamp, and a celebration turbine.",
+          "puzzle": "Complete both MELT pennants and both FREEZE bases in any order; together they unlock FILL at the basin. WARM the heart at 30–50° and 10–35% pressure, then SPIN the turbine at 70% or more. Every prerequisite is local.",
+          "payoff": "The panorama lights up one contribution at a time. Everyone makes room at the table for the squad and its pigeon host; the final banner simply says Glad You Came.",
+          "crossover": [
+            "town",
+            "kitchen",
+            "garden",
+            "cave",
+            "cosmos"
+          ],
+          "requires": []
+        }
+      ]
+    }
+  ]
+}

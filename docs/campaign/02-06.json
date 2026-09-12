@@ -1,0 +1,1244 @@
+{
+  "packs": [
+    {
+      "id": "02",
+      "title": "The Midnight Sock Exchange",
+      "premise": "Pearl, a ghost laundromat keeper, runs a midnight exchange for socks whose partners disappeared. Lefty the detective sock and Pip the lint moth help her discover that the lonely laundry wants new friends, not necessarily identical partners.",
+      "arc": "Scenes 01–04 reopen basic service; 05–08 remix mismatched loads; 09–12 welcome kitchen, garden, cave, and cosmic customers; 13–16 prepare public exchange night; 17–19 assemble its stations; 20 lets everyone choose an improbable partner. Optional machine experiments in 14 and 16 are independent side calls.",
+      "signature": "Amber ghost silhouettes among indigo washers, rectangular ice panes over round machine art, hanging garment bays, and paired stations with conspicuously different settings. Finished laundry performs its reveal in scripted cutaways.",
+      "newArt": ["Pearl ghost clerk poses and expressions", "Lefty sock detective and interchangeable sock costumes", "Pip lint moth poses", "Washer and dryer shells with rectangular service windows", "Laundry baskets, receipt strips, tags, and matching-board tiles", "Clothesline sections and rectangular garment display frames", "Reusable lint clouds, bubbles, and embroidered patch overlays", "Moonlit shopfront and customer silhouette layers"],
+      "scenes": [
+        {
+          "id": "02.01",
+          "title": "A Receipt for Being Here",
+          "setup": "Pearl waits behind a frosted counter, trying to hand Lefty a receipt through a rectangular ice patch. Her amber welcome pad sits below and to the right.",
+          "puzzle": "Start at 50° and 50% pressure to MELT the counter patch from above. Then WARM the enabled welcome pad at 20–35° and 15–30% pressure, reducing both settings.",
+          "payoff": "Pearl stamps Lefty's receipt 'EXISTS, PROBABLY.' The shop sign brightens and one empty basket becomes the detective's office.",
+          "crossover": ["town"],
+          "requires": []
+        },
+        {
+          "id": "02.02",
+          "title": "The Sock Needs a Step",
+          "setup": "Lefty's first client occupies a high cubby. A wide dotted platform footprint sits beneath it, beside a small frozen nameplate at comfortable nozzle height.",
+          "puzzle": "FREEZE the platform at −10° or colder, sweeping across its broad rectangle. Its completion enables the separate nameplate MELT target above; switch to hot water and approach that target from above.",
+          "payoff": "In the completion cutaway, Lefty climbs the finished step and discovers the client is another left sock. They agree this is excellent professional networking.",
+          "crossover": ["town"],
+          "requires": []
+        },
+        {
+          "id": "02.03",
+          "title": "Two Tubs, One Moth",
+          "setup": "Pip advertises a bubble bath between two marked basins: a narrow, high rinse cup and a broad, low wash tray. Their instruction tag is frozen centrally.",
+          "puzzle": "MELT the tag to enable both FILL targets. Use liquid water above 0° in either order, repositioning above the narrow cup before sweeping the tray. Both basins must finish; neither feeds the other.",
+          "payoff": "Pip chooses the tiny cup. Pearl gives the enormous tray to one sock's visiting extended family of mittens.",
+          "crossover": ["kitchen", "town"],
+          "requires": []
+        },
+        {
+          "id": "02.04",
+          "title": "Please Hold the Applause Cycle",
+          "setup": "A stationary turbine protrudes from the first washer's front. A neighboring padded inspection station displays Pearl's finest ghost sheet, rigid with stage fright.",
+          "puzzle": "SPIN the exposed turbine with water above 0° and pressure at least 70%. Completion enables the inspection WARM zone: settle at 25–40° and 15–30% pressure without moving the nozzle far.",
+          "payoff": "The washer performs a scripted celebratory wobble. The sheet unfurls a tiny embroidered curtain call and Pearl takes the bow for it.",
+          "crossover": ["town"],
+          "requires": []
+        },
+        {
+          "id": "02.05",
+          "title": "Lint at the End of the Tunnel",
+          "setup": "Two rectangular MELT panes sit vertically above one another in the lint inspection rack. Pip's magnifying-glass silhouette shows through the lower pane.",
+          "puzzle": "Begin a central opening in the upper pane so subsequent hot droplets can reach the lower target. Widen the opening, then change nozzle position to finish both panes; a hole alone does not finish the job.",
+          "payoff": "The cleared rack reveals Pip examining an enormous lint specimen. Lefty pins up the case title: 'My Entire Missing Cousin.'",
+          "crossover": ["cave", "town"],
+          "requires": []
+        },
+        {
+          "id": "02.06",
+          "title": "A Hat for Three Elbows",
+          "setup": "A three-elbowed coat requests a display stand. Three rectangular FREEZE footprints rise in a staircase across the counter; its frozen claim tag rests at the right.",
+          "puzzle": "Complete the low, middle, and high stand blocks in any order using cold water. All three enable the claim-tag MELT target. Reach the highest block from above, then change temperature for the tag.",
+          "payoff": "A cutaway places the coat across the finished stand. Pearl labels it a hat, and the delighted coat immediately develops a very formal posture.",
+          "crossover": ["town"],
+          "requires": []
+        },
+        {
+          "id": "02.07",
+          "title": "Delicates and Indelicacies",
+          "setup": "Two stationary pressing pads face one another: a silk handkerchief on the left and a boisterous oven mitt on the right. Their setting cards disagree conspicuously.",
+          "puzzle": "WARM silk at 15–25° and 10–25% pressure; WARM the mitt at 40–55° and 35–50%. Either pad can finish first. Both enable a central FILL cup for the final rinse.",
+          "payoff": "The handkerchief produces an elegant flourish. The oven mitt copies it with immense dignity, accidentally presenting an embroidered picture of toast.",
+          "crossover": ["kitchen", "town"],
+          "requires": []
+        },
+        {
+          "id": "02.08",
+          "title": "The Lost Property Property",
+          "setup": "Lefty's basket office has acquired two tenants. Their small frozen lease plaques flank a central dotted shelf, with a dry tea basin underneath.",
+          "puzzle": "MELT either lease plaque to begin its branch: the left enables the shelf FREEZE target; the right enables the tea FILL basin. Complete both branches in any order, managing cold construction and liquid service separately.",
+          "payoff": "Pearl reveals that both tenants are the same extremely long scarf. It happily pays rent twice, in compliments, while Lefty opens a second office.",
+          "crossover": ["town", "kitchen"],
+          "requires": []
+        },
+        {
+          "id": "02.09",
+          "title": "Apron of the Soup Oracle",
+          "setup": "A visiting chef's apron hangs behind two side-by-side ice swatches. Beneath them, a stationary soup-testing pad sits beside a shallow wash basin.",
+          "puzzle": "MELT both swatches to enable the wash basin, then FILL it. Washing enables the testing pad; WARM at 30–45° and 15–30% pressure. The low basin and raised pad encourage two distinct aiming positions.",
+          "payoff": "The clean apron forecasts tomorrow's lunch in alphabet pasta. Pearl writes down 'SOUP' as though it were an astonishingly specific prophecy.",
+          "crossover": ["kitchen", "town"],
+          "requires": []
+        },
+        {
+          "id": "02.10",
+          "title": "Compost Formalwear",
+          "setup": "A gardening worm's three tiny waistcoats occupy a low inspection bench. A frozen soil label stands above a broad water basin, and three rectangular drying-rack footprints sit apart on the right.",
+          "puzzle": "MELT the label, then FILL the enabled basin. Its completion enables all three FREEZE rack blocks. Switch cold and complete each separated rectangle; decorative coat hooks do not act as obstacles.",
+          "payoff": "The worm models all three waistcoats in a cutaway and returns to composting dressed for an extremely small state dinner.",
+          "crossover": ["garden", "town"],
+          "requires": []
+        },
+        {
+          "id": "02.11",
+          "title": "Bat Cape, Day Shift",
+          "setup": "A cave courier has left a cape on a stationary care pad. Two ice inspection tiles are staggered above it, with plenty of nozzle room over each tile.",
+          "puzzle": "MELT both staggered tiles before the cape's WARM zone becomes active. Reposition between the tiles, then use 20–30° and 10–20% pressure on the cape. Finish by SPINning the newly enabled low drying turbine.",
+          "payoff": "The cape's owner arrives wearing sunglasses and thanks Pearl for accommodating the day shift. Pip applies for a job as a very small cape.",
+          "crossover": ["cave", "town"],
+          "requires": []
+        },
+        {
+          "id": "02.12",
+          "title": "Pocketful of Tuesday",
+          "setup": "A star traveler's trousers contain three labeled calendar pockets, shown as fixed rectangular stations. Monday is frozen, Tuesday needs warmth, and Wednesday has a dotted storage-box footprint.",
+          "puzzle": "MELT Monday to enable Tuesday, WARM Tuesday at 25–35° and 20–35% pressure, then FREEZE Wednesday's box. Work left to right across different heights; the calendar changes are presentation, with no time mechanic.",
+          "payoff": "The traveler retrieves three perfectly folded days. Pearl keeps a spare Thursday in the lost-property basket in case anyone has a difficult week.",
+          "crossover": ["cosmos", "town"],
+          "requires": []
+        },
+        {
+          "id": "02.13",
+          "title": "Admission by Odd Number",
+          "setup": "Exchange-night guests line the background while three ticket stations occupy a triangle: a frozen guest list, a blank ice badge footprint, and Pearl's dry welcome-tea basin.",
+          "puzzle": "MELT the guest list to enable the two lower stations. FREEZE the badge and FILL the basin in either order. Both then enable an upper WARM stamp pad requiring 20–35° and 15–25% pressure.",
+          "payoff": "Every guest receives a badge reading 'ODD ENOUGH.' A completely ordinary sock is warmly admitted under a temporary exemption.",
+          "crossover": ["town", "kitchen"],
+          "requires": []
+        },
+        {
+          "id": "02.14",
+          "title": "The Experimental Rinse River",
+          "setup": "Pearl's optional rinse exhibit has an upper inlet, a Y-junction, and two tubs behind rectangular ice plugs.",
+          "puzzle": "With FLOW, MELT the left plug and feed the inlet until its basin fills, enabling the right plug. MELT that plug; the fixed Y-split now divides inflow between both open branches. Keep feeding until right fills. Only connected-channel inflow counts; completed basins retain progress.",
+          "payoff": "Pip christens the miniature river with a paper bathtub. Pearl prints absurdly grand cruise tickets.",
+          "crossover": ["town", "garden"],
+          "requires": ["FLOW"]
+        },
+        {
+          "id": "02.15",
+          "title": "An Audience of Sleeves",
+          "setup": "The talent-show backdrop has three narrow frozen window panels above an inactive applause turbine. A broad rectangular stage footprint occupies the left foreground.",
+          "puzzle": "FREEZE the stage and MELT all three backdrop panels as independent preparations. Sweep the thin panels from separate overhead positions. Once all four preparations finish, SPIN the enabled applause turbine with positive-temperature water and at least 70% pressure.",
+          "payoff": "A cutaway arranges the sleeves around the stage. They applaud one another despite having no hands, and Pearl declares this unusually good attendance.",
+          "crossover": ["town"],
+          "requires": []
+        },
+        {
+          "id": "02.16",
+          "title": "Carousel of Unclaimed Cuffs",
+          "setup": "An optional demonstration washer carries two rectangular care pads around a slow oval track. Clear labels distinguish a wool cuff and a cotton cuff throughout their motion.",
+          "puzzle": "With MOTION enabled, follow the wool pad at 20–30° and 10–25% pressure until its WARM task finishes. Then follow cotton at 35–45° and 25–40%. Motion is deterministic and unhurried, with no time limit.",
+          "payoff": "The carousel stops for a scripted fashion parade. Lefty awards both cuffs honorary sock status; the main exchange needs no carousel to open.",
+          "crossover": ["town"],
+          "requires": ["MOTION"]
+        },
+        {
+          "id": "02.17",
+          "title": "The Pairing Committee",
+          "setup": "Pearl lays out two service columns. Each has a frozen biography card above a care pad; a shared dotted photograph plinth sits centrally below them.",
+          "puzzle": "MELT each biography to enable its own pad. WARM one at 15–25° and 10–25% pressure, the other at 40–50° and 30–45%. Both completed biographies and pads enable the final FREEZE plinth.",
+          "payoff": "The chosen pair—a bath mat and a bow tie—pose on the plinth in a cutaway. Their biographies agree on an intense enthusiasm for puddles.",
+          "crossover": ["town", "garden"],
+          "requires": []
+        },
+        {
+          "id": "02.18",
+          "title": "The Neighbors Bring Their Weather",
+          "setup": "Customers bring a garden cloak, cave scarf, and cosmic towel. Their fixed stations span the shop: wash basin left, ice display block center, frozen luggage tile right.",
+          "puzzle": "FILL the basin, FREEZE the display block, and MELT the luggage tile in any order. All three enable Pearl's central WARM hospitality pad at 25–40° and 15–30% pressure; plan the setting changes across the width.",
+          "payoff": "The guests trade weather stories while Pip nests in the towel's embroidered constellation. Pearl hangs a sign offering free emotional drying.",
+          "crossover": ["garden", "cave", "cosmos", "town"],
+          "requires": []
+        },
+        {
+          "id": "02.19",
+          "title": "Lefty's Last Empty Drawer",
+          "setup": "Lefty's original basket office stands beside a wide frozen drawer front. Two slim ice panes overlap vertically above Pearl's dormant portrait-light turbine.",
+          "puzzle": "MELT the drawer front independently. Start an opening through the upper pane, use it to reach the lower pane, then finish both. These three cleared targets enable a small FREEZE portrait stand, which enables the final SPIN turbine.",
+          "payoff": "The drawer contains a letter inviting Lefty to be Pearl's business partner. His detective hat becomes the new shop's smallest lampshade.",
+          "crossover": ["town"],
+          "requires": []
+        },
+        {
+          "id": "02.20",
+          "title": "Nobody Leaves Unpaired",
+          "setup": "Exchange night fills the shop. The welcome basin, display plinth, frozen matching board, care pad, and applause turbine form a semicircle around Pearl, Lefty, and Pip.",
+          "puzzle": "FILL the basin and FREEZE the plinth in either order; both enable the board MELT target. Clearing it enables WARM at 25–35° and 15–30% pressure, followed by the final SPIN turbine. All stations remain fixed and reachable.",
+          "payoff": "A scripted panorama pairs socks with mittens, capes with curtains, and Pearl with her colleague. Pip receives a matching detective hat.",
+          "crossover": ["town", "kitchen", "garden"],
+          "requires": []
+        }
+      ]
+    },
+    {
+      "id": "03",
+      "title": "Brine & Parcel",
+      "premise": "Clack the crab postmaster and Nori the anxious eel courier reopen a seabed post office. A shy octopus called Dot keeps mailing invitations to herself because she does not yet know anyone else's address.",
+      "arc": "Scenes 01–04 restore the counter; 05–08 distinguish sorting and packing stations; 09–12 connect distant neighborhoods; 13–16 expand delivery, including optional side demonstrations in 14 and 16; 17–19 trace Dot's invitations; 20 hosts the first neighborhood letter picnic.",
+      "signature": "Coral-pink mail slots in deep teal scenery, rectangular glass-front sorting cells, shell-stamp impressions, and tall address stacks paired with broad parcel basins. The hose keeps ordinary ballistic rules; underwater atmosphere and swimming are artwork or scripted reveals.",
+      "newArt": [
+        "Clack crab postmaster poses and stamp claws",
+        "Nori eel courier poses and satchel",
+        "Dot octopus poses, ink freckles, and invitation cards",
+        "Coral post-office wall and modular counter sections",
+        "Rectangular sorting cubbies and parcel service frames",
+        "Shell stamps, address plaques, route ribbons, and letter bundles",
+        "Seagrass, anemone, cave-mail, and star-mail decorative overlays",
+        "Postal bicycle, picnic table, and reusable delivery-cutaway poses"
+      ],
+      "scenes": [
+        {
+          "id": "03.01",
+          "title": "Postage Due on a Bubble",
+          "setup": "Clack's bubble customer waits above a wide postage basin. A dotted rectangular stamp-display footprint sits higher on the right, with clear nozzle space above it.",
+          "puzzle": "FILL the postage basin directly with water above 0°. Filling enables FREEZE on the display block; switch to −10° or colder and reposition above its raised outline. The bubble remains decorative throughout.",
+          "payoff": "Clack stamps the bubble in a cutaway. It contains a thank-you note from someone who appreciated yesterday's bubble.",
+          "crossover": [
+            "town"
+          ],
+          "requires": []
+        },
+        {
+          "id": "03.02",
+          "title": "Mailbox Below Sea Level",
+          "setup": "Nori points to a dotted rectangular mailbox plinth near the bottom of the board. Its frozen address card is higher and well clear of the top edge.",
+          "puzzle": "FREEZE the broad plinth, then MELT the enabled address card. Reposition above the high card before changing to hot water; the completed plinth remains stable.",
+          "payoff": "A cutaway installs the mailbox. Clack proudly labels it 'GROUND FLOOR,' provoking a thoughtful glance at all the ocean above.",
+          "crossover": [
+            "town",
+            "cave"
+          ],
+          "requires": []
+        },
+        {
+          "id": "03.03",
+          "title": "The Stamp-Licking Department",
+          "setup": "Two shallow stamp-moistening basins sit far apart across the counter. A central rectangular ice tile hides their shared instruction card.",
+          "puzzle": "MELT the instruction tile to enable both basins. FILL each with positive-temperature water in either order, moving between the wide left tray and the narrower raised right tray.",
+          "payoff": "Dot reveals eight immaculate stamp albums and absolutely no letters to send. Clack appoints her honorary head of enthusiastic preparation.",
+          "crossover": [
+            "kitchen",
+            "town"
+          ],
+          "requires": []
+        },
+        {
+          "id": "03.04",
+          "title": "Air Mail, Technically",
+          "setup": "A stationary sorting turbine occupies the left counter. An envelope-resting pad and a rectangular ice display footprint occupy the center and right.",
+          "puzzle": "SPIN the turbine at 70% pressure or more with liquid water. It enables WARM on the envelope pad at 25–40° and 15–25% pressure; completing that enables the FREEZE display block.",
+          "payoff": "Nori presents the office's first air-mail letter in a sealed decorative bubble. Clack adds an unnecessarily large umbrella.",
+          "crossover": [
+            "town",
+            "cosmos"
+          ],
+          "requires": []
+        },
+        {
+          "id": "03.05",
+          "title": "Return to Sandbar",
+          "setup": "Three frozen address tiles form a descending diagonal. The lowest tile partly sits beneath the middle one, with open nozzle space above each.",
+          "puzzle": "MELT all three tiles. Start an opening in the middle tile to let droplets reach the lower one, then finish both from suitable positions. All tiles enable a central FILL sorting tray.",
+          "payoff": "The recovered address reads 'the nice sandbar.' Nori unfolds a map showing that every local sandbar has received this review.",
+          "crossover": [
+            "garden",
+            "town"
+          ],
+          "requires": []
+        },
+        {
+          "id": "03.06",
+          "title": "Fragile, Contains Compliments",
+          "setup": "Two parcels rest on fixed care pads: a porcelain shell on the left and a heavy brass diving bell on the right. A shared packing-block footprint sits below.",
+          "puzzle": "WARM the shell at 15–25° and 10–20% pressure; WARM the bell at 40–55° and 35–50%. Either may finish first. Both enable the broad FREEZE packing block.",
+          "payoff": "Clack reveals both parcels contain compliments, carefully wrapped so they arrive without becoming sarcasm.",
+          "crossover": [
+            "town"
+          ],
+          "requires": []
+        },
+        {
+          "id": "03.07",
+          "title": "Seven Slots and a Shortcut",
+          "setup": "Seven decorative cubbies frame three actual frozen sorting tiles arranged as an inverted triangle. Beneath each tile is its own marked water tray.",
+          "puzzle": "MELT each tile to enable its corresponding FILL tray. Complete the three branches in any order, keeping the low central tray distinct from the two higher side trays. Empty decorative cubbies are not targets.",
+          "payoff": "Nori sorts a mountain of mail into three beautifully organized bundles. Clack uses the four spare cubbies for sandwiches.",
+          "crossover": [
+            "town",
+            "kitchen"
+          ],
+          "requires": []
+        },
+        {
+          "id": "03.08",
+          "title": "Oversize Personality",
+          "setup": "Dot's first outgoing envelope is enormous. Two separated rectangular support footprints flank its frozen postage panel; the supports and envelope are stationary.",
+          "puzzle": "FREEZE both support blocks in either order. They jointly enable the postage-panel MELT task. Clearing that panel enables the upper-right SPIN stamp turbine, demanding a cold-to-hot-to-high-pressure sequence.",
+          "payoff": "A cutaway reveals the envelope contains one tiny invitation. Dot explains that she wanted to leave plenty of room for a yes.",
+          "crossover": [
+            "town"
+          ],
+          "requires": []
+        },
+        {
+          "id": "03.09",
+          "title": "Soup by Registered Mail",
+          "setup": "A kitchen delivery occupies two counter heights: a tall frozen recipe panel above a broad soup-service basin. A thermometer pad stands apart on the right.",
+          "puzzle": "MELT the recipe panel, FILL the newly enabled basin, then WARM the separate tasting pad at 35–45° and 15–30% pressure. The basin accepts any liquid water; only the pad checks serving settings.",
+          "payoff": "Clack hands Nori a scripted parcel of soup and a separate registered letter containing the croutons' tracking number.",
+          "crossover": [
+            "kitchen",
+            "town"
+          ],
+          "requires": []
+        },
+        {
+          "id": "03.10",
+          "title": "Seeds with Forwarding Addresses",
+          "setup": "A garden club has mailed seed packets to a wandering-looking but stationary illustrated anemone. Two frozen labels flank a low dotted planter stand.",
+          "puzzle": "MELT the left label to enable a FILL preparation cup; MELT the right to enable the FREEZE planter stand. Completing both branches enables WARM on a seed-care pad at 20–30° and 15–25% pressure.",
+          "payoff": "The anemone blossoms in a cutaway, revealing permanent address numbers on every petal. Nori finally crosses out 'probably over there' on the route card.",
+          "crossover": [
+            "garden",
+            "town"
+          ],
+          "requires": []
+        },
+        {
+          "id": "03.11",
+          "title": "Echoes Need Envelopes",
+          "setup": "A cave resident has sent an echo for repair. Its illustrated jar sits behind two overlapping rectangular ice panes; a small care pad occupies the lower-left bench.",
+          "puzzle": "Open a hot-water channel through the upper MELT pane to reach the lower pane, then finish both. Their completion enables the jar's WARM pad at 25–35° and 10–25% pressure.",
+          "payoff": "The jar opens in a cutaway and says 'thank you' twice. Clack bills only once, on the grounds that the second voice sounded very sincere.",
+          "crossover": [
+            "cave",
+            "town"
+          ],
+          "requires": []
+        },
+        {
+          "id": "03.12",
+          "title": "A Constellation of Postal Codes",
+          "setup": "A star chart decorates the wall behind four fixed stations: two small frozen address plaques, a broad dotted map stand, and an exposed route turbine.",
+          "puzzle": "MELT both address plaques in either order, then FREEZE the enabled map stand. Completing the stand enables SPIN on the route turbine. Reposition across the board between the separated plaques instead of aiming at decorative stars.",
+          "payoff": "Nori's delivery map reveals a constellation shaped like an envelope. Clack worries that the universe has forgotten to include a return address.",
+          "crossover": [
+            "cosmos",
+            "town"
+          ],
+          "requires": []
+        },
+        {
+          "id": "03.13",
+          "title": "The Address Correction Bureau",
+          "setup": "Dot's repeated invitations fill three counter stations. A frozen addressee panel sits above a label-care pad, with a separate rectangular display footprint beside them.",
+          "puzzle": "MELT the panel to enable the pad. WARM the label at 20–30° and 15–25% pressure, then FREEZE the enabled display block. The puzzle alternates a small high target with two broader low targets.",
+          "payoff": "The corrected label reveals Dot has been inviting herself. Nori quietly replaces the office's 'unknown address' box with one reading 'let us help.'",
+          "crossover": [
+            "town"
+          ],
+          "requires": []
+        },
+        {
+          "id": "03.14",
+          "title": "Pneumatic, Except Wet",
+          "setup": "An optional delivery bench has a fixed Y-split feeding a long far channel and a shorter near channel closed by a rectangular ice plug.",
+          "puzzle": "With FLOW, feed the upper inlet until the far basin fills, enabling the near plug's MELT task. Clear it; the splitter now supplies both open channels. Continue until the near basin fills. Only connected-channel inflow counts, and filled basins retain progress.",
+          "payoff": "Clack delivers two waterproof postcards a magnificent twelve inches. Nori applauds the shorter postcard's extremely scenic detour.",
+          "crossover": [
+            "town",
+            "cave"
+          ],
+          "requires": [
+            "FLOW"
+          ]
+        },
+        {
+          "id": "03.15",
+          "title": "Eight Arms, Three Appointments",
+          "setup": "Dot volunteers at three stationary counters forming a broad triangle: stamp pad above, packing basin lower left, and frozen collection tile lower right. Each wears a distinct pictogram.",
+          "puzzle": "WARM the stamp pad at 15–30° and 10–25% pressure, FILL the basin, and MELT the collection tile in any order. All three enable a central FREEZE noticeboard base.",
+          "payoff": "A cutaway shows Dot serving all three desks while holding five cups of tea. She posts her first invitation addressed to 'my new coworkers.'",
+          "crossover": [
+            "town",
+            "kitchen"
+          ],
+          "requires": []
+        },
+        {
+          "id": "03.16",
+          "title": "Express Snail Demonstration",
+          "setup": "On an optional test track, a very solemn sea snail carries a rectangular warming cradle around a slow loop. A stationary dispatch turbine waits beside the track.",
+          "puzzle": "With MOTION enabled, follow the cradle and WARM it at 20–35° and 15–30% pressure; the cradle's full rectangle is the moving target. Then SPIN the enabled stationary dispatch turbine. No deadline applies.",
+          "payoff": "The snail receives an 'EXPRESS, EMOTIONALLY' sash. Nori keeps the ordinary satchel route open, so subsequent deliveries do not depend on the prototype.",
+          "crossover": [
+            "garden",
+            "town"
+          ],
+          "requires": [
+            "MOTION"
+          ]
+        },
+        {
+          "id": "03.17",
+          "title": "Care of Everyone",
+          "setup": "Three fixed invitation stations represent the garden club, cave resident, and star traveler. Each has a frozen name plaque above its own smaller stamp-care pad.",
+          "puzzle": "MELT each plaque to enable its pad. WARM garden at 20–30° and 15–25% pressure, cave at 30–40° and 20–35%, and star at 40–50° and 35–50%. Branches can finish in any order.",
+          "payoff": "Each invitation gains a visible stamped portrait of its recipient. Dot adds a fourth card addressed to the squad, with the return address finally filled in.",
+          "crossover": [
+            "garden",
+            "cave",
+            "cosmos"
+          ],
+          "requires": []
+        },
+        {
+          "id": "03.18",
+          "title": "Parcel Picnic Preparations",
+          "setup": "Clack's picnic service forms two columns: a frozen menu over a broad serving basin, and two dotted rectangular table blocks beside a dormant lantern turbine.",
+          "puzzle": "MELT the menu, then FILL its enabled basin. Independently FREEZE both table blocks. Finishing both branches enables the lantern SPIN target; switch to positive water and high pressure for the final station.",
+          "payoff": "A scripted table-setting reveals that Clack has packed a separate fork for each of Dot's arms. Nori contributes eight tiny napkin rings.",
+          "crossover": [
+            "kitchen",
+            "garden",
+            "town"
+          ],
+          "requires": []
+        },
+        {
+          "id": "03.19",
+          "title": "The Letter with No Destination",
+          "setup": "One final envelope rests behind a broad ice panel at center. Two care pads flank it, labeled handwriting and seal; a small display-block footprint sits below.",
+          "puzzle": "MELT the central panel to enable both pads. WARM handwriting at 15–25° and 10–25% pressure, seal at 35–45° and 30–45%. Both enable the final FREEZE display block.",
+          "payoff": "The envelope contains Dot's unsent thank-you to whoever might become her friend. Clack marks its delivery status 'already here' and places it on the counter.",
+          "crossover": [
+            "town"
+          ],
+          "requires": []
+        },
+        {
+          "id": "03.20",
+          "title": "Signed for by the Whole Reef",
+          "setup": "The picnic tableau frames five fixed service stations: guest-list ice panel, wide welcome basin, dotted postcard stand, address-care pad, and celebration turbine. The three postal friends watch from the background.",
+          "puzzle": "MELT the guest list; then FILL the basin and FREEZE the stand in either order. Both enable WARM on the address pad at 25–40° and 15–30% pressure, followed by the final SPIN turbine.",
+          "payoff": "Neighbors arrive in a scripted panorama. Dot receives a mailbox overflowing with replies, and Nori has an address labeled 'our picnic.'",
+          "crossover": [
+            "town",
+            "garden",
+            "cosmos"
+          ],
+          "requires": []
+        }
+      ]
+    },
+    {
+      "id": "04",
+      "title": "The Mostly Clockwork Circus",
+      "premise": "Tick, a clock-headed ringmaster, wants every act to run precisely on schedule. Bea the brass giraffe and Tock the metronome beetle help the squad discover that the circus works best when its performers have room to be themselves.",
+      "arc": "Scenes 01–04 open the tent; 05–08 rehearse contrasting acts; 09–12 host visiting performers; 13–16 stretch the program, with independent optional motion and rhythm demonstrations; 17–19 replace Tick's rigid schedule with a welcoming show; 20 gives Bea the unhurried encore she wanted.",
+      "signature": "Striped canvas, brass instruments, large readable preparation rectangles around decorative clockwork circles, and repeated switches between powerful drive turbines and gentle performer-care pads. Performance motion is scripted after completion except where explicitly gated.",
+      "newArt": [
+        "Tick clock-headed ringmaster expressions and cane poses",
+        "Bea brass giraffe standing, bowing, and scarf poses",
+        "Tock metronome beetle and small percussion accessories",
+        "Modular striped tent, curtain, bleacher, and ticket-booth sections",
+        "Brass turbine housings, fixed rehearsal pads, and display plinth frames",
+        "Juggling cups, flower collars, echo drums, and star scarves",
+        "Program cards, applause placards, and gear-shaped decorative borders",
+        "Reusable scripted bow, spotlight, confetti, and audience-reaction layers"
+      ],
+      "scenes": [
+        {
+          "id": "04.01",
+          "title": "The Ringmaster Is Six Minutes Tall",
+          "setup": "Tick's enormous clock-face hat is covered by a rectangular ice panel. His microphone-care pad sits lower on the opposite side of the entrance.",
+          "puzzle": "MELT the hat panel to enable the microphone WARM zone. Move across the entrance and settle at 25–35° and 15–30% pressure; the clock hands are decorative, with no deadline.",
+          "payoff": "Tick announces that the performance begins at 'tall past six.' Tock quietly turns the printed schedule sideways to make it fit.",
+          "crossover": [
+            "town"
+          ],
+          "requires": []
+        },
+        {
+          "id": "04.02",
+          "title": "A Giraffe-Sized Entrance",
+          "setup": "Bea waits behind the painted entrance arch. Two dotted rectangular presentation blocks sit side by side below her frozen name plaque, with clear aiming space above all three.",
+          "puzzle": "FREEZE both blocks in any order. Their completion enables the name-plaque MELT target. Switch hot and clear the plaque; the arch is scenery and does not block the nozzle or stream.",
+          "payoff": "Bea steps onto the finished blocks in a cutaway. The unveiled sign reads 'INTRODUCING BEA,' then unfolds several extra feet of polite qualifications.",
+          "crossover": [
+            "town"
+          ],
+          "requires": []
+        },
+        {
+          "id": "04.03",
+          "title": "The Smallest Splash Spectacular",
+          "setup": "Tock has booked two splash basins for his water act: a wide low trough and a very narrow raised cup. A frozen act card stands between them.",
+          "puzzle": "MELT the act card to enable both FILL basins. Supply liquid water to each, moving close above the raised cup for a clear downward stream. Neither basin automatically fills the other.",
+          "payoff": "Tock performs a scripted splash in the tiny cup. The enormous trough is reserved for the equally dramatic towel service.",
+          "crossover": [
+            "kitchen",
+            "town"
+          ],
+          "requires": []
+        },
+        {
+          "id": "04.04",
+          "title": "Round of Applause, Square of Care",
+          "setup": "A stationary wheel-drive turbine sits beside a square costume-care pad. Bea's folded scarf waits on the pad, and the decorative applause wheel hangs behind both.",
+          "puzzle": "SPIN the turbine with positive-temperature water and at least 70% pressure. Completion enables WARM on the scarf pad at 20–35° and 10–25% pressure; reduce pressure before tending the scarf.",
+          "payoff": "The wheel turns only in the completion animation, revealing applause cards in eight languages. Bea chooses the one that simply shows a happy sandwich.",
+          "crossover": [
+            "town"
+          ],
+          "requires": []
+        },
+        {
+          "id": "04.05",
+          "title": "Peeking Through the Program",
+          "setup": "Two tall MELT panels overlap vertically in Tick's frozen program stand. A small illuminated rehearsal pad sits off to the right, initially inactive.",
+          "puzzle": "Open a central channel through the upper panel to reach the lower one, then finish clearing both. This enables the rehearsal pad; WARM it at 25–40° and 20–35% pressure.",
+          "payoff": "The program reveals that Bea has been scheduled to juggle the intermission. She requests a slightly more tangible prop and is handed a biscuit.",
+          "crossover": [
+            "town",
+            "kitchen"
+          ],
+          "requires": []
+        },
+        {
+          "id": "04.06",
+          "title": "Polish for a Nervous Neck",
+          "setup": "Bea's rehearsal bench holds a low scarf-care pad and a higher brass-collar pad. A broad rectangular portrait-base footprint waits below the gap between them.",
+          "puzzle": "WARM the scarf at 15–25° and 10–25% pressure, and the collar at 40–55° and 30–45%. Complete either first; both enable the FREEZE portrait base. Shift aim and settings between the separated pads.",
+          "payoff": "Bea poses in the completion cutaway, scarf comfortably crooked. Tick updates her program portrait to include the crooked bit.",
+          "crossover": [
+            "town"
+          ],
+          "requires": []
+        },
+        {
+          "id": "04.07",
+          "title": "Two Acts Enter, Both Get Tea",
+          "setup": "Two rehearsal columns face each other. Tock's frozen cue card sits above a drum turbine; Bea's frozen prop card sits above a shallow tea basin.",
+          "puzzle": "MELT either card to activate its own branch. SPIN Tock's turbine with high-pressure liquid water and FILL Bea's basin with liquid water. Both branches must finish, but their order is open.",
+          "payoff": "The cutaway reveals Tock performing a drumroll while Bea takes an elaborate sip. The audience applauds the remarkable coordination of refreshments.",
+          "crossover": [
+            "kitchen",
+            "town"
+          ],
+          "requires": []
+        },
+        {
+          "id": "04.08",
+          "title": "The Dramatically Level Table",
+          "setup": "Three rectangular FREEZE footprints form the illustrated bases of a circus table. A small frozen ribbon plaque hangs above the center, separate from the blocks.",
+          "puzzle": "Complete all three cold construction targets, moving along their staggered heights. Their completion enables MELT on the ribbon plaque. The finished blocks remain stable; there is no balance or support simulation.",
+          "payoff": "A scripted reveal places a perfectly ordinary table on the bases. Tick bills it as 'a breathtaking absence of wobble,' and Bea looks deeply relieved.",
+          "crossover": [
+            "town"
+          ],
+          "requires": []
+        },
+        {
+          "id": "04.09",
+          "title": "The Teacup Juggler's Day Off",
+          "setup": "A visiting kitchen performer has three stationary tea-service cups arranged diagonally. A frozen recipe tile enables them; a large care pad waits at the bottom.",
+          "puzzle": "MELT the recipe, then FILL all three cups with liquid water, repositioning above each raised basin. The completed cups enable WARM at 30–40° and 15–25% pressure on the bottom pad.",
+          "payoff": "The performer juggles the prepared cups only in the cutaway. Bea holds the biscuits in a much less aerial supporting role.",
+          "crossover": [
+            "kitchen",
+            "town"
+          ],
+          "requires": []
+        },
+        {
+          "id": "04.10",
+          "title": "A Bouquet with Stage Directions",
+          "setup": "A garden clown's flower collar decorates a central care pad. Two small rectangular vase-stand footprints flank a broad watering basin along the lower bench.",
+          "puzzle": "FILL the watering basin and FREEZE both vase stands in any order. All three enable WARM on the collar pad at 20–30° and 10–25% pressure. Target outlines remain clear of decorative stems.",
+          "payoff": "The collar blooms in a cutaway, each flower bowing in a different direction. Tock calls it the first act with its own enthusiastic audience.",
+          "crossover": [
+            "garden",
+            "town"
+          ],
+          "requires": []
+        },
+        {
+          "id": "04.11",
+          "title": "An Echo with Top Billing",
+          "setup": "A cave performer's drum sits on a stationary care pad beneath two narrow frozen sound-check tiles. An exposed accompaniment turbine stands well to the left.",
+          "puzzle": "MELT both tiles to enable the drum pad. WARM it at 25–40° and 15–30% pressure, then SPIN the enabled accompaniment turbine. The sound effects follow completion and require no acoustic simulation.",
+          "payoff": "The echo repeats Tick's introduction and receives its own curtain call. Tock writes 'plus one' on the dressing-room door.",
+          "crossover": [
+            "cave",
+            "town"
+          ],
+          "requires": []
+        },
+        {
+          "id": "04.12",
+          "title": "Orbiting the Snack Break",
+          "setup": "A cosmic scarf performer rests on a fixed preparation pad. Three rectangular star-display footprints form a gentle arc above a frozen act placard.",
+          "puzzle": "FREEZE the three display blocks in any order, then MELT the enabled placard. Clearing it enables WARM on the scarf pad at 30–45° and 20–35% pressure. Ordinary water gravity applies throughout preparation.",
+          "payoff": "In the cutaway, the scarf's painted planets orbit a biscuit. Bea asks whether astronomy has always been this relatable.",
+          "crossover": [
+            "cosmos",
+            "kitchen"
+          ],
+          "requires": []
+        },
+        {
+          "id": "04.13",
+          "title": "Too Many Things at Eight O'Clock",
+          "setup": "Tick's program board has three frozen appointment strips in a vertical staircase. Each strip sits beside its own small fixed care pad; distinct clock icons connect the pairs.",
+          "puzzle": "MELT each strip to enable its paired WARM pad. The pads require 20–30°/10–25% pressure, 30–40°/20–35%, and 40–50°/30–45%. Complete the three branches in any order; clock art imposes no timing requirement.",
+          "payoff": "The restored schedule reveals three simultaneous solos. Tick changes the heading to 'a friendly trio' and visibly relaxes one clock hand.",
+          "crossover": [
+            "town"
+          ],
+          "requires": []
+        },
+        {
+          "id": "04.14",
+          "title": "The Rehearsal Wheel Rehearses",
+          "setup": "An optional rehearsal wheel carries one rectangular brass-care pad around a slow tall oval. Two stationary ribbon-care pads sit beyond opposite sides of its route.",
+          "puzzle": "With MOTION, track and WARM brass at 45–60° and 35–50% pressure. WARM both fixed ribbons at 15–25° and 10–20% pressure. All three tasks start active; choose between finishing gentle stationary work first or following the moving brass. No deadline applies.",
+          "payoff": "The wheel stops for a scripted bow between its two ribbons. Bea solemnly introduces it as a surprisingly well-dressed colleague.",
+          "crossover": [
+            "town"
+          ],
+          "requires": [
+            "MOTION"
+          ]
+        },
+        {
+          "id": "04.15",
+          "title": "Landing on a Compliment",
+          "setup": "Bea's next act has three low rectangular stage footprints and two frozen compliment cards above them. The cards and outlines are separated across a broad open rehearsal floor.",
+          "puzzle": "FREEZE all three stage blocks in any order, then MELT the two enabled compliment cards. Both cards enable a small FILL refreshment cup. The act begins only in the completion cutaway, with no live landing physics.",
+          "payoff": "Bea makes one modest scripted hop onto the finished stage. The cards unfold to read 'LOVELY HOP' and 'EXCELLENT ARRIVAL.'",
+          "crossover": [
+            "town",
+            "garden"
+          ],
+          "requires": []
+        },
+        {
+          "id": "04.16",
+          "title": "Tock Takes a Breath",
+          "setup": "An optional percussion desk presents two stationary turbine targets with large beat indicators. A fixed rehearsal-care pad sits between them and lights after both beats register.",
+          "puzzle": "With PULSE enabled, apply high-pressure liquid water to each SPIN turbine during its visibly open beat window, then WARM the pad at 25–35° and 15–30% pressure. Untimed accessibility mode keeps both beat gates open until completed.",
+          "payoff": "Tock performs a drumroll with a conspicuously satisfying pause. Tick writes the pause into the music; all subsequent scenes work without rhythmic gates.",
+          "crossover": [
+            "town"
+          ],
+          "requires": [
+            "PULSE"
+          ]
+        },
+        {
+          "id": "04.17",
+          "title": "The Quietest Drumroll",
+          "setup": "Tock's fixed percussion turbine stands between Bea's scarf-care pad and a guest's flower-care pad. The two gentle pads are inactive until the turbine has been serviced.",
+          "puzzle": "SPIN the turbine at 70% pressure or more. Then WARM scarf at 20–30° and 10–25% pressure and flowers at 30–40° and 15–30%, in either order. Completed turbine progress remains complete after pressure drops.",
+          "payoff": "The reveal replaces the thunderous drumroll with delicate fingertip taps. Bea begins her introduction without hurrying, while the flowers politely stop bowing for a moment.",
+          "crossover": [
+            "garden",
+            "town"
+          ],
+          "requires": []
+        },
+        {
+          "id": "04.18",
+          "title": "Every Seat Is the Good Seat",
+          "setup": "The audience entrance has two rectangular seating-block footprints, a frozen hospitality sign, a drink basin, and a house-light turbine. The stations form two side-by-side columns.",
+          "puzzle": "FREEZE both seating blocks independently of MELTing the sign. The sign enables FILL on the basin; completed seating and refreshments jointly enable the final SPIN turbine. Plan cold construction and liquid service across the two columns.",
+          "payoff": "A cutaway fills the seats with kitchen, cave, and garden visitors. Tick personally labels every chair 'BEST VIEW,' and somehow means it.",
+          "crossover": [
+            "kitchen",
+            "cave",
+            "garden",
+            "town"
+          ],
+          "requires": []
+        },
+        {
+          "id": "04.19",
+          "title": "The Encore in the Coat Pocket",
+          "setup": "Bea's coat hangs behind a tall ice panel above a shorter pocket panel. A small note-care pad rests to the right, beside a dotted display-block footprint.",
+          "puzzle": "Channel through the upper MELT panel to reach the pocket panel, then finish both. WARM the enabled note pad at 20–35° and 10–25% pressure; that enables the FREEZE display block.",
+          "payoff": "The pocket note asks for one more bow with all her friends. Tick tears a blank page from the schedule and writes 'as long as you like.'",
+          "crossover": [
+            "town"
+          ],
+          "requires": []
+        },
+        {
+          "id": "04.20",
+          "title": "The Show Goes On When Ready",
+          "setup": "The ring frames a curtain ice panel, stage footprint, two performer-care pads, and the applause turbine. Tick, Bea, and Tock wait in the backdrop.",
+          "puzzle": "MELT the curtain panel and FREEZE the stage in either order. Both enable WARM on Bea's pad at 20–30°/10–25% pressure and Tock's at 35–45°/25–40%. Both pads enable the final SPIN applause turbine.",
+          "payoff": "A scripted ensemble bow includes the echo, flowers, scarf, and proud rehearsal wheel. Tick's clock face replaces its numbers with little pictures of everyone who came.",
+          "crossover": [
+            "town",
+            "garden",
+            "cave",
+            "cosmos"
+          ],
+          "requires": []
+        }
+      ]
+    },
+    {
+      "id": "05",
+      "title": "Borough of Very Small Affairs",
+      "premise": "A miniature town occupies a desktop organizer. Mayor Midge, Clerk Quill the hedgehog, and Inspector Pin the beetle enlist the squad to thaw its civic services, then discover that their smallest residents need a welcoming common square more than additional paperwork.",
+      "arc": "Scenes 01–04 reopen basic services; 05–08 untangle parallel applications; 09–12 welcome unusual residents; 13–16 reconsider civic habits, with optional measurement demonstrations in 14 and 16; 17–19 prepare a commons and charter; 20 replaces the final permit queue with a neighborhood gathering.",
+      "signature": "Giant stationery establishes the tiny scale, while rectangular application trays and approval pads make prerequisites visible as annotated diagrams. Two-column services, stacked archive panes, and gentle stamp calibration distinguish administrative puzzles from mechanical repair.",
+      "newArt": [
+        "Mayor Midge seed-sized mouse poses and ceremonial sash",
+        "Clerk Quill miniature hedgehog poses and pen accessories",
+        "Inspector Pin beetle poses and magnifying-lens badge",
+        "Desktop-organizer streets, corkboard skyline, and modular counter windows",
+        "Application cards, accessible pictogram stamps, queue signs, and approval ribbons",
+        "Rectangular archive boxes, basin ink trays, and ice display footprints",
+        "Giant pencil, eraser, paperclip, and ruler background props",
+        "Commons furniture and reusable resident portrait tokens"
+      ],
+      "scenes": [
+        {
+          "id": "05.01",
+          "title": "Window One Is Having a Day",
+          "setup": "Clerk Quill sits behind a frozen rectangular service window. A small stamp-conditioning pad stands below it, while the giant pencil skyline establishes the borough's scale.",
+          "puzzle": "MELT the window to enable the stamp WARM target. Reposition above the lower pad and use 20–35° and 15–30% pressure; the painted counter does not physically block water.",
+          "payoff": "Quill raises a sign reading 'OPEN TO REASON.' Mayor Midge celebrates by being the first resident to ask where the queue begins.",
+          "crossover": [
+            "town"
+          ],
+          "requires": []
+        },
+        {
+          "id": "05.02",
+          "title": "A Permit to Reach the Counter",
+          "setup": "A tiny resident waits in the background beside two dotted rectangular access-platform footprints. A frozen accessibility notice is mounted separately above the right block.",
+          "puzzle": "FREEZE the two broad platform blocks in either order, then MELT the enabled notice. Keep the nozzle above each footprint while building; hot water on the notice cannot undo completed construction.",
+          "payoff": "A cutaway shows residents using the finished platform. Quill immediately abolishes the application fee for reaching the application window.",
+          "crossover": [
+            "town"
+          ],
+          "requires": []
+        },
+        {
+          "id": "05.03",
+          "title": "Public Fountain, Private Teacup",
+          "setup": "Separate rectangular ice covers hang above a broad low fountain basin and a narrow raised testing cup. Both basins have open side access.",
+          "puzzle": "Both FILL basins start active. Use hot water to MELT openings through their covers, letting later droplets fill below; direct pouring from the open sides also works. Finish both covers and both basins, choosing local pairs or alternating across the counter.",
+          "payoff": "The teacup fountain starts in a scripted reveal. Inspector Pin declares it publicly refreshing and requests a biscuit-testing department.",
+          "crossover": [
+            "kitchen",
+            "town"
+          ],
+          "requires": []
+        },
+        {
+          "id": "05.04",
+          "title": "The Official Opening of the Fan",
+          "setup": "A stationary ventilation turbine sits beside an inactive ceremonial-ribbon care pad. Mayor Midge's ribbon is visibly enormous compared with the tiny reception desk.",
+          "puzzle": "SPIN the turbine with liquid water and pressure at least 70%. This enables the ribbon WARM target; lower settings to 25–40° and 15–25% pressure before tending the nearby pad.",
+          "payoff": "The fan turns in the completion cutaway and flutters the ribbon beautifully. Midge opens the office by politely untying its bow.",
+          "crossover": [
+            "town"
+          ],
+          "requires": []
+        },
+        {
+          "id": "05.05",
+          "title": "Triplicate, but Make It Legible",
+          "setup": "Three frozen archive panels form a descending stack down the left wall. The middle and bottom rectangles overlap vertically; a clean-document pad waits on the right.",
+          "puzzle": "MELT all three panels, using an opening through the middle pane to send later droplets toward the bottom one. Finish each panel; then WARM the enabled document pad at 20–30° and 10–25% pressure.",
+          "payoff": "The recovered triplicate forms all say 'PLEASE USE ONE COPY.' Quill places two in the borough museum of very recent history.",
+          "crossover": [
+            "town",
+            "cave"
+          ],
+          "requires": []
+        },
+        {
+          "id": "05.06",
+          "title": "License to Be a Puddle",
+          "setup": "A puddle applicant is represented by a smiling portrait card. Its frozen location plaque stands beside a low water basin and a dotted rectangular name-sign base.",
+          "puzzle": "MELT the plaque to enable two branches: FILL the basin for the puddle's approved address, and FREEZE the sign base. Complete those branches in either order, changing temperature between water service and construction.",
+          "payoff": "The cutaway places a tiny 'RESIDENT' sign beside the puddle. Inspector Pin immediately becomes its first reflection and receives a friendly wave.",
+          "crossover": [
+            "garden",
+            "town"
+          ],
+          "requires": []
+        },
+        {
+          "id": "05.07",
+          "title": "The Department of Warm Regards",
+          "setup": "Two stamp-care pads occupy opposite ends of the desk. The condolence stamp has a soft blue label; the celebratory stamp has a bright brass label. A shared ink basin sits centrally.",
+          "puzzle": "WARM blue at 15–25° and 10–20% pressure, brass at 40–50° and 30–45%. Both completed pads enable FILL on the central basin. Choose either pad first and read each label before changing settings.",
+          "payoff": "Quill reveals both stamps print 'WE'RE HERE FOR YOU,' with different amounts of confetti. Midge requests a sensible middle amount.",
+          "crossover": [
+            "town"
+          ],
+          "requires": []
+        },
+        {
+          "id": "05.08",
+          "title": "Queue for the Queue-Free Window",
+          "setup": "Two service windows each display a frozen appointment card. The left card connects visibly to a rectangular seating footprint; the right connects to a refreshment basin.",
+          "puzzle": "MELT each card to enable its branch, then FREEZE the seat block and FILL the basin in either order. Both branches enable an upper WARM information pad at 25–35° and 15–30% pressure.",
+          "payoff": "The final sign invites residents to sit anywhere while Quill brings the paperwork to them. The old queue rope becomes an extremely dignified washing line.",
+          "crossover": [
+            "town",
+            "kitchen"
+          ],
+          "requires": []
+        },
+        {
+          "id": "05.09",
+          "title": "Café Zoning for One Crumb",
+          "setup": "A kitchen entrepreneur proposes a café beneath a giant biscuit. A frozen site-plan panel sits above a broad preparation basin; two small rectangular table-block footprints stand on the right.",
+          "puzzle": "MELT the site plan and FILL its enabled basin. Independently FREEZE both table blocks. All preparations enable a WARM menu pad at 30–40° and 15–25% pressure.",
+          "payoff": "The café opens in a cutaway with one crumb divided into a tasting menu. Inspector Pin awards it three enthusiastic magnifying glasses.",
+          "crossover": [
+            "kitchen",
+            "town"
+          ],
+          "requires": []
+        },
+        {
+          "id": "05.10",
+          "title": "The Walking Leaf Applies to Stay",
+          "setup": "An illustrated leaf insect waits beside a garden-registration desk. Two frozen address plaques flank a central plant-care pad, with a broad watering basin below.",
+          "puzzle": "MELT both plaques to enable the FILL basin. Filling enables WARM on the care pad at 20–30° and 10–25% pressure. Reposition between the high plaques before tending the two low stations.",
+          "payoff": "Quill registers the leaf insect as both resident and welcome shade provider. The insect accepts the address but politely declines weekly pruning.",
+          "crossover": [
+            "garden",
+            "town"
+          ],
+          "requires": []
+        },
+        {
+          "id": "05.11",
+          "title": "Permission to Echo Politely",
+          "setup": "A cave resident's sound permit is frozen into two vertically overlapping archive panes. A fixed microphone-care pad and an inactive announcement turbine sit separately on the right.",
+          "puzzle": "Begin a channel through the upper MELT pane to reach the lower one, then finish both. WARM the enabled microphone at 20–35° and 15–25% pressure, followed by SPIN on the announcement turbine.",
+          "payoff": "A scripted announcement welcomes the echo as a resident. It repeats the welcome, prompting Midge to create a deputy mayor of making people feel included.",
+          "crossover": [
+            "cave",
+            "town"
+          ],
+          "requires": []
+        },
+        {
+          "id": "05.12",
+          "title": "A Postal Code for a Moonbeam",
+          "setup": "A cosmic visitor needs an address. Three dotted rectangular map-marker footprints sit at different heights beside a frozen registration panel; star paths behind them are decorative.",
+          "puzzle": "FREEZE all three markers, then MELT the enabled registration panel. Clearing it enables a fixed WARM signature pad at 30–45° and 20–35% pressure. Move above each marker; no beam routing is involved.",
+          "payoff": "The registered address reads 'third sparkle after the pencil.' Inspector Pin stamps the visitor's reflected portrait and admires the exceptionally tidy handwriting.",
+          "crossover": [
+            "cosmos",
+            "town"
+          ],
+          "requires": []
+        },
+        {
+          "id": "05.13",
+          "title": "The Exception Has an Appointment",
+          "setup": "Three frozen application cards form a triangle around a central care pad. They belong to the puddle, leaf insect, and moonbeam, none of whom fits the office's old residency form.",
+          "puzzle": "MELT all three separated cards in any order to enable the central WARM pad. Hold 25–35° and 15–30% pressure there, then FREEZE the enabled broad charter-display base beneath it.",
+          "payoff": "Quill replaces the form's species boxes with a blank line reading 'tell us about yourself.' The stack of exception paperwork becomes significantly shorter.",
+          "crossover": [
+            "garden",
+            "cosmos",
+            "town"
+          ],
+          "requires": []
+        },
+        {
+          "id": "05.14",
+          "title": "Weights and Measures and Biscuits",
+          "setup": "An optional inspection bench has a fixed water-collection pan left and a rectangular ice-counterweight footprint right. A scale indicator compares their masses.",
+          "puzzle": "With BALANCE enabled, FREEZE the counterweight, then FILL the opposite pan to its calibrated capacity. Matching masses activates a separate stationary certification pad; WARM it at 20–35° and 15–25% pressure. No target rides a moving pan.",
+          "payoff": "Inspector Pin certifies one municipal biscuit as 'fairly shared.' The ordinary café and all later services remain open without the experimental scale.",
+          "crossover": [
+            "kitchen",
+            "town"
+          ],
+          "requires": [
+            "BALANCE"
+          ]
+        },
+        {
+          "id": "05.15",
+          "title": "A Meeting with Enough Chairs",
+          "setup": "The proposed commons has three separated rectangular seat-block footprints along the lower board. Two frozen welcome plaques sit above them, showing a leaf and a small star.",
+          "puzzle": "FREEZE the three seat blocks before MELTing the enabled welcome plaques. Both plaques enable a broad FILL refreshment basin. Reposition above the narrow plaques, then change to a comfortable basin-filling stream.",
+          "payoff": "Residents gather in a scripted meeting. The puddle receives a seat reserved for its reflection, and Midge admits this was missing from the original seating plan.",
+          "crossover": [
+            "garden",
+            "cosmos",
+            "town"
+          ],
+          "requires": []
+        },
+        {
+          "id": "05.16",
+          "title": "Sunshine Occupancy Inspection",
+          "setup": "An optional daylight desk has a fixed rightward lamp, two rectangular mirror sockets, a frozen lamp aperture, and a detector beside Midge's signature pad.",
+          "puzzle": "With OPTICS, FREEZE both preoriented mirrors: upper-right at 45° backslash, lower-right at 45° slash. Light travels right, down, then left to the detector. MELT the aperture; actual detection enables WARM at 25–35° and 15–30% pressure.",
+          "payoff": "Sunshine lands on Midge's picnic napkin. Inspector Pin certifies an excellent place for lunch.",
+          "crossover": [
+            "cosmos",
+            "garden",
+            "town"
+          ],
+          "requires": [
+            "OPTICS"
+          ]
+        },
+        {
+          "id": "05.17",
+          "title": "The Public Notice Is Good News",
+          "setup": "Three frozen notice strips span the wall over three corresponding care pads. Their pictograms represent garden hours, café service, and quiet cave visits, with each branch clearly connected by a printed line.",
+          "puzzle": "MELT each strip, then WARM its enabled pad: garden 20–30°/10–25% pressure, café 35–45°/20–35%, cave 25–35°/15–30%. Complete the branches in any order, moving across the three distinct station heights.",
+          "payoff": "The notices announce free shade, shared crumbs, and welcome echoes. Quill adds a fourth handwritten notice: 'It is fine to ask us things.'",
+          "crossover": [
+            "garden",
+            "kitchen",
+            "cave",
+            "town"
+          ],
+          "requires": []
+        },
+        {
+          "id": "05.18",
+          "title": "One Square, Several Kinds of Neighbor",
+          "setup": "The commons bench holds a watering basin, two rectangular table-block footprints, a frozen route plaque, and a stationary house-light turbine. The plaque stands above the other stations.",
+          "puzzle": "FILL the basin, FREEZE both table blocks, and MELT the route plaque in any order. All four preparations enable the final SPIN turbine. Plan the temperature changes and keep access above the high plaque.",
+          "payoff": "A scripted reveal turns the organizer into a shared square. The leaf insect supplies shade while the moonbeam volunteers for the evening shift.",
+          "crossover": [
+            "garden",
+            "cosmos",
+            "town"
+          ],
+          "requires": []
+        },
+        {
+          "id": "05.19",
+          "title": "The Last Unnecessary Form",
+          "setup": "Quill's document has two overlapping ice panels above an active basin. An archive-box footprint stands left of this stack; a document-care pad waits on the right.",
+          "puzzle": "FREEZE the archive independently. In the other branch, MELT openings through both panels so later droplets FILL the basin, or pour from its open side. Finish both panels and basin; these plus the archive enable WARM at 20–30° and 10–25% pressure.",
+          "payoff": "The form requests permission to enjoy the square. Quill files it under 'ideas we have kindly outgrown.'",
+          "crossover": [
+            "town"
+          ],
+          "requires": []
+        },
+        {
+          "id": "05.20",
+          "title": "Citizens of the Welcome Mat",
+          "setup": "Midge, Quill, and Pin frame the new commons. A frozen charter panel stands above a welcome basin and display-block footprint; two signature-care pads flank the group.",
+          "puzzle": "MELT the charter, then FILL the basin and FREEZE the display block in either order. Both enable WARM on Quill's pad at 20–30°/10–25% pressure and Midge's at 35–45°/25–40%. Complete both signatures.",
+          "payoff": "The charter unfolds: 'If you are here, pull up a chair.' Neighbors sign with footprints, leaves, reflections, and one very carefully measured biscuit crumb.",
+          "crossover": [
+            "town",
+            "garden",
+            "kitchen",
+            "cosmos"
+          ],
+          "requires": []
+        }
+      ]
+    },
+    {
+      "id": "06",
+      "title": "The Great Pudding Republic",
+      "premise": "President Wobble the pudding, Captain Crumb the biscuit, and Sprinkle the jellybean organizer want desserts to choose their own place on the menu. The squad helps their tiny pantry republic invite every course to a shared breakfast.",
+      "arc": "Scenes 01–04 establish the assembly kitchen; 05–08 reconcile different dessert needs; 09–12 welcome savory, garden, cave, and cosmic guests; 13–16 prepare the meal, with independent optional mold and syrup experiments; 17–19 write an inclusive menu; 20 serves breakfast together.",
+      "signature": "Custard yellow, berry red, and toasted biscuit brown; big legible recipe cards above fixed service rectangles; visibly contrasting care temperatures; layered ice windows over cake illustrations; and rectangular construction blocks decorated as serving furniture. Edible characters change pose only in scripted presentation.",
+      "newArt": [
+        "President Wobble pudding expressions, sash, and plate poses",
+        "Captain Crumb biscuit poses and crumb moustache",
+        "Sprinkle jellybean organizer poses and ribbon accessories",
+        "Modular pantry shelves, assembly counter, and breakfast-table scenery",
+        "Recipe placards, course badges, invitation cards, and dessert portrait tokens",
+        "Rectangular mold frames, preparation basins, platter blocks, and whisk-turbine shells",
+        "Reusable berry, wafer, icing, cocoa, and sugar-crystal overlays",
+        "Savory guest silhouettes, breakfast crockery, and scripted wobble and serving animations"
+      ],
+      "scenes": [
+        {
+          "id": "06.01",
+          "title": "Pudding Files a Petition",
+          "setup": "President Wobble's petition is trapped behind a rectangular frost panel on the pantry noticeboard. A caramel-signature care pad sits low to the right.",
+          "puzzle": "MELT the petition panel to enable the signature WARM target. Reposition above the pad and hold 25–40° and 15–30% pressure; the pudding himself is an illustrated witness, not a temperature target.",
+          "payoff": "The petition reads 'BREAKFAST IS ALSO A TIME.' Captain Crumb signs with a neatly detached crumb and immediately asks whether that counts as punctuation.",
+          "crossover": [
+            "kitchen",
+            "town"
+          ],
+          "requires": []
+        },
+        {
+          "id": "06.02",
+          "title": "A Platform for the Wobble",
+          "setup": "Two broad rectangular serving-plinth footprints occupy the assembly counter. Wobble's frozen speaking-card plaque sits higher between them, with open nozzle room above it.",
+          "puzzle": "FREEZE both serving blocks in either order, then MELT the enabled speaking-card plaque. Completed blocks stay stable when the hose turns hot; the president's climb happens afterward in presentation.",
+          "payoff": "Wobble takes the finished podium in a cutaway and delivers a powerful opening wobble. Sprinkle records it in the minutes as unanimous enthusiasm.",
+          "crossover": [
+            "kitchen",
+            "town"
+          ],
+          "requires": []
+        },
+        {
+          "id": "06.03",
+          "title": "Jelly in the Public Interest",
+          "setup": "Sprinkle has prepared two marked liquid-service basins: a broad jelly tray and a tall narrow tasting cup. A frozen recipe tile sits between them.",
+          "puzzle": "MELT the recipe to enable both FILL targets. Supply positive-temperature water in either order, moving above the tall cup for an easy downward stream. The finished dessert colors appear as scripted dressing on completed basins.",
+          "payoff": "The reveal presents one enormous public jelly and a tiny quality-control portion. Captain Crumb gives both a solemn thumbs-up with the same very small thumb.",
+          "crossover": [
+            "kitchen"
+          ],
+          "requires": []
+        },
+        {
+          "id": "06.04",
+          "title": "Whisking Up a Majority",
+          "setup": "A stationary whisk-drive turbine and custard-care pad occupy opposite counter ends. Wobble's assembly spoon hangs between them, ready for the shared presentation.",
+          "puzzle": "Both branches start active. SPIN the turbine with water above 0° and pressure at least 70%; WARM custard at 30–45° and 15–30% pressure. Choose either first, then cross the counter and retune. Both completions trigger the reveal.",
+          "payoff": "The whisk performs a scripted flourish. Sprinkle announces that the custard has reached consensus on being pleasantly smooth.",
+          "crossover": [
+            "kitchen",
+            "town"
+          ],
+          "requires": []
+        },
+        {
+          "id": "06.05",
+          "title": "Minutes Between Cake Layers",
+          "setup": "Two rectangular ice panels overlap vertically over a layer-cake archive. A small document-care pad waits below and to the left, framed by decorative wafer shelves.",
+          "puzzle": "Begin a central opening in the upper MELT panel to reach the lower one with later droplets. Finish clearing both, then WARM the enabled archive pad at 20–30° and 10–25% pressure.",
+          "payoff": "The recovered founding minutes consist mostly of a drawing of a spoon. Wobble proposes adding a fork so future historians can see the range of debate.",
+          "crossover": [
+            "kitchen",
+            "cave"
+          ],
+          "requires": []
+        },
+        {
+          "id": "06.06",
+          "title": "Custard and Cocoa Agree to Disagree",
+          "setup": "A custard-care pad sits low on the left; a cocoa-service pad sits higher on the right. Their recipe cards show clearly different ranges, with a shared platter footprint below.",
+          "puzzle": "WARM custard at 20–30° and 10–25% pressure, cocoa at 45–60° and 30–45%. Either can finish first. Both enable FREEZE on the broad platter block, adding a final cold-setting change.",
+          "payoff": "The two representatives receive separate cups on one shared platter. Sprinkle writes 'agreement does not require identical toppings' into the breakfast proposal.",
+          "crossover": [
+            "kitchen",
+            "town"
+          ],
+          "requires": []
+        },
+        {
+          "id": "06.07",
+          "title": "The Biscuit Accessibility Amendment",
+          "setup": "Captain Crumb's crumbly invitation sits behind a frozen label above a preparation basin. Across the counter, another frozen label sits above a rectangular seating-block footprint.",
+          "puzzle": "MELT each label to enable its branch. FILL the preparation basin and FREEZE the seating block in either order. Both enable a fixed invitation-care pad requiring WARM at 20–35° and 10–25% pressure.",
+          "payoff": "The invitation gains a large, easy-to-read crumb symbol. Captain Crumb approves a seat that does not require climbing a fork to reach it.",
+          "crossover": [
+            "kitchen",
+            "town"
+          ],
+          "requires": []
+        },
+        {
+          "id": "06.08",
+          "title": "Three Seats for One Éclair",
+          "setup": "An extremely long éclair is painted behind three separated rectangular seat-block footprints at ascending heights. A frozen nameplate panel sits at the far right.",
+          "puzzle": "FREEZE all three blocks, moving above each outline to cover its rectangle. Their completion enables MELT on the nameplate. The assembled seating is a stable authored construction, with the éclair's placement reserved for the cutaway.",
+          "payoff": "The éclair settles across all three seats and introduces three equally polite opinions about napkins. Wobble grants it one name tag with unusually generous margins.",
+          "crossover": [
+            "kitchen",
+            "town"
+          ],
+          "requires": []
+        },
+        {
+          "id": "06.09",
+          "title": "The Savory Ambassador",
+          "setup": "A soup dumpling arrives at the dessert assembly. A frozen guest card stands above a broad rinse basin, beside two fixed care pads labeled wrapper and welcome tea.",
+          "puzzle": "MELT the guest card, then FILL the enabled basin. This enables WARM on wrapper at 25–35°/15–25% pressure and tea at 40–50°/25–40%. Complete those two pads in either order.",
+          "payoff": "The dumpling is delighted to discover breakfast need not be sweet. Captain Crumb offers an honorary sprinkle, which is graciously worn as a hat.",
+          "crossover": [
+            "kitchen",
+            "town"
+          ],
+          "requires": []
+        },
+        {
+          "id": "06.10",
+          "title": "Strawberries on the Steering Committee",
+          "setup": "Three frozen garden-delegation name tiles form a diagonal above a watering basin. A berry-care pad waits right, outlined separately from decorative leaves.",
+          "puzzle": "MELT all three tiles in any order, then FILL the enabled basin. Filling enables WARM on the berry-care pad at 20–30° and 10–25% pressure. Move above the higher tiles instead of aiming through the leaf artwork.",
+          "payoff": "Three strawberry delegates appear in a scripted reveal, each wearing the same enormous sunhat. Sprinkle assigns them the sensible task of choosing a picnic spot.",
+          "crossover": [
+            "garden",
+            "kitchen"
+          ],
+          "requires": []
+        },
+        {
+          "id": "06.11",
+          "title": "Sugar Crystals Join the Chorus",
+          "setup": "A cave sugar-crystal choir occupies the backdrop. Two broad frozen score tiles flank a narrow central turbine; beneath them, three rectangular music-stand footprints sit in a shallow staircase.",
+          "puzzle": "MELT both score tiles to enable the FREEZE stands. Complete the stands, then SPIN the central turbine with positive-temperature water and high pressure. The central target contrasts with the widely separated preparations.",
+          "payoff": "The choir sings only in the reveal, producing a wonderfully crunchy harmony. Captain Crumb volunteers for the percussion section and is issued a napkin.",
+          "crossover": [
+            "cave",
+            "kitchen"
+          ],
+          "requires": []
+        },
+        {
+          "id": "06.12",
+          "title": "Sprinkles from the Outer Pantry",
+          "setup": "A cosmic parcel presents two thin frozen strips above an active wide collection basin. A fixed starlight-label care pad waits separately on the right.",
+          "puzzle": "Use hot water to start openings in the two MELT strips, allowing subsequent droplets to reach the FILL basin beneath them. Finish both strips and the basin; together they enable WARM at 30–40° and 15–30% pressure.",
+          "payoff": "The parcel opens in a cutaway to reveal star-shaped sprinkles and a note requesting directions to breakfast. Sprinkle practices a suitably cosmopolitan wave.",
+          "crossover": [
+            "cosmos",
+            "kitchen"
+          ],
+          "requires": []
+        },
+        {
+          "id": "06.13",
+          "title": "A Spoonful of Everybody",
+          "setup": "Three fixed tasting pads make a tall zigzag: jelly at upper left, cocoa at center right, custard at lower left. A blank menu-display footprint sits along the bottom.",
+          "puzzle": "WARM jelly at 15–25°/10–20% pressure, cocoa at 45–60°/35–50%, and custard at 25–35°/15–30%. Choose an order that makes the setting changes comfortable. All three enable FREEZE on the long menu-display block.",
+          "payoff": "The tasting notes disagree completely, so Wobble places all three dishes on the menu. The blank display now has enough room for every opinion.",
+          "crossover": [
+            "kitchen",
+            "town"
+          ],
+          "requires": []
+        },
+        {
+          "id": "06.14",
+          "title": "The Mold Learns to Let Go",
+          "setup": "An optional recipe bench holds a reversible rectangular ice-mold footprint around a fixed preparation basin. An unmolding-care pad waits beside three state pictograms.",
+          "puzzle": "With PHASE enabled, FREEZE the mold, FILL its enabled basin, then MELT that same completed mold back open. Reversing the construction state enables the separate WARM release pad at 25–35° and 15–25% pressure.",
+          "payoff": "A perfectly formed pudding slides onto a plate in the cutaway and thanks the mold for its personal growth. Ordinary serving blocks support every later meal.",
+          "crossover": [
+            "kitchen"
+          ],
+          "requires": [
+            "PHASE"
+          ]
+        },
+        {
+          "id": "06.15",
+          "title": "The Icing Is a Public Service",
+          "setup": "Three independent icing basins form a descending staircase, each beside a frozen recipe strip. A shared stationary whisk turbine sits bottom right.",
+          "puzzle": "MELT each recipe strip to enable only its neighboring FILL basin. Complete the three branches in any order, moving above each basin instead of assuming liquid flows between them. All three filled basins enable the final SPIN turbine.",
+          "payoff": "The reveal presents three icing colors with equal-sized serving spoons. Captain Crumb wears all three and calls his design 'a very inclusive moustache.'",
+          "crossover": [
+            "kitchen",
+            "town"
+          ],
+          "requires": []
+        },
+        {
+          "id": "06.16",
+          "title": "The Syrup Scenic Route",
+          "setup": "An optional syrup-colored water channel winds to a far upper basin. A plugged overflow spillway returns toward a nearer lower basin.",
+          "puzzle": "With FLOW, feed the inlet until the far basin fills, enabling MELT on its spillway plug. Open it and keep feeding: surplus inflow now crosses the fixed spillway into the near basin. Only connected-channel inflow counts; filled basins retain progress and the far route stays open.",
+          "payoff": "Two pancakes receive syrup and a tiny route map. Mallow's diner receives an invitation to compare breakfast plumbing.",
+          "crossover": [
+            "kitchen",
+            "garden"
+          ],
+          "requires": [
+            "FLOW"
+          ]
+        },
+        {
+          "id": "06.17",
+          "title": "A Menu Without a Border",
+          "setup": "The menu is illustrated as three columns. Each contains a frozen heading above its own care pad: sweet on the left, savory in the middle, and undecided on the right.",
+          "puzzle": "MELT each heading, then WARM its pad: sweet 20–30°/10–25% pressure, savory 40–50°/25–40%, undecided 30–40°/15–30%. Complete branches in any order. All six targets are required; no food preference is treated as the correct choice.",
+          "payoff": "The headings become 'try this,' 'or this,' and 'take your time.' Sprinkle awards the undecided column a particularly comfortable chair.",
+          "crossover": [
+            "kitchen",
+            "town"
+          ],
+          "requires": []
+        },
+        {
+          "id": "06.18",
+          "title": "The Breakfast Table Has Extensions",
+          "setup": "Two rectangular table-extension footprints sit at opposite ends of the counter. A frozen guest-list strip hangs above an active narrow water-service basin in the central gap.",
+          "puzzle": "FREEZE both extensions. Switch hot to open the MELT guest-list strip, letting droplets reach the central FILL basin; finish both. All preparations enable WARM on the table-service pad at 25–40° and 15–30% pressure.",
+          "payoff": "The scripted table expands to seat the dumpling, strawberries, crystal choir, and star visitors. Wobble realizes the republic is now larger than its original shelf.",
+          "crossover": [
+            "garden",
+            "cave",
+            "cosmos",
+            "kitchen"
+          ],
+          "requires": []
+        },
+        {
+          "id": "06.19",
+          "title": "The Old Menu Gets a Day Off",
+          "setup": "The old 'DESSERT LAST' menu stands behind three slim frozen panels side by side. A wide invitation-care pad below them shares a printed arrow with a small display-block footprint.",
+          "puzzle": "MELT all three panels from their separated tops, finishing each completely. This enables WARM on the invitation pad at 20–35° and 10–25% pressure; then FREEZE the display block.",
+          "payoff": "Wobble turns the old menu over and writes a breakfast invitation on its blank back. Captain Crumb suggests keeping the useful paper and retiring only the bossy sentence.",
+          "crossover": [
+            "kitchen",
+            "town"
+          ],
+          "requires": []
+        },
+        {
+          "id": "06.20",
+          "title": "Breakfast Belongs to the Table",
+          "setup": "Wobble, Crumb, and Sprinkle wait behind a full-width breakfast counter. Two water-service basins flank a frozen welcome panel; a dotted centerpiece footprint and a stationary whisk turbine occupy the upper stations.",
+          "puzzle": "FILL both basins and MELT the welcome panel in any order. These enable FREEZE on the centerpiece, then the final SPIN turbine. Reposition above the high stations while changing settings.",
+          "payoff": "The scripted breakfast welcomes every course. Wobble's sash becomes a shared table runner, leaving enough room for Captain Crumb's beautifully punctuated signature.",
+          "crossover": [
+            "kitchen",
+            "garden",
+            "town",
+            "cosmos"
+          ],
+          "requires": []
+        }
+      ]
+    }
+  ]
+}

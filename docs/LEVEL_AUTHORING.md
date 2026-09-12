@@ -1,6 +1,8 @@
 # Authoring a rescue call
 
 Calls live in src/levels.ts. The 20 shipped entries also serve as examples.
+World 02's authored layouts live in `src/packs/02.ts`; append new packs after
+legacy content, keep their `NN.SS` IDs, and set `pack` to their world ID.
 Add one Level with a stable id, title, short pitch, hint, ending, par time,
 theme, starting nozzle settings, targets, and illustrated props. The board
 and progression read that data directly. UI copy saying “20” will need to
@@ -45,7 +47,25 @@ The current renderer has kitchen/cave/garden/cosmos/town sets and 16 reusable
 illustrated prop kinds. Completion animates selected rescue props; not every
 call yet has a bespoke ending animation.
 
-## Validation
+## Campaign additions
+
+- `channels`: one visible inlet, a junction, and authored branch polylines to
+  fill targets. Branch `gate` IDs require completed plugs. Mark destinations
+  `flowOnly` so direct droplets cannot fake routed delivery. Inflow divides
+  across open branches, including already-full tubs; filled tubs retain progress.
+- Target `motion`: elliptical radii, period in seconds, and optional phase.
+  Actual hitboxes move. Keep the full swept bounds reachable and provide clear
+  labels. The saved stationary assist parks targets on the same path; it does
+  not skip the temperature/pressure objective.
+- Prop `follow` attaches artwork to a live target. `reveal` defines the final
+  pose/kind after the scene completes; `revealOnly` is for earned visual arrivals.
+  `stamp` supplies the completion postcard's tiny joke.
+- `src/campaign.ts` controls world metadata and Continue; `src/atlas.ts` handles
+  accessible maps. Unbuilt `NN.SS` slots stay unbuilt even if later slots exist.
+- `public/release.json` identifies the release that must be checked on the live
+  site after a successful Pages deployment.
+
+## Release checks
 
 Every authored call is exercised through real emitted droplets by the unit
 suite: no direct completion hook. Tests also cover prerequisites, thermal

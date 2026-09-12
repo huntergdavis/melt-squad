@@ -3,6 +3,10 @@ export interface Save {
   stars: Record<string, number>;
   best: Record<string, number>;
   muted: boolean;
+  lastWorld?: string;
+  lastScene?: string;
+  stationary?: boolean;
+  mapList?: boolean;
 }
 const fresh = (): Save => ({ version: 1, stars: {}, best: {}, muted: false });
 export const SAVE_KEY = "melt-squad-v1";
@@ -13,6 +17,18 @@ export function loadSave(storage?: Pick<Storage, "getItem">): Save {
     if (!raw || raw.version !== 1) return fresh();
     const save = fresh();
     save.muted = raw.muted === true;
+    if (typeof raw.stationary === "boolean") save.stationary = raw.stationary;
+    save.mapList = raw.mapList === true;
+    if (
+      typeof raw.lastWorld === "string" &&
+      /^(0[1-9]|1[0-9]|20)$/.test(raw.lastWorld)
+    )
+      save.lastWorld = raw.lastWorld;
+    if (
+      typeof raw.lastScene === "string" &&
+      /^[a-z0-9.-]{1,60}$/.test(raw.lastScene)
+    )
+      save.lastScene = raw.lastScene;
     for (const [id, value] of Object.entries(raw.stars ?? {}))
       if (
         typeof value === "number" &&

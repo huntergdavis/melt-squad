@@ -1,4 +1,5 @@
 import type { Level, Target, Verb, Prop, Theme } from "./types";
+import { sockLevels } from "./packs/02";
 
 const target = (
   id: string,
@@ -447,4 +448,5 @@ export const levels: Level[] = [
     ],
     { chapter: "Squad legends", par: 140 },
   ),
+  ...sockLevels,
 ];

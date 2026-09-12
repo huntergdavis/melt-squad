@@ -4,9 +4,15 @@
 
 A hose-powered puzzle game about helping a wonderfully weird world warm up.
 Thaw an upside-down space wizard, build a penguin an ice bridge, give the moon
-a bath, and answer 20 hand-authored rescue calls.
+a bath, and help a haunted laundromat find friends for mismatched socks.
+**40 hand-authored rescue calls. Two playful worlds. One very helpful hose.**
 
-[Play in your browser](https://huntergdavis.github.io/melt-squad/)
+[Play in your browser](https://hunterdavis.com/melt-squad/)
+
+Explore the rescue atlas, follow a world's story trail, or pick any available
+scene. Pearl, Lefty, and Pip welcome you to the new **Midnight Sock Exchange**:
+flowing rinse rivers, rotating cuffs, gentle fabric care, and twenty tiny happy
+endings. No lives, no grinding, no account.
 
 ## Your equipment
 
@@ -19,18 +25,20 @@ a bath, and answer 20 hand-authored rescue calls.
 | Toggle water    | Space        | A / Cross                |
 | Restart         | R            | X / Square               |
 | Pause           | Escape       | B / Circle or Start      |
-| Menu navigation | Tab + Enter  | D-pad + A / Cross        |
+| Menu navigation | Tab / arrows + Enter | D-pad / left stick + A / Cross |
 
 Mouse and touch: drag the nozzle in the scene and adjust the two sliders.
 
 Hot water erodes ice. Cold water builds marked structures. Gentle warmth
 rescues delicate things. Pressure spins machines. Mix the five verbs across
-20 individually authored puzzles, with no lives to lose and every call available
+40 individually authored puzzles, with no lives to lose and every released call available
 from the start. Medals, best times, and sound preference stay in your browser.
 
-This is the first playable concept collection: arcade thermal puzzles, not a
-full fluid-dynamics simulation. Completed constructions stay stable; tasks use
-visible goal zones and explicit prerequisites.
+These are arcade thermal puzzles, not a full fluid-dynamics simulation.
+Completed constructions stay stable. Rinse channels carry actual routed water;
+moving care pads offer a saved stationary assist. Earn medals, collect silly
+rescue postcards, and return to your last world. Credits and open-asset licenses
+are available in the game.
 
 ## Run locally
 
@@ -64,4 +72,6 @@ The Vite base path is `/melt-squad/`.
 - [Design thesis](docs/DESIGN_THESIS.md)
 - [Level authoring and architecture](docs/LEVEL_AUTHORING.md)
 - [Next slices](docs/BACKLOG.md)
+- [Campaign release ledger](docs/RELEASES.md) — two worlds implemented; eighteen to go
+- [400-scene campaign plan](docs/CAMPAIGN_BACKLOG.md) — the full design backlog
 - [Art credits and licenses](CREDITS.md)

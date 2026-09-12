@@ -1,5 +1,11 @@
 export type Verb = "melt" | "freeze" | "warm" | "fill" | "spin";
-export type Theme = "kitchen" | "cave" | "garden" | "cosmos" | "town";
+export type Theme =
+  | "kitchen"
+  | "cave"
+  | "garden"
+  | "cosmos"
+  | "town"
+  | "laundry";
 export type PropKind =
   | "cup"
   | "wizard"
@@ -16,7 +22,19 @@ export type PropKind =
   | "dragon"
   | "snowcone"
   | "letter"
-  | "sun";
+  | "sun"
+  | "ghost"
+  | "sock"
+  | "moth"
+  | "washer"
+  | "basket"
+  | "coat"
+  | "scarf"
+  | "apron"
+  | "worm"
+  | "cape"
+  | "trousers"
+  | "receipt";
 export interface Target {
   id: string;
   name: string;
@@ -29,6 +47,8 @@ export interface Target {
   temp?: [number, number];
   pressure?: [number, number];
   effort?: number;
+  flowOnly?: boolean;
+  motion?: { rx: number; ry: number; period: number; phase?: number };
 }
 export interface Prop {
   kind: PropKind;
@@ -36,6 +56,10 @@ export interface Prop {
   y: number;
   scale?: number;
   target?: string;
+  tint?: string;
+  follow?: string;
+  reveal?: { x: number; y: number; kind?: PropKind; scale?: number };
+  revealOnly?: boolean;
 }
 export interface Level {
   id: string;
@@ -51,6 +75,13 @@ export interface Level {
   pressure: number;
   targets: Target[];
   props: Prop[];
+  pack?: string;
+  stamp?: string;
+  channels?: {
+    inlet: { x: number; y: number; w: number; h: number };
+    junction: [number, number];
+    branches: { target: string; gate?: string; via?: [number, number][] }[];
+  };
 }
 export interface Controls {
   x: number;

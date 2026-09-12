@@ -15,7 +15,8 @@ test("dispatch, keyboard, pause, hints, and all authored scenes", async ({
       externalRequests.push(r.url());
   });
   await page.goto("./");
-  await expect(page.locator(".level-card")).toHaveCount(20);
+  await expect(page.locator(".world-island")).toHaveCount(20);
+  await expect(page.locator(".world-island.released")).toHaveCount(2);
   await page.screenshot({
     path: "scratch/dispatch-desktop.png",
     fullPage: true,
@@ -43,8 +44,10 @@ test("dispatch, keyboard, pause, hints, and all authored scenes", async ({
   await expect(page.locator("#hint")).toBeVisible();
   await page.screenshot({ path: "scratch/rescue-desktop.png", fullPage: true });
   for (const i of [1, 2, 7, 14, 19]) {
-    await page.locator('.nav-item[data-action="hub"]').click();
-    await page.locator('[data-level="' + i + '"]').click();
+    await page.locator('.nav-item[data-action="atlas"]').click();
+    await page.locator('[data-world="01"]').click();
+    await page.locator(".scene-node").nth(i).click();
+    await page.locator("[data-launch]").click();
     await expect(page.locator(".objective")).toHaveCount(
       i === 19 ? 5 : i === 14 || i === 7 ? 3 : 2,
     );
@@ -97,7 +100,7 @@ test("a real stream finishes the teacup, saves medals, and advances", async ({
   );
   await page.reload();
   await expect(page.locator("#total-progress")).toHaveText(
-    "1 / 20 calls answered",
+    "1 / 40 calls answered",
   );
 });
 
@@ -133,6 +136,20 @@ test("standard gamepad controls menus, thermal mix, and disconnect pause", async
     );
     await page.waitForTimeout(80);
   };
+  for (let i = 0; i < 2; i++) {
+    await button(13, true);
+    await button(13, false);
+  }
+  await expect(page.locator('[data-world="02"]')).toBeFocused();
+  await button(0, true);
+  await button(0, false);
+  await expect(page.locator('[data-scene="02.01"]')).toBeFocused();
+  await button(15, true);
+  await button(15, false);
+  await expect(page.locator('[data-scene="02.02"]')).toBeFocused();
+  await button(0, true);
+  await button(0, false);
+  await expect(page.locator('[data-launch="02.02"]')).toBeFocused();
   await button(0, true);
   await button(0, false);
   await expect(page.locator("#play")).toBeVisible();
@@ -179,7 +196,7 @@ test("phone layout works without storage and has no horizontal overflow", async 
     }),
   );
   await page.goto("./");
-  await expect(page.locator(".level-card")).toHaveCount(20);
+  await expect(page.locator(".world-island")).toHaveCount(20);
   await page.screenshot({ path: "scratch/dispatch-phone.png", fullPage: true });
   expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBe(
     390,

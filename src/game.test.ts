@@ -15,9 +15,9 @@ const drop = (temp: number, pressure = 45): Drop => ({
 });
 
 describe("Authored calls", () => {
-  it("contains 20 unique, valid, independently playable levels", () => {
-    expect(levels).toHaveLength(20);
-    expect(new Set(levels.map((l) => l.id)).size).toBe(20);
+  it("contains complete packs of unique, valid, independently playable levels", () => {
+    expect(levels).toHaveLength(40);
+    expect(new Set(levels.map((l) => l.id)).size).toBe(levels.length);
     for (const l of levels) {
       const ids = l.targets.map((t) => t.id);
       expect(new Set(ids).size).toBe(ids.length);
@@ -48,10 +48,15 @@ describe("Authored calls", () => {
             ? ((t.pressure?.[0] ?? 10) + (t.pressure?.[1] ?? 55)) / 2
             : 90;
         n.angle = 0;
-        n.y = t.y - 52;
         for (let step = 0; step < 12000 && !t.done; step++) {
           // Sweep across the whole shape. No direct progress writes or test-only win path.
           n.x = t.x + 8 + (t.w - 16) * (0.5 + 0.5 * Math.sin(step / 29));
+          n.y = t.y - 52;
+          if (t.flowOnly) {
+            const inlet = l.channels!.inlet;
+            n.x = inlet.x + inlet.w / 2;
+            n.y = inlet.y - 52;
+          }
           world.update(1 / 60, idle);
         }
         expect(t.done, t.id + " stopped at " + t.progress).toBe(true);
