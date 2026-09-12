@@ -9,6 +9,7 @@ export const mapLandmarks: Record<string, [PropKind, PropKind, PropKind]> = {
   "05": ["townsign", "hedgehog", "pencil"],
   "06": ["whisk", "biscuitcaptain", "jellybean"],
   "07": ["cubby", "ankylosaur", "diplodocus"],
+  "08": ["servicewindow", "flintclerk", "catdragon"],
 };
 
 const themes: [string, string, PropKind, string][] = [
@@ -57,7 +58,7 @@ const themes: [string, string, PropKind, string][] = [
   [
     "Emberborough Town Hall",
     "A dragon-sized welcome for everyone.",
-    "dragon",
+    "cindermayor",
     "#e2c6a4",
   ],
   [

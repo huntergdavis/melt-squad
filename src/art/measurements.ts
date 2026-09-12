@@ -143,6 +143,21 @@ export function drawMeasurements(r: Renderer, world: World) {
       r.line([...from, ...to], "#fff2a7", 3);
     }
     const lamp = optics.source;
+    for (const prism of optics.prisms ?? []) {
+      const target = world.targets.find((t) => t.id === prism.target);
+      c.beginPath();
+      prism.vertices.forEach(([x, y], i) =>
+        i === 0 ? c.moveTo(x, y) : c.lineTo(x, y),
+      );
+      c.closePath();
+      c.fillStyle = target?.done ? "#b9edf499" : "#b9edf433";
+      c.fill();
+      c.strokeStyle = target?.done ? "#8ab7c6" : "#759eae";
+      c.lineWidth = target?.done ? 4 : 2;
+      c.setLineDash(target?.done ? [] : [5, 6]);
+      c.stroke();
+      c.setLineDash([]);
+    }
     r.round(lamp.x - 47, lamp.y - 21, 40, 42, 10, "#d0ac6b", "#8e785e");
     r.round(lamp.x - 10, lamp.y - 14, 12, 28, 4, "#fff1bb");
     r.line([lamp.x - 28, lamp.y + 21, lamp.x - 28, lamp.y + 40], "#82968c", 6);
@@ -198,8 +213,8 @@ export function drawMeasurements(r: Renderer, world: World) {
       c.textAlign = "center";
       c.fillText(
         lit ? "LIGHT RECEIVED" : "WAITING FOR LIGHT",
-        detector.x,
-        detector.y + detector.radius + 23,
+        detector.label?.[0] ?? detector.x,
+        detector.label?.[1] ?? detector.y + detector.radius + 23,
       );
     }
     c.restore();

@@ -68,6 +68,12 @@ every original call yet has a bespoke ending animation.
   An `overflowFrom` source must be full before its branch opens. Once the
   spillway gate also opens, that branch receives its source's surplus allocation.
   Draw its `via` path through the source's edge and spillway, not a shortcut.
+  A `closedBy` ice plug instead shuts a branch when construction finishes.
+  Each branch ends in either a routed `target` or a decorative `[x,y]` `outlet`;
+  outlets consume runoff without adding a goal. For a directly filled source,
+  put the inlet completely inside that source's FILL rectangle. Real target
+  collisions fill it first; only later drops can enter the overflow inlet.
+  See `08.15`. Retain a visible waste route and its plug so the closure is legible.
 - Target `motion`: elliptical radii, period in seconds, and optional phase.
   Actual hitboxes move. Keep the full swept bounds reachable and provide clear
   labels. The saved stationary assist parks targets on the same path; it does
@@ -94,7 +100,15 @@ every original call yet has a bespoke ending animation.
 - `optics`: a source direction, fixed mirrors tied to completed freeze targets,
   and circular detectors. Mirror angles are tangent angles in radians. Real
   rays reflect geometrically and stop on remaining melt-target ice cells;
-  detectors emit their IDs when crossed. Refraction/splitting remain future work.
+  detectors emit their IDs when crossed. Optional `prisms` tie convex polygon
+  `vertices` and a `refractiveIndex` to completed freeze targets. Use separated,
+  non-touching polygons (3–16 vertices, index 1–4, all inside the board).
+  Real boundary intersections follow Snell's law and total internal reflection,
+  bounded to twelve surface interactions. This models the transmitted ray,
+  not dispersion or Fresnel splitting. See `08.18`'s two descending ice prisms.
+  The implementation reuses the mirror/cell/detector helpers recalled from
+  session `01a06835`; refraction math follows
+  [PBRT's derivation](https://pbr-book.org/4ed/Reflection_Models/Specular_Reflection_and_Transmission).
 - Target `needsSignals` gates work on physical signal IDs, in addition to
   `requires`. Leave space for visible physical feedback, and a generous final
   warming target to celebrate success. See `05.14` and `05.16`.

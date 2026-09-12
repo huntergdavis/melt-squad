@@ -475,7 +475,7 @@ export class World {
   channelPath(branch: number): [number, number][] {
     const channels = this.level.channels!;
     const route = channels.branches[branch];
-    const target = this.targets.find((t) => t.id === route.target)!;
+    const target = this.targets.find((t) => t.id === route.target);
     return [
       [
         channels.inlet.x + channels.inlet.w / 2,
@@ -483,7 +483,7 @@ export class World {
       ],
       channels.junction,
       ...(route.via ?? []),
-      [target.x + target.w / 2, target.y + target.h / 2],
+      route.outlet ?? [target!.x + target!.w / 2, target!.y + target!.h / 2],
     ];
   }
   runoffPosition(drop: Runoff): { x: number; y: number; arrived: boolean } {
@@ -511,7 +511,7 @@ export class World {
       if (!point.arrived) return true;
       const branch = this.level.channels!.branches[drop.branch];
       // A gate may change later; recheck connectivity on delivery as well.
-      if (branchOpen(branch, this.targets)) {
+      if (branch.target && branchOpen(branch, this.targets)) {
         const target = this.targets.find((t) => t.id === branch.target)!;
         this.impact(
           target,

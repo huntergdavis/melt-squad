@@ -6,6 +6,7 @@ import { drawMeasurements } from "./art/measurements";
 import { drawBorough } from "./art/borough";
 import { drawPudding } from "./art/pudding";
 import { drawPreschool } from "./art/preschool";
+import { drawEmberborough } from "./art/emberborough";
 const motionSafe = (time: number, reduced: boolean) => (reduced ? 0 : time);
 
 const palettes: Record<Theme, [string, string, string]> = {
@@ -20,6 +21,7 @@ const palettes: Record<Theme, [string, string, string]> = {
   borough: ["#d5c3a8", "#ecdfc6", "#90a28d"],
   pudding: ["#f0d695", "#f5e7bf", "#c49877"],
   preschool: ["#d7dfbc", "#f1ead0", "#a8bd9e"],
+  emberborough: ["#ead7c1", "#f5e5cb", "#a4b1a3"],
 };
 export class Renderer {
   ctx: CanvasRenderingContext2D;
@@ -114,7 +116,8 @@ export class Renderer {
       drawCircus(this, kind, happy, t, tint) ||
       drawBorough(this, kind, happy, t, tint) ||
       drawPudding(this, kind, t, happy) ||
-      drawPreschool(this, kind, happy, t, tint)
+      drawPreschool(this, kind, happy, t, tint) ||
+      drawEmberborough(this, kind, happy, t, tint)
     ) {
       c.restore();
       return;
@@ -418,6 +421,20 @@ export class Renderer {
     } else if (world.level.theme === "garden") {
       for (let i = 0; i < 7; i++)
         this.circle(i * 165, 487, 100 + (i % 3) * 20, "#9fae83");
+    } else if (world.level.theme === "emberborough") {
+      this.round(78, 58, 804, 429, 30, "#d7c4a6", "#ae937b");
+      for (const x of [115, 750]) {
+        this.round(x, 135, 100, 276, 40, "#d5e0d0", "#9d9f8a");
+        this.line([x + 50, 135, x + 50, 411], "#b49a73", 7);
+        this.line([x, 243, x + 100, 243], "#b49a73", 7);
+        this.round(x - 8, 420, 116, 20, 5, "#bf987b");
+      }
+      for (const x of [245, 700]) {
+        this.round(x, 143, 18, 340, 8, "#bfa788");
+        this.round(x - 12, 142, 42, 16, 5, "#e9d7b2");
+        this.round(x - 12, 468, 42, 16, 5, "#e9d7b2");
+      }
+      this.round(330, 155, 300, 292, 140, "#f9f0d7", "#baa083");
     } else if (world.level.theme === "preschool") {
       this.round(84, 60, 792, 430, 16, "#c5d3aa", "#91a487");
       for (const x of [118, 740]) {
@@ -642,6 +659,25 @@ export class Renderer {
         100,
       );
     }
+    if (world.level.theme === "emberborough") {
+      this.round(
+        245,
+        63,
+        470,
+        world.level.optics ? 40 : 58,
+        17,
+        "#fff0d0",
+        "#ae9272",
+      );
+      c.fillStyle = "#695b4a";
+      c.textAlign = "center";
+      c.font = "600 23px Outfit, sans-serif";
+      c.fillText(
+        world.completed ? "ALL QUESTIONS WELCOME." : "EMBERBOROUGH TOWN HALL",
+        480,
+        world.level.optics ? 90 : 100,
+      );
+    }
     this.round(82, 487, 796, 23, 12, "#ffffff55");
     this.round(64, 506, 832, 70, 25, ground);
     this.round(64, 501, 832, 17, 8, "#edf2df");
@@ -668,15 +704,49 @@ export class Renderer {
         );
       }
       const inlet = channels.inlet;
-      this.round(inlet.x, inlet.y, inlet.w, inlet.h, 8, "#d4e6df", "#435b70");
+      const source = world.targets.find(
+        (t) =>
+          t.verb === "fill" &&
+          inlet.x >= t.x &&
+          inlet.x + inlet.w <= t.x + t.w &&
+          inlet.y >= t.y &&
+          inlet.y + inlet.h <= t.y + t.h,
+      );
+      if (source)
+        this.round(
+          source.x + source.w / 2 - 77,
+          source.y - 31,
+          154,
+          23,
+          7,
+          "#fff0cf",
+          "#a18a65",
+        );
+      else
+        this.round(inlet.x, inlet.y, inlet.w, inlet.h, 8, "#d4e6df", "#435b70");
       c.fillStyle = "#2d465b";
       c.textAlign = "center";
       c.font = "bold 14px system-ui";
       c.fillText(
-        world.level.theme === "pudding" ? "SYRUP INLET ↓" : "INLET ↓",
-        inlet.x + inlet.w / 2,
-        inlet.y + 25,
+        source
+          ? "FILL → OVERFLOW"
+          : world.level.theme === "pudding"
+            ? "SYRUP INLET ↓"
+            : "INLET ↓",
+        source ? source.x + source.w / 2 : inlet.x + inlet.w / 2,
+        source ? source.y - 15 : inlet.y + 25,
       );
+      for (const branch of channels.branches) {
+        if (!branch.outlet) continue;
+        const [x, y] = branch.outlet;
+        this.round(x - 30, y - 12, 60, 37, 4, "#e8d8b5", "#a39072");
+        this.round(x - 25, y - 18, 50, 36, 4, "#fff7e2", "#a39072");
+        this.line([x - 15, y - 6, x + 15, y - 6], "#baa88b", 2);
+        this.line([x - 15, y + 3, x + 6, y + 3], "#baa88b", 2);
+        c.fillStyle = "#695b4a";
+        c.font = "bold 11px system-ui";
+        c.fillText("FORMS · KEEP DRY", x, y + 44);
+      }
       for (const drop of world.runoff) {
         const at = world.runoffPosition(drop);
         this.circle(
@@ -755,6 +825,8 @@ export class Renderer {
     }
     for (const [index, t] of world.targets.entries()) {
       const available = world.available(t);
+      const prism = world.level.optics?.prisms?.find((p) => p.target === t.id);
+      if (t.done && prism) continue;
       if (t.done && t.verb !== "freeze" && t.verb !== "fill") continue;
       c.save();
       if (!available) c.globalAlpha = 0.3;
@@ -789,7 +861,7 @@ export class Renderer {
         c.roundRect(t.x, t.y, t.w, t.h, 9);
         c.stroke();
         c.setLineDash([]);
-        if (t.verb === "freeze" || t.verb === "fill") {
+        if (!prism && (t.verb === "freeze" || t.verb === "fill")) {
           const h = Math.max(0, (t.h - 4) * t.progress);
           if (h > 0)
             this.round(

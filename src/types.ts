@@ -1,5 +1,6 @@
 import type { BalancePlan } from "./mechanics/balance";
 import type { OpticsPlan } from "./mechanics/optics";
+import type { FlowBranch } from "./mechanics/flow";
 
 export type Verb = "melt" | "freeze" | "warm" | "fill" | "spin";
 export type Theme =
@@ -13,7 +14,8 @@ export type Theme =
   | "circus"
   | "borough"
   | "pudding"
-  | "preschool";
+  | "preschool"
+  | "emberborough";
 export type PropKind =
   | "cup"
   | "wizard"
@@ -105,7 +107,25 @@ export type PropKind =
   | "classfern"
   | "toothflower"
   | "bat"
-  | "papercrown";
+  | "papercrown"
+  | "cindermayor"
+  | "flintclerk"
+  | "duckdragon"
+  | "frostarchivist"
+  | "beedragon"
+  | "cometdragon"
+  | "catdragon"
+  | "helpbell"
+  | "servicewindow"
+  | "queueroll"
+  | "brasshorn"
+  | "moustachefountain"
+  | "dragonchair"
+  | "featherduster"
+  | "dragonrug"
+  | "wingdoor"
+  | "councilclap"
+  | "ribbonpanorama";
 export interface PhaseStep {
   verb: "freeze" | "melt";
   name: string;
@@ -175,12 +195,9 @@ export interface Level {
   channels?: {
     inlet: { x: number; y: number; w: number; h: number };
     junction: [number, number];
-    branches: {
-      target: string;
-      gate?: string;
-      overflowFrom?: string;
+    branches: (FlowBranch & {
       via?: [number, number][];
-    }[];
+    })[];
   };
 }
 export interface Controls {

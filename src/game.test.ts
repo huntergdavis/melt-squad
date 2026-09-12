@@ -50,10 +50,37 @@ describe("Authored calls", () => {
         expect(mirror.length).toBeGreaterThan(0);
       }
       expect(new Set(ids).size).toBe(ids.length);
+      for (const prism of l.optics?.prisms ?? []) {
+        const target = l.targets.find((t) => t.id === prism.target);
+        expect(target?.verb).toBe("freeze");
+        expect(prism.vertices.length).toBeGreaterThanOrEqual(3);
+        expect(prism.refractiveIndex).toBeGreaterThan(1);
+        for (const [x, y] of prism.vertices) {
+          expect(x).toBeGreaterThanOrEqual(target!.x);
+          expect(x).toBeLessThanOrEqual(target!.x + target!.w);
+          expect(y).toBeGreaterThanOrEqual(target!.y);
+          expect(y).toBeLessThanOrEqual(target!.y + target!.h);
+        }
+      }
       for (const branch of l.channels?.branches ?? []) {
-        const destination = l.targets.find((t) => t.id === branch.target);
-        expect(destination?.verb).toBe("fill");
-        expect(destination?.flowOnly).toBe(true);
+        expect(Boolean(branch.target) !== Boolean(branch.outlet)).toBe(true);
+        if (branch.target) {
+          const destination = l.targets.find((t) => t.id === branch.target);
+          expect(destination?.verb).toBe("fill");
+          expect(destination?.flowOnly).toBe(true);
+        }
+        if (branch.outlet) {
+          expect(branch.outlet.every(Number.isFinite)).toBe(true);
+          expect(branch.outlet[0]).toBeGreaterThan(0);
+          expect(branch.outlet[0]).toBeLessThan(960);
+          expect(branch.outlet[1]).toBeGreaterThan(0);
+          expect(branch.outlet[1]).toBeLessThan(580);
+        }
+        if (branch.closedBy) {
+          expect(l.targets.find((t) => t.id === branch.closedBy)?.verb).toBe(
+            "freeze",
+          );
+        }
         if (branch.gate) expect(ids).toContain(branch.gate);
         if (branch.overflowFrom) {
           expect(

@@ -2,7 +2,7 @@
 
 ## Campaign expansion — one complete world per release
 
-Current implementation: **140 scenes / 7 worlds**. See the [release ledger](RELEASES.md).
+Current implementation: **160 scenes / 8 worlds**. See the [release ledger](RELEASES.md).
 
 - [x] Design 19 new themed levels of 20 scenes each: 380 new scenes, 400 total
       including the existing collection.
@@ -25,6 +25,8 @@ Current implementation: **140 scenes / 7 worlds**. See the [release ledger](RELE
       build/fill/open molds, connected syrup overflow, and a shared breakfast.
 - [x] Pack 07: twenty Fossilbean Preschool scenes, a dinosaur class, unequal-arm
       seesaw physics, a thaw-started hammock mobile, and a long-neck family photo.
+- [x] Pack 08: twenty Emberborough scenes, a varied dragon community, plug-closed
+      drainage and source overflow, two-prism refraction, and a welcoming town hall.
 - [x] In-game credits with local Kenney and font license acknowledgements.
 
 Start with the [campaign plan](CAMPAIGN_BACKLOG.md) and
