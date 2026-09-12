@@ -30,7 +30,8 @@ Targets have id/name/verb/x/y/w/h. Optional temp and pressure pairs tune warm
 tasks. Optional effort scales the work required. Optional requires lists
 earlier target IDs: blocked tasks do not intercept droplets or gain progress.
 Completed structures stay stable, so a later hot-water task cannot invalidate
-a finished bridge.
+a finished bridge. Explicit `phase` recipes are the exception: their visible
+build/open sequence deliberately reuses the same footprint.
 
 Each call should have its own recognizable scene, one clear joke, and a small
 thermal idea. Combine verbs and geometry, not just names. Warm-up first calls
@@ -58,6 +59,9 @@ every original call yet has a bespoke ending animation.
   fill targets. Branch `gate` IDs require completed plugs. Mark destinations
   `flowOnly` so direct droplets cannot fake routed delivery. Inflow divides
   across open branches, including already-full tubs; filled tubs retain progress.
+  An `overflowFrom` source must be full before its branch opens. Once the
+  spillway gate also opens, that branch receives its source's surplus allocation.
+  Draw its `via` path through the source's edge and spillway, not a shortcut.
 - Target `motion`: elliptical radii, period in seconds, and optional phase.
   Actual hitboxes move. Keep the full swept bounds reachable and provide clear
   labels. The saved stationary assist parks targets on the same path; it does
@@ -83,6 +87,14 @@ every original call yet has a bespoke ending animation.
 - Target `needsSignals` gates work on physical signal IDs, in addition to
   `requires`. Leave space for visible physical feedback, and a generous final
   warming target to celebrate success. See `05.14` and `05.16`.
+- Target `phase.steps` declares a finite sequence of freeze/melt operations in
+  one footprint. Each step has a verb, name, optional prerequisites, and an
+  optional earned signal. A completed step records its signal and changes the
+  live target's verb/name/ice cells; only the final step marks the target done.
+  Thus a basin may depend on `mold:formed` while remelting waits for that basin.
+  The build/fill/open recipe strip, objective text, and monotonic overall progress
+  show the sequence. Restart clears all phase history. See `06.14`.
+  This is staged reversal, not yet freely adjustable coupled thermal bodies.
 - `src/campaign.ts` controls world metadata and Continue; `src/atlas.ts` handles
   accessible maps. Unbuilt `NN.SS` slots stay unbuilt even if later slots exist.
 - `public/release.json` identifies the release that must be checked on the live

@@ -1,7 +1,7 @@
 import "./style.css";
 import "./atlas.css";
 import { levels } from "./levels";
-import { World, requirements } from "./engine";
+import { World, requirements, targetProgress } from "./engine";
 import { Renderer } from "./render";
 import { Input } from "./input";
 import { Sound } from "./audio";
@@ -175,7 +175,7 @@ function openModal(kind: string, html: string) {
 function showHelp() {
   openModal(
     "help",
-    '<div class="eyebrow">THE FIELD MANUAL</div><h2>A hose. Two sticks.<br>Endless good intentions.</h2><p>Move above a target and let the water do its thing. The nozzle points down; tilt it when a tricky angle calls for it.</p><div class="manual-grid"><div><h3>Keyboard</h3><p>WASD — move nozzle<br>↑ / ↓ — hotter / colder<br>← / → — less / more pressure<br>Q / E — tilt nozzle<br>Space — toggle water<br>R — restart · Esc — pause</p></div><div><h3>Gamepad</h3><p>Left stick — move nozzle<br>Right stick ↕ — temperature<br>Right stick ↔ — pressure<br>LB / RB — tilt nozzle<br>A / Cross — water / confirm<br>X / Square — restart<br>B / Circle or Start — pause<br>D-pad — navigate menus</p></div></div><p><b>Mouse / touch:</b> drag anywhere in the scene to move the nozzle. Use the temperature and pressure sliders below it.</p><div class="manual-verbs"><span>❄ Below −10° builds ice</span><span>♨ Above 10° melts ice</span><span>↗ 70% pressure spins wheels</span></div><p>Warming tasks show their safe temperature and pressure range. Completed structures stay stable. There are no lives to lose; restart or replay any call. Earn a rescue star by finishing, a second within 1.8× the par time, and a third within par with fewer than 60 wrong-setting droplet hits.</p><button class="primary" data-action="close">Got it. Let’s help someone.</button>',
+    '<div class="eyebrow">THE FIELD MANUAL</div><h2>A hose. Two sticks.<br>Endless good intentions.</h2><p>Move above a target and let the water do its thing. The nozzle points down; tilt it when a tricky angle calls for it.</p><div class="manual-grid"><div><h3>Keyboard</h3><p>WASD — move nozzle<br>↑ / ↓ — hotter / colder<br>← / → — less / more pressure<br>Q / E — tilt nozzle<br>Space — toggle water<br>R — restart · Esc — pause</p></div><div><h3>Gamepad</h3><p>Left stick — move nozzle<br>Right stick ↕ — temperature<br>Right stick ↔ — pressure<br>LB / RB — tilt nozzle<br>A / Cross — water / confirm<br>X / Square — restart<br>B / Circle or Start — pause<br>D-pad — navigate menus</p></div></div><p><b>Mouse / touch:</b> drag anywhere in the scene to move the nozzle. Use the temperature and pressure sliders below it.</p><div class="manual-verbs"><span>❄ Below −10° builds ice</span><span>♨ Above 10° melts ice</span><span>↗ 70% pressure spins wheels</span></div><p>Warming tasks show their safe temperature and pressure range. Completed structures stay stable unless a marked build/open recipe explicitly asks you to remelt them. There are no lives to lose; restart or replay any call. Earn a rescue star by finishing, a second within 1.8× the par time, and a third within par with fewer than 60 wrong-setting droplet hits.</p><button class="primary" data-action="close">Got it. Let’s help someone.</button>',
   );
 }
 function start(index: number, restart = false) {
@@ -349,6 +349,7 @@ function updateHUD() {
       available = world.available(t);
     row.classList.toggle("complete", t.done);
     row.classList.toggle("locked", !available);
+    row.querySelector("strong")!.textContent = t.name;
     row.querySelector(".objective-number")!.textContent = t.done
       ? "✓"
       : String(world.targets.indexOf(t) + 1);
@@ -356,13 +357,17 @@ function updateHUD() {
       ? "A little good deed, done."
       : !available
         ? world.waitingFor(t)
-        : (t.pulse && !world.untimed
+        : (t.phase
+            ? `STEP ${t.phaseStep + 1}/${t.phase.steps.length} · `
+            : "") +
+          (t.pulse && !world.untimed
             ? world.pulseOpen(t)
               ? "GO · "
               : "REST · "
-            : "") + requirements(t, world.untimed);
+            : "") +
+          requirements(t, world.untimed);
     row.querySelector<HTMLElement>("i")!.style.width =
-      Math.round(t.progress * 100) + "%";
+      Math.round(targetProgress(t) * 100) + "%";
   }
 }
 function action(name: string) {
@@ -569,12 +574,19 @@ function frame(now: number) {
         world.update(1 / 60, controls);
         accumulator -= 1 / 60;
       }
-      const done = world.targets.filter((t) => t.done).length;
+      const done = world.targets.reduce(
+        (n, t) => n + t.phaseStep + Number(t.done),
+        0,
+      );
       if (done > lastGoals) {
         sound.play(world.completed ? "win" : "goal");
         lastGoals = done;
+        const total = world.targets.reduce(
+          (n, t) => n + (t.phase?.steps.length ?? 1),
+          0,
+        );
         $("#announcement").textContent =
-          done + " of " + world.targets.length + " tasks complete.";
+          done + " of " + total + " steps complete.";
       }
       if (world.completed && !recorded) {
         recorded = true;

@@ -11,7 +11,8 @@ export type Theme =
   | "laundry"
   | "reef"
   | "circus"
-  | "borough";
+  | "borough"
+  | "pudding";
 export type PropKind =
   | "cup"
   | "wizard"
@@ -73,7 +74,26 @@ export type PropKind =
   | "eraser"
   | "archive"
   | "townsign"
-  | "puddle";
+  | "puddle"
+  | "pudding"
+  | "biscuitcaptain"
+  | "jellybean"
+  | "whisk"
+  | "layercake"
+  | "eclair"
+  | "dumpling"
+  | "strawberry"
+  | "pancake"
+  | "recipe"
+  | "wafer"
+  | "spoon";
+export interface PhaseStep {
+  verb: "freeze" | "melt";
+  name: string;
+  signal?: string;
+  requires?: string[];
+  needsSignals?: string[];
+}
 export interface Target {
   id: string;
   name: string;
@@ -84,6 +104,8 @@ export interface Target {
   h: number;
   requires?: string[];
   needsSignals?: string[];
+  /** Only explicitly authored targets may reverse a completed construction. */
+  phase?: { steps: PhaseStep[] };
   temp?: [number, number];
   pressure?: [number, number];
   effort?: number;
@@ -124,7 +146,12 @@ export interface Level {
   channels?: {
     inlet: { x: number; y: number; w: number; h: number };
     junction: [number, number];
-    branches: { target: string; gate?: string; via?: [number, number][] }[];
+    branches: {
+      target: string;
+      gate?: string;
+      overflowFrom?: string;
+      via?: [number, number][];
+    }[];
   };
 }
 export interface Controls {

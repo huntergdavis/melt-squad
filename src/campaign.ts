@@ -7,6 +7,7 @@ export const mapLandmarks: Record<string, [PropKind, PropKind, PropKind]> = {
   "03": ["mailbox", "eel", "octopus"],
   "04": ["circuswheel", "giraffe", "beetle"],
   "05": ["townsign", "hedgehog", "pencil"],
+  "06": ["whisk", "biscuitcaptain", "jellybean"],
 };
 
 const themes: [string, string, PropKind, string][] = [
@@ -43,7 +44,7 @@ const themes: [string, string, PropKind, string][] = [
   [
     "The Great Pudding Republic",
     "Dessert would like a word with the menu.",
-    "cake",
+    "pudding",
     "#ecc6be",
   ],
   [

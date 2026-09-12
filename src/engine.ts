@@ -5,6 +5,7 @@ import {
   type BalanceState,
 } from "./mechanics/balance";
 import { traceOptics } from "./mechanics/optics";
+import { availableRoutes, branchOpen } from "./mechanics/flow";
 
 export const CELL = 10;
 export interface LiveTarget extends Target {
@@ -16,6 +17,10 @@ export interface LiveTarget extends Target {
   feedback: string;
   flash: number;
   completedAt: number;
+  phaseStep: number;
+}
+export function targetProgress(t: LiveTarget): number {
+  return t.done ? 1 : (t.phaseStep + t.progress) / (t.phase?.steps.length ?? 1);
 }
 export interface Drop {
   x: number;
@@ -69,6 +74,7 @@ export class World {
   stationary = false;
   untimed = false;
   signals = new Set<string>();
+  private phaseSignals = new Set<string>();
   balance?: BalanceState;
   light: ReturnType<typeof traceOptics> = {
     segments: [],
@@ -106,6 +112,7 @@ export class World {
         rows = Math.ceil(t.h / CELL);
       return {
         ...t,
+        ...(t.phase?.steps[0] ?? {}),
         x: t.x + (t.motion ? Math.cos(t.motion.phase ?? 0) * t.motion.rx : 0),
         y: t.y + (t.motion ? Math.sin(t.motion.phase ?? 0) * t.motion.ry : 0),
         cols,
@@ -116,6 +123,7 @@ export class World {
         feedback: "",
         flash: 0,
         completedAt: -1,
+        phaseStep: 0,
       };
     });
   }
@@ -140,17 +148,23 @@ export class World {
           id,
       );
     for (const id of t.needsSignals ?? []) {
+      const phase = this.targets
+        .flatMap((target) => target.phase?.steps ?? [])
+        .find((step) => step.signal === id);
       if (!this.signals.has(id))
         tasks.push(
-          id === this.level.balance?.id
-            ? "let the scale settle level"
-            : "light the detector",
+          phase
+            ? phase.name.toLowerCase()
+            : id === this.level.balance?.id
+              ? "let the scale settle level"
+              : "light the detector",
         );
     }
     return "First: " + tasks.join(" + ");
   }
   private updateMechanics(dt: number) {
     this.signals.clear();
+    for (const id of this.phaseSignals) this.signals.add(id);
     const plan = this.level.balance;
     if (plan && this.balance) {
       const mass = (load: typeof plan.left) => {
@@ -179,7 +193,7 @@ export class World {
   }
   get progress() {
     return (
-      this.targets.reduce((n, t) => n + (t.done ? 1 : t.progress), 0) /
+      this.targets.reduce((n, t) => n + targetProgress(t), 0) /
       this.targets.length
     );
   }
@@ -275,6 +289,25 @@ export class World {
     if (this.random() < 0.16)
       this.burst(x, y, t.verb === "freeze" ? "#84e7ef" : "#fff3c9", 2);
     if (t.progress >= 1) {
+      const stage = t.phase?.steps[t.phaseStep];
+      if (stage?.signal) {
+        this.phaseSignals.add(stage.signal);
+        this.signals.add(stage.signal);
+      }
+      const next = t.phase?.steps[t.phaseStep + 1];
+      if (next) {
+        t.phaseStep++;
+        t.verb = next.verb;
+        t.name = next.name;
+        t.requires = next.requires ?? [];
+        t.needsSignals = next.needsSignals ?? [];
+        t.progress = 0;
+        t.cells.fill(next.verb === "melt" ? 1 : 0);
+        t.feedback = "Stage complete · " + next.name;
+        t.flash = 1.5;
+        this.burst(t.x + t.w / 2, t.y + t.h / 2, "#84e7ef", 24);
+        return;
+      }
       t.done = true;
       t.completedAt = this.elapsed;
       this.burst(t.x + t.w / 2, t.y + t.h / 2, "#ffd580", 30);
@@ -390,14 +423,13 @@ export class World {
           y >= inlet.y &&
           y <= inlet.y + inlet.h
         ) {
-          const routes = this.level.channels!.branches.flatMap(
-            (branch, index) =>
-              !branch.gate ||
-              this.targets.find((t) => t.id === branch.gate)?.done
-                ? [index]
-                : [],
+          const routes = availableRoutes(
+            this.level.channels!.branches,
+            this.targets,
           );
-          if (routes.length)
+          // Sample inflow when full, never evict a parcel already travelling.
+          // Replacing oldest parcels starved routes longer than the queue window.
+          if (routes.length && this.runoff.length < 350)
             this.runoff.push({
               branch: routes[this.routeCursor++ % routes.length],
               distance: 0,
@@ -413,7 +445,6 @@ export class World {
       .filter((d) => d.life > 0 && d.x > 0 && d.x < W)
       .slice(-350);
     this.sparks = this.sparks.slice(-220);
-    this.runoff = this.runoff.slice(-350);
   }
   channelPath(branch: number): [number, number][] {
     const channels = this.level.channels!;
@@ -454,10 +485,7 @@ export class World {
       if (!point.arrived) return true;
       const branch = this.level.channels!.branches[drop.branch];
       // A gate may change later; recheck connectivity on delivery as well.
-      if (
-        !branch.gate ||
-        this.targets.find((t) => t.id === branch.gate)?.done
-      ) {
+      if (branchOpen(branch, this.targets)) {
         const target = this.targets.find((t) => t.id === branch.target)!;
         this.impact(
           target,

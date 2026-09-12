@@ -4,6 +4,53 @@ import type { World } from "../engine";
 /** Physical indicators stay separate from decorative scene props. */
 export function drawMeasurements(r: Renderer, world: World) {
   const c = r.ctx;
+  for (const target of world.targets) {
+    if (!target.phase) continue;
+    const cards = target.phase.steps.flatMap((step, i) => [
+      ...(step.requires ?? []).map((id) => {
+        const task = world.targets.find((t) => t.id === id)!;
+        return {
+          label: task.verb.toUpperCase(),
+          done: task.done,
+          active: world.available(task) && !task.done,
+        };
+      }),
+      {
+        label: step.verb === "freeze" ? "BUILD" : "OPEN",
+        done: target.done || target.phaseStep > i,
+        active:
+          target.phaseStep === i && world.available(target) && !target.done,
+      },
+    ]);
+    const width = Math.max(65, target.w / cards.length);
+    const left = target.x + target.w / 2 - (width * cards.length) / 2;
+    const top =
+      target.y + target.h + 17 <= 480
+        ? target.y + target.h + 17
+        : target.y - 41;
+    c.save();
+    cards.forEach((card, i) => {
+      const x = left + i * width;
+      r.round(
+        x,
+        top,
+        width - 5,
+        27,
+        7,
+        card.done ? "#d5edcc" : card.active ? "#fff0bb" : "#ede4d4",
+        "#8c8670",
+      );
+      c.font = "bold 11px system-ui";
+      c.textAlign = "center";
+      c.fillStyle = "#355952";
+      c.fillText(
+        (card.done ? "✓ " : "") + card.label,
+        x + (width - 5) / 2,
+        top + 18,
+      );
+    });
+    c.restore();
+  }
   const scale = world.level.balance,
     state = world.balance;
   if (scale && state) {

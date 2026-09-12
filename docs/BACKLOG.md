@@ -2,7 +2,7 @@
 
 ## Campaign expansion — one complete world per release
 
-Current implementation: **100 scenes / 5 worlds**. See the [release ledger](RELEASES.md).
+Current implementation: **120 scenes / 6 worlds**. See the [release ledger](RELEASES.md).
 
 - [x] Design 19 new themed levels of 20 scenes each: 380 new scenes, 400 total
       including the existing collection.
@@ -21,6 +21,8 @@ Current implementation: **100 scenes / 5 worlds**. See the [release ledger](RELE
       rehearsal wheel, real rhythm gates, and controller-accessible untimed play.
 - [x] Pack 05: twenty Borough scenes, tiny civic friendships, an actual settling
       mass balance, geometric mirror reflections, and sunlight detectors.
+- [x] Pack 06: twenty Pudding Republic scenes, a dessert ensemble, reversible
+      build/fill/open molds, connected syrup overflow, and a shared breakfast.
 - [x] In-game credits with local Kenney and font license acknowledgements.
 
 Start with the [campaign plan](CAMPAIGN_BACKLOG.md) and

@@ -25,6 +25,9 @@ describe("Authored calls", () => {
       const signals = [
         l.balance?.id,
         ...(l.optics?.detectors.map((d) => d.id) ?? []),
+        ...l.targets.flatMap(
+          (t) => t.phase?.steps.map((step) => step.signal) ?? [],
+        ),
       ].filter(Boolean);
       if (l.balance) {
         for (const load of [l.balance.left, l.balance.right]) {
@@ -40,7 +43,31 @@ describe("Authored calls", () => {
         expect(mirror.length).toBeGreaterThan(0);
       }
       expect(new Set(ids).size).toBe(ids.length);
+      for (const branch of l.channels?.branches ?? []) {
+        const destination = l.targets.find((t) => t.id === branch.target);
+        expect(destination?.verb).toBe("fill");
+        expect(destination?.flowOnly).toBe(true);
+        if (branch.gate) expect(ids).toContain(branch.gate);
+        if (branch.overflowFrom) {
+          expect(
+            l.targets.find((t) => t.id === branch.overflowFrom)?.verb,
+          ).toBe("fill");
+          expect(branch.overflowFrom).not.toBe(branch.target);
+        }
+      }
       for (const t of l.targets) {
+        if (t.phase) {
+          expect(t.phase.steps.length).toBeGreaterThanOrEqual(2);
+          expect(t.phase.steps[0].verb).toBe(t.verb);
+          for (const step of t.phase.steps) {
+            for (const id of step.requires ?? []) {
+              expect(ids).toContain(id);
+              expect(id).not.toBe(t.id);
+            }
+            for (const signal of step.needsSignals ?? [])
+              expect(signals).toContain(signal);
+          }
+        }
         for (const signal of t.needsSignals ?? [])
           expect(signals).toContain(signal);
         expect(t.x).toBeGreaterThan(55);
@@ -61,16 +88,34 @@ describe("Authored calls", () => {
   for (const l of levels)
     it('solves "' + l.name + '" through actual water particles', () => {
       const world = new World(l);
-      for (const t of world.targets) {
+      const operations = world.targets.reduce(
+        (n, t) => n + (t.phase?.steps.length ?? 1),
+        0,
+      );
+      for (
+        let operation = 0;
+        operation < operations && !world.completed;
+        operation++
+      ) {
+        let t = world.targets.find(
+          (target) => !target.done && world.available(target),
+        );
         // Physical readings may need a moment after the final drop (e.g. a beam settling).
         // Wait by advancing the real simulation, never by changing signal/progress state.
-        if (t.needsSignals?.length && !world.available(t)) {
+        if (!t) {
           world.nozzle.on = false;
-          for (let step = 0; step < 1200 && !world.available(t); step++)
+          for (let step = 0; step < 1200 && !t; step++) {
             world.update(1 / 60, idle);
+            t = world.targets.find(
+              (target) => !target.done && world.available(target),
+            );
+          }
           world.nozzle.on = true;
         }
+        expect(t, "No available work after physical settling").toBeDefined();
+        if (!t) throw new Error("No available work");
         expect(world.available(t)).toBe(true);
+        const phaseStep = t.phaseStep;
         const n = world.nozzle;
         n.temp =
           t.verb === "freeze"
@@ -83,7 +128,11 @@ describe("Authored calls", () => {
             ? ((t.pressure?.[0] ?? 10) + (t.pressure?.[1] ?? 55)) / 2
             : 90;
         n.angle = 0;
-        for (let step = 0; step < 12000 && !t.done; step++) {
+        for (
+          let step = 0;
+          step < 12000 && !t.done && t.phaseStep === phaseStep;
+          step++
+        ) {
           // Sweep across the whole shape. No direct progress writes or test-only win path.
           n.x = t.x + 8 + (t.w - 16) * (0.5 + 0.5 * Math.sin(step / 29));
           n.y = t.y - 52;
@@ -94,7 +143,10 @@ describe("Authored calls", () => {
           }
           world.update(1 / 60, idle);
         }
-        expect(t.done, t.id + " stopped at " + t.progress).toBe(true);
+        expect(
+          t.done || t.phaseStep > phaseStep,
+          t.id + " stopped at " + t.progress,
+        ).toBe(true);
       }
       expect(world.completed).toBe(true);
       expect(world.progress).toBe(1);

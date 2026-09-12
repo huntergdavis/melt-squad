@@ -4,6 +4,7 @@ import { drawPostal } from "./art/postal";
 import { drawCircus } from "./art/circus";
 import { drawMeasurements } from "./art/measurements";
 import { drawBorough } from "./art/borough";
+import { drawPudding } from "./art/pudding";
 const motionSafe = (time: number, reduced: boolean) => (reduced ? 0 : time);
 
 const palettes: Record<Theme, [string, string, string]> = {
@@ -16,6 +17,7 @@ const palettes: Record<Theme, [string, string, string]> = {
   reef: ["#245967", "#7fb5b2", "#517f83"],
   circus: ["#594d64", "#d2a994", "#826777"],
   borough: ["#d5c3a8", "#ecdfc6", "#90a28d"],
+  pudding: ["#f0d695", "#f5e7bf", "#c49877"],
 };
 export class Renderer {
   ctx: CanvasRenderingContext2D;
@@ -108,7 +110,8 @@ export class Renderer {
     if (
       drawPostal(this, kind, happy, t, tint) ||
       drawCircus(this, kind, happy, t, tint) ||
-      drawBorough(this, kind, happy, t, tint)
+      drawBorough(this, kind, happy, t, tint) ||
+      drawPudding(this, kind, t, happy)
     ) {
       c.restore();
       return;
@@ -412,6 +415,25 @@ export class Renderer {
     } else if (world.level.theme === "garden") {
       for (let i = 0; i < 7; i++)
         this.circle(i * 165, 487, 100 + (i % 3) * 20, "#9fae83");
+    } else if (world.level.theme === "pudding") {
+      this.round(84, 60, 792, 430, 16, "#d5ad76", "#ae865d");
+      for (const y of [168, 315, 460]) {
+        this.round(96, y, 768, 18, 5, "#b58359");
+        this.round(103, y - 7, 754, 8, 3, "#f2d1a0");
+      }
+      for (const x of [135, 757]) {
+        this.round(x, 115, 62, 355, 9, "#e3bd87", "#b48d61");
+        for (let y = 129; y < 460; y += 24) {
+          this.line([x + 8, y, x + 54, y], "#b89061", 2);
+        }
+        for (let i = 1; i < 4; i++)
+          this.line([x + i * 15, 124, x + i * 15, 459], "#b89061", 2);
+      }
+      for (let i = 0; i < 10; i++) {
+        const x = 226 + i * 55;
+        this.round(x, 130, 32, 35, 9, i % 2 ? "#c78989" : "#b2b99a");
+        this.round(x - 2, 123, 36, 10, 4, "#92715a");
+      }
     } else if (world.level.theme === "borough") {
       this.round(84, 60, 792, 430, 15, "#b49476", "#866e59");
       for (let i = 0; i < 110; i++)
@@ -561,6 +583,19 @@ export class Renderer {
         100,
       );
     }
+    if (world.level.theme === "pudding") {
+      this.round(245, 63, 470, 58, 17, "#fff0cf", "#ba775f");
+      c.fillStyle = "#875345";
+      c.textAlign = "center";
+      c.font = "600 23px Outfit, sans-serif";
+      c.fillText(
+        world.completed
+          ? "BREAKFAST BELONGS TO EVERYBODY."
+          : "THE GREAT PUDDING REPUBLIC",
+        480,
+        100,
+      );
+    }
     this.round(82, 487, 796, 23, 12, "#ffffff55");
     this.round(64, 506, 832, 70, 25, ground);
     this.round(64, 501, 832, 17, 8, "#edf2df");
@@ -575,18 +610,35 @@ export class Renderer {
       const channels = world.level.channels;
       for (let i = 0; i < channels.branches.length; i++) {
         const points = world.channelPath(i).flat();
-        this.line(points, "#353c5d", 21);
-        this.line(points, "#aaa9c7", 12);
+        this.line(
+          points,
+          world.level.theme === "pudding" ? "#997048" : "#353c5d",
+          21,
+        );
+        this.line(
+          points,
+          world.level.theme === "pudding" ? "#dfb471" : "#aaa9c7",
+          12,
+        );
       }
       const inlet = channels.inlet;
       this.round(inlet.x, inlet.y, inlet.w, inlet.h, 8, "#d4e6df", "#435b70");
       c.fillStyle = "#2d465b";
       c.textAlign = "center";
       c.font = "bold 14px system-ui";
-      c.fillText("INLET ↓", inlet.x + inlet.w / 2, inlet.y + 25);
+      c.fillText(
+        world.level.theme === "pudding" ? "SYRUP INLET ↓" : "INLET ↓",
+        inlet.x + inlet.w / 2,
+        inlet.y + 25,
+      );
       for (const drop of world.runoff) {
         const at = world.runoffPosition(drop);
-        this.circle(at.x, at.y, 3, "#8ce2f4");
+        this.circle(
+          at.x,
+          at.y,
+          3,
+          world.level.theme === "pudding" ? "#f6c665" : "#8ce2f4",
+        );
       }
     }
     for (const t of world.level.targets)
