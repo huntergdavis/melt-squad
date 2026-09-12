@@ -10,6 +10,7 @@ import { drawEmberborough } from "./art/emberborough";
 import { drawLibrary } from "./art/library";
 import { drawSports } from "./art/sports";
 import { drawBuoyancy } from "./art/buoyancy";
+import { drawWedding } from "./art/wedding";
 const motionSafe = (time: number, reduced: boolean) => (reduced ? 0 : time);
 
 const palettes: Record<Theme, [string, string, string]> = {
@@ -27,6 +28,7 @@ const palettes: Record<Theme, [string, string, string]> = {
   emberborough: ["#ead7c1", "#f5e5cb", "#a4b1a3"],
   library: ["#46465f", "#b4a5b2", "#817486"],
   sports: ["#c3dfe0", "#f1e7c9", "#bba88b"],
+  wedding: ["#ddd9e6", "#f5e9d4", "#b9b29c"],
 };
 export class Renderer {
   ctx: CanvasRenderingContext2D;
@@ -124,7 +126,8 @@ export class Renderer {
       drawPreschool(this, kind, happy, t, tint) ||
       drawEmberborough(this, kind, happy, t, tint) ||
       drawLibrary(this, kind, happy, t, tint) ||
-      drawSports(this, kind, happy, t, tint)
+      drawSports(this, kind, happy, t, tint) ||
+      drawWedding(this, kind, happy, t, tint)
     ) {
       c.restore();
       return;
@@ -428,6 +431,47 @@ export class Renderer {
     } else if (world.level.theme === "garden") {
       for (let i = 0; i < 7; i++)
         this.circle(i * 165, 487, 100 + (i % 3) * 20, "#9fae83");
+    } else if (world.level.theme === "wedding") {
+      for (const [i, x] of [90, 410, 730].entries()) {
+        this.round(
+          x,
+          175,
+          140,
+          300,
+          65,
+          ["#b5bed4", "#b7caaa", "#c3b3d3"][i],
+          "#a398a6",
+        );
+        this.round(x + 10, 187, 120, 270, 55, "#f5eedc");
+        this.round(x - 8, 461, 156, 15, 5, "#c4b598");
+        if (i === 0) {
+          this.circle(x + 68, 236, 29, "#d2b8ce");
+          this.circle(x + 78, 228, 26, "#f5eedc");
+          for (const [dx, dy] of [
+            [36, 310],
+            [98, 357],
+            [54, 402],
+          ])
+            this.circle(x + dx, dy, 4, "#b1a5c6");
+        } else if (i === 1) {
+          for (const dx of [37, 70, 103]) {
+            this.line([x + dx, 450, x + dx, 368], "#83a792", 4);
+            this.circle(x + dx, 369, 17, "#dba69c");
+          }
+        } else {
+          for (const [dx, dy] of [
+            [35, 253],
+            [65, 234],
+            [93, 254],
+            [45, 354],
+            [84, 341],
+          ])
+            this.circle(x + dx, dy, 24, "#bacdd5");
+        }
+      }
+      this.line([245, 160, 480, 191, 715, 160], "#bda790", 3);
+      for (const x of [290, 365, 440, 515, 590, 665])
+        this.circle(x, 178, 5, "#d6a895");
     } else if (world.level.theme === "sports") {
       for (const x of [100, 790]) {
         this.round(x, 165, 70, 315, 8, "#fff4d9", "#b8a58a");
@@ -752,6 +796,27 @@ export class Renderer {
         100,
       );
     }
+    if (world.level.theme === "wedding") {
+      this.round(
+        245,
+        63,
+        470,
+        world.level.optics ? 40 : 58,
+        17,
+        "#fff0de",
+        "#b5a393",
+      );
+      c.fillStyle = "#6e646e";
+      c.textAlign = "center";
+      c.font = "600 23px Outfit, sans-serif";
+      c.fillText(
+        world.completed
+          ? "EVERY FORECAST. EVERYBODY WELCOME."
+          : "EVER AFTER, EVERYWHERE",
+        480,
+        world.level.optics ? 90 : 100,
+      );
+    }
     if (world.level.theme === "sports") {
       this.round(235, 63, 490, 58, 17, "#fff0d4", "#9aa693");
       c.fillStyle = "#416568";
@@ -913,13 +978,16 @@ export class Renderer {
     for (const [index, t] of world.targets.entries()) {
       const available = world.available(t);
       const prism = world.level.optics?.prisms?.find((p) => p.target === t.id);
+      const splitter = world.level.optics?.splitters?.find(
+        (p) => p.target === t.id,
+      );
       if (
         t.done &&
         world.buoyancy?.active &&
         world.level.buoyancy?.iceTarget === t.id
       )
         continue;
-      if (t.done && prism) continue;
+      if (t.done && (prism || splitter)) continue;
       if (t.done && t.verb !== "freeze" && t.verb !== "fill") continue;
       c.save();
       if (!available) c.globalAlpha = 0.3;
@@ -954,7 +1022,7 @@ export class Renderer {
         c.roundRect(t.x, t.y, t.w, t.h, 9);
         c.stroke();
         c.setLineDash([]);
-        if (!prism && (t.verb === "freeze" || t.verb === "fill")) {
+        if (!prism && !splitter && (t.verb === "freeze" || t.verb === "fill")) {
           const isFloatBasin = world.level.buoyancy?.fillTarget === t.id;
           const h = Math.max(0, (t.h - (isFloatBasin ? 0 : 4)) * t.progress);
           if (h > 0)

@@ -2,7 +2,7 @@
 
 ## Campaign expansion — one complete world per release
 
-Current implementation: **200 scenes / 10 worlds**. See the [release ledger](RELEASES.md).
+Current implementation: **220 scenes / 11 worlds**. See the [release ledger](RELEASES.md).
 
 - [x] Design 19 new themed levels of 20 scenes each: 380 new scenes, 400 total
       including the existing collection.
@@ -32,6 +32,8 @@ Current implementation: **200 scenes / 10 worlds**. See the [release ledger](REL
 - [x] Pack 10: twenty Mount Oops sports scenes, mythological athletes, ordered
       untimed rhythm lamps, real loaded-pontoon buoyancy, and a medal for the bench.
 - [x] In-game credits with local Kenney and font license acknowledgements.
+- [x] Pack 11: twenty Ever After wedding scenes, an eight-armed planner and
+      mixed-climate families, real two-branch optics, and rings preserving both proofs.
 
 Start with the [campaign plan](CAMPAIGN_BACKLOG.md) and
 [complete 380-scene catalog](campaign/SCENE_CATALOG.md). Those source designs

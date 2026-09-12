@@ -138,11 +138,68 @@ export function drawMeasurements(r: Renderer, world: World) {
   const optics = world.level.optics;
   if (optics) {
     c.save();
-    for (const { from, to } of world.light.segments) {
+    for (const { from, to, power } of world.light.segments) {
       r.line([...from, ...to], "#efc86644", 10);
-      r.line([...from, ...to], "#fff2a7", 3);
+      if (
+        world.completed &&
+        world.level.theme === "wedding" &&
+        power !== undefined
+      ) {
+        // Painted celebration along an actual traced ray, not dispersion physics.
+        const colors = c.createLinearGradient(from[0], from[1], to[0], to[1]);
+        colors.addColorStop(0, "#bd9ed4");
+        colors.addColorStop(0.5, "#e6aa93");
+        colors.addColorStop(1, "#79b5a2");
+        c.beginPath();
+        c.moveTo(...from);
+        c.lineTo(...to);
+        c.strokeStyle = colors;
+        c.lineWidth = 4;
+        c.stroke();
+      } else
+        r.line(
+          [...from, ...to],
+          "#fff2a7",
+          power === undefined ? 3 : Math.max(1.5, 3 * Math.sqrt(power)),
+        );
     }
     const lamp = optics.source;
+    for (const splitter of optics.splitters ?? []) {
+      const built = world.targets.find((t) => t.id === splitter.target)?.done;
+      const dx = (Math.cos(splitter.angle) * splitter.length) / 2;
+      const dy = (Math.sin(splitter.angle) * splitter.length) / 2;
+      const half = Math.max(Math.abs(dx), Math.abs(dy));
+      r.round(
+        splitter.x - half,
+        splitter.y - half,
+        half * 2,
+        half * 2,
+        4,
+        built ? "#d4e8e5aa" : "#d4e8e544",
+        "#73989d",
+      );
+      c.setLineDash(built ? [] : [5, 5]);
+      r.line(
+        [splitter.x - dx, splitter.y - dy, splitter.x + dx, splitter.y + dy],
+        built ? "#a187b3" : "#a187b388",
+        built ? 5 : 2,
+      );
+      c.setLineDash([]);
+      if (built)
+        r.line(
+          [splitter.x - dx, splitter.y - dy, splitter.x + dx, splitter.y + dy],
+          "#fff3d9",
+          1.5,
+        );
+      c.fillStyle = "#53666a";
+      c.font = "bold 11px system-ui";
+      c.textAlign = "center";
+      c.fillText(
+        "SHARE THE LIGHT",
+        splitter.x - half - 65,
+        splitter.y + half + 18,
+      );
+    }
     for (const prism of optics.prisms ?? []) {
       const target = world.targets.find((t) => t.id === prism.target);
       c.beginPath();
@@ -212,7 +269,11 @@ export function drawMeasurements(r: Renderer, world: World) {
       c.font = "bold 12px system-ui";
       c.textAlign = "center";
       c.fillText(
-        lit ? "LIGHT RECEIVED" : "WAITING FOR LIGHT",
+        detector.name
+          ? detector.name.toUpperCase() + (lit ? " · READY" : " · WAITING")
+          : lit
+            ? "LIGHT RECEIVED"
+            : "WAITING FOR LIGHT",
         detector.label?.[0] ?? detector.x,
         detector.label?.[1] ?? detector.y + detector.radius + 23,
       );

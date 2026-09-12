@@ -85,6 +85,24 @@ describe("Authored calls", () => {
           expect(y).toBeLessThanOrEqual(target!.y + target!.h);
         }
       }
+      for (const splitter of l.optics?.splitters ?? []) {
+        const target = l.targets.find((t) => t.id === splitter.target)!;
+        expect(target.verb).toBe("freeze");
+        expect(Number.isFinite(splitter.angle)).toBe(true);
+        expect(splitter.length).toBeGreaterThan(0);
+        const dx = (Math.cos(splitter.angle) * splitter.length) / 2;
+        const dy = (Math.sin(splitter.angle) * splitter.length) / 2;
+        for (const side of [-1, 1]) {
+          expect(splitter.x + side * dx).toBeGreaterThanOrEqual(target.x);
+          expect(splitter.x + side * dx).toBeLessThanOrEqual(
+            target.x + target.w,
+          );
+          expect(splitter.y + side * dy).toBeGreaterThanOrEqual(target.y);
+          expect(splitter.y + side * dy).toBeLessThanOrEqual(
+            target.y + target.h,
+          );
+        }
+      }
       for (const branch of l.channels?.branches ?? []) {
         expect(Boolean(branch.target) !== Boolean(branch.outlet)).toBe(true);
         if (branch.target) {

@@ -4,15 +4,16 @@
 
 A hose-powered puzzle game about helping a wonderfully weird world warm up.
 Thaw an upside-down space wizard, build a penguin an ice bridge, give the moon
-a bath, help a storybook wolf take up gardening, and coach a minotaur through sports day.
-**200 hand-authored rescue calls. Ten playful worlds. One very helpful hose.**
+a bath, coach a minotaur through sports day, and help an octopus plan a wedding.
+**220 hand-authored rescue calls. Eleven playful worlds. One very helpful hose.**
 
 [Play in your browser](https://hunterdavis.com/melt-squad/)
 
 Explore the rescue atlas, follow a world's story trail, or pick any available
-scene. New in **Mount Oops Sports Club**: a sphinx coach, a minotaur with horn
-sweatbands, and a harpy who runs sideways. Float a model podium, take the rhythm
-lane at your own pace, and award a medal to a very helpful bench.
+scene. New in **Ever After, Everywhere**: a cloud sprite and a garden golem
+are getting married. Keep every climate comfortable, share a beam of light,
+and save both drafts of the rings. The planner has eight arms. The invitations
+include one very small bow tie.
 No lives, no grinding, no account.
 
 ## Your equipment
@@ -32,7 +33,7 @@ Mouse and touch: drag the nozzle in the scene and adjust the two sliders.
 
 Hot water erodes ice. Cold water builds marked structures. Gentle warmth
 rescues delicate things. Pressure spins machines. Mix the five verbs across
-200 individually authored puzzles, with no lives to lose and every released call available
+220 individually authored puzzles, with no lives to lose and every released call available
 from the start. Medals, best times, and sound preference stay in your browser.
 
 These are arcade thermal puzzles, not a full fluid-dynamics simulation.
@@ -41,7 +42,8 @@ them. Rinse channels and overflow spillways carry actual routed water;
 moving care pads offer a saved stationary assist. Rhythm gates have clear
 GO/REST cues and saved untimed play; both assists are in Pause. Balance actual
 water and ice loads, reflect sunlight through a freshly melted opening, or
-refract it through real triangular prisms. Build a loaded ice pontoon and watch
+refract it through real triangular prisms and share it with a beam splitter.
+Build a loaded ice pontoon and watch
 buoyancy lift its deck to the dock as the basin fills.
 Earn medals, collect silly
 rescue postcards, and return to your last world. Credits and open-asset licenses
@@ -79,6 +81,6 @@ The Vite base path is `/melt-squad/`.
 - [Design thesis](docs/DESIGN_THESIS.md)
 - [Level authoring and architecture](docs/LEVEL_AUTHORING.md)
 - [Next slices](docs/BACKLOG.md)
-- [Campaign release ledger](docs/RELEASES.md) — ten worlds implemented; ten to go
+- [Campaign release ledger](docs/RELEASES.md) — eleven worlds implemented; nine to go
 - [400-scene campaign plan](docs/CAMPAIGN_BACKLOG.md) — the full design backlog
 - [Art credits and licenses](CREDITS.md)

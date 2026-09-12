@@ -135,6 +135,20 @@ every original call yet has a bespoke ending animation.
   The implementation reuses the mirror/cell/detector helpers recalled from
   session `01a06835`; refraction math follows
   [PBRT's derivation](https://pbr-book.org/4ed/Reflection_Models/Specular_Reflection_and_Transmission).
+  Optional `splitters` use finite coated diagonals (`target`, `x`, `y`, tangent
+  `angle`, `length`) tied to completed freeze targets. Each sends half its
+  incoming power straight through and half along the reflected direction;
+  actual downstream prism intersections and opaque ice still apply. Work is
+  bounded to 32 lineages, 128 segments, twelve interactions per path, and a
+  1/256 power cutoff. Detectors observe the actual segments, not authored ends.
+  Split segments expose optional `power`; old unsplit shapes remain unchanged.
+  Optional detector `name` and offset `label` identify people without placing
+  captions across the rays. See `11.15`. The cube's outer faces are assumed
+  normal to these incident/exit rays; this is an ideal geometric 50:50 coating,
+  not polarization, interference, or wavelength dispersion. The wedding's
+  completed pastel rainbow is celebratory paint along those same real paths.
+  This extension reuses the optics from recalled session `01a06835-15f`;
+  see [Edmund Optics on beam splitters](https://www.edmundoptics.com/knowledge-center/application-notes/optics/what-are-beamsplitters/).
 - Target `needsSignals` gates work on physical signal IDs, in addition to
   `requires`. Leave space for visible physical feedback, and a generous final
   warming target to celebrate success. See `05.14` and `05.16`.
@@ -152,6 +166,10 @@ every original call yet has a bespoke ending animation.
   starts enabled beneath the page, while the final recast waits for that basin.
   Local eroded holes admit real droplets before the whole page clears.
   Keep the recipe strip clear of both the page and the basin below it.
+  `11.18` reuses that phase history for a leaf proof → remelt → shared proof.
+  Its engraver unlocks from `band:leaf`, not the final band completion; remelting
+  waits for the engraver. Both earned draft signals survive the recast, while
+  restart clears them. The memory-book reveal celebrates both drafts.
 - `src/campaign.ts` controls world metadata and Continue; `src/atlas.ts` handles
   accessible maps. Unbuilt `NN.SS` slots stay unbuilt even if later slots exist.
 - `public/release.json` identifies the release that must be checked on the live

@@ -18,7 +18,8 @@ export type Theme =
   | "preschool"
   | "emberborough"
   | "library"
-  | "sports";
+  | "sports"
+  | "wedding";
 export type PropKind =
   | "cup"
   | "wizard"
@@ -167,7 +168,34 @@ export type PropKind =
   | "sportstowel"
   | "modelathletes"
   | "sportshug"
-  | "sportscup";
+  | "sportscup"
+  | "adaplanner"
+  | "weddingbell"
+  | "bellringcrown"
+  | "crystalchime"
+  | "rill"
+  | "moss"
+  | "crystalaunt"
+  | "moongrandmother"
+  | "flowercousins"
+  | "stoneuncle"
+  | "cloudfamily"
+  | "weddingarch"
+  | "placecard"
+  | "lacepanel"
+  | "ringcushion"
+  | "emptyringcushion"
+  | "weddingrings"
+  | "twosidedcake"
+  | "ribbonspool"
+  | "weddingfavors"
+  | "ceremonymodel"
+  | "memorybook"
+  | "weddingpanorama"
+  | "clipboardflower"
+  | "weddingchair"
+  | "weddingguestbook"
+  | "bowtieinvite";
 export interface PhaseStep {
   verb: "freeze" | "melt";
   name: string;

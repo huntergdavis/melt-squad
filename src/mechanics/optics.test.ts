@@ -18,6 +18,263 @@ const target = (
   ...extra,
 });
 
+const placeCards: OpticsPlan = {
+  source: { x: 160, y: 200, dx: 1, dy: 0 },
+  mirrors: [],
+  splitters: [
+    { target: "splitter", x: 350, y: 200, angle: Math.PI / 4, length: 100 },
+  ],
+  prisms: [
+    {
+      target: "rillLens",
+      vertices: [
+        [500, 130],
+        [500, 290],
+        [620, 290],
+      ],
+      refractiveIndex: 1.31,
+    },
+    {
+      target: "mossLens",
+      vertices: [
+        [420, 320],
+        [260, 320],
+        [260, 440],
+      ],
+      refractiveIndex: 1.31,
+    },
+  ],
+  detectors: [
+    {
+      id: "rill",
+      name: "Rill",
+      x: 820,
+      y: 271.3930758363,
+      radius: 10,
+      label: [820, 315],
+    },
+    {
+      id: "moss",
+      name: "Moss",
+      x: 315.9715246014,
+      y: 500,
+      radius: 10,
+      label: [316, 540],
+    },
+  ],
+};
+const builtPlaceCards = () => [
+  target("splitter"),
+  target("rillLens"),
+  target("mossLens"),
+];
+
+describe("Physical splitter and fixed lenses for the wedding place cards", () => {
+  it("splits only at the finite interface and refracts both half-power rays onto actual cards", () => {
+    const targets = builtPlaceCards();
+    const before = JSON.stringify({ placeCards, targets });
+    const result = traceOptics(placeCards, targets);
+    expect(result.segments).toHaveLength(7);
+    expect(result.segments[0]).toEqual({ from: [160, 200], to: [350, 200] });
+    expect(
+      result.segments.slice(1).every((segment) => segment.power === 0.5),
+    ).toBe(true);
+    expect(result.segments[1].from).toEqual(result.segments[0].to);
+    expect(result.segments[2].from).toEqual(result.segments[0].to);
+    expect(result.segments[1].power! + result.segments[2].power!).toBe(1);
+    const boundaries = [
+      [500, 200],
+      [350, 320],
+      [552.5, 200],
+      [350, 372.5],
+    ];
+    boundaries.forEach(([x, y], i) => {
+      expect(result.segments[i + 1].to[0]).toBeCloseTo(x, 7);
+      expect(result.segments[i + 1].to[1]).toBeCloseTo(y, 7);
+    });
+    expect(result.lit).toEqual(new Set(["rill", "moss"]));
+    expect(JSON.stringify({ placeCards, targets })).toBe(before);
+  });
+
+  it("misses the corresponding name card with either lens missing, unfinished, or replaced by air", () => {
+    for (const [lens, survivingCard] of [
+      ["rillLens", "moss"],
+      ["mossLens", "rill"],
+    ]) {
+      const missing = builtPlaceCards().filter((t) => t.id !== lens);
+      const unfinished = builtPlaceCards().map((t) =>
+        t.id === lens ? { ...t, done: false } : t,
+      );
+      for (const targets of [missing, unfinished])
+        expect(traceOptics(placeCards, targets).lit).toEqual(
+          new Set([survivingCard]),
+        );
+      const airLens = {
+        ...placeCards,
+        prisms: placeCards.prisms!.map((p) =>
+          p.target === lens ? { ...p, refractiveIndex: 1 } : p,
+        ),
+      };
+      expect(traceOptics(airLens, builtPlaceCards()).lit).toEqual(
+        new Set([survivingCard]),
+      );
+    }
+  });
+
+  it("keeps only the original unsplit ray when the splitter is absent, unfinished, or missed", () => {
+    const noSplitter = builtPlaceCards().filter((t) => t.id !== "splitter");
+    for (const targets of [
+      noSplitter,
+      [...noSplitter, target("splitter", { done: false })],
+    ]) {
+      const result = traceOptics(placeCards, targets);
+      expect(result.lit).toEqual(new Set(["rill"]));
+      expect(result.segments).toHaveLength(3);
+      expect(result.segments.every((segment) => !("power" in segment))).toBe(
+        true,
+      );
+    }
+    for (const splitters of [
+      [],
+      [{ ...placeCards.splitters![0], y: 230, length: 20 }],
+      [{ ...placeCards.splitters![0], angle: 0 }],
+    ])
+      expect(
+        traceOptics({ ...placeCards, splitters }, builtPlaceCards()).lit,
+      ).toEqual(new Set(["rill"]));
+  });
+
+  it("blocks both branches at the shutter until a real aperture exists, and independently occludes a child", () => {
+    const shutter = target("shutter", {
+      verb: "melt",
+      done: false,
+      x: 220,
+      y: 175,
+      w: 55,
+      h: 60,
+      cols: 6,
+      rows: 6,
+      cells: Array(36).fill(1),
+    });
+    const targets = [...builtPlaceCards(), shutter];
+    expect(traceOptics(placeCards, targets).segments).toEqual([
+      { from: [160, 200], to: [220, 200] },
+    ]);
+    expect(traceOptics(placeCards, targets).lit.size).toBe(0);
+    shutter.cells = shutter.cells.map((cell, i) =>
+      Math.floor(i / 6) === 2 ? 0 : cell,
+    );
+    expect(shutter.done).toBe(false);
+    expect(traceOptics(placeCards, targets).lit).toEqual(
+      new Set(["rill", "moss"]),
+    );
+    shutter.done = true;
+    shutter.cells = Array(36).fill(1);
+    const branchCover = target("branchCover", {
+      verb: "melt",
+      done: false,
+      x: 345,
+      y: 300,
+    });
+    expect(traceOptics(placeCards, [...targets, branchCover]).lit).toEqual(
+      new Set(["rill"]),
+    );
+    branchCover.done = true;
+    expect(traceOptics(placeCards, [...targets, branchCover]).lit).toEqual(
+      new Set(["rill", "moss"]),
+    );
+    const interfaceCover = target("interfaceCover", {
+      verb: "melt",
+      done: false,
+      x: 350,
+      y: 195,
+    });
+    expect(
+      traceOptics(placeCards, [...targets, interfaceCover]).segments,
+    ).toEqual([{ from: [160, 200], to: [350, 200] }]);
+  });
+
+  it("reflects the actual incident direction on either face while transmission keeps its heading", () => {
+    const plan: OpticsPlan = {
+      source: { x: 350, y: 400, dx: 0, dy: -1 },
+      mirrors: [],
+      splitters: placeCards.splitters,
+      detectors: [
+        { id: "transmitted", x: 350, y: 130, radius: 5 },
+        { id: "reflected", x: 150, y: 200, radius: 5 },
+        { id: "wrong", x: 600, y: 200, radius: 5 },
+      ],
+    };
+    const result = traceOptics(plan, [target("splitter")]);
+    expect(result.lit).toEqual(new Set(["transmitted", "reflected"]));
+    expect(result.segments).toHaveLength(3);
+    expect(result.segments[1].to).toEqual([350, 0]);
+    expect(result.segments[2].to[0]).toBeCloseTo(0, 7);
+    expect(result.segments[2].to[1]).toBeCloseTo(200, 7);
+  });
+
+  it("rejects malformed or off-board finite splitter segments without creating scripted rays", () => {
+    const good = placeCards.splitters![0];
+    const invalid = [
+      ...[0, -1, NaN, Infinity, 1e-10, Number.MAX_VALUE].map((length) => ({
+        ...good,
+        length,
+      })),
+      ...[NaN, Infinity].map((angle) => ({ ...good, angle })),
+      ...[-1, 961, NaN, Infinity].map((x) => ({ ...good, x })),
+      ...[-1, 581, NaN, Infinity].map((y) => ({ ...good, y })),
+      { ...good, x: 10 },
+      { ...good, y: 10 },
+    ];
+    for (const splitter of invalid) {
+      const result = traceOptics(
+        { ...placeCards, splitters: [splitter] },
+        builtPlaceCards(),
+      );
+      expect(result.lit).toEqual(new Set(["rill"]));
+      expect(result.segments).toHaveLength(3);
+      expect(result.segments.every((segment) => !("power" in segment))).toBe(
+        true,
+      );
+    }
+  });
+
+  it("bounds repeated splitting inside a mirror cavity without leaking light or nonfinite coordinates", () => {
+    const plan: OpticsPlan = {
+      source: { x: 350, y: 300, dx: 1, dy: 0 },
+      splitters: [
+        { target: "splitter", x: 400, y: 300, angle: Math.PI / 4, length: 100 },
+      ],
+      mirrors: [
+        { target: "left", x: 200, y: 300, angle: Math.PI / 2, length: 400 },
+        { target: "right", x: 600, y: 300, angle: Math.PI / 2, length: 400 },
+        { target: "top", x: 400, y: 100, angle: 0, length: 400 },
+        { target: "bottom", x: 400, y: 500, angle: 0, length: 400 },
+      ],
+      detectors: [{ id: "outside", x: 800, y: 300, radius: 10 }],
+    };
+    const targets = ["splitter", "left", "right", "top", "bottom"].map((id) =>
+      target(id),
+    );
+    const result = traceOptics(plan, targets);
+    expect(result.segments.length).toBeGreaterThan(20);
+    expect(result.segments.length).toBeLessThanOrEqual(128);
+    expect(result.lit.size).toBe(0);
+    for (const segment of result.segments) {
+      expect(segment.power ?? 1).toBeGreaterThanOrEqual(1 / 256);
+      expect(segment.power ?? 1).toBeLessThanOrEqual(1);
+      for (const [x, y] of [segment.from, segment.to]) {
+        expect(Number.isFinite(x) && Number.isFinite(y)).toBe(true);
+        expect(x).toBeGreaterThanOrEqual(200 - 1e-6);
+        expect(x).toBeLessThanOrEqual(600 + 1e-6);
+        expect(y).toBeGreaterThanOrEqual(100 - 1e-6);
+        expect(y).toBeLessThanOrEqual(500 + 1e-6);
+      }
+    }
+    expect(traceOptics(plan, targets)).toEqual(result);
+  });
+});
+
 const daylight: OpticsPlan = {
   source: { x: 160, y: 200, dx: 1, dy: 0 },
   mirrors: [],

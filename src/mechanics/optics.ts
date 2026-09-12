@@ -12,6 +12,7 @@ export interface OpticsPlan {
   }[];
   detectors: {
     id: string;
+    name?: string;
     x: number;
     y: number;
     radius: number;
@@ -23,6 +24,18 @@ export interface OpticsPlan {
     target: string;
     vertices: Point[];
     refractiveIndex: number;
+  }[];
+  /** Ideal lossless 50:50 coated interfaces, enabled by completed targets.
+   * The finite segment is the cube's coated diagonal, not its outer square.
+   * Cube outer faces are assumed normal to the incident/exit rays (no bending).
+   * A geometric model: no polarization, interference, or spectral dispersion. */
+  splitters?: {
+    target: string;
+    x: number;
+    y: number;
+    /** Tangent angle, using the same convention as mirrors. */
+    angle: number;
+    length: number;
   }[];
 }
 
@@ -41,7 +54,8 @@ export interface OpticsTarget {
 }
 
 export interface OpticsTrace {
-  segments: { from: Point; to: Point }[];
+  /** Unsplit segments retain their original shape; absent power means 1. */
+  segments: { from: Point; to: Point; power?: number }[];
   lit: Set<string>;
 }
 
@@ -49,6 +63,11 @@ const WIDTH = 960;
 const HEIGHT = 580;
 const EPSILON = 1e-7;
 const MAX_INTERACTIONS = 12;
+// Global work caps also bound paths that revisit splitters. Cutoff branches are
+// discarded, never replaced with authored endpoints or detector signals.
+const MAX_RAYS = 32;
+const MAX_SEGMENTS = 128;
+const MIN_POWER = 1 / 256;
 // Match the engine's 10px MELT grid, including its clipped final row/column.
 const CELL = 10;
 const ERASED = 0.02;
@@ -103,6 +122,28 @@ function mirrorDistance(
     Math.abs(alongMirror) <= mirror.length / 2 + EPSILON
     ? distance
     : Infinity;
+}
+
+function splitterGeometry(
+  splitter: NonNullable<OpticsPlan["splitters"]>[number],
+): Reflector | undefined {
+  const { x, y, angle, length } = splitter;
+  if (!finite(x, y, angle, length) || length <= EPSILON) return;
+  const tangent: Point = [Math.cos(angle), Math.sin(angle)];
+  const halfX = Math.abs((tangent[0] * length) / 2);
+  const halfY = Math.abs((tangent[1] * length) / 2);
+  if (x - halfX < 0 || x + halfX > WIDTH || y - halfY < 0 || y + halfY > HEIGHT)
+    return;
+  return { ...splitter, tangent };
+}
+
+function reflected(direction: Point, surface: Surface): Point | undefined {
+  const normal: Point = [-surface.tangent[1], surface.tangent[0]];
+  const dot = direction[0] * normal[0] + direction[1] * normal[1];
+  return normalized(
+    direction[0] - 2 * dot * normal[0],
+    direction[1] - 2 * dot * normal[1],
+  );
 }
 
 function prismGeometry(
@@ -285,10 +326,9 @@ export function traceOptics(
 ): OpticsTrace {
   const result: OpticsTrace = { segments: [], lit: new Set() };
   const { x, y, dx, dy } = plan.source;
-  let direction = normalized(dx, dy);
+  const direction = normalized(dx, dy);
   if (!direction || !finite(x, y) || x < 0 || x > WIDTH || y < 0 || y > HEIGHT)
     return result;
-  let from: Point = [x, y];
   const completed = new Set(targets.filter((t) => t.done).map((t) => t.id));
   const mirrors: Reflector[] = plan.mirrors
     .filter(
@@ -304,6 +344,10 @@ export function traceOptics(
   const detectors = plan.detectors.filter(
     (d) => finite(d.x, d.y, d.radius) && d.radius >= 0,
   );
+  const splitters = (plan.splitters ?? [])
+    .filter((splitter) => completed.has(splitter.target))
+    .map(splitterGeometry)
+    .filter((splitter): splitter is Reflector => !!splitter);
   const ice = iceCells(targets);
   const candidates = (plan.prisms ?? [])
     .filter((prism) => completed.has(prism.target))
@@ -320,11 +364,26 @@ export function traceOptics(
     )
     .flatMap((prism) => prism.boundaries);
 
-  // Twelve surface interactions permit thirteen segments, including the last exit.
-  for (let bounce = 0; bounce <= MAX_INTERACTIONS; bounce++) {
+  type Ray = {
+    from: Point;
+    direction: Point;
+    interactions: number;
+    power: number;
+  };
+  const rays: Ray[] = [{ from: [x, y], direction, interactions: 0, power: 1 }];
+  let createdRays = 1;
+  // Breadth-first traversal keeps one looping branch from starving its sibling.
+  // Each lineage permits twelve interactions plus its last outgoing segment.
+  for (
+    let next = 0;
+    next < rays.length && result.segments.length < MAX_SEGMENTS;
+    next++
+  ) {
+    const { from, direction, interactions, power } = rays[next];
     let distance = borderDistance(from, direction);
     let reflector: Reflector | undefined;
     let boundary: Boundary | undefined;
+    let splitter: Reflector | undefined;
     for (const mirror of mirrors) {
       const hit = mirrorDistance(from, direction, mirror);
       if (hit < distance) {
@@ -340,34 +399,74 @@ export function traceOptics(
         reflector = undefined;
       }
     }
+    for (const surface of splitters) {
+      const hit = mirrorDistance(from, direction, surface);
+      if (hit < distance) {
+        distance = hit;
+        splitter = surface;
+        reflector = undefined;
+        boundary = undefined;
+      }
+    }
     for (const cell of ice) {
       const hit = rectangleDistance(from, direction, cell, distance);
       if (hit <= distance) {
         distance = hit;
         reflector = undefined; // Opaque ice wins a tie with a mirror surface.
         boundary = undefined;
+        splitter = undefined;
       }
     }
-    if (!Number.isFinite(distance) || distance <= EPSILON) break;
+    if (!Number.isFinite(distance) || distance <= EPSILON) continue;
     const to: Point = [
       Math.max(0, Math.min(WIDTH, from[0] + direction[0] * distance)),
       Math.max(0, Math.min(HEIGHT, from[1] + direction[1] * distance)),
     ];
-    result.segments.push({ from, to });
+    result.segments.push(power === 1 ? { from, to } : { from, to, power });
     for (const detector of detectors)
       if (hitsDetector(from, to, detector)) result.lit.add(detector.id);
-    if ((!reflector && !boundary) || bounce === MAX_INTERACTIONS) break;
-    if (boundary) direction = refracted(direction, boundary);
-    else if (reflector) {
-      const normal: Point = [-reflector.tangent[1], reflector.tangent[0]];
-      const dot = direction[0] * normal[0] + direction[1] * normal[1];
-      direction = normalized(
-        direction[0] - 2 * dot * normal[0],
-        direction[1] - 2 * dot * normal[1],
-      );
+    if (interactions === MAX_INTERACTIONS) continue;
+    if (splitter) {
+      // An ideal coated hypotenuse sends half the power along each geometrically
+      // derived direction. Transmission does not bend between identical media.
+      // Reference: edmundoptics.com/knowledge-center/application-notes/optics/what-are-beamsplitters/
+      const reflectedDirection = reflected(direction, splitter);
+      const childPower = power / 2;
+      if (
+        reflectedDirection &&
+        childPower >= MIN_POWER &&
+        createdRays + 2 <= MAX_RAYS
+      ) {
+        rays.push(
+          {
+            from: to,
+            direction,
+            interactions: interactions + 1,
+            power: childPower,
+          },
+          {
+            from: to,
+            direction: reflectedDirection,
+            interactions: interactions + 1,
+            power: childPower,
+          },
+        );
+        createdRays += 2;
+      }
+      continue;
     }
-    if (!direction) break;
-    from = to;
+    const outgoing = boundary
+      ? refracted(direction, boundary)
+      : reflector
+        ? reflected(direction, reflector)
+        : undefined;
+    if (outgoing)
+      rays.push({
+        from: to,
+        direction: outgoing,
+        interactions: interactions + 1,
+        power,
+      });
   }
   return result;
 }
