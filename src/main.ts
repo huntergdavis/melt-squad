@@ -355,14 +355,7 @@ function updateHUD() {
     row.querySelector("small")!.textContent = t.done
       ? "A little good deed, done."
       : !available
-        ? "First: " +
-          t
-            .requires!.map((id) =>
-              world.targets
-                .find((other) => other.id === id)!
-                .name.toLowerCase(),
-            )
-            .join(" + ")
+        ? world.waitingFor(t)
         : (t.pulse && !world.untimed
             ? world.pulseOpen(t)
               ? "GO · "

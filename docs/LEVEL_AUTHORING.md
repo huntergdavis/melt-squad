@@ -47,9 +47,10 @@ should take roughly 30–90 seconds for a new player.
   controls, responsive layout, frame loop, and lifecycle.
 - save.ts/audio.ts: versioned best results, optional local storage, Web Audio.
 
-The current renderer has kitchen/cave/garden/cosmos/town sets and 16 reusable
-illustrated prop kinds. Completion animates selected rescue props; not every
-call yet has a bespoke ending animation.
+The renderer includes the original five settings and each released pack's
+native set and cast. Prop families live in `src/art/`; keep their silhouettes
+recognizable at phone scale. Completion animates selected rescue props; not
+every original call yet has a bespoke ending animation.
 
 ## Campaign additions
 
@@ -71,6 +72,17 @@ call yet has a bespoke ending animation.
 - Prop `follow` attaches artwork to a live target. `reveal` defines the final
   pose/kind after the scene completes; `revealOnly` is for earned visual arrivals.
   `stamp` supplies the completion postcard's tiny joke.
+- `balance`: fixed left/right collection targets supply capped masses from
+  actual progress. Equal-arm torque and damping move the visible scale; its
+  `id` becomes a signal only after matched, nonempty loads settle level.
+  This first slice is not buoyancy or movable target geometry.
+- `optics`: a source direction, fixed mirrors tied to completed freeze targets,
+  and circular detectors. Mirror angles are tangent angles in radians. Real
+  rays reflect geometrically and stop on remaining melt-target ice cells;
+  detectors emit their IDs when crossed. Refraction/splitting remain future work.
+- Target `needsSignals` gates work on physical signal IDs, in addition to
+  `requires`. Leave space for visible physical feedback, and a generous final
+  warming target to celebrate success. See `05.14` and `05.16`.
 - `src/campaign.ts` controls world metadata and Continue; `src/atlas.ts` handles
   accessible maps. Unbuilt `NN.SS` slots stay unbuilt even if later slots exist.
 - `public/release.json` identifies the release that must be checked on the live

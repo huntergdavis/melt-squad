@@ -1,7 +1,7 @@
 {
-  "release": "pack-04",
-  "version": "0.4.0",
-  "worlds": 4,
-  "scenes": 80,
-  "latestWorld": "The Mostly Clockwork Circus"
+  "release": "pack-05",
+  "version": "0.5.0",
+  "worlds": 5,
+  "scenes": 100,
+  "latestWorld": "Borough of Very Small Affairs"
 }

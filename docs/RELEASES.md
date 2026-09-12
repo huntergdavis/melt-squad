@@ -4,8 +4,8 @@ One complete twenty-scene world per release. No placeholder scenes count as
 playable. Every release must pass local tests, the GitHub Pages pipeline, and
 a live-browser check before the next world is started.
 
-**Implemented in this tree: 4/20 worlds · 80/400 scenes.**
-**Remaining campaign: 16 worlds · 320 scenes.**
+**Implemented in this tree: 5/20 worlds · 100/400 scenes.**
+**Remaining campaign: 15 worlds · 300 scenes.**
 
 | World | Name | Implemented | Release |
 | --- | --- | ---: | --- |
@@ -13,8 +13,8 @@ a live-browser check before the next world is started.
 | 02 | The Midnight Sock Exchange | 20/20 | [pack-02](https://github.com/huntergdavis/melt-squad/releases/tag/pack-02) |
 | 03 | Brine & Parcel | 20/20 | [pack-03](https://github.com/huntergdavis/melt-squad/releases/tag/pack-03) |
 | 04 | The Mostly Clockwork Circus | 20/20 | [pack-04](https://github.com/huntergdavis/melt-squad/releases/tag/pack-04) |
-| 05 | Borough of Very Small Affairs | 0/20 | Next |
-| 06 | The Great Pudding Republic | 0/20 | Planned |
+| 05 | Borough of Very Small Affairs | 20/20 | [pack-05](https://github.com/huntergdavis/melt-squad/releases/tag/pack-05) |
+| 06 | The Great Pudding Republic | 0/20 | Next |
 | 07 | Fossilbean Preschool | 0/20 | Planned |
 | 08 | Emberborough Town Hall | 0/20 | Planned |
 | 09 | The Runaway Ending Library | 0/20 | Planned |
@@ -40,8 +40,11 @@ a live-browser check before the next world is started.
   reveals and completion postcards/stamps.
 - Implemented with World 04: visible rhythmic water gates, retained off-beat
   progress, saved untimed assist, and controller-accessible assist toggles.
-- Not yet implemented: BALANCE, OPTICS, PHASE. Build each system when its
-  first world needs it; do not silently substitute a basic target for its puzzle.
+- Implemented with World 05: BALANCE's equal-arm mass/torque/settling slice and
+  OPTICS' geometric mirror reflection, ice occlusion, and actual detectors.
+  Buoyancy, splitters, and refraction remain extensions for their future worlds.
+- Not yet implemented: PHASE. Build each extension when its first world needs
+  it; do not silently substitute a basic target for its puzzle.
 - Still requires real-device feedback: physical gamepad comfort and mobile
   touch ergonomics. Automated controller and phone-layout checks are not a claim
   that physical hardware was tested.

@@ -1,3 +1,6 @@
+import type { BalancePlan } from "./mechanics/balance";
+import type { OpticsPlan } from "./mechanics/optics";
+
 export type Verb = "melt" | "freeze" | "warm" | "fill" | "spin";
 export type Theme =
   | "kitchen"
@@ -7,7 +10,8 @@ export type Theme =
   | "town"
   | "laundry"
   | "reef"
-  | "circus";
+  | "circus"
+  | "borough";
 export type PropKind =
   | "cup"
   | "wizard"
@@ -57,7 +61,19 @@ export type PropKind =
   | "microphone"
   | "ticket"
   | "biscuit"
-  | "spotlight";
+  | "spotlight"
+  | "mousemayor"
+  | "hedgehog"
+  | "inspector"
+  | "leafbug"
+  | "stamp"
+  | "pencil"
+  | "paperclip"
+  | "ruler"
+  | "eraser"
+  | "archive"
+  | "townsign"
+  | "puddle";
 export interface Target {
   id: string;
   name: string;
@@ -67,6 +83,7 @@ export interface Target {
   w: number;
   h: number;
   requires?: string[];
+  needsSignals?: string[];
   temp?: [number, number];
   pressure?: [number, number];
   effort?: number;
@@ -102,6 +119,8 @@ export interface Level {
   props: Prop[];
   pack?: string;
   stamp?: string;
+  balance?: BalancePlan;
+  optics?: OpticsPlan;
   channels?: {
     inlet: { x: number; y: number; w: number; h: number };
     junction: [number, number];

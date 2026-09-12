@@ -2,7 +2,7 @@
 
 ## Campaign expansion — one complete world per release
 
-Current implementation: **80 scenes / 4 worlds**. See the [release ledger](RELEASES.md).
+Current implementation: **100 scenes / 5 worlds**. See the [release ledger](RELEASES.md).
 
 - [x] Design 19 new themed levels of 20 scenes each: 380 new scenes, 400 total
       including the existing collection.
@@ -19,6 +19,8 @@ Current implementation: **80 scenes / 4 worlds**. See the [release ledger](RELEA
       postal water, an express snail, and an invitation-to-friendship story.
 - [x] Pack 04: twenty Mostly Clockwork Circus scenes, a brass ensemble, moving
       rehearsal wheel, real rhythm gates, and controller-accessible untimed play.
+- [x] Pack 05: twenty Borough scenes, tiny civic friendships, an actual settling
+      mass balance, geometric mirror reflections, and sunlight detectors.
 - [x] In-game credits with local Kenney and font license acknowledgements.
 
 Start with the [campaign plan](CAMPAIGN_BACKLOG.md) and

@@ -1,4 +1,10 @@
 import { clamp, H, W, type Controls, type Level, type Target } from "./types";
+import {
+  createBalance,
+  stepBalance,
+  type BalanceState,
+} from "./mechanics/balance";
+import { traceOptics } from "./mechanics/optics";
 
 export const CELL = 10;
 export interface LiveTarget extends Target {
@@ -62,6 +68,12 @@ export class World {
   runoff: Runoff[] = [];
   stationary = false;
   untimed = false;
+  signals = new Set<string>();
+  balance?: BalanceState;
+  light: ReturnType<typeof traceOptics> = {
+    segments: [],
+    lit: new Set<string>(),
+  };
   private routeCursor = 0;
   nozzle: {
     x: number;
@@ -80,6 +92,7 @@ export class World {
   private emission = 0;
   private seed = 17;
   constructor(public level: Level) {
+    if (level.balance) this.balance = createBalance();
     this.nozzle = {
       x: level.start[0],
       y: level.start[1],
@@ -111,9 +124,46 @@ export class World {
     return this.seed / 4294967296;
   }
   available(t: Target) {
-    return !t.requires?.some(
-      (id) => !this.targets.find((other) => other.id === id)?.done,
+    return (
+      !t.needsSignals?.some((id) => !this.signals.has(id)) &&
+      !t.requires?.some(
+        (id) => !this.targets.find((other) => other.id === id)?.done,
+      )
     );
+  }
+  waitingFor(t: Target): string {
+    const tasks = (t.requires ?? [])
+      .filter((id) => !this.targets.find((other) => other.id === id)?.done)
+      .map(
+        (id) =>
+          this.targets.find((other) => other.id === id)?.name.toLowerCase() ??
+          id,
+      );
+    for (const id of t.needsSignals ?? []) {
+      if (!this.signals.has(id))
+        tasks.push(
+          id === this.level.balance?.id
+            ? "let the scale settle level"
+            : "light the detector",
+        );
+    }
+    return "First: " + tasks.join(" + ");
+  }
+  private updateMechanics(dt: number) {
+    this.signals.clear();
+    const plan = this.level.balance;
+    if (plan && this.balance) {
+      const mass = (load: typeof plan.left) => {
+        const target = this.targets.find((t) => t.id === load.target);
+        return load.mass * (target?.done ? 1 : (target?.progress ?? 0));
+      };
+      stepBalance(this.balance, mass(plan.left), mass(plan.right), dt);
+      if (this.balance.level) this.signals.add(plan.id);
+    }
+    if (this.level.optics) {
+      this.light = traceOptics(this.level.optics, this.targets);
+      for (const id of this.light.lit) this.signals.add(id);
+    }
   }
   pulsePosition(t: Target): number {
     if (!t.pulse) return 0;
@@ -260,6 +310,7 @@ export class World {
       t.y = base.y + Math.sin(angle + phase) * base.motion.ry;
     }
     this.updateRunoff(dt);
+    this.updateMechanics(dt);
     const n = this.nozzle;
     const magnitude = Math.max(1, Math.hypot(input.x, input.y));
     n.x = clamp(n.x + (input.x / magnitude) * 270 * dt, 55, W - 55);

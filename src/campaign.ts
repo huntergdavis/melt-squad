@@ -6,6 +6,7 @@ export const mapLandmarks: Record<string, [PropKind, PropKind, PropKind]> = {
   "02": ["washer", "sock", "moth"],
   "03": ["mailbox", "eel", "octopus"],
   "04": ["circuswheel", "giraffe", "beetle"],
+  "05": ["townsign", "hedgehog", "pencil"],
 };
 
 const themes: [string, string, PropKind, string][] = [
@@ -36,7 +37,7 @@ const themes: [string, string, PropKind, string][] = [
   [
     "Borough of Very Small Affairs",
     "Tiny citizens. Enormous paperwork.",
-    "receipt",
+    "mousemayor",
     "#d6dcc0",
   ],
   [

@@ -2,6 +2,8 @@ import { CELL, temperatureColor, type World } from "./engine";
 import { H, W, clamp, type PropKind, type Theme } from "./types";
 import { drawPostal } from "./art/postal";
 import { drawCircus } from "./art/circus";
+import { drawMeasurements } from "./art/measurements";
+import { drawBorough } from "./art/borough";
 const motionSafe = (time: number, reduced: boolean) => (reduced ? 0 : time);
 
 const palettes: Record<Theme, [string, string, string]> = {
@@ -13,6 +15,7 @@ const palettes: Record<Theme, [string, string, string]> = {
   laundry: ["#363958", "#9490b2", "#555674"],
   reef: ["#245967", "#7fb5b2", "#517f83"],
   circus: ["#594d64", "#d2a994", "#826777"],
+  borough: ["#d5c3a8", "#ecdfc6", "#90a28d"],
 };
 export class Renderer {
   ctx: CanvasRenderingContext2D;
@@ -104,7 +107,8 @@ export class Renderer {
     c.scale(scale, scale);
     if (
       drawPostal(this, kind, happy, t, tint) ||
-      drawCircus(this, kind, happy, t, tint)
+      drawCircus(this, kind, happy, t, tint) ||
+      drawBorough(this, kind, happy, t, tint)
     ) {
       c.restore();
       return;
@@ -408,6 +412,23 @@ export class Renderer {
     } else if (world.level.theme === "garden") {
       for (let i = 0; i < 7; i++)
         this.circle(i * 165, 487, 100 + (i % 3) * 20, "#9fae83");
+    } else if (world.level.theme === "borough") {
+      this.round(84, 60, 792, 430, 15, "#b49476", "#866e59");
+      for (let i = 0; i < 110; i++)
+        this.circle(
+          94 + ((i * 139) % 770),
+          80 + ((i * 83) % 388),
+          1 + (i % 3),
+          "#735e49",
+        );
+      for (const x of [230, 420, 610]) {
+        this.round(x, 138, 130, 127, 8, "#f5e9ce");
+        this.round(x + 11, 151, 108, 87, 3, "#85988c");
+        this.round(x - 9, 249, 148, 18, 4, "#a68660");
+      }
+      this.prop("pencil", 111, 405, 1.65, false, motion);
+      this.prop("paperclip", 839, 236, 1.3, false, motion);
+      this.prop("ruler", 480, 487, 2.8, false, motion);
     } else if (world.level.theme === "circus") {
       for (let i = 0; i < 12; i++) {
         c.beginPath();
@@ -523,6 +544,19 @@ export class Renderer {
         world.completed
           ? "AS LONG AS YOU LIKE."
           : "THE MOSTLY CLOCKWORK CIRCUS",
+        480,
+        100,
+      );
+    }
+    if (world.level.theme === "borough") {
+      this.round(231, 63, 498, 58, 12, "#f6e8cd", "#9d8668");
+      c.fillStyle = "#36594e";
+      c.textAlign = "center";
+      c.font = "600 23px Outfit, sans-serif";
+      c.fillText(
+        world.completed
+          ? "IF YOU ARE HERE, PULL UP A CHAIR."
+          : "BOROUGH OF VERY SMALL AFFAIRS",
         480,
         100,
       );
@@ -754,6 +788,7 @@ export class Renderer {
         }
       }
     }
+    drawMeasurements(this, world);
     if (!thumbnail) {
       // A tiny squad member anchors the hose, not an information panel.
       this.prop("robot", 130, 493, 0.64, true, motion);

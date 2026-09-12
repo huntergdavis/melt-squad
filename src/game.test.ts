@@ -22,8 +22,27 @@ describe("Authored calls", () => {
     expect(new Set(levels.map((l) => l.id)).size).toBe(levels.length);
     for (const l of levels) {
       const ids = l.targets.map((t) => t.id);
+      const signals = [
+        l.balance?.id,
+        ...(l.optics?.detectors.map((d) => d.id) ?? []),
+      ].filter(Boolean);
+      if (l.balance) {
+        for (const load of [l.balance.left, l.balance.right]) {
+          expect(ids).toContain(load.target);
+          expect(load.mass).toBeGreaterThan(0);
+        }
+      }
+      for (const mirror of l.optics?.mirrors ?? []) {
+        expect(l.targets.find((t) => t.id === mirror.target)?.verb).toBe(
+          "freeze",
+        );
+        expect(Number.isFinite(mirror.angle)).toBe(true);
+        expect(mirror.length).toBeGreaterThan(0);
+      }
       expect(new Set(ids).size).toBe(ids.length);
       for (const t of l.targets) {
+        for (const signal of t.needsSignals ?? [])
+          expect(signals).toContain(signal);
         expect(t.x).toBeGreaterThan(55);
         expect(t.x + t.w).toBeLessThan(905);
         expect(t.y).toBeGreaterThan(120);
@@ -43,6 +62,14 @@ describe("Authored calls", () => {
     it('solves "' + l.name + '" through actual water particles', () => {
       const world = new World(l);
       for (const t of world.targets) {
+        // Physical readings may need a moment after the final drop (e.g. a beam settling).
+        // Wait by advancing the real simulation, never by changing signal/progress state.
+        if (t.needsSignals?.length && !world.available(t)) {
+          world.nozzle.on = false;
+          for (let step = 0; step < 1200 && !world.available(t); step++)
+            world.update(1 / 60, idle);
+          world.nozzle.on = true;
+        }
         expect(world.available(t)).toBe(true);
         const n = world.nozzle;
         n.temp =

@@ -2,6 +2,7 @@ import type { Level, Target, Verb, Prop, Theme } from "./types";
 import { sockLevels } from "./packs/02";
 import { postalLevels } from "./packs/03";
 import { circusLevels } from "./packs/04";
+import { boroughLevels } from "./packs/05";
 
 const target = (
   id: string,
@@ -453,4 +454,5 @@ export const levels: Level[] = [
   ...sockLevels,
   ...postalLevels,
   ...circusLevels,
+  ...boroughLevels,
 ];
