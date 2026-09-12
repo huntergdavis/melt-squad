@@ -38,7 +38,9 @@ export interface Spark {
 }
 export const temperatureColor = (t: number) =>
   t < 0 ? "#71d8ff" : t < 55 ? "#ffc983" : "#ff785a";
-export function requirements(t: Target): string {
+export function requirements(t: Target, untimed = false): string {
+  if (t.pulse && !untimed)
+    return "ON BEAT · " + requirements({ ...t, pulse: undefined });
   if (t.verb === "melt") return "HOT · 10° or more";
   if (t.verb === "freeze") return "COLD · −10° or less";
   if (t.verb === "fill")
@@ -59,6 +61,7 @@ export class World {
   sparks: Spark[] = [];
   runoff: Runoff[] = [];
   stationary = false;
+  untimed = false;
   private routeCursor = 0;
   nozzle: {
     x: number;
@@ -112,6 +115,18 @@ export class World {
       (id) => !this.targets.find((other) => other.id === id)?.done,
     );
   }
+  pulsePosition(t: Target): number {
+    if (!t.pulse) return 0;
+    const { period, phase = 0 } = t.pulse;
+    return ((((this.elapsed + phase) % period) + period) % period) / period;
+  }
+  pulseOpen(t: Target): boolean {
+    return (
+      !t.pulse ||
+      this.untimed ||
+      this.pulsePosition(t) < t.pulse.open / t.pulse.period
+    );
+  }
   get progress() {
     return (
       this.targets.reduce((n, t) => n + (t.done ? 1 : t.progress), 0) /
@@ -141,6 +156,11 @@ export class World {
   }
   impact(t: LiveTarget, drop: Drop, x: number, y: number) {
     if (t.done || !this.available(t)) return;
+    if (!this.pulseOpen(t)) {
+      t.flash = 0.3;
+      t.feedback = "REST · wait for GO, or turn on untimed assist";
+      return; // A missed beat never removes progress or counts as a mistake.
+    }
     if (t.flowOnly && !drop.routed) {
       t.flash = 0.3;
       t.feedback = "Feed the inlet — this tub needs river water";
@@ -164,7 +184,7 @@ export class World {
     this.hits++;
     t.flash = 0.3;
     if (!valid) {
-      t.feedback = requirements(t);
+      t.feedback = requirements(t, this.untimed);
       this.mistakes++;
       if (t.verb === "warm" || (t.verb === "freeze" && heat > 0))
         t.progress = Math.max(0, t.progress - 0.002);

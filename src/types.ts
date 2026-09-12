@@ -6,7 +6,8 @@ export type Theme =
   | "cosmos"
   | "town"
   | "laundry"
-  | "reef";
+  | "reef"
+  | "circus";
 export type PropKind =
   | "cup"
   | "wizard"
@@ -45,7 +46,18 @@ export type PropKind =
   | "divingbell"
   | "parcel"
   | "anemone"
-  | "bubble";
+  | "bubble"
+  | "ringmaster"
+  | "giraffe"
+  | "beetle"
+  | "drum"
+  | "circuswheel"
+  | "circustable"
+  | "clockhat"
+  | "microphone"
+  | "ticket"
+  | "biscuit"
+  | "spotlight";
 export interface Target {
   id: string;
   name: string;
@@ -60,6 +72,8 @@ export interface Target {
   effort?: number;
   flowOnly?: boolean;
   motion?: { rx: number; ry: number; period: number; phase?: number };
+  /** Seconds per beat, seconds accepting water, and a seconds offset. */
+  pulse?: { period: number; open: number; phase?: number };
 }
 export interface Prop {
   kind: PropKind;

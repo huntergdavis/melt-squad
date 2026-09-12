@@ -1,12 +1,16 @@
 # Authoring a rescue call
 
 Calls live in src/levels.ts. The 20 shipped entries also serve as examples.
-World 02's authored layouts live in `src/packs/02.ts`; append new packs after
+World packs' authored layouts live in `src/packs/NN.ts`; append new packs after
 legacy content, keep their `NN.SS` IDs, and set `pack` to their world ID.
 Add one Level with a stable id, title, short pitch, hint, ending, par time,
 theme, starting nozzle settings, targets, and illustrated props. The board
-and progression read that data directly. UI copy saying “20” will need to
-change when growing the collection.
+and progression read that data directly. Each world contains twenty scenes;
+the release marker and tests track the total playable count.
+
+Pack JSON imports must include `with { type: "json" }`, as in `src/packs/03.ts`.
+Vite and the Node-based browser-test runner both load these modules. Check
+`npx playwright test --list` before starting a release build to catch import errors early.
 
 World coordinates are 960 × 580. Target tops must be reachable by the nozzle
 (currently y >= 120); leave space above each for a downward stream.
@@ -57,6 +61,13 @@ call yet has a bespoke ending animation.
   Actual hitboxes move. Keep the full swept bounds reachable and provide clear
   labels. The saved stationary assist parks targets on the same path; it does
   not skip the temperature/pressure objective.
+- Target `pulse`: beat `period`, `open` window, and optional `phase` offset,
+  all in seconds. Only actual droplets arriving during the open window count.
+  Closed windows preserve progress and never count as mistakes. Use generous
+  windows (at least 0.3 seconds) and clear space above for GO/REST indicators.
+  Gates use simulation time, so pause stops the beat. Saved untimed assist
+  holds gates open without skipping thermal conditions or prerequisites;
+  reduced-motion visitors default to untimed unless they explicitly choose otherwise.
 - Prop `follow` attaches artwork to a live target. `reveal` defines the final
   pose/kind after the scene completes; `revealOnly` is for earned visual arrivals.
   `stamp` supplies the completion postcard's tiny joke.

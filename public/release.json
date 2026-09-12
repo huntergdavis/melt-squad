@@ -1,7 +1,7 @@
 {
-  "release": "pack-03",
-  "version": "0.3.0",
-  "worlds": 3,
-  "scenes": 60,
-  "latestWorld": "Brine & Parcel"
+  "release": "pack-04",
+  "version": "0.4.0",
+  "worlds": 4,
+  "scenes": 80,
+  "latestWorld": "The Mostly Clockwork Circus"
 }

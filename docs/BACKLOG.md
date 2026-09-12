@@ -2,7 +2,7 @@
 
 ## Campaign expansion — one complete world per release
 
-Current implementation: **60 scenes / 3 worlds**. See the [release ledger](RELEASES.md).
+Current implementation: **80 scenes / 4 worlds**. See the [release ledger](RELEASES.md).
 
 - [x] Design 19 new themed levels of 20 scenes each: 380 new scenes, 400 total
       including the existing collection.
@@ -17,6 +17,8 @@ Current implementation: **60 scenes / 3 worlds**. See the [release ledger](RELEA
       rinse water, moving care pads, and stationary assist.
 - [x] Pack 03: twenty Brine & Parcel scenes, an original reef cast, branching
       postal water, an express snail, and an invitation-to-friendship story.
+- [x] Pack 04: twenty Mostly Clockwork Circus scenes, a brass ensemble, moving
+      rehearsal wheel, real rhythm gates, and controller-accessible untimed play.
 - [x] In-game credits with local Kenney and font license acknowledgements.
 
 Start with the [campaign plan](CAMPAIGN_BACKLOG.md) and

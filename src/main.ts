@@ -19,6 +19,7 @@ sound.muted = save.muted;
 save.stationary ??= window.matchMedia(
   "(prefers-reduced-motion: reduce)",
 ).matches;
+save.untimed ??= window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 let world = new World(levels[0]),
   levelIndex = 0,
   mode: "hub" | "play" = "hub";
@@ -71,6 +72,7 @@ $("#app").innerHTML = `
       <div class="objectives-heading"><h2>The little things to do</h2><button data-action="hint" class="text-button">Need a hint?</button></div><div id="objectives" class="objectives"></div>
       <p id="hint" class="hint" hidden></p>
       <button id="motion-assist" class="quiet" data-action="motion-assist" hidden></button>
+      <button id="pulse-assist" class="quiet" data-action="pulse-assist" hidden></button>
       <p class="control-strip"><span><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> move</span><span><kbd>↑</kbd><kbd>↓</kbd> temperature</span><span><kbd>←</kbd><kbd>→</kbd> pressure</span><span><kbd>Q</kbd><kbd>E</kbd> tilt</span><span><kbd>Space</kbd> water</span><span>or drag the nozzle + use the sliders</span></p>
     </section>
     <p id="save-warning" class="hint" hidden>Browser storage is unavailable. You can keep playing, but this session’s medals will not survive a reload.</p>
@@ -188,6 +190,7 @@ function start(index: number, restart = false) {
   }
   started = true;
   world.stationary = !!save.stationary;
+  world.untimed = !!save.untimed;
   currentWorld = packOf(world.level);
   selectedScene = world.level.id;
   save.lastWorld = currentWorld;
@@ -209,6 +212,7 @@ function start(index: number, restart = false) {
   $("#mission-title").textContent = world.level.name;
   $("#mission-pitch").textContent = world.level.pitch;
   $("#motion-assist").hidden = !world.targets.some((t) => t.motion);
+  $("#pulse-assist").hidden = !world.targets.some((t) => t.pulse);
   updateAssist();
   $("#objectives").innerHTML = world.targets
     .map(
@@ -237,10 +241,22 @@ function hub() {
   );
 }
 function updateAssist() {
-  $("#motion-assist").textContent = save.stationary
-    ? "Stationary assist: on · Let the cuffs move"
-    : "Want a steadier target? Turn on stationary assist";
-  $("#motion-assist").setAttribute("aria-pressed", String(!!save.stationary));
+  for (const button of document.querySelectorAll<HTMLElement>(
+    '[data-action="motion-assist"]',
+  )) {
+    button.textContent = save.stationary
+      ? "Stationary assist: on · Let the targets move"
+      : "Want a steadier target? Turn on stationary assist";
+    button.setAttribute("aria-pressed", String(!!save.stationary));
+  }
+  for (const button of document.querySelectorAll<HTMLElement>(
+    '[data-action="pulse-assist"]',
+  )) {
+    button.textContent = save.untimed
+      ? "Untimed assist: on · Bring back the beat"
+      : "Your pace, your show · Turn on untimed assist";
+    button.setAttribute("aria-pressed", String(!!save.untimed));
+  }
 }
 function pause() {
   if (dialog.open) {
@@ -254,8 +270,16 @@ function pause() {
   if (world.completed) return;
   openModal(
     "pause",
-    '<div class="eyebrow">TAKE A BREATHER</div><h2>Even heroes need<br>a tea break.</h2><p>Your rescue is paused. Nothing will melt while you’re away.</p><div class="dialog-actions"><button class="primary" data-action="close">Back to the rescue ↗</button><button class="quiet" data-action="restart">Restart call</button><button class="quiet" data-action="hub">Dispatch board</button></div>',
+    '<div class="eyebrow">TAKE A BREATHER</div><h2>Even heroes need<br>a tea break.</h2><p>Your rescue is paused. Nothing will melt while you’re away.</p><div class="dialog-actions"><button class="primary" data-action="close">Back to the rescue ↗</button><button class="quiet" data-action="restart">Restart call</button><button class="quiet" data-action="hub">World map</button>' +
+      (world.targets.some((t) => t.motion)
+        ? '<button class="quiet" data-action="motion-assist">Stationary assist</button>'
+        : "") +
+      (world.targets.some((t) => t.pulse)
+        ? '<button class="quiet" data-action="pulse-assist">Untimed assist</button>'
+        : "") +
+      "</div>",
   );
+  updateAssist();
 }
 function win() {
   const lastLevel = levelIndex === levels.length - 1;
@@ -267,7 +291,7 @@ function win() {
         : "A little less cold.<br>A little more lovely.") +
       "</h2>" +
       (world.level.stamp
-        ? '<canvas id="postcard" class="win-postcard" aria-label="The rescued laundry community"></canvas><div class="postcard-stamp">' +
+        ? '<canvas id="postcard" class="win-postcard" aria-label="Your rescue postcard"></canvas><div class="postcard-stamp">' +
           escapeHtml(world.level.stamp) +
           "</div>"
         : "") +
@@ -339,7 +363,11 @@ function updateHUD() {
                 .name.toLowerCase(),
             )
             .join(" + ")
-        : requirements(t);
+        : (t.pulse && !world.untimed
+            ? world.pulseOpen(t)
+              ? "GO · "
+              : "REST · "
+            : "") + requirements(t, world.untimed);
     row.querySelector<HTMLElement>("i")!.style.width =
       Math.round(t.progress * 100) + "%";
   }
@@ -369,6 +397,12 @@ function action(name: string) {
     world.stationary = !!save.stationary;
     persist();
     updateAssist();
+  } else if (name === "pulse-assist") {
+    save.untimed = !save.untimed;
+    world.untimed = !!save.untimed;
+    persist();
+    updateAssist();
+    updateHUD();
   } else if (
     name === "restart" &&
     mode === "play" &&

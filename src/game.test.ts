@@ -28,6 +28,12 @@ describe("Authored calls", () => {
         expect(t.x + t.w).toBeLessThan(905);
         expect(t.y).toBeGreaterThan(120);
         expect(t.y + t.h).toBeLessThan(540);
+        if (t.pulse) {
+          expect(t.pulse.period).toBeGreaterThanOrEqual(1);
+          expect(t.pulse.open).toBeGreaterThanOrEqual(0.3);
+          expect(t.pulse.open).toBeLessThanOrEqual(t.pulse.period);
+          expect(Number.isFinite(t.pulse.phase ?? 0)).toBe(true);
+        }
         for (const id of t.requires ?? [])
           expect(ids.indexOf(id)).toBeLessThan(ids.indexOf(t.id));
       }

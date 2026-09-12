@@ -1,6 +1,7 @@
 import { CELL, temperatureColor, type World } from "./engine";
 import { H, W, clamp, type PropKind, type Theme } from "./types";
 import { drawPostal } from "./art/postal";
+import { drawCircus } from "./art/circus";
 const motionSafe = (time: number, reduced: boolean) => (reduced ? 0 : time);
 
 const palettes: Record<Theme, [string, string, string]> = {
@@ -11,6 +12,7 @@ const palettes: Record<Theme, [string, string, string]> = {
   town: ["#d9e3db", "#e8d8bd", "#acc0b2"],
   laundry: ["#363958", "#9490b2", "#555674"],
   reef: ["#245967", "#7fb5b2", "#517f83"],
+  circus: ["#594d64", "#d2a994", "#826777"],
 };
 export class Renderer {
   ctx: CanvasRenderingContext2D;
@@ -100,7 +102,10 @@ export class Renderer {
     c.save();
     c.translate(x, y);
     c.scale(scale, scale);
-    if (drawPostal(this, kind, happy, t, tint)) {
+    if (
+      drawPostal(this, kind, happy, t, tint) ||
+      drawCircus(this, kind, happy, t, tint)
+    ) {
       c.restore();
       return;
     }
@@ -403,6 +408,30 @@ export class Renderer {
     } else if (world.level.theme === "garden") {
       for (let i = 0; i < 7; i++)
         this.circle(i * 165, 487, 100 + (i % 3) * 20, "#9fae83");
+    } else if (world.level.theme === "circus") {
+      for (let i = 0; i < 12; i++) {
+        c.beginPath();
+        c.moveTo(480, -10);
+        c.lineTo(i * 87 - 40, 195);
+        c.lineTo(i * 87 + 46, 195);
+        c.closePath();
+        c.fillStyle = i % 2 ? "#eab59a" : "#fff0cb";
+        c.fill();
+      }
+      for (const x of [50, 842]) {
+        this.round(x, 80, 70, 420, 26, "#b87178");
+        this.line([x + 22, 104, x + 22, 470], "#f2caa0", 6);
+        this.round(x - 4, 303, 78, 19, 5, "#e7bd79");
+      }
+      this.line(
+        [135, 159, 300, 198, 480, 210, 660, 198, 825, 159],
+        "#f8d4a1",
+        3,
+      );
+      for (let i = 0; i < 11; i++) {
+        const x = 165 + i * 63;
+        this.circle(x, 164 + Math.sin((i * Math.PI) / 10) * 43, 5, "#ffe7ad");
+      }
     } else if (world.level.theme === "reef") {
       for (let i = 0; i < 6; i++) {
         const x = 80 + i * 163;
@@ -481,6 +510,19 @@ export class Renderer {
       c.font = "600 25px Outfit, sans-serif";
       c.fillText(
         world.completed ? "DELIVERED WITH FEELING." : "BRINE & PARCEL",
+        480,
+        100,
+      );
+    }
+    if (world.level.theme === "circus") {
+      this.round(224, 63, 512, 58, 19, "#59485fed", "#e8bd86");
+      c.fillStyle = "#fff1cf";
+      c.textAlign = "center";
+      c.font = "600 23px Outfit, sans-serif";
+      c.fillText(
+        world.completed
+          ? "AS LONG AS YOU LIKE."
+          : "THE MOSTLY CLOCKWORK CIRCUS",
         480,
         100,
       );
@@ -641,6 +683,48 @@ export class Renderer {
       }
       c.restore();
       if (!thumbnail && !t.done) {
+        if (t.pulse) {
+          const open = available && world.pulseOpen(t);
+          this.round(
+            t.x,
+            t.y - 49,
+            t.w,
+            29,
+            8,
+            open ? "#daf0cf" : "#f3dcc5",
+            "#4b6265",
+          );
+          c.fillStyle = "#294f54";
+          c.font = "bold 14px system-ui";
+          c.textAlign = "center";
+          c.fillText(
+            !available
+              ? "WAIT"
+              : world.untimed
+                ? "OPEN"
+                : open
+                  ? "GO!"
+                  : "REST",
+            t.x + t.w / 2,
+            t.y - 29,
+          );
+          this.round(t.x, t.y - 15, t.w, 5, 2, "#eed6ba");
+          this.round(
+            t.x,
+            t.y - 15,
+            t.w * (world.untimed ? 1 : t.pulse.open / t.pulse.period),
+            5,
+            2,
+            "#6a9c83",
+          );
+          if (!world.untimed && !this.reducedMotion)
+            this.circle(
+              t.x + t.w * world.pulsePosition(t),
+              t.y - 12.5,
+              4,
+              "#fff5d9",
+            );
+        }
         if (t.motion) {
           this.round(t.x + 5, t.y - 28, t.w - 10, 19, 6, "#fff1db");
           c.fillStyle = "#434661";
@@ -703,7 +787,9 @@ export class Renderer {
       c.textAlign = "left";
       c.font = "bold 11px system-ui";
       c.letterSpacing = "2px";
-      c.fillStyle = ["cosmos", "laundry", "reef"].includes(world.level.theme)
+      c.fillStyle = ["cosmos", "laundry", "reef", "circus"].includes(
+        world.level.theme,
+      )
         ? "#e5efdf"
         : "#416965";
       c.fillText("MELT SQUAD  /  RESCUE CAM", 28, 31);

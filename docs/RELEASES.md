@@ -4,16 +4,16 @@ One complete twenty-scene world per release. No placeholder scenes count as
 playable. Every release must pass local tests, the GitHub Pages pipeline, and
 a live-browser check before the next world is started.
 
-**Implemented in this tree: 3/20 worlds · 60/400 scenes.**
-**Remaining campaign: 17 worlds · 340 scenes.**
+**Implemented in this tree: 4/20 worlds · 80/400 scenes.**
+**Remaining campaign: 16 worlds · 320 scenes.**
 
 | World | Name | Implemented | Release |
 | --- | --- | ---: | --- |
 | 01 | First Shift | 20/20 | Original launch |
 | 02 | The Midnight Sock Exchange | 20/20 | [pack-02](https://github.com/huntergdavis/melt-squad/releases/tag/pack-02) |
 | 03 | Brine & Parcel | 20/20 | [pack-03](https://github.com/huntergdavis/melt-squad/releases/tag/pack-03) |
-| 04 | The Mostly Clockwork Circus | 0/20 | Next |
-| 05 | Borough of Very Small Affairs | 0/20 | Planned |
+| 04 | The Mostly Clockwork Circus | 20/20 | [pack-04](https://github.com/huntergdavis/melt-squad/releases/tag/pack-04) |
+| 05 | Borough of Very Small Affairs | 0/20 | Next |
 | 06 | The Great Pudding Republic | 0/20 | Planned |
 | 07 | Fossilbean Preschool | 0/20 | Planned |
 | 08 | Emberborough Town Hall | 0/20 | Planned |
@@ -38,7 +38,9 @@ a live-browser check before the next world is started.
 - Implemented with World 02: connected rinse channels with routed-only goals;
   slow deterministic moving targets with saved stationary assist; character
   reveals and completion postcards/stamps.
-- Not yet implemented: BALANCE, OPTICS, PHASE, PULSE. Build each system when its
+- Implemented with World 04: visible rhythmic water gates, retained off-beat
+  progress, saved untimed assist, and controller-accessible assist toggles.
+- Not yet implemented: BALANCE, OPTICS, PHASE. Build each system when its
   first world needs it; do not silently substitute a basic target for its puzzle.
 - Still requires real-device feedback: physical gamepad comfort and mobile
   touch ergonomics. Automated controller and phone-layout checks are not a claim

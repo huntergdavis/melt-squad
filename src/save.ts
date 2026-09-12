@@ -6,6 +6,7 @@ export interface Save {
   lastWorld?: string;
   lastScene?: string;
   stationary?: boolean;
+  untimed?: boolean;
   mapList?: boolean;
 }
 const fresh = (): Save => ({ version: 1, stars: {}, best: {}, muted: false });
@@ -18,6 +19,7 @@ export function loadSave(storage?: Pick<Storage, "getItem">): Save {
     const save = fresh();
     save.muted = raw.muted === true;
     if (typeof raw.stationary === "boolean") save.stationary = raw.stationary;
+    if (typeof raw.untimed === "boolean") save.untimed = raw.untimed;
     save.mapList = raw.mapList === true;
     if (
       typeof raw.lastWorld === "string" &&

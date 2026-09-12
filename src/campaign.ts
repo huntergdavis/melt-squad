@@ -5,6 +5,7 @@ export const mapLandmarks: Record<string, [PropKind, PropKind, PropKind]> = {
   "01": ["wizard", "duck", "heart"],
   "02": ["washer", "sock", "moth"],
   "03": ["mailbox", "eel", "octopus"],
+  "04": ["circuswheel", "giraffe", "beetle"],
 };
 
 const themes: [string, string, PropKind, string][] = [
@@ -29,7 +30,7 @@ const themes: [string, string, PropKind, string][] = [
   [
     "The Mostly Clockwork Circus",
     "A perfect show for wonderfully imperfect performers.",
-    "robot",
+    "ringmaster",
     "#efd1a4",
   ],
   [
