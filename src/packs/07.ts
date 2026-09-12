@@ -46,7 +46,10 @@ const cast = (variant?: "socks" | "portrait"): Prop[] => [
   }),
   p("ankylosaur", 850, 470, undefined, {
     scale: 0.7,
-    reveal: variant === "portrait" ? { x: 590, y: 420 } : { x: 600, y: 460 },
+    reveal:
+      variant === "portrait"
+        ? { x: 615, y: 440, scale: 0.45 }
+        : { x: 600, y: 460 },
   }),
 ];
 const recipes: {
