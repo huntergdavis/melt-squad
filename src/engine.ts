@@ -1,0 +1,288 @@
+import { clamp, H, W, type Controls, type Level, type Target } from "./types";
+
+export const CELL = 10;
+export interface LiveTarget extends Target {
+  progress: number;
+  done: boolean;
+  cells: number[];
+  cols: number;
+  rows: number;
+  feedback: string;
+  flash: number;
+  completedAt: number;
+}
+export interface Drop {
+  x: number;
+  y: number;
+  vx: number;
+  vy: number;
+  life: number;
+  temp: number;
+  pressure: number;
+}
+export interface Spark {
+  x: number;
+  y: number;
+  vx: number;
+  vy: number;
+  life: number;
+  maxLife: number;
+  color: string;
+}
+export const temperatureColor = (t: number) =>
+  t < 0 ? "#71d8ff" : t < 55 ? "#ffc983" : "#ff785a";
+export function requirements(t: Target): string {
+  if (t.verb === "melt") return "HOT · 10° or more";
+  if (t.verb === "freeze") return "COLD · −10° or less";
+  if (t.verb === "fill") return "WATER · above 0°";
+  if (t.verb === "spin") return "JET · 70% pressure + water above 0°";
+  return (
+    (t.temp?.join("–") ?? "20–55") +
+    "° · " +
+    (t.pressure?.join("–") ?? "10–55") +
+    "% pressure"
+  );
+}
+export class World {
+  targets: LiveTarget[];
+  drops: Drop[] = [];
+  sparks: Spark[] = [];
+  nozzle: {
+    x: number;
+    y: number;
+    angle: number;
+    temp: number;
+    pressure: number;
+    on: boolean;
+  };
+  elapsed = 0;
+  water = 0;
+  mistakes = 0;
+  completed = false;
+  celebration = 0;
+  hits = 0;
+  private emission = 0;
+  private seed = 17;
+  constructor(public level: Level) {
+    this.nozzle = {
+      x: level.start[0],
+      y: level.start[1],
+      angle: 0,
+      temp: level.temp,
+      pressure: level.pressure,
+      on: true,
+    };
+    this.targets = level.targets.map((t) => {
+      const cols = Math.ceil(t.w / CELL),
+        rows = Math.ceil(t.h / CELL);
+      return {
+        ...t,
+        cols,
+        rows,
+        cells: Array(cols * rows).fill(1),
+        progress: 0,
+        done: false,
+        feedback: "",
+        flash: 0,
+        completedAt: -1,
+      };
+    });
+  }
+  random() {
+    this.seed = (Math.imul(1664525, this.seed) + 1013904223) >>> 0;
+    return this.seed / 4294967296;
+  }
+  available(t: Target) {
+    return !t.requires?.some(
+      (id) => !this.targets.find((other) => other.id === id)?.done,
+    );
+  }
+  get progress() {
+    return (
+      this.targets.reduce((n, t) => n + (t.done ? 1 : t.progress), 0) /
+      this.targets.length
+    );
+  }
+  get stars() {
+    return (
+      1 +
+      Number(this.elapsed <= this.level.par * 1.8) +
+      Number(this.elapsed <= this.level.par && this.mistakes < 60)
+    );
+  }
+  burst(x: number, y: number, color: string, count = 12) {
+    for (let n = 0; n < count; n++) {
+      const life = 0.4 + this.random() * 0.5;
+      this.sparks.push({
+        x,
+        y,
+        vx: (this.random() - 0.5) * 170,
+        vy: -30 - this.random() * 120,
+        life,
+        maxLife: life,
+        color,
+      });
+    }
+  }
+  impact(t: LiveTarget, drop: Drop, x: number, y: number) {
+    if (t.done || !this.available(t)) return;
+    const heat = drop.temp,
+      pressure = drop.pressure;
+    const valid =
+      t.verb === "melt"
+        ? heat >= 10
+        : t.verb === "freeze"
+          ? heat <= -10
+          : t.verb === "fill"
+            ? heat > 0
+            : t.verb === "spin"
+              ? pressure >= 70 && heat > 0
+              : heat >= (t.temp?.[0] ?? 20) &&
+                heat <= (t.temp?.[1] ?? 55) &&
+                pressure >= (t.pressure?.[0] ?? 10) &&
+                pressure <= (t.pressure?.[1] ?? 55);
+    this.hits++;
+    t.flash = 0.3;
+    if (!valid) {
+      t.feedback = requirements(t);
+      this.mistakes++;
+      if (t.verb === "warm" || (t.verb === "freeze" && heat > 0))
+        t.progress = Math.max(0, t.progress - 0.002);
+      return;
+    }
+    t.feedback = "";
+    if (t.verb === "melt") {
+      const col = clamp(Math.floor((x - t.x) / CELL), 0, t.cols - 1);
+      const row = clamp(Math.floor((y - t.y) / CELL), 0, t.rows - 1);
+      // Local erosion makes holes real: subsequent droplets travel through them.
+      const power = (0.15 + heat / 110) / (t.effort ?? 1);
+      for (let dy = -1; dy <= 1; dy++)
+        for (let dx = -1; dx <= 1; dx++) {
+          const c = col + dx,
+            r = row + dy;
+          if (c >= 0 && c < t.cols && r >= 0 && r < t.rows) {
+            const i = r * t.cols + c;
+            t.cells[i] = Math.max(
+              0,
+              t.cells[i] - power * (dx === 0 && dy === 0 ? 0.55 : 0.16),
+            );
+          }
+        }
+      t.progress = 1 - t.cells.reduce((a, b) => a + b, 0) / t.cells.length;
+      if (t.progress >= 0.88) t.progress = 1; // Tiny shards dissolve; no pixel hunting.
+    } else {
+      const strength =
+        t.verb === "freeze"
+          ? clamp(-heat / 25, 0.4, 1.8)
+          : t.verb === "spin"
+            ? pressure / 85
+            : 1;
+      t.progress = Math.min(
+        1,
+        t.progress + (0.004 * strength) / (t.effort ?? 1),
+      );
+    }
+    if (this.random() < 0.16)
+      this.burst(x, y, t.verb === "freeze" ? "#84e7ef" : "#fff3c9", 2);
+    if (t.progress >= 1) {
+      t.done = true;
+      t.completedAt = this.elapsed;
+      this.burst(t.x + t.w / 2, t.y + t.h / 2, "#ffd580", 30);
+      if (this.targets.every((item) => item.done)) {
+        this.completed = true;
+        this.burst(W / 2, H / 3, "#ff9870", 55);
+      }
+    }
+  }
+  update(dt: number, input: Controls) {
+    dt = clamp(dt, 0, 1 / 30);
+    for (const t of this.targets) t.flash = Math.max(0, t.flash - dt);
+    for (const s of this.sparks) {
+      s.life -= dt;
+      s.x += s.vx * dt;
+      s.y += s.vy * dt;
+      s.vy += 130 * dt;
+    }
+    this.sparks = this.sparks.filter((s) => s.life > 0);
+    if (this.completed) {
+      this.celebration += dt;
+      return;
+    }
+    this.elapsed += dt;
+    const n = this.nozzle;
+    const magnitude = Math.max(1, Math.hypot(input.x, input.y));
+    n.x = clamp(n.x + (input.x / magnitude) * 270 * dt, 55, W - 55);
+    n.y = clamp(n.y + (input.y / magnitude) * 270 * dt, 72, H - 65);
+    n.temp = clamp(n.temp + input.heat * 70 * dt, -40, 100);
+    n.pressure = clamp(n.pressure + input.pressure * 65 * dt, 10, 100);
+    n.angle = clamp(
+      n.angle + input.tilt * 1.8 * dt,
+      -Math.PI * 0.88,
+      Math.PI * 0.88,
+    );
+    if (n.on) {
+      this.emission += dt * (65 + n.pressure * 0.7);
+      while (this.emission >= 1) {
+        this.emission--;
+        const angle =
+          n.angle + (this.random() - 0.5) * (0.28 - n.pressure * 0.0015);
+        const speed = 130 + n.pressure * 5.2;
+        this.drops.push({
+          x: n.x + Math.sin(n.angle) * 26,
+          y: n.y + Math.cos(n.angle) * 26,
+          vx: Math.sin(angle) * speed,
+          vy: Math.cos(angle) * speed,
+          life: 0.6 + n.pressure * 0.012,
+          temp: n.temp,
+          pressure: n.pressure,
+        });
+        this.water += 0.025;
+      }
+    }
+    for (const d of this.drops) {
+      const oldX = d.x,
+        oldY = d.y;
+      d.vy += 160 * dt;
+      d.x += d.vx * dt;
+      d.y += d.vy * dt;
+      d.life -= dt;
+      if (d.y > H - 40) {
+        d.life = 0;
+        continue;
+      }
+      const steps = Math.ceil(Math.hypot(d.x - oldX, d.y - oldY) / 4);
+      let hit = false;
+      for (let i = 1; i <= steps && !hit; i++) {
+        const x = oldX + ((d.x - oldX) * i) / steps,
+          y = oldY + ((d.y - oldY) * i) / steps;
+        for (const t of this.targets) {
+          if (
+            t.done ||
+            !this.available(t) ||
+            x < t.x ||
+            x >= t.x + t.w ||
+            y < t.y ||
+            y >= t.y + t.h
+          )
+            continue;
+          if (
+            t.verb === "melt" &&
+            t.cells[
+              Math.floor((y - t.y) / CELL) * t.cols +
+                Math.floor((x - t.x) / CELL)
+            ] <= 0.02
+          )
+            continue;
+          this.impact(t, d, x, y);
+          d.life = 0;
+          hit = true;
+          break;
+        }
+      }
+    }
+    this.drops = this.drops
+      .filter((d) => d.life > 0 && d.x > 0 && d.x < W)
+      .slice(-350);
+    this.sparks = this.sparks.slice(-220);
+  }
+}
